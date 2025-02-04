@@ -41,6 +41,9 @@ importers:
       '@yourdash/backend':
         specifier: workspace:*
         version: link:../backend
+      '@yourdash/chiplet':
+        specifier: workspace:*
+        version: link:../chiplet
       '@yourdash/shared':
         specifier: workspace:*
         version: link:../shared
@@ -378,6 +381,9 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^3.3.2
         version: 3.7.2(vite@4.5.9(@types/node@20.17.16)(sass@1.83.4))
+      '@yourdash/shared':
+        specifier: workspace:*
+        version: link:../shared
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1

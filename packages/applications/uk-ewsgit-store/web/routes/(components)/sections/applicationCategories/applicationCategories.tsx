@@ -3,17 +3,19 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import useResource from "@yourdash/csi/useResource.ts";
 import UKFlex from "@yourdash/uikit/src/components/flex/UKFlex.js";
 import UKText from "@yourdash/uikit/src/components/text/UKText.js";
 import UKCard from "@yourdash/uikit/src/components/card/UKCard.js";
 import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js";
 import React from "react";
-import { acsi } from "../../../../meta.yourdash.ts";
 import styles from "./applicationCategories.module.scss";
+import tun from "@yourdash/tunnel/src";
+import useResource from "@yourdash/tunnel/src/useResource";
+import { z } from "zod";
 
 const ApplicationCategories: React.FC = () => {
-  const categories = useResource(() => acsi.getJson("/home/applicationCategories", "/home/applicationCategories")) || [];
+  const categories =
+    useResource(() => tun.get("/uk-ewsgit-store/home/applicationCategories", "json", z.object({}).array()), { return: "data" }) || [];
 
   return (
     <div className={styles.component}>

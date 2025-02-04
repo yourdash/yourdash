@@ -1,6 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import { useNavigateTo } from "../meta.yourdash";
+import { Outlet, useNavigate } from "react-router-dom";
 import STORE_ICON from "../../icon.avif";
 import styles from "./layout.module.scss";
 import UKNavImage from "@yourdash/uikit/src/views/navBar/components/navImage/UKNavbarNavImage.js";
@@ -12,7 +11,7 @@ import UKSidebarContainer from "@yourdash/uikit/src/views/sidebar/UKSidebarConta
 import UKSidebarToggleButton from "@yourdash/uikit/src/views/sidebar/UKSidebarToggleButton.js";
 
 const ApplicationLayout: React.FC = () => {
-  const navigateTo = useNavigateTo();
+  const navigateTo = useNavigate();
 
   return (
     <>
@@ -31,31 +30,31 @@ const ApplicationLayout: React.FC = () => {
             <UKButton
               text={"Home"}
               onClick={() => {
-                navigateTo("/");
+                navigateTo("/app/a/uk-ewsgit-store/");
               }}
             />
             <UKButton
               text={"Search"}
               onClick={() => {
-                navigateTo("/search");
+                navigateTo("/app/a/uk-ewsgit-store/search");
               }}
             />
             <UKButton
               text={"Applications"}
               onClick={() => {
-                navigateTo("/applications");
+                navigateTo("/app/a/uk-ewsgit-store/applications");
               }}
             />
             <UKButton
               text={"Modules"}
               onClick={() => {
-                navigateTo("/modules");
+                navigateTo("/app/a/uk-ewsgit-store/modules");
               }}
             />
             <UKButton
               text={"Manage Installed"}
               onClick={() => {
-                navigateTo("/manage");
+                navigateTo("/app/a/uk-ewsgit-store/manage");
               }}
             />
           </UKSidebar>

@@ -1,11 +1,13 @@
+import tun from "@yourdash/tunnel/src/index.js";
+import useResource from "@yourdash/tunnel/src/useResource.js";
 import React from "react";
-import useResource from "@yourdash/csi/useResource.js";
-import { acsi } from "../../../../meta.yourdash";
+import { z } from "zod";
 import PromotedApplication from "./promotedApplication.tsx";
 import UKCarousel from "@yourdash/uikit/src/views/carousel/UKCarousel.js";
 
 const PromotedApplications: React.FC = () => {
-  const promotedApplications = useResource(() => acsi.getJson("/home/promotedApplications", "/home/promotedApplications")) || [];
+  const promotedApplications =
+    useResource(() => tun.get("/uk-ewsgit-store/home/promotedApplications", "json", z.object({})), { return: "data" }) || [];
 
   return (
     <UKCarousel

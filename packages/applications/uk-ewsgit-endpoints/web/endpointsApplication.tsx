@@ -10,17 +10,16 @@ import DropdownButton from "@yourdash/chiplet/components/dropdownButton/Dropdown
 import Icon from "@yourdash/chiplet/components/icon/Icon";
 import TextBox from "@yourdash/chiplet/components/textBox/TextBox";
 import React, { useState, useEffect } from "react";
-import coreCSI from "@yourdash/csi/coreCSI";
-import tun from "@yourdash/tunnel/src/index.js"
+import tun from "@yourdash/tunnel/src/index.js";
 import { z } from "zod";
 import { UKIcons } from "@yourdash/uikit/src/core/iconDictionary.js";
 
 async function loadPossibleEndpoints(setEndpoints: (data: string[]) => void) {
-  const { data } = await tun.get("/app/endpoints/endpoints", "json", z.string().array())
-    // eslint-disable-line @typescript-eslint/no-explicit-any
-    const endpoints: string[] = data.map((endpoint: any) => endpoint?.route?.path || null).filter((endpoint: any) => endpoint !== null); // eslint-disable-line @typescript-eslint/no-explicit-any
+  const { data } = await tun.get("/app/endpoints/endpoints", "json", z.string().array());
+  // eslint-disable-line @typescript-eslint/no-explicit-any
+  const endpoints: string[] = data.map((endpoint: any) => endpoint?.route?.path || null).filter((endpoint: any) => endpoint !== null); // eslint-disable-line @typescript-eslint/no-explicit-any
 
-  setEndpoints([ ...new Set(endpoints) ]);
+  setEndpoints([...new Set(endpoints)]);
 }
 
 const EndpointsApplication: React.FC = () => {
@@ -142,19 +141,19 @@ const EndpointsApplication: React.FC = () => {
                 case "POST":
                   switch (requestType) {
                     case "Text":
-                      coreCSI.postText(
-                        selectedEndpoint,
-                        JSON.parse(requestBody),
-                        (data: any) => {
-                          setResponse(data);
-                          setLoading(false);
-                        },
-                        (error: any) => {
-                          setDidError(error);
-                          setLoading(false);
-                        },
-                        requestHeaders,
-                      );
+                      // coreCSI.postText(
+                      //   selectedEndpoint,
+                      //   JSON.parse(requestBody),
+                      //   (data: any) => {
+                      //     setResponse(data);
+                      //     setLoading(false);
+                      //   },
+                      //   (error: any) => {
+                      //     setDidError(error);
+                      //     setLoading(false);
+                      //   },
+                      //   requestHeaders,
+                      // );
                       break;
                     case "JSON":
                       // coreCSI.postJson(
@@ -178,32 +177,32 @@ const EndpointsApplication: React.FC = () => {
                 case "DELETE":
                   switch (requestType) {
                     case "Text":
-                      coreCSI.deleteText(
-                        selectedEndpoint,
-                        (data: any) => {
-                          setResponse(data);
-                          setLoading(false);
-                        },
-                        (error: any) => {
-                          setDidError(error);
-                          setLoading(false);
-                        },
-                        requestHeaders,
-                      );
+                      // coreCSI.deleteText(
+                      //   selectedEndpoint,
+                      //   (data: any) => {
+                      //     setResponse(data);
+                      //     setLoading(false);
+                      //   },
+                      //   (error: any) => {
+                      //     setDidError(error);
+                      //     setLoading(false);
+                      //   },
+                      //   requestHeaders,
+                      // );
                       break;
                     case "JSON":
-                      coreCSI.deleteJson(
-                        selectedEndpoint,
-                        (data: any) => {
-                          setResponse(data);
-                          setLoading(false);
-                        },
-                        (error: any) => {
-                          setDidError(error);
-                          setLoading(false);
-                        },
-                        requestHeaders,
-                      );
+                      // coreCSI.deleteJson(
+                      //   selectedEndpoint,
+                      //   (data: any) => {
+                      //     setResponse(data);
+                      //     setLoading(false);
+                      //   },
+                      //   (error: any) => {
+                      //     setDidError(error);
+                      //     setLoading(false);
+                      //   },
+                      //   requestHeaders,
+                      // );
                       break;
                     default:
                       setDidError("INTERNAL_ERROR");

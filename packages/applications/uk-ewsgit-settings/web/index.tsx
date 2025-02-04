@@ -6,7 +6,6 @@
 import ApplicationPanelContext from "@yourdash/web/src/app/panel/ApplicationPanelContext.tsx";
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
-import applicationMeta from "./meta.yourdash";
 import IndexPage from "./routes/index";
 import SettingsLayout from "./settingsLayout";
 import SETTINGS_ICON from "./../icon.avif";
@@ -28,7 +27,7 @@ const SettingsRouter: React.FC = () => {
       <Route
         element={
           <UKOnBoarding
-            meta={applicationMeta}
+            applicationId={"uk-ewsgit-settings"}
             pages={[
               {
                 headerImage: SETTINGS_ICON,

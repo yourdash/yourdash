@@ -3,11 +3,13 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import useResource from "@yourdash/csi/useResource";
 import tun from "@yourdash/tunnel/src/index.js";
+import useResource from "@yourdash/tunnel/src/useResource.js";
 import UKBox from "@yourdash/uikit/src/components/box/UKBox.js";
 import UKContainer from "@yourdash/uikit/src/components/container/UKContainer.js";
 import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js";
+import React from "react";
+import { z } from "zod";
 import { IFilesView } from "../view";
 import Connections from "./views/connections/connections";
 import RecentFiles from "./views/recentFiles/recentFiles";
@@ -16,7 +18,10 @@ import styles from "./homeTab.module.scss";
 import CommonStorageLocations from "./views/commonStorageLocations/commonStorageLocations";
 
 const HomeTabView: React.FC<{ view: IFilesView }> = ({ view }) => {
-  const homeTabData = useResource(() => tun.get("/app/uk-ewsgit-files/tabView/home", "json"), [view]);
+  const homeTabData = useResource(() => tun.get("/app/uk-ewsgit-files/tabView/home", "json", z.object({})), {
+    dependencies: [view],
+    return: "data",
+  });
 
   if (!homeTabData) {
     return (

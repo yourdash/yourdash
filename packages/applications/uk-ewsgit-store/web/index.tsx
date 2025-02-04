@@ -7,7 +7,6 @@ import UKOnBoarding from "@yourdash/uikit/src/views/onBoarding/UKOnBoarding.js";
 import ApplicationPanelContext from "@yourdash/web/src/app/panel/ApplicationPanelContext.tsx";
 import * as React from "react";
 import { Routes, Route } from "react-router";
-import applicationMeta from "./meta.yourdash";
 import STORE_ICON from "./../icon.avif";
 import ApplicationIndexPage from "./routes/index";
 import ApplicationLayout from "./routes/layout";
@@ -29,7 +28,7 @@ const StoreRouter: React.FC = () => {
       <Route
         element={
           <UKOnBoarding
-            meta={applicationMeta}
+            applicationId={"uk-ewsgit-store"}
             pages={[
               {
                 headerImage: STORE_ICON,

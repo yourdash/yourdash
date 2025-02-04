@@ -14,7 +14,7 @@ import clippy from "@yourdash/shared/web/helpers/clippy.ts";
 import UKSeparator from "../../components/separator/UKSeparator.tsx";
 
 const UKOnBoarding: React.FC<{
-  meta: { id: string };
+  applicationId: string;
   pages: {
     headerImage: string;
     header: string;
@@ -27,12 +27,12 @@ const UKOnBoarding: React.FC<{
     }[];
     allowGoBack?: boolean;
   }[];
-}> = ({ pages, meta }) => {
+}> = ({ pages, applicationId }) => {
   const [currentPage, setCurrentPage] = React.useState<number>(0);
   const page = pages[currentPage];
 
-  if (localStorage.getItem(`yourdash-application-visited-${meta.id}`) || currentPage > pages.length - 1) {
-    localStorage.setItem(`yourdash-application-visited-${meta.id}`, "true");
+  if (localStorage.getItem(`yourdash-application-visited-${applicationId}`) || currentPage > pages.length - 1) {
+    localStorage.setItem(`yourdash-application-visited-${applicationId}`, "true");
 
     return <Outlet />;
   }
