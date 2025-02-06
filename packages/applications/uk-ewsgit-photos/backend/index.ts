@@ -891,6 +891,7 @@ import { YourDashApplication } from "@yourdash/backend/resrc/applications.js";
 import instance from "@yourdash/backend/resrc/main";
 import { getUser } from "@yourdash/backend/resrc/user";
 import { z } from "zod";
+import { PHOTOS_MEDIA_TYPE } from "../shared/types/mediaType.js";
 
 export default class Application extends YourDashApplication {
   constructor() {
@@ -965,15 +966,15 @@ export default class Application extends YourDashApplication {
         const item = await this.api.core.fs.get( path.join( user.getFsPath(), itemPath ) );
         
         if ( item instanceof FSError || item === null ) {
-          return res.json( { error: true } );
+          return { error: true };
         }
         
         if ( !( await item.doesExist() ) ) {
-          return res.json( { error: true } );
+          return { error: true };
         }
         
         if ( item.entityType !== FILESYSTEM_ENTITY_TYPE.FILE ) {
-          return res.json( { error: "The path supplied is not a file." } );
+          return { error: "The path supplied is not a file." };
         }
         
         let itemType: PHOTOS_MEDIA_TYPE;
