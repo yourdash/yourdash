@@ -198,4 +198,15 @@ async function createUser(username: string) {
 }
 
 export default User;
-export { repairUser, createUser };
+
+async function getUser(username: string) {
+  const user = new User(username);
+
+  if (await user.doesExist()) {
+    return user;
+  }
+
+  return undefined;
+}
+
+export { repairUser, createUser, getUser };

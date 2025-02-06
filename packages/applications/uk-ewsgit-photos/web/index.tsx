@@ -4,21 +4,20 @@
  */
 
 import ApplicationPanelContext from "@yourdash/web/src/app/panel/ApplicationPanelContext.tsx";
-import { Routes, Route } from "react-router";
-import Layout from "./layout.js";
 import { FC, useEffect } from "react";
-import { useNavigateTo } from "./meta.yourdash.ts";
-import AlbumPathPage from "./routes/album/index.js";
-import IndexPage from "./routes/index.js";
-import SearchIndexPage from "./routes/search/index.js";
-import ViewPathPage from "./routes/view/index";
 import React from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import PHOTOS_ICON from "./../icon.avif";
 import UKIconButton from "@yourdash/uikit/src/components/iconButton/UKIconButton.js";
 import { UKIcons } from "@yourdash/uikit/src/core/iconDictionary.js";
+import Layout from "./layout.js";
+import AlbumPathPage from "./routes/album/index.js";
+import IndexPage from "./routes/index.js";
+import SearchIndexPage from "./routes/search/index.js";
+import ViewPathPage from "./routes/view/index.js";
 
 const ApplicationRoutes: FC = () => {
-  const navigateTo = useNavigateTo();
+  const navigate = useNavigate();
   const applicationPanelContext = React.useContext(ApplicationPanelContext);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const ApplicationRoutes: FC = () => {
         accessibleLabel={"Home"}
         icon={UKIcons.Home}
         onClick={() => {
-          navigateTo(`/`);
+          navigate(`/app/a/uk-ewsgit-photos/`);
         }}
       />,
       <UKIconButton
@@ -40,7 +39,7 @@ const ApplicationRoutes: FC = () => {
         accessibleLabel={"Search"}
         icon={UKIcons.Search}
         onClick={() => {
-          navigateTo(`/search/`);
+          navigate(`/app/a/uk-ewsgit-photos/search/`);
         }}
       />,
       <UKIconButton
@@ -48,7 +47,7 @@ const ApplicationRoutes: FC = () => {
         accessibleLabel={"Profile"}
         icon={UKIcons.Person}
         onClick={() => {
-          navigateTo(`/profile/`);
+          navigate(`/app/a/uk-ewsgit-photos/profile/`);
         }}
       />,
     ]);
@@ -56,30 +55,30 @@ const ApplicationRoutes: FC = () => {
 
   return <></>;
 
-  // return (
-  //   <Routes>
-  //     <Route element={<Layout />}>
-  //       <Route
-  //         index
-  //         element={<IndexPage />}
-  //       />
-  //       <Route
-  //         path={"search"}
-  //         element={<SearchIndexPage />}
-  //       />
-  //       <Route path={"album"}>
-  //         <Route
-  //           path={"@/*"}
-  //           element={<AlbumPathPage />}
-  //         />
-  //       </Route>
-  //       <Route
-  //         path={"view/@/*"}
-  //         element={<ViewPathPage />}
-  //       />
-  //     </Route>
-  //   </Routes>
-  // );
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route
+          index
+          element={<IndexPage />}
+        />
+        <Route
+          path={"search"}
+          element={<SearchIndexPage />}
+        />
+        <Route path={"album"}>
+          <Route
+            path={"@/*"}
+            element={<AlbumPathPage />}
+          />
+        </Route>
+        <Route
+          path={"view/@/*"}
+          element={<ViewPathPage />}
+        />
+      </Route>
+    </Routes>
+  );
 };
 
 export default ApplicationRoutes;
