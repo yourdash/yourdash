@@ -56,8 +56,8 @@ const ApplicationsLauncherApplications: React.FC<{
       />
 
       {layout === "large-grid" && <LargeApplicationGrid modules={applications} />}
-      {layout === "small-grid" && <SmallApplicationGrid applications={applications} />}
-      {layout === "list" && <ApplicationList applications={applications} />}
+      {layout === "small-grid" && <SmallApplicationGrid modules={applications} />}
+      {layout === "list" && <ApplicationList modules={applications} />}
     </>
   );
 };

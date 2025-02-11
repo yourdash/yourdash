@@ -7,7 +7,6 @@ import UKOnBoarding from "@yourdash/uikit/src/views/onBoarding/UKOnBoarding.js";
 import ApplicationPanelContext from "@yourdash/web/src/app/panel/ApplicationPanelContext.tsx";
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import applicationMeta from "./meta.yourdash";
 import ApplicationLayout from "./layout";
 import FILES_ICON from "../icon.avif";
 
@@ -27,7 +26,7 @@ const FilesRouter: React.FC = () => {
       <Route
         element={
           <UKOnBoarding
-            meta={applicationMeta}
+            applicationId={"uk-ewsgit-files"}
             pages={[
               {
                 headerImage: FILES_ICON,

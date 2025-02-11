@@ -4,6 +4,7 @@
  */
 
 import UKOnBoarding from "@yourdash/uikit/src/views/onBoarding/UKOnBoarding.js";
+import UKSidebarToggleButton from "@yourdash/uikit/src/views/sidebar/UKSidebarToggleButton.js";
 import ApplicationPanelContext from "@yourdash/web/src/app/panel/ApplicationPanelContext.tsx";
 import * as React from "react";
 import { Routes, Route } from "react-router";
@@ -11,6 +12,8 @@ import STORE_ICON from "./../icon.avif";
 import ApplicationIndexPage from "./routes/index";
 import ApplicationLayout from "./routes/layout";
 import { useEffect } from "react";
+import UKIconButton from "@yourdash/uikit/src/components/iconButton/UKIconButton";
+import { UKIcons } from "@yourdash/uikit/src/core/iconDictionary";
 
 const StoreRouter: React.FC = () => {
   const applicationPanelContext = React.useContext(ApplicationPanelContext);

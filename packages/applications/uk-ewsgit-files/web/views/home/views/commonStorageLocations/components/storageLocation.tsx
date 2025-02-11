@@ -7,11 +7,11 @@ import UKCard from "@yourdash/uikit/src/components/card/UKCard.js";
 import UKIcon from "@yourdash/uikit/src/components/icon/UKIcon.js";
 import UKText from "@yourdash/uikit/src/components/text/UKText.js";
 import React from "react";
-import { useNavigateTo } from "../../../../../meta.yourdash.ts";
+import { useNavigate } from "react-router";
 import styles from "./storageLocation.module.scss";
 
 const StorageLocation: React.FC<{ path: string; baseName: string }> = ({ path, baseName }) => {
-  const navigateTo = useNavigateTo();
+  const navigate = useNavigate();
 
   return (
     <UKCard
@@ -19,7 +19,7 @@ const StorageLocation: React.FC<{ path: string; baseName: string }> = ({ path, b
       className={styles.component}
       onClick={() => {
         // TODO: navigate to the correct path
-        navigateTo(path);
+        navigate(path);
       }}
     >
       <UKIcon

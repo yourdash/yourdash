@@ -4,6 +4,7 @@
  */
 
 import UKFlex from "@yourdash/uikit/src/components/flex/UKFlex.js";
+import UKSeparator from "@yourdash/uikit/src/components/separator/UKSeparator.js";
 import UKText from "@yourdash/uikit/src/components/text/UKText.js";
 import UKCard from "@yourdash/uikit/src/components/card/UKCard.js";
 import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js";
@@ -16,6 +17,18 @@ import { z } from "zod";
 const ApplicationCategories: React.FC = () => {
   const categories =
     useResource(() => tun.get("/uk-ewsgit-store/home/applicationCategories", "json", z.object({}).array()), { return: "data" }) || [];
+
+  if (categories.length === 0)
+    return (
+      <UKCard containerClassName={styles.noApplicationCategories}>
+        <UKHeading
+          level={3}
+          text={"This instance has no application categories..."}
+        />
+        <UKSeparator direction={"column"} />
+        <UKText text={"This is not yet implemented, as of 11/2/2025"} />
+      </UKCard>
+    );
 
   return (
     <div className={styles.component}>

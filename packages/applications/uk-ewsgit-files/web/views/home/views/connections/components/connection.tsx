@@ -15,10 +15,11 @@ import styles from "./connection.module.scss";
 
 const Connection: React.FC<{
   description: string;
-  quota: { usage: number; max: number };
+  quota: { usage: number; max: number; unit: string };
   url: string;
-  serviceLogo: string;
+  serviceLogo?: string;
   serviceName: string;
+  id: string;
 }> = ({ description, quota, url, serviceLogo, serviceName }) => {
   return (
     <UKCard
@@ -40,7 +41,7 @@ const Connection: React.FC<{
       <UKImage
         className={styles.icon}
         accessibleLabel={""}
-        src={serviceLogo || "/assets/productLogos/yourdash.svg"}
+        src={serviceLogo ?? "/assets/productLogos/yourdash.svg"}
       />
       <UKHeading text={serviceName} />
       {description && <UKText text={description} />}

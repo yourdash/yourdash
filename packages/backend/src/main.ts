@@ -195,7 +195,8 @@ class Instance {
 
         return 0;
       })
-      .catch(() => {
+      .catch((err) => {
+        this.log.error("startup", err);
         this.setStatus(INSTANCE_STATUS.NON_FUNCTIONAL);
       });
 

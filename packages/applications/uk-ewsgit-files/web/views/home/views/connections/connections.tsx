@@ -6,15 +6,16 @@
 import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js";
 import UKText from "@yourdash/uikit/src/components/text/UKText.js";
 import React from "react";
+import { z } from "zod";
 import Connection from "./components/connection";
 import styles from "./connections.module.scss";
 
 const Connections: React.FC<{
   connections: {
     description: string;
-    quota: { usage: number; max: number };
+    quota: { usage: number; max: number; unit: string };
     url: string;
-    serviceLogo: string;
+    serviceLogo?: string;
     serviceName: string;
     id: string;
   }[];

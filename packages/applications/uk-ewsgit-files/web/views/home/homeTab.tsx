@@ -18,10 +18,37 @@ import styles from "./homeTab.module.scss";
 import CommonStorageLocations from "./views/commonStorageLocations/commonStorageLocations";
 
 const HomeTabView: React.FC<{ view: IFilesView }> = ({ view }) => {
-  const homeTabData = useResource(() => tun.get("/app/uk-ewsgit-files/tabView/home", "json", z.object({})), {
-    dependencies: [view],
-    return: "data",
-  });
+  const homeTabData = useResource(
+    () =>
+      tun.get(
+        "/app/uk-ewsgit-files/tabView/home",
+        "json",
+        z.object({
+          recentFiles: z.object({}).array(),
+          sharedFiles: z.object({}).array(),
+          commonStorageLocations: z
+            .object({
+              path: z.string(),
+              baseName: z.string(),
+            })
+            .array(),
+          connections: z
+            .object({
+              serviceName: z.string(),
+              description: z.string(),
+              url: z.string(),
+              quota: z.object({ max: z.number(), usage: z.number(), unit: z.string() }),
+              id: z.string(),
+              serviceLogo: z.string().or(z.undefined()),
+            })
+            .array(),
+        }),
+      ),
+    {
+      dependencies: [view],
+      return: "data",
+    },
+  );
 
   if (!homeTabData) {
     return (
@@ -34,16 +61,15 @@ const HomeTabView: React.FC<{ view: IFilesView }> = ({ view }) => {
   }
 
   return (
-    <UKContainer className={styles.view}>
-      <section className={styles.content}>
-        {/* @ts-ignore */}
-        <CommonStorageLocations commonStorageLocations={homeTabData.commonStorageLocations || []} />
-        <RecentFiles />
-        {/* @ts-ignore */}
-        <Connections connections={homeTabData?.connections || []} />
-        <SharedFiles />
-      </section>
-    </UKContainer>
+    <UKBox
+      style={{ border: "none" }}
+      className={styles.view}
+    >
+      <CommonStorageLocations commonStorageLocations={homeTabData?.commonStorageLocations ?? []} />
+      <RecentFiles />
+      <Connections connections={homeTabData?.connections ?? []} />
+      <SharedFiles />
+    </UKBox>
   );
 };
 

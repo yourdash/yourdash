@@ -1,4 +1,5 @@
 import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js";
+import React from "react";
 import HomeTabView from "../home/homeTab";
 import { IFilesView } from "../view";
 import ViewType from "../viewType";

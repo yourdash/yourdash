@@ -199,6 +199,8 @@
 // }
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
+import instance from "@yourdash/backend/src/main.js";
+import { z } from "zod";
 
 export default class Application extends YourDashApplication {
   constructor() {
@@ -221,6 +223,30 @@ export default class Application extends YourDashApplication {
   }
 
   public onLoad(): this {
+    instance.request.get(
+      "/uk-ewsgit-store/home/promotedApplications",
+      {
+        schema: {
+          response: {
+            200: z
+              .object({
+                displayName: z.string(),
+                bannerBackground: z.string(),
+                developer: z.string(),
+                icon: z.string(),
+                id: z.string(),
+                tags: z.string().array(),
+                description: z.string(),
+              })
+              .array(),
+          },
+        },
+      },
+      async (req, res) => {
+        return [];
+      },
+    );
+
     return super.onLoad();
   }
 }

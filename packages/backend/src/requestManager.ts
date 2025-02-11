@@ -57,6 +57,7 @@ class RequestManager {
   }
 
   async __internal_startup() {
+    this.instance.log.info("request_manager", "Starting RequestManager...");
     try {
       await this.instance.database.query(`CREATE TABLE IF NOT EXISTS public.request_manager_log
                                      (
@@ -126,7 +127,7 @@ class RequestManager {
       uiConfig: {},
       logo: {
         type: "image/png",
-        content: (await Bun.file(path.join(process.cwd(), "./src/defaults/yourdash.png")).bytes()) as unknown as string,
+        content: (await Bun.file(path.join(process.cwd(), "./defaults/yourdash.png")).bytes()) as unknown as string,
         href: "/swagger",
         target: "_blank",
       },
@@ -138,7 +139,7 @@ class RequestManager {
             rel: "icon",
             sizes: "1024x1024",
             type: "image/png",
-            content: (await Bun.file(path.join(process.cwd(), "./src/defaults/yourdash.png")).bytes()) as unknown as string,
+            content: (await Bun.file(path.join(process.cwd(), "./defaults/yourdash.png")).bytes()) as unknown as string,
           },
         ],
         css: [
@@ -2363,6 +2364,140 @@ class RequestManager {
           "panel/applications",
           app.__internal_params.id,
           "largeGridIcon.webp",
+        ),
+        "image/webp",
+      );
+    });
+
+    this.app.get("/core/panel/applications/app/smallGrid/:applicationId", async (req, res) => {
+      const applicationId = (req.params as { applicationId: string }).applicationId;
+
+      const app = this.instance.applications.loadedApplications.find((a) => a.__internal_params.id === applicationId);
+
+      if (!app) return res.status(404);
+
+      if (
+        await this.instance.filesystem.doesPathExist(
+          path.join(
+            this.instance.filesystem.commonPaths.globalCacheDirectory(),
+            "panel/applications",
+            app.__internal_params.id,
+            "smallGridIcon.webp",
+          ),
+        )
+      ) {
+        // return this.sendFile(res, path.join(app?.__internal_initializedPath, "./icon.avif"), "image/avif");
+        return this.sendFile(
+          res,
+          path.join(
+            this.instance.filesystem.commonPaths.globalCacheDirectory(),
+            "panel/applications",
+            app.__internal_params.id,
+            "smallGridIcon.webp",
+          ),
+          "image/webp",
+        );
+      }
+
+      await mkdir(path.join(this.instance.filesystem.commonPaths.globalCacheDirectory(), "panel/applications", app.__internal_params.id), {
+        recursive: true,
+      });
+
+      if (!(await this.instance.filesystem.doesPathExist(path.join(app?.__internal_initializedPath, "./icon.avif")))) {
+        return this.sendFile(
+          res,
+          path.join(this.instance.filesystem.commonPaths.globalCacheDirectory(), "panel", "invalidIcon.webp"),
+          "image/webp",
+        );
+      }
+
+      await resizeImage(
+        path.join(app?.__internal_initializedPath, "./icon.avif"),
+        88,
+        88,
+        path.join(
+          this.instance.filesystem.commonPaths.globalCacheDirectory(),
+          "panel/applications",
+          app.__internal_params.id,
+          "smallGridIcon.webp",
+        ),
+        "webp",
+      );
+
+      return this.sendFile(
+        res,
+        path.join(
+          this.instance.filesystem.commonPaths.globalCacheDirectory(),
+          "panel/applications",
+          app.__internal_params.id,
+          "smallGridIcon.webp",
+        ),
+        "image/webp",
+      );
+    });
+
+    this.app.get("/core/panel/applications/app/list/:applicationId", async (req, res) => {
+      const applicationId = (req.params as { applicationId: string }).applicationId;
+
+      const app = this.instance.applications.loadedApplications.find((a) => a.__internal_params.id === applicationId);
+
+      if (!app) return res.status(404);
+
+      if (
+        await this.instance.filesystem.doesPathExist(
+          path.join(
+            this.instance.filesystem.commonPaths.globalCacheDirectory(),
+            "panel/applications",
+            app.__internal_params.id,
+            "listIcon.webp",
+          ),
+        )
+      ) {
+        // return this.sendFile(res, path.join(app?.__internal_initializedPath, "./icon.avif"), "image/avif");
+        return this.sendFile(
+          res,
+          path.join(
+            this.instance.filesystem.commonPaths.globalCacheDirectory(),
+            "panel/applications",
+            app.__internal_params.id,
+            "listIcon.webp",
+          ),
+          "image/webp",
+        );
+      }
+
+      await mkdir(path.join(this.instance.filesystem.commonPaths.globalCacheDirectory(), "panel/applications", app.__internal_params.id), {
+        recursive: true,
+      });
+
+      if (!(await this.instance.filesystem.doesPathExist(path.join(app?.__internal_initializedPath, "./icon.avif")))) {
+        return this.sendFile(
+          res,
+          path.join(this.instance.filesystem.commonPaths.globalCacheDirectory(), "panel", "invalidIcon.webp"),
+          "image/webp",
+        );
+      }
+
+      await resizeImage(
+        path.join(app?.__internal_initializedPath, "./icon.avif"),
+        88,
+        88,
+        path.join(
+          this.instance.filesystem.commonPaths.globalCacheDirectory(),
+          "panel/applications",
+          app.__internal_params.id,
+          "listIcon.webp",
+        ),
+        "webp",
+      );
+
+      return this.sendFile(
+        res,
+        path.join(
+          this.instance.filesystem.commonPaths.globalCacheDirectory(),
+          "panel/applications",
+          app.__internal_params.id,
+          "listIcon.webp",
         ),
         "image/webp",
       );

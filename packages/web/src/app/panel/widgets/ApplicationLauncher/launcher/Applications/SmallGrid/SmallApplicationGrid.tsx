@@ -13,13 +13,13 @@ import { useNavigate } from "react-router";
 import UKContextMenu from "@yourdash/uikit/src/components/contextMenu/UKContextMenu";
 
 const SmallApplicationGrid: React.FC<{
-  applications: IPanelApplicationsLauncherFrontendModule[];
-}> = ({ applications }) => {
+  modules: IPanelApplicationsLauncherFrontendModule[];
+}> = ({ modules }) => {
   const navigate = useNavigate();
 
   return (
     <section className={styles.grid}>
-      {applications.map((application) => {
+      {modules.map((module) => {
         return (
           <UKContextMenu
             items={[
@@ -28,7 +28,7 @@ const SmallApplicationGrid: React.FC<{
                 async onClick() {
                   await tun.post(
                     "/core/panel/quick-shortcuts/create",
-                    { id: application.id, moduleType: application.type },
+                    { id: module.id, moduleType: module.type },
                     "json",
                     z.object({ success: z.boolean() }),
                   );
@@ -40,28 +40,32 @@ const SmallApplicationGrid: React.FC<{
               {
                 label: "Open In New Tab",
                 onClick() {
-                  window.open(`${window.location.origin}${window.location.pathname}/app/a/${application.id}`, "_blank");
+                  window.open(`${window.location.origin}${window.location.pathname}/app/a/${module.id}`, "_blank");
                   return 0;
                 },
               },
             ]}
             className={styles.item}
-            key={application.id}
+            key={module.id}
           >
             <div
               className={styles.itemContent}
               onClick={() => {
-                navigate(application.endpoint || application?.url || "");
+                if (module.type === "frontend") {
+                  navigate(`${module.endpoint}`);
+                } else {
+                  navigate(`${module.url}`);
+                }
               }}
             >
               <img
                 loading={"lazy"}
                 className={styles.itemIcon}
-                src={toAuthImgUrl(application.icon)}
+                src={toAuthImgUrl(`/core/panel/applications/app/smallGrid/${module.id}`)}
                 draggable={false}
                 alt=""
               />
-              <span className={styles.itemLabel}>{application.displayName}</span>
+              <span className={styles.itemLabel}>{module.displayName}</span>
             </div>
           </UKContextMenu>
         );

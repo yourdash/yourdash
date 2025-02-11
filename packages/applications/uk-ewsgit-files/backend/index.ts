@@ -152,7 +152,7 @@ export default class Application extends YourDashApplication {
                   url: z.string(),
                   quota: z.object({ max: z.number(), usage: z.number(), unit: z.string() }),
                   id: z.string(),
-                  serviceLogo: z.string().or(z.unknown()),
+                  serviceLogo: z.string().or(z.undefined()),
                 })
                 .array(),
             }),

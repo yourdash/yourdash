@@ -3,9 +3,29 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
+@use "@yourdash/uikit/src/theme/themeValues" as *;
+
 .page {
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 100%;
+  padding-top: 1rem;
+  position: relative;
+}
+
+.reccommendedHeading {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.categoriesHeading {
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+}
+
+.sidebarToggleButton {
+  position: absolute;
+  top: calc($UKPadding / 2);
+  left: calc($UKPadding / 2);
 }

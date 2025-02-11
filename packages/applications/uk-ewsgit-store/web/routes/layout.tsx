@@ -16,15 +16,6 @@ const ApplicationLayout: React.FC = () => {
   return (
     <>
       <UKSidebarContainer className={styles.sidebarContainer}>
-        <UKNavBar
-          leftSection={
-            <>
-              <UKSidebarToggleButton />
-              <UKNavImage src={STORE_ICON} />
-              <UKNavTitle title={"YourDash Store"} />
-            </>
-          }
-        />
         <div className={styles.content}>
           <UKSidebar>
             <UKButton
