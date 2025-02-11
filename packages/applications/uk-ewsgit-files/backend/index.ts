@@ -106,8 +106,8 @@
 //   }
 // }
 
-import { YourDashApplication } from "@yourdash/backend/resrc/applications.js";
-import instance from "@yourdash/backend/resrc/main.js";
+import { YourDashApplication } from "@yourdash/backend/src/applications.js";
+import instance from "@yourdash/backend/src/main.js";
 import { z } from "zod";
 
 export default class Application extends YourDashApplication {

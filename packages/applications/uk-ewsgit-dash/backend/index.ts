@@ -94,8 +94,8 @@
 //   }
 // }
 
-import { YourDashApplication } from "@yourdash/backend/resrc/applications.js";
-import instance from "@yourdash/backend/resrc/main.js";
+import { YourDashApplication } from "@yourdash/backend/src/applications.js";
+import instance from "@yourdash/backend/src/main.js";
 import { z } from "zod";
 import path from "path";
 
@@ -108,7 +108,7 @@ export default class Application extends YourDashApplication {
       },
       configVersion: 1,
       credits: {
-        authors: [ { name: "Ewsgit", site: "https://ewsgit.uk" } ],
+        authors: [{ name: "Ewsgit", site: "https://ewsgit.uk" }],
       },
       frontend: {
         entryPoint: "../web/index.tsx",
@@ -141,7 +141,7 @@ export default class Application extends YourDashApplication {
         `INSERT INTO uk_ewsgit_dash_dashboard (username)
                                 SELECT $1
                                 WHERE NOT EXISTS (SELECT 1 FROM uk_ewsgit_dash_dashboard WHERE username = $1)`,
-        [ username ],
+        [username],
       );
     });
 
@@ -157,8 +157,8 @@ export default class Application extends YourDashApplication {
             200: z.object({
               header: z.object({
                 welcomeMessage: z.string(),
-                size: z.union([ z.literal("small"), z.literal("medium"), z.literal("large") ]),
-                style: z.union([ z.literal("floating"), z.literal("docked") ]),
+                size: z.union([z.literal("small"), z.literal("medium"), z.literal("large")]),
+                style: z.union([z.literal("floating"), z.literal("docked")]),
                 background: z.object({
                   blur: z.number(),
                   opacity: z.number(),
@@ -217,10 +217,10 @@ export default class Application extends YourDashApplication {
       },
       async (req, res) => {
         const username = instance.requestManager.getRequestUsername();
-        const userData = await instance.database.query("SELECT forename, surname FROM users WHERE username = $1", [ username ]);
-        const dashboardData = await instance.database.query("SELECT * FROM uk_ewsgit_dash_dashboard WHERE username = $1", [ username ]);
+        const userData = await instance.database.query("SELECT forename, surname FROM users WHERE username = $1", [username]);
+        const dashboardData = await instance.database.query("SELECT * FROM uk_ewsgit_dash_dashboard WHERE username = $1", [username]);
 
-        const data = dashboardData.rows[ 0 ];
+        const data = dashboardData.rows[0];
 
         return {
           header: {
@@ -251,8 +251,8 @@ export default class Application extends YourDashApplication {
           },
           user: {
             username: username,
-            forename: userData.rows[ 0 ].forename,
-            surname: userData.rows[ 0 ].surname,
+            forename: userData.rows[0].forename,
+            surname: userData.rows[0].surname,
           },
         };
       },
@@ -265,8 +265,8 @@ export default class Application extends YourDashApplication {
           body: z.object({
             header: z.object({
               welcomeMessage: z.string(),
-              size: z.union([ z.literal("small"), z.literal("medium"), z.literal("large") ]),
-              style: z.union([ z.literal("floating"), z.literal("docked") ]),
+              size: z.union([z.literal("small"), z.literal("medium"), z.literal("large")]),
+              style: z.union([z.literal("floating"), z.literal("docked")]),
               background: z.object({
                 blur: z.number(),
                 opacity: z.number(),
@@ -319,51 +319,56 @@ export default class Application extends YourDashApplication {
         },
       },
       async (req, res) => {
-        const username = instance.requestManager.getRequestUsername()
+        const username = instance.requestManager.getRequestUsername();
         const body = req.body as {
           header: {
-            welcomeMessage: string,
-            size: "small" | "medium" | "large",
-            style: "floating" | "docked",
+            welcomeMessage: string;
+            size: "small" | "medium" | "large";
+            style: "floating" | "docked";
             background: {
-              blur: number,
-              opacity: number
-            },
+              blur: number;
+              opacity: number;
+            };
             font: {
-              family: string,
-              weight: string,
-              size: number
-            }
-          },
-          background: {
-            type: "image"
-          } | {
-            type: "color",
-            value: string
-          } | {
-            type: "linearGradient",
-            value: string,
-          } | {
-            type: "radialGradient",
-            value: string
-          },
+              family: string;
+              weight: string;
+              size: number;
+            };
+          };
+          background:
+            | {
+                type: "image";
+              }
+            | {
+                type: "color";
+                value: string;
+              }
+            | {
+                type: "linearGradient";
+                value: string;
+              }
+            | {
+                type: "radialGradient";
+                value: string;
+              };
           content: {
             background: {
-              blur: number,
-              opacity: number
-            },
+              blur: number;
+              opacity: number;
+            };
             pages: {
-              id: string,
-              data: any,
+              id: string;
+              data: any;
               dimensions: {
-                width: number,
-                height: number
-              }
-            }[]
-          }
-        }
+                width: number;
+                height: number;
+              };
+            }[];
+          };
+        };
 
-        instance.database.query(`UPDATE uk_ewsgit_dash_dashboard SET header_welcome_message = $1,
+        instance.database.query(
+          `UPDATE uk_ewsgit_dash_dashboard SET header_welcome_message = $1,
                                                   header_size = $2,
                                                   header_font_size = $3,
                                                   header_font_weight = $4,
@@ -375,24 +380,26 @@ export default class Application extends YourDashApplication {
                                                   background_value = $10,
                                                   content_background_blur = $11,
                                                   content_background_opacity = $12,
-                                                  content_pages = $13 WHERE username = $14`, [
-          body.header.welcomeMessage,
-          body.header.size,
-          body.header.font.size,
-          body.header.font.weight,
-          body.header.font.family,
-          body.header.style,
-          body.header.background.blur,
-          body.header.background.opacity,
-          body.background.type,
-          body.background?.type !== "image" ? body.background.value : null,
-          body.content.background.blur,
-          body.content.background.opacity,
-          body.content.pages,
-          username
-        ])
+                                                  content_pages = $13 WHERE username = $14`,
+          [
+            body.header.welcomeMessage,
+            body.header.size,
+            body.header.font.size,
+            body.header.font.weight,
+            body.header.font.family,
+            body.header.style,
+            body.header.background.blur,
+            body.header.background.opacity,
+            body.background.type,
+            body.background?.type !== "image" ? body.background.value : null,
+            body.content.background.blur,
+            body.content.background.opacity,
+            body.content.pages,
+            username,
+          ],
+        );
 
-        return { success: true }
+        return { success: true };
       },
     );
 

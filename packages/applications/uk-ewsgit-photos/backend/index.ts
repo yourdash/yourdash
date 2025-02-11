@@ -887,9 +887,9 @@
 // }
 */
 
-import { YourDashApplication } from "@yourdash/backend/resrc/applications.js";
-import instance from "@yourdash/backend/resrc/main";
-import { getUser } from "@yourdash/backend/resrc/user";
+import { YourDashApplication } from "@yourdash/backend/src/applications.js";
+import instance from "@yourdash/backend/src/main";
+import { getUser } from "@yourdash/backend/src/user";
 import { z } from "zod";
 import { PHOTOS_MEDIA_TYPE } from "../shared/types/mediaType.js";
 

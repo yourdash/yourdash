@@ -198,7 +198,7 @@
 //   }
 // }
 
-import { YourDashApplication } from "@yourdash/backend/resrc/applications.js";
+import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 
 export default class Application extends YourDashApplication {
   constructor() {

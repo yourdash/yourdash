@@ -86,9 +86,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "bun --watch resrc/main.ts --dev --color=full --log-requests",
-    "legacy-dev": "bun src/main.ts --dev --color=full --log-requests",
-    "legacy-dev-debug": "bun --inspect-brk src/main.ts --dev --color=full --log-requests",
+    "dev": "bun --watch src/main.ts --dev --color=full --log-requests",
     "production": "bun src/main.ts --color=full --log-requests"
   }
 }

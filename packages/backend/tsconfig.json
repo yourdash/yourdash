@@ -20,7 +20,7 @@
     "strict": true
   },
   "include": [
-    "resrc"
+    "src"
   ],
   "exclude": [
     "node_modules"

@@ -3,13 +3,13 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import { YourDashApplication } from "@yourdash/backend/resrc/applications.js";
-import instance from "@yourdash/backend/resrc/main.js";
+import { YourDashApplication } from "@yourdash/backend/src/applications.js";
+import instance from "@yourdash/backend/src/main.js";
 import generateUUID from "@yourdash/shared/web/helpers/uuid.js";
 import { z } from "zod";
 import path from "path";
-import { INSTANCE_STATUS } from "@yourdash/backend/resrc/types/instanceStatus.js";
-import User from "@yourdash/backend/resrc/user.js";
+import { INSTANCE_STATUS } from "@yourdash/backend/src/types/instanceStatus.js";
+import User from "@yourdash/backend/src/user.js";
 import * as Bun from "bun";
 
 export const MIMICED_NEXTCLOUD_VERSION = {
@@ -30,7 +30,7 @@ export default class Application extends YourDashApplication {
       },
       configVersion: 1,
       credits: {
-        authors: [ { name: "Ewsgit", site: "https://ewsgit.uk" } ],
+        authors: [{ name: "Ewsgit", site: "https://ewsgit.uk" }],
       },
       frontend: {
         entryPoint: "../web/index.tsx",
@@ -65,14 +65,16 @@ export default class Application extends YourDashApplication {
               extendedSupport: z.boolean(),
             }),
           },
-        }, config: { isPublic: true }
+        },
+        config: { isPublic: true },
       },
       async (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
 
-        const query = (await instance.database.query("SELECT display_name FROM configuration ORDER BY config_version DESC LIMIT 1")).rows[ 0 ];
+        const query = (await instance.database.query("SELECT display_name FROM configuration ORDER BY config_version DESC LIMIT 1"))
+          .rows[0];
 
-        switch (req.headers[ "Content-Type" ]) {
+        switch (req.headers["Content-Type"]) {
           case "application/json":
           default:
             return {
@@ -136,16 +138,17 @@ export default class Application extends YourDashApplication {
               }),
             }),
           },
-        }, config: { isPublic: true }
+        },
+        config: { isPublic: true },
       },
       async (req, res) => {
         const query = (
           await instance.database.query(
             "SELECT display_name, external_url, description FROM configuration ORDER BY config_version DESC LIMIT 1",
           )
-        ).rows[ 0 ];
+        ).rows[0];
 
-        switch (req.headers[ "Content-Type" ]) {
+        switch (req.headers["Content-Type"]) {
           case "application/json":
           default:
             return {
@@ -240,16 +243,17 @@ export default class Application extends YourDashApplication {
               }),
             }),
           },
-        }, config: { isPublic: true }
+        },
+        config: { isPublic: true },
       },
       async (req, res) => {
         const query = (
           await instance.database.query(
             "SELECT display_name, external_url, description FROM configuration ORDER BY config_version DESC LIMIT 1",
           )
-        ).rows[ 0 ];
+        ).rows[0];
 
-        switch (req.headers[ "Content-Type" ]) {
+        switch (req.headers["Content-Type"]) {
           case "application/json":
           default:
             return {
@@ -305,17 +309,20 @@ export default class Application extends YourDashApplication {
     // if the login was successful, generate a sessionToken and add it to the postgreSQL batabase
     // remove the authFlowSession
 
-    let authFlowSessions: { [ pollToken: string ]: { pollToken: string; sessionToken?: string; username: string } } = {};
+    let authFlowSessions: { [pollToken: string]: { pollToken: string; sessionToken?: string; username: string } } = {};
 
     instance.request.post(
       "/uk-ewsgit-nextcloud/index.php/login/v2",
-      { schema: { response: { 200: z.object({ poll: z.object({ token: z.string(), endpoint: z.string() }), login: z.string() }) } }, config: { isPublic: true } },
+      {
+        schema: { response: { 200: z.object({ poll: z.object({ token: z.string(), endpoint: z.string() }), login: z.string() }) } },
+        config: { isPublic: true },
+      },
       async (req, res) => {
         const pollToken = generateUUID();
 
-        console.log(req.body)
+        console.log(req.body);
 
-        authFlowSessions[ pollToken ] = { pollToken: pollToken, username: "" };
+        authFlowSessions[pollToken] = { pollToken: pollToken, username: "" };
 
         return {
           poll: {
@@ -334,11 +341,12 @@ export default class Application extends YourDashApplication {
         schema: {
           response: { 200: z.object({ server: z.string(), loginName: z.string(), appPassword: z.string() }) },
           body: z.object({ token: z.string() }),
-        }, config: { isPublic: true }
+        },
+        config: { isPublic: true },
       },
       async (req, res) => {
         const authSessionPollToken = (req.body as { token: string }).token;
-        const authSession = authFlowSessions[ authSessionPollToken ];
+        const authSession = authFlowSessions[authSessionPollToken];
 
         if (!authSession) {
           console.log("polled and found no session");
@@ -346,11 +354,11 @@ export default class Application extends YourDashApplication {
         }
 
         if (!authSession.sessionToken) {
-          console.log("polled and session was found but not yet logged in")
-          return res.status(404).send()
+          console.log("polled and session was found but not yet logged in");
+          return res.status(404).send();
         }
 
-        delete authFlowSessions[ authSessionPollToken ]
+        delete authFlowSessions[authSessionPollToken];
 
         return {
           server: `http://${req.hostname}:3563`,
@@ -380,7 +388,8 @@ export default class Application extends YourDashApplication {
                 }),
               ),
           },
-        }, config: { isPublic: true }
+        },
+        config: { isPublic: true },
       },
       async (req, res) => {
         if (!req.body) {
@@ -391,7 +400,7 @@ export default class Application extends YourDashApplication {
         const password = (req.body as { password: string }).password;
         const pollToken = (req.body as { pollToken: string }).pollToken;
 
-        const authSession = authFlowSessions[ pollToken ];
+        const authSession = authFlowSessions[pollToken];
 
         if (!authSession) {
           return res.send({ error: "Invalid auth session" });
@@ -405,17 +414,17 @@ export default class Application extends YourDashApplication {
           return res.send({ error: "Missing password" });
         }
 
-        let postgresPasswordHash = (await instance.database.query("SELECT password_hash FROM users WHERE username = $1;", [ username ]))
-          .rows[ 0 ].password_hash;
+        let postgresPasswordHash = (await instance.database.query("SELECT password_hash FROM users WHERE username = $1;", [username]))
+          .rows[0].password_hash;
 
         if (!(await Bun.password.verify(password, postgresPasswordHash))) {
           return res.status(401).send();
         }
 
-        await instance.database.query(`UPDATE uk_ewsgit_nextcloud_sessions SET session_tokens = array_append(session_tokens, $1) WHERE username = $2;`, [
-          authSession.sessionToken,
-          authSession.username,
-        ]);
+        await instance.database.query(
+          `UPDATE uk_ewsgit_nextcloud_sessions SET session_tokens = array_append(session_tokens, $1) WHERE username = $2;`,
+          [authSession.sessionToken, authSession.username],
+        );
       },
     );
 
@@ -429,31 +438,33 @@ export default class Application extends YourDashApplication {
 
       // if we are using api v2 then the sessionToken is just the user's password
       function parseAuthorization(sessionToken: string): { username: string; sessionToken: string } {
-        const tokenString = sessionToken.split("Basic ")[ 1 ];
+        const tokenString = sessionToken.split("Basic ")[1];
         const tokenParsed = Buffer.from(tokenString, "base64").toString("utf-8");
 
         const parsedTokenValues = tokenParsed.split(":");
 
-        const username = parsedTokenValues[ 0 ];
-        const userPassword = parsedTokenValues[ 1 ];
+        const username = parsedTokenValues[0];
+        const userPassword = parsedTokenValues[1];
         return { username: username, sessionToken: userPassword };
       }
 
       const reqAuth = parseAuthorization(req.headers.authorization);
 
-      const dbQuery = await instance.database.query("SELECT username FROM uk_ewsgit_nextcloud_sessions WHERE sessionToken = $1", [ reqAuth.sessionToken ]);
+      const dbQuery = await instance.database.query("SELECT username FROM uk_ewsgit_nextcloud_sessions WHERE sessionToken = $1", [
+        reqAuth.sessionToken,
+      ]);
 
       if (!dbQuery) {
         console.log("Invalid Session Token!");
         return;
       }
 
-      if (!(dbQuery.rows[ 0 ].username)) {
+      if (!dbQuery.rows[0].username) {
         console.log("Invalid Session, no username found!");
         return;
       }
 
-      return (dbQuery.rows[ 0 ].username);
+      return dbQuery.rows[0].username;
     }
 
     instance.request.get(
@@ -525,7 +536,8 @@ export default class Application extends YourDashApplication {
               }),
             }),
           },
-        }, config: { isPublic: true }
+        },
+        config: { isPublic: true },
       },
       async (req, res) => {
         const user = getUserForRequest(req);
@@ -583,7 +595,7 @@ export default class Application extends YourDashApplication {
               biographyScope: "v2-local",
               profile_enabled: "1",
               profile_enabledScope: "v2-local",
-              groups: [ "admin" ],
+              groups: ["admin"],
               language: "en_GB",
               locale: "",
               notify_email: null,
@@ -597,19 +609,23 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    instance.request.get("/uk-ewsgit-nextcloud/remote.php/dav/avatars/:username/*", { schema: { response: { 200: z.unknown() } }, config: { isPublic: true } }, async (req, res) => {
-      const user = new User((req.params as unknown as { username: string }).username);
-      if (await user.doesExist()) {
-        res.status(200);
-        return instance.requestManager.sendFile(
-          res,
-          path.join(instance.filesystem.commonPaths.userSystemDirectory(user.username), "avatar128.webp"),
-          "image/webp",
-        );
-      } else {
-        return res.status(404);
-      }
-    });
+    instance.request.get(
+      "/uk-ewsgit-nextcloud/remote.php/dav/avatars/:username/*",
+      { schema: { response: { 200: z.unknown() } }, config: { isPublic: true } },
+      async (req, res) => {
+        const user = new User((req.params as unknown as { username: string }).username);
+        if (await user.doesExist()) {
+          res.status(200);
+          return instance.requestManager.sendFile(
+            res,
+            path.join(instance.filesystem.commonPaths.userSystemDirectory(user.username), "avatar128.webp"),
+            "image/webp",
+          );
+        } else {
+          return res.status(404);
+        }
+      },
+    );
 
     /*   // handle nextcloud compatability authentication (remember the Bearer)
   core.request.usePath("/remote.php/", async (req, res, next) => {
@@ -627,42 +643,40 @@ export default class Application extends YourDashApplication {
       </d:error>`);
   }); */
 
-    instance.request.route(
-      {
-        url: "/uk-ewsgit-nextcloud/remote.php/dav/files/:username/*",
-        method: "PROPFIND",
-        schema: { response: { 200: z.object({ error: z.boolean() }) } },
-        config: { isPublic: true },
-        handler:
-          async (req, res) => {
-            const params = req.params as { username: string; "*": string };
+    instance.request.route({
+      url: "/uk-ewsgit-nextcloud/remote.php/dav/files/:username/*",
+      method: "PROPFIND",
+      schema: { response: { 200: z.object({ error: z.boolean() }) } },
+      config: { isPublic: true },
+      handler: async (req, res) => {
+        const params = req.params as { username: string; "*": string };
 
-            console.log({ username: params.username, params: Object.values(params).join("/"), path: params[ "*" ] });
+        console.log({ username: params.username, params: Object.values(params).join("/"), path: params["*"] });
 
-            console.log(JSON.stringify(req.body));
+        console.log(JSON.stringify(req.body));
 
-            if (!(req.body as { "d:propfind"?: object })[ "d:propfind" ]) {
-              console.log("no d:propfind found!", req.body);
-            }
+        if (!(req.body as { "d:propfind"?: object })["d:propfind"]) {
+          console.log("no d:propfind found!", req.body);
+        }
 
-            if (!(req.body as { "d:propfind"?: { "d:prop"?: object[] } })[ "d:propfind" ]?.[ "d:prop" ]) {
-              console.log("no d:prop found!", req.body);
-            }
+        if (!(req.body as { "d:propfind"?: { "d:prop"?: object[] } })["d:propfind"]?.["d:prop"]) {
+          console.log("no d:prop found!", req.body);
+        }
 
-            const props: object[] = (req.body as { "d:propfind": { "d:prop": object[] } })[ "d:propfind" ][ "d:prop" ];
+        const props: object[] = (req.body as { "d:propfind": { "d:prop": object[] } })["d:propfind"]["d:prop"];
 
-            const filePath = params[ "*" ] === undefined ? "/" : params[ "*" ];
+        const filePath = params["*"] === undefined ? "/" : params["*"];
 
-            let response: string[] = [];
+        let response: string[] = [];
 
-            Object.keys(props).forEach((prop: string) => {
-              switch (prop) {
-                case "d:getlastmodified":
-                  response.push(`<d:getlastmodified>FORMATTED LAST MODIFIED DATE</d:getlastmodified>`);
-              }
-            });
+        Object.keys(props).forEach((prop: string) => {
+          switch (prop) {
+            case "d:getlastmodified":
+              response.push(`<d:getlastmodified>FORMATTED LAST MODIFIED DATE</d:getlastmodified>`);
+          }
+        });
 
-            return res.type("xml").status(207).send(`<?xml version="1.0"?>
+        return res.type("xml").status(207).send(`<?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
 <d:response>
 <d:href>${req.url}</d:href>
@@ -674,42 +688,41 @@ ${response.map((res) => {
 </d:propstat>
 </d:response>
 </d:multistatus>`);
-            //
-            //     if (params["*"] === "/") {
-            //       return res.contentType("xml").send(`<?xml version="1.0" encoding="utf-8"?>
-            //       <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">
-            //         <s:exception>Internal Server Error</s:exception>
-            //         <s:message>The server was unable to complete your request.
-            // If this happens again, please send the technical details below to the server administrator.
-            // More details can be found in the server log.
-            //         </s:message>
-            //         <s:technical-details>
-            //           <s:remote-address>::1</s:remote-address>
-            //           <s:request-id>ibCxTsPl4KN7sufuReK6</s:request-id>
-            //         </s:technical-details>
-            //       </d:error>`);
-            //     }
-            //
-            //     if (params["*"] === undefined) {
-            //       return res.contentType("http/xml").send(`<?xml version="1.0" encoding="utf-8"?>
-            // <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
-            //     <d:response>
-            //         <d:href>${req.path}</d:href>
-            //         <d:propstat>
-            //             <d:prop>
-            //                 <oc:size>10000</oc:size>
-            //             </d:prop>
-            //             <d:status>HTTP/1.1 200 OK</d:status>
-            //         </d:propstat>
-            //     </d:response>
-            // </d:multistatus>
-            // `);
-            //     }
+        //
+        //     if (params["*"] === "/") {
+        //       return res.contentType("xml").send(`<?xml version="1.0" encoding="utf-8"?>
+        //       <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">
+        //         <s:exception>Internal Server Error</s:exception>
+        //         <s:message>The server was unable to complete your request.
+        // If this happens again, please send the technical details below to the server administrator.
+        // More details can be found in the server log.
+        //         </s:message>
+        //         <s:technical-details>
+        //           <s:remote-address>::1</s:remote-address>
+        //           <s:request-id>ibCxTsPl4KN7sufuReK6</s:request-id>
+        //         </s:technical-details>
+        //       </d:error>`);
+        //     }
+        //
+        //     if (params["*"] === undefined) {
+        //       return res.contentType("http/xml").send(`<?xml version="1.0" encoding="utf-8"?>
+        // <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
+        //     <d:response>
+        //         <d:href>${req.path}</d:href>
+        //         <d:propstat>
+        //             <d:prop>
+        //                 <oc:size>10000</oc:size>
+        //             </d:prop>
+        //             <d:status>HTTP/1.1 200 OK</d:status>
+        //         </d:propstat>
+        //     </d:response>
+        // </d:multistatus>
+        // `);
+        //     }
 
-            return { error: true };
-          },
-      }
-    );
+        return { error: true };
+      },
+    });
 
     instance.request.get(
       "/uk-ewsgit-nextcloud/remote.php/dav/avatars/:username/:size.png",

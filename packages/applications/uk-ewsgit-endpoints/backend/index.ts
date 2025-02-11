@@ -1,5 +1,5 @@
-import { YourDashApplication } from '@yourdash/backend/resrc/applications.js';
-import instance from '@yourdash/backend/resrc/main.js';
+import { YourDashApplication } from "@yourdash/backend/src/applications.js";
+import instance from "@yourdash/backend/src/main.js";
 /*
  * Copyright ©2025 Ewsgit<https://github.com/ewsgit> and YourDash<https://github.com/yourdash> contributors.
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
@@ -14,7 +14,7 @@ export default class Application extends YourDashApplication {
       },
       configVersion: 1,
       credits: {
-        authors: [ { name: "Ewsgit", site: "https://ewsgit.uk" } ],
+        authors: [{ name: "Ewsgit", site: "https://ewsgit.uk" }],
       },
       frontend: {
         entryPoint: "../web/index.tsx",
@@ -29,8 +29,8 @@ export default class Application extends YourDashApplication {
 
   onLoad(): this {
     instance.request.get("/uk-ewsgit-endpoints/endpoints", async (req, res) => {
-      return instance.requestManager.app.printRoutes()
-    })
+      return instance.requestManager.app.printRoutes();
+    });
 
     return this;
   }

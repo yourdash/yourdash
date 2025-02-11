@@ -3,7 +3,7 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import { INSTANCE_STATUS } from "@yourdash/backend/resrc/types/instanceStatus.js";
+import { INSTANCE_STATUS } from "@yourdash/backend/src/types/instanceStatus.js";
 
 export default function isValidInstance(instanceUrl: string): Promise<boolean> {
   const instanceUrlWithoutProtocol = instanceUrl?.split("://")[1];
