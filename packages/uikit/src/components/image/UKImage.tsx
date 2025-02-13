@@ -3,11 +3,11 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import UKIcon from "../icon/UKIcon.tsx";
 import { UKIcons } from "../../core/iconDictionary.ts";
 import styles from "./image.module.scss";
 import { FC, useEffect, useRef, useState } from "react";
 import clippy from "@yourdash/shared/web/helpers/clippy.ts";
+import UKIcon from "../icon/UKIcon.tsx";
 
 const UKImage: FC<{
   src: string;

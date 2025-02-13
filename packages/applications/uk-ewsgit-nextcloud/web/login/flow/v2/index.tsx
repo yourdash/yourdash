@@ -3,20 +3,22 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
+import tun from "@yourdash/tunnel/src/index.js";
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js"
-import UKText from "@yourdash/uikit/src/components/text/UKText.js"
-import UKCard from "@yourdash/uikit/src/components/card/UKCard.js"
-import UKButton from "@yourdash/uikit/src/components/button/UKButton.js"
-import UKTextInput from "@yourdash/uikit/src/components/textInput/UKTextInput.js"
-import UKSeparator from "@yourdash/uikit/src/components/separator/UKSeparator.js"
+import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js";
+import UKText from "@yourdash/uikit/src/components/text/UKText.js";
+import UKCard from "@yourdash/uikit/src/components/card/UKCard.js";
+import UKButton from "@yourdash/uikit/src/components/button/UKButton.js";
+import UKTextInput from "@yourdash/uikit/src/components/textInput/UKTextInput.js";
+import UKSeparator from "@yourdash/uikit/src/components/separator/UKSeparator.js";
+import { z } from "zod";
 
 const LoginNextcloudFlowV2Page: React.FC = () => {
   const { token } = useParams();
-  const [ username, setUsername ] = useState<string>("");
-  const [ password, setPassword ] = useState<string>("");
-  const [ successful, setSuccessful ] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [successful, setSuccessful] = useState<boolean>(false);
 
   if (!token) return <>No token</>;
 
@@ -48,7 +50,34 @@ const LoginNextcloudFlowV2Page: React.FC = () => {
       <UKSeparator direction={"column"} />
       <UKButton
         text="Login"
-        onClick={() => {
+        onClick={async () => {
+          const resp = await tun.post(
+            "/uk-ewsgit-nextcloud/login/nextcloud/flow/v2/authenticate",
+            {
+              username: username,
+              password: password,
+              pollToken: token,
+            },
+            "json",
+            z
+              .object({
+                error: z.string(),
+              })
+              .or(
+                z.object({
+                  success: z.boolean(),
+                }),
+              ),
+          );
+
+          // @ts-ignore
+          if (resp?.data?.success === true) {
+            setSuccessful(true);
+            setTimeout(() => {
+              window.close();
+            }, 2000);
+            return 0;
+          }
           // coreCSI
           //   .postJson<{ success?: boolean; error?: string }>("/login/nextcloud/flow/v2/authenticate", {
           //     username: username,
@@ -64,8 +93,6 @@ const LoginNextcloudFlowV2Page: React.FC = () => {
           //       return 0;
           //     }
           //   });
-
-
         }}
       />
     </UKCard>

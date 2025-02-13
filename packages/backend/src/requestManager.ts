@@ -6,6 +6,7 @@
 import fastifyCookie from "@fastify/cookie";
 import cors from "@fastify/cors";
 import fastifySwagger from "@fastify/swagger";
+import fastifyFormBody from "@fastify/formbody";
 import fastifySwaggerUI from "@fastify/swagger-ui";
 import { LoginLayout } from "@yourdash/shared/core/login/loginLayout.js";
 import chalk from "chalk";
@@ -92,6 +93,19 @@ class RequestManager {
       reply.send(error);
     });
 
+    this.app.setErrorHandler((error, request, reply) => {
+      if (error instanceof Fastify.errorCodes.FST_ERR_BAD_STATUS_CODE) {
+        // Log error
+        this.instance.log.error("request_manager", error);
+        // Send error response
+        reply.status(500).send({ ok: false });
+      } else {
+        this.instance.log.error("request_manager", error);
+        // fastify will use parent error handler to handle this
+        reply.send(error);
+      }
+    });
+
     await this.app.register(cors, {
       methods: "*",
       origin: "http://localhost:5173",
@@ -103,6 +117,8 @@ class RequestManager {
       hook: "onRequest",
       parseOptions: {}, // options for parsing cookies
     });
+
+    this.app.register(fastifyFormBody);
 
     this.app.register(fastifySwagger, {
       openapi: {

@@ -4,9 +4,9 @@
  */
 
 import styles from "./icon.module.scss";
-import { FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import ServerErrorIcon from "../../core/icons/server-error.svg";
-import { UKIconType } from "../../core/iconDictionary";
+import { UKIconType } from "../../core/iconDictionary.ts";
 
 const UKIcon: FC<{
   // noinspection TypeScriptDuplicateUnionOrIntersectionType

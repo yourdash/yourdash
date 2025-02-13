@@ -5,12 +5,12 @@
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import instance from "@yourdash/backend/src/main.js";
-import generateUUID from "@yourdash/shared/web/helpers/uuid.js";
-import { z } from "zod";
-import path from "path";
 import { INSTANCE_STATUS } from "@yourdash/backend/src/types/instanceStatus.js";
 import User from "@yourdash/backend/src/user.js";
+import generateUUID from "@yourdash/shared/web/helpers/uuid.js";
 import * as Bun from "bun";
+import path from "path";
+import { z } from "zod";
 
 export const MIMICED_NEXTCLOUD_VERSION = {
   major: 28,
@@ -40,10 +40,11 @@ export default class Application extends YourDashApplication {
       id: "uk-ewsgit-nextcloud",
     });
 
-    instance.database.query(`CREATE TABLE IF NOT EXISTS uk_ewsgit_nextcloud_sessions(
-    username                   text,
-    session_tokens             text[]
-    );`);
+    instance.database.query(`CREATE TABLE IF NOT EXISTS uk_ewsgit_nextcloud_sessions
+                              (
+                                  username       text,
+                                  session_tokens text[]
+                              );`);
 
     return this;
   }
@@ -320,8 +321,6 @@ export default class Application extends YourDashApplication {
       async (req, res) => {
         const pollToken = generateUUID();
 
-        console.log(req.body);
-
         authFlowSessions[pollToken] = { pollToken: pollToken, username: "" };
 
         return {
@@ -422,9 +421,13 @@ export default class Application extends YourDashApplication {
         }
 
         await instance.database.query(
-          `UPDATE uk_ewsgit_nextcloud_sessions SET session_tokens = array_append(session_tokens, $1) WHERE username = $2;`,
+          `UPDATE uk_ewsgit_nextcloud_sessions
+           SET session_tokens = array_append(session_tokens, $1)
+           WHERE username = $2;`,
           [authSession.sessionToken, authSession.username],
         );
+
+        return { success: true };
       },
     );
 
@@ -719,8 +722,6 @@ ${response.map((res) => {
         // </d:multistatus>
         // `);
         //     }
-
-        return { error: true };
       },
     });
 
