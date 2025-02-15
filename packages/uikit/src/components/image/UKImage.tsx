@@ -72,7 +72,13 @@ const UKImage: FC<{
 
             setTimeout(() => {
               if (attempts.current && attempts.current <= 3) {
-                setSrc((old) => `${old}?refresh=${Date.now()}`);
+                setSrc((old) => {
+                  if (old.includes("?refresh=")) {
+                    return old.slice(0, old.indexOf("?refresh=")) + "?refresh=" + Date.now();
+                  }
+
+                  return `${old}?refresh=${Date.now()}`;
+                });
               }
             }, 500);
           }}

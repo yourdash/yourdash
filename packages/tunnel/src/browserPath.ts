@@ -9,7 +9,7 @@ function convertSeparator(path: string) {
   return path.replace(/\\/g, "/");
 }
 
-export default class BrowserPath {
+class BrowserPath {
   constructor() {
     return this;
   }
@@ -54,3 +54,7 @@ export default class BrowserPath {
     return convertSeparator(p);
   }
 }
+
+const browserPath = new BrowserPath();
+
+export default browserPath;

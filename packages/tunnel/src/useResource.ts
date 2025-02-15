@@ -4,26 +4,42 @@
  */
 
 import { useEffect, useState } from "react";
-import { ZodType } from "zod";
 
-export default function useResource<T extends object, TReturn extends keyof T | undefined>(
+type NotUndefined<T> = T extends undefined ? never : T;
+
+export default function useResource<T extends any, TReturn extends keyof T | undefined, TransReturn extends any>(
   resource: () => Promise<T>,
-  options: { dependencies?: unknown[]; return?: TReturn },
-): (TReturn extends keyof T ? T[TReturn] : T) | undefined {
+  options?: { dependencies?: unknown[]; return?: TReturn; transform?: (data: TReturn extends keyof T ? T[TReturn] : T) => TransReturn },
+): TransReturn extends NotUndefined<TransReturn>
+  ? TransReturn | undefined
+  : TReturn extends keyof T
+    ? T[TReturn] | undefined
+    : T | undefined {
   const [data, setData] = useState(undefined);
 
   useEffect(() => {
     setData(undefined);
     resource().then((d) => {
-      if (options.return) {
-        // @ts-ignore
-        setData(d[options.return]);
+      if (options?.return) {
+        if (options?.transform) {
+          // @ts-ignore
+          setData(transform(d[options.return]));
+        } else {
+          // @ts-ignore
+          setData(d[options.return]);
+        }
       } else {
-        // @ts-ignore
-        setData(d);
+        if (options?.transform) {
+          // @ts-ignore
+          setData(transform(d));
+        } else {
+          // @ts-ignore
+          setData(d);
+        }
       }
     });
-  }, options.dependencies || []);
+  }, options?.dependencies ?? []);
 
+  // @ts-ignore
   return data;
 }

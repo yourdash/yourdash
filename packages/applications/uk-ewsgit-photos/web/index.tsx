@@ -11,10 +11,10 @@ import PHOTOS_ICON from "./../icon.avif";
 import UKIconButton from "@yourdash/uikit/src/components/iconButton/UKIconButton.js";
 import { UKIcons } from "@yourdash/uikit/src/core/iconDictionary.js";
 import Layout from "./layout.js";
-import AlbumPathPage from "./routes/album/index.js";
-import IndexPage from "./routes/index.js";
-import SearchIndexPage from "./routes/search/index.js";
-import ViewPathPage from "./routes/view/index.js";
+import AlbumPage from "./routes/album/AlbumPage.js";
+import IndexPage from "./routes/index/IndexPage.js";
+import MediaPage from "./routes/media/MediaPage.js";
+import SearchPage from "./routes/search/SearchPage.js";
 
 const ApplicationRoutes: FC = () => {
   const navigate = useNavigate();
@@ -53,8 +53,6 @@ const ApplicationRoutes: FC = () => {
     ]);
   }, []);
 
-  return <></>;
-
   return (
     <Routes>
       <Route element={<Layout />}>
@@ -64,18 +62,20 @@ const ApplicationRoutes: FC = () => {
         />
         <Route
           path={"search"}
-          element={<SearchIndexPage />}
+          element={<SearchPage />}
         />
         <Route path={"album"}>
           <Route
-            path={"@/*"}
-            element={<AlbumPathPage />}
+            path={":albumId"}
+            element={<AlbumPage />}
           />
         </Route>
-        <Route
-          path={"view/@/*"}
-          element={<ViewPathPage />}
-        />
+        <Route path={"media"}>
+          <Route
+            path={":mediaId"}
+            element={<MediaPage />}
+          />
+        </Route>
       </Route>
     </Routes>
   );

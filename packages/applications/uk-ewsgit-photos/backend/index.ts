@@ -890,6 +890,8 @@
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import instance from "@yourdash/backend/src/main";
 import { getUser } from "@yourdash/backend/src/user";
+import * as fs from "node:fs";
+import path from "path";
 import { z } from "zod";
 import { PHOTOS_MEDIA_TYPE } from "../shared/types/mediaType.js";
 
@@ -952,19 +954,28 @@ export default class Application extends YourDashApplication {
                       })
                       .optional(),
                   }),
-                  mediaUrl: z.string(),
+                  resourceId: z.string(),
                 }),
-              )
-              .or(z.object({ error: z.boolean().or(z.string()) })),
+              ),
           },
         },
       },
       async (req, res) => {
         const sessionToken = instance.requestManager.getRequestSessionToken();
-        const mediaPath = req.params;
+        const mediaPath = req.params["*"];
 
-        console.log(mediaPath);
+        let resourceId = instance.resourceManager.addImage(mediaPath);
 
+        return {
+          resourceId: resourceId,
+          path: mediaPath,
+          type: PHOTOS_MEDIA_TYPE.Image,
+          metadata: {
+            width: 400,
+            height: 400,
+          },
+          mediaUrl: `/resource/${resourceId}`,
+        };
         //   const { sessionid } = req.headers;
         //   const itemPath = req.params["0"] as string;
         //   const user = await getUser(instance.requestManager.getRequestUsername());
@@ -1021,6 +1032,73 @@ export default class Application extends YourDashApplication {
         //       });
         //     }
         //   }
+      },
+    );
+
+    instance.request.get(
+      "/uk-ewsgit-photos/album/@/*",
+      {
+        schema: {
+          response: {
+            200: z.object({
+              albums: z.string().array(),
+              displayName: z.string(),
+              path: z.string(),
+              size: z.number().optional(),
+              items: z
+                .union([
+                  z.object({
+                    path: z.string(),
+                    type: z.literal(PHOTOS_MEDIA_TYPE.Image),
+                    metadata: z.object({
+                      width: z.number(),
+                      height: z.number(),
+                      contains: z
+                        .object({
+                          landmarks: z.string().array(),
+                          people: z.string().array(),
+                          objects: z.string().array(),
+                        })
+                        .optional(),
+                    }),
+                    resource: z.string(),
+                  }),
+                  z.object({
+                    path: z.string(),
+                    type: z.literal(PHOTOS_MEDIA_TYPE.Video),
+                    metadata: z.object({
+                      width: z.number(),
+                      height: z.number(),
+                      duration: z.number(),
+                      contains: z
+                        .object({
+                          landmarks: z.string().array(),
+                          people: z.string().array(),
+                          objects: z.string().array(),
+                        })
+                        .optional(),
+                    }),
+                    resource: z.string(),
+                  }),
+                ])
+                .array(),
+            }),
+          },
+        },
+      },
+      async (req, res) => {
+        const albumPath = req.params["*"];
+        const systemPath = path.join(instance.filesystem.commonPaths.rootDirectory(), albumPath);
+
+        const childMedia = fs.promises.readdir(systemPath);
+
+        return {
+          media: [],
+          displayName: "Bool",
+          path: systemPath,
+          size: 1000000,
+          items: [],
+        };
       },
     );
     //

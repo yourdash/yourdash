@@ -18,12 +18,10 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-    "jsx": "react-jsx",
-    "traceResolution": true
+    "jsx": "react-jsx"
   },
   "include": [
-    "src",
-    "../applications/**/frontend/"
+    "src"
   ],
   "references": [
     {

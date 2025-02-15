@@ -3,8 +3,8 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import { MAX_HEIGHT } from "../../shared/grid";
-import { MediaAlbumLargeGridItem } from "../../shared/types/endpoints/media/album/large-grid";
+import { MAX_HEIGHT } from "../../shared/.backup/grid.js";
+import { MediaAlbumLargeGridItem } from "../../shared/.backup/types/endpoints/media/album/large-grid.js";
 import { PHOTOS_MEDIA_TYPE } from "../../shared/types/mediaType";
 
 export function calculateAspectRatio(dimensions: { width: number; height: number }) {

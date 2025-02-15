@@ -14,8 +14,8 @@ export default defineConfig({
     // @ts-ignore
     react({
       babel: {
-        plugins: [ [ "babel-plugin-react-compiler", {} ] ]
-      }
+        plugins: [["babel-plugin-react-compiler", {}]],
+      },
     }),
     // @ts-ignore
     dynamicImport(),
@@ -26,15 +26,14 @@ export default defineConfig({
   base: "./",
   build: {
     rollupOptions: {
-      external: [ "chart.js" ]
-    }
+      external: ["chart.js"],
+    },
   },
   css: {
     preprocessorOptions: {
       scss: {
-          api: "modern-compiler" // or "modern"
-        }
-      }
-    }
+        api: "modern-compiler", // or "modern"
+      },
+    },
+  },
 });
-
