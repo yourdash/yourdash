@@ -12,6 +12,7 @@ import Filesystem from "./filesystem.js";
 import { resizeImage } from "./image.js";
 import Log from "./log.js";
 import RequestManager from "./requestManager.js";
+import ResourceManager from "./resourceManager.js";
 import { INSTANCE_STATUS } from "./types/instanceStatus.js";
 import User, { createUser, repairUser } from "./user.js";
 import path from "path";
@@ -33,6 +34,7 @@ class Instance {
     cookieSecret: string;
   };
   log!: Log;
+  resourceManager!: ResourceManager;
   requestManager!: RequestManager;
   request!: RequestManager["app"];
   authorization!: Authorization;
@@ -154,7 +156,8 @@ class Instance {
         tablename  = 'configuration'
     );`);
 
-      if (!doesConfigurationExist) {
+      if (!doesConfigurationExist.rows[0].exists) {
+        this.log.info("database", `Table ${this.log.addEmphasisToString("configuration")} will be created.`);
         await this.database.query(`CREATE TABLE IF NOT EXISTS configuration
                                   (
                                     config_version              serial primary key,
@@ -167,7 +170,7 @@ class Instance {
                                     installed_applications      text[] DEFAULT '{ "uk-ewsgit-dash", "uk-ewsgit-files", "uk-ewsgit-photos", "uk-ewsgit-weather", "uk-ewsgit-store", "uk-ewsgit-settings" }',
                                     default_pinned_applications text[] DEFAULT '{ "uk-ewsgit-dash", "uk-ewsgit-files", "uk-ewsgit-store", "uk-ewsgit-weather" }'
                                   )`);
-        this.log.info("database", `Table ${this.log.addEmphasisToString("config")} has been created as it did not already exist.`);
+        this.log.info("database", `Table ${this.log.addEmphasisToString("configuration")} has been created as it did not already exist.`);
 
         await this.database.query("INSERT INTO configuration(creation_date) VALUES ($1);", [Date.now()]);
       }
@@ -181,6 +184,7 @@ class Instance {
 
     this.authorization = new Authorization(this);
     this.filesystem = new Filesystem(this);
+    this.resourceManager = new ResourceManager(this);
     this.requestManager = new RequestManager(this);
     this.request = this.requestManager.app;
     this.applications = new Applications(this);
@@ -206,7 +210,7 @@ class Instance {
   async startup(): Promise<boolean> {
     await timeTaken("filesystem_startup", async () => await this.filesystem.__internal_startup());
     await timeTaken("request_manager_startup", async () => await this.requestManager.__internal_startup());
-
+    await timeTaken("resource_manager_startup", async () => await this.resourceManager.__internal_startup());
     try {
       await this.database.query(`CREATE TABLE IF NOT EXISTS panel_configuration
                                   (

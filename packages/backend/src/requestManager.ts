@@ -2783,6 +2783,11 @@ class RequestManager {
     // @ts-ignore
     return requestContext.get("username") as string;
   }
+
+  getRequestSessionToken() {
+    // @ts-ignore
+    return requestContext.get("sessionToken") as string;
+  }
 }
 
 export default RequestManager;

@@ -29,11 +29,13 @@ interface IYourDashApplicationConfigV1 {
   };
 }
 class YourDashApplication {
+  id: string;
   __internal_params: IYourDashApplicationConfigV1;
   __internal_initializedPath!: string;
 
   constructor(applicationParams: IYourDashApplicationConfigV1) {
     this.__internal_params = applicationParams;
+    this.id = this.__internal_params.id;
     this.__internal_initializedPath = "NOT YET LOADED!!!!";
 
     return this;
@@ -64,7 +66,9 @@ class Applications {
   }
 
   async getInstalledApplications(): Promise<string[]> {
-    let query = await this.instance.database.query("SELECT installed_applications FROM configuration ORDER BY config_version DESC LIMIT 1;");
+    let query = await this.instance.database.query(
+      "SELECT installed_applications FROM configuration ORDER BY config_version DESC LIMIT 1;",
+    );
 
     let val: string[] = query.rows[0].installed_applications;
 

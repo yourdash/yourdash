@@ -82,7 +82,7 @@ const UKImage: FC<{
             setLoaded(e.currentTarget.complete);
             attempts.current = 0;
           }}
-          src={src}
+          src={src || "/assets/branding/yourdash256.png"}
         />
       ) : (
         <UKIcon icon={UKIcons.ServerError} />

@@ -3,7 +3,7 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import { FC } from "react";
+import React, { FC } from "react";
 import { Outlet } from "react-router";
 import styles from "./layout.module.scss";
 

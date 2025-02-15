@@ -914,118 +914,115 @@ export default class Application extends YourDashApplication {
   }
 
   public onLoad() {
-    // instance.request.get(
-    //   "/media/raw/@/*",
-    //   {
-    //     schema: {
-    //       response: {
-    //         200: z.object( {
-    //             path: z.string(),
-    //             type: z.literal( PHOTOS_MEDIA_TYPE.Image ),
-    //             metadata: z.object( {
-    //               width: z.number(),
-    //               height: z.number(),
-    //               contains: z
-    //                 .object( {
-    //                   landmarks: z.string().array(),
-    //                   people: z.string().array(),
-    //                   objects: z.string().array()
-    //                 } )
-    //                 .optional()
-    //             } ),
-    //             mediaUrl: z.string()
-    //           } )
-    //           .or(
-    //             z.object( {
-    //               path: z.string(),
-    //               type: z.literal( PHOTOS_MEDIA_TYPE.Video ),
-    //               metadata: z.object( {
-    //                 width: z.number(),
-    //                 height: z.number(),
-    //                 duration: z.number(),
-    //                 contains: z
-    //                   .object( {
-    //                     landmarks: z.string().array(),
-    //                     people: z.string().array(),
-    //                     objects: z.string().array()
-    //                   } )
-    //                   .optional()
-    //               } ),
-    //               mediaUrl: z.string()
-    //             } )
-    //           )
-    //           .or( z.object( { error: z.boolean().or( z.string() ) } ) )
-    //       }
-    //     }
-    //   },
-    //   async ( req, res ) => {
-    //     const { sessionid } = req.headers;
-    //     const itemPath = req.params[ "0" ] as string;
-    //     const user = await getUser( instance.requestManager.getRequestUsername() );
-    //
-    //     const item = await this.api.core.fs.get( path.join( user.getFsPath(), itemPath ) );
-    //
-    //     if ( item instanceof FSError || item === null ) {
-    //       return { error: true };
-    //     }
-    //
-    //     if ( !( await item.doesExist() ) ) {
-    //       return { error: true };
-    //     }
-    //
-    //     if ( item.entityType !== FILESYSTEM_ENTITY_TYPE.FILE ) {
-    //       return { error: "The path supplied is not a file." };
-    //     }
-    //
-    //     let itemType: PHOTOS_MEDIA_TYPE;
-    //
-    //     if ( item.entityType === FILESYSTEM_ENTITY_TYPE.FILE ) {
-    //       const c = item as unknown as FSFile;
-    //       switch ( c.getType() ) {
-    //       case "image":
-    //         itemType = PHOTOS_MEDIA_TYPE.Image;
-    //         break;
-    //       case "video":
-    //         itemType = PHOTOS_MEDIA_TYPE.Video;
-    //         break;
-    //       default:
-    //         return res.json( { error: true } );
-    //       }
-    //     } else {
-    //       return res.json( { error: true } );
-    //     }
-    //
-    //     switch ( itemType ) {
-    //     case PHOTOS_MEDIA_TYPE.Video: {
-    //       const dimensions = await core.video.getVideoDimensions( item.path );
-    //
-    //       return res.json( {
-    //         type: PHOTOS_MEDIA_TYPE.Video,
-    //         path: item.path.replace( user.getFsPath(), "" ),
-    //         mediaUrl: this.api.core.video.createAuthenticatedVideo( user.username, sessionid, AUTHENTICATED_VIDEO_TYPE.FILE, item.path ),
-    //         metadata: {
-    //           width: dimensions.width || 400,
-    //           height: dimensions.height || 400, // FIXME: acutally return the duration
-    //           duration: -1
-    //         }
-    //       } );
-    //     }
-    //     case PHOTOS_MEDIA_TYPE.Image: {
-    //       const dimensions = ( await core.image.getImageDimensions( item.path ) ) || { width: 0, height: 0 };
-    //
-    //       return res.json( {
-    //         type: PHOTOS_MEDIA_TYPE.Image,
-    //         path: item.path.replace( user.getFsPath(), "" ),
-    //         mediaUrl: this.api.core.image.createAuthenticatedImage( user.username, sessionid, AUTHENTICATED_IMAGE_TYPE.FILE, item.path ),
-    //         metadata: {
-    //           width: dimensions.width || 400,
-    //           height: dimensions.height || 400
-    //         }
-    //       } );
-    //     }
-    //     }
-    //   }
-    // );
+    instance.request.get(
+      `/uk-ewsgit-photos/media/raw/@/*`,
+      {
+        schema: {
+          response: {
+            200: z
+              .object({
+                path: z.string(),
+                type: z.literal(PHOTOS_MEDIA_TYPE.Image),
+                metadata: z.object({
+                  width: z.number(),
+                  height: z.number(),
+                  contains: z
+                    .object({
+                      landmarks: z.string().array(),
+                      people: z.string().array(),
+                      objects: z.string().array(),
+                    })
+                    .optional(),
+                }),
+                mediaUrl: z.string(),
+              })
+              .or(
+                z.object({
+                  path: z.string(),
+                  type: z.literal(PHOTOS_MEDIA_TYPE.Video),
+                  metadata: z.object({
+                    width: z.number(),
+                    height: z.number(),
+                    duration: z.number(),
+                    contains: z
+                      .object({
+                        landmarks: z.string().array(),
+                        people: z.string().array(),
+                        objects: z.string().array(),
+                      })
+                      .optional(),
+                  }),
+                  mediaUrl: z.string(),
+                }),
+              )
+              .or(z.object({ error: z.boolean().or(z.string()) })),
+          },
+        },
+      },
+      async (req, res) => {
+        const sessionToken = instance.requestManager.getRequestSessionToken();
+        const mediaPath = req.params;
+
+        console.log(mediaPath);
+
+        //   const { sessionid } = req.headers;
+        //   const itemPath = req.params["0"] as string;
+        //   const user = await getUser(instance.requestManager.getRequestUsername());
+        //   const item = await this.api.core.fs.get(path.join(user.getFsPath(), itemPath));
+        //   if (item instanceof FSError || item === null) {
+        //     return { error: true };
+        //   }
+        //   if (!(await item.doesExist())) {
+        //     return { error: true };
+        //   }
+        //   if (item.entityType !== FILESYSTEM_ENTITY_TYPE.FILE) {
+        //     return { error: "The path supplied is not a file." };
+        //   }
+        //   let itemType: PHOTOS_MEDIA_TYPE;
+        //   if (item.entityType === FILESYSTEM_ENTITY_TYPE.FILE) {
+        //     const c = item as unknown as FSFile;
+        //     switch (c.getType()) {
+        //       case "image":
+        //         itemType = PHOTOS_MEDIA_TYPE.Image;
+        //         break;
+        //       case "video":
+        //         itemType = PHOTOS_MEDIA_TYPE.Video;
+        //         break;
+        //       default:
+        //         return res.json({ error: true });
+        //     }
+        //   } else {
+        //     return res.json({ error: true });
+        //   }
+        //   switch (itemType) {
+        //     case PHOTOS_MEDIA_TYPE.Video: {
+        //       const dimensions = await core.video.getVideoDimensions(item.path);
+        //       return res.json({
+        //         type: PHOTOS_MEDIA_TYPE.Video,
+        //         path: item.path.replace(user.getFsPath(), ""),
+        //         mediaUrl: this.api.core.video.createAuthenticatedVideo(user.username, sessionid, AUTHENTICATED_VIDEO_TYPE.FILE, item.path),
+        //         metadata: {
+        //           width: dimensions.width || 400,
+        //           height: dimensions.height || 400, // FIXME: acutally return the duration
+        //           duration: -1,
+        //         },
+        //       });
+        //     }
+        //     case PHOTOS_MEDIA_TYPE.Image: {
+        //       const dimensions = (await core.image.getImageDimensions(item.path)) || { width: 0, height: 0 };
+        //       return res.json({
+        //         type: PHOTOS_MEDIA_TYPE.Image,
+        //         path: item.path.replace(user.getFsPath(), ""),
+        //         mediaUrl: this.api.core.image.createAuthenticatedImage(user.username, sessionid, AUTHENTICATED_IMAGE_TYPE.FILE, item.path),
+        //         metadata: {
+        //           width: dimensions.width || 400,
+        //           height: dimensions.height || 400,
+        //         },
+        //       });
+        //     }
+        //   }
+      },
+    );
     //
     // instance.request.get( "/album/@/*", z.object( { error: z.string() } ), async ( req, res ) => {
     //   // const sessionId = req.sessionId;

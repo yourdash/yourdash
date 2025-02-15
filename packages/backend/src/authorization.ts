@@ -24,7 +24,7 @@ class Authorization {
     app.addHook("onRequest", async (req, res) => {
       try {
         if ((res.routeOptions.config as { isPublic?: boolean })?.isPublic) {
-          return
+          return;
         }
 
         const authorization = req.cookies["authorization"];
@@ -39,6 +39,8 @@ class Authorization {
 
         // @ts-ignore
         req.requestContext.set("username", username);
+        // @ts-ignore
+        req.requestContext.set("sessionToken", sessionToken);
       } catch (err) {
         console.error("requestAuthError", err);
         return res.status(500).send({ unauthorized: true });

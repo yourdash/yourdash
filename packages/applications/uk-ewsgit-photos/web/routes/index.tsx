@@ -7,13 +7,21 @@ import { FC } from "react";
 import { PHOTOS_MEDIA_TYPE } from "../../shared/types/mediaType.ts";
 import PhotoGrid from "../components/PhotoGrid/PhotoGrid.tsx";
 import styles from "./index.module.scss";
-import YOURDASH_LOGO from "../../icon.avif";
+import YOURDASH_PHOTOS_LOGO from "../../icon.avif";
 import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.tsx";
 import UKSeparator from "@yourdash/uikit/src/components/separator/UKSeparator.tsx";
+import UKImage from "@yourdash/uikit/src/components/image/UKImage.tsx";
+import React from "react";
+import toAuthImgUrl from "@yourdash/tunnel/src/getAuthImage.ts";
 
 const IndexPage: FC = () => {
   return (
     <>
+      <UKImage
+        accessibleLabel="Bleh"
+        src={toAuthImgUrl("/uk-ewsgit-photos/media/raw/@/hello/world")}
+      />
+      <h1>hello world</h1>
       <div className={styles.page}>
         <UKHeading
           level={1}
@@ -27,7 +35,7 @@ const IndexPage: FC = () => {
             .map(() => {
               return {
                 mediaType: PHOTOS_MEDIA_TYPE.Image,
-                imageSrc: YOURDASH_LOGO,
+                imageSrc: YOURDASH_PHOTOS_LOGO,
                 onClick: () => {
                   return 0;
                 },
