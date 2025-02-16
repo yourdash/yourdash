@@ -29,4 +29,10 @@ async function resizeImage(
   return true;
 }
 
-export { resizeImage };
+async function getImageDimensions(imagePath: string) {
+  const { width, height } = await sharp(imagePath).metadata();
+
+  return { width, height };
+}
+
+export { resizeImage, getImageDimensions };

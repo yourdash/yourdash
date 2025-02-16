@@ -3,89 +3,112 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import toAuthImgUrl from "@yourdash/tunnel/src/getAuthImage.js";
+import React from "react";
 import tun from "@yourdash/tunnel/src/index.js";
+import toResourceUrl from "@yourdash/tunnel/src/toResourceUrl.js";
 import useResource from "@yourdash/tunnel/src/useResource.js";
 import UKFlex from "@yourdash/uikit/src/components/flex/UKFlex.js";
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import UKImage from "@yourdash/uikit/src/components/image/UKImage.js";
 import { z } from "zod";
-import { PHOTOS_MEDIA_TYPE } from "../../shared/types/mediaType.js";
+import { MediaAlbumLargeGridItem } from "../../shared/.backup/types/endpoints/media/album/large-grid.js";
+import { PhotosMediaType } from "../../shared/types/mediaType.js";
 import splitItemsIntoRows from "../lib/splitItemsIntoRows.js";
+import generateUUID from "@yourdash/shared/web/helpers/uuid.js";
+import MediaGridMedia from "../../shared/types/mediaGridMedia.js";
+import { MAX_HEIGHT } from "../../shared/.backup/grid.js";
 
 const AlbumMediaGrid: FC<{ albumPath: string }> = ({ albumPath }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const rows =
+
+  const albumData =
     useResource(
       () =>
         tun.get(
-          `/uk-ewsgit-photos/album/@/${albumPath}`,
+          `/uk-ewsgit-photos/album/media/@/${albumPath}`,
           "json",
-          z.object({
-            albums: z.string().array(),
-            displayName: z.string(),
-            path: z.string(),
-            size: z.number().optional(),
-            items: z
-              .union([
-                z.object({
-                  path: z.string(),
-                  type: z.literal(PHOTOS_MEDIA_TYPE.Image),
-                  metadata: z.object({
-                    width: z.number(),
-                    height: z.number(),
-                    contains: z
-                      .object({
-                        landmarks: z.string().array(),
-                        people: z.string().array(),
-                        objects: z.string().array(),
-                      })
-                      .optional(),
-                  }),
-                  resource: z.string(),
+          z
+            .union([
+              z.object({
+                path: z.string(),
+                type: z.literal(PhotosMediaType.Image),
+                metadata: z.object({
+                  width: z.number(),
+                  height: z.number(),
+                  contains: z
+                    .object({
+                      landmarks: z.string().array(),
+                      people: z.string().array(),
+                      objects: z.string().array(),
+                    })
+                    .optional(),
                 }),
-                z.object({
-                  path: z.string(),
-                  type: z.literal(PHOTOS_MEDIA_TYPE.Video),
-                  metadata: z.object({
-                    width: z.number(),
-                    height: z.number(),
-                    duration: z.number(),
-                    contains: z
-                      .object({
-                        landmarks: z.string().array(),
-                        people: z.string().array(),
-                        objects: z.string().array(),
-                      })
-                      .optional(),
-                  }),
-                  resource: z.string(),
+                resource: z.string(),
+              }),
+              z.object({
+                path: z.string(),
+                type: z.literal(PhotosMediaType.Video),
+                metadata: z.object({
+                  width: z.number(),
+                  height: z.number(),
+                  duration: z.number(),
+                  contains: z
+                    .object({
+                      landmarks: z.string().array(),
+                      people: z.string().array(),
+                      objects: z.string().array(),
+                    })
+                    .optional(),
                 }),
-              ])
-              .array(),
-          }),
+                resource: z.string(),
+              }),
+            ])
+            .array(),
         ),
       {
         return: "data",
-        transform: (data) => {
-          return splitItemsIntoRows(data.media, containerRef.current?.getBoundingClientRect().height || 200, 256);
-        },
       },
     ) ?? [];
 
+  const [rows, setRows] = useState<
+    {
+      displayHeight: number;
+      items: { media: MediaGridMedia; displayWidth: number }[];
+    }[]
+  >([]);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    setRows(splitItemsIntoRows(albumData, containerRef.current?.getBoundingClientRect().width ?? 200, MAX_HEIGHT));
+  }, [albumData, containerRef.current]);
+
   return (
-    <div ref={containerRef}>
+    <UKFlex
+      direction={"column"}
+      ref={containerRef}
+    >
       {rows.map((row) => {
+        const uuid = generateUUID();
         return (
-          <UKFlex direction={"row"}>
-            <UKImage
-              src={toAuthImgUrl(row.itemUrl || "test")}
-              accessibleLabel={""}
-            />
+          <UKFlex
+            style={{ height: row.displayHeight }}
+            direction={"row"}
+            key={uuid}
+          >
+            {row.items.map((item) => {
+              return (
+                <UKImage
+                  key={item.media.path}
+                  src={toResourceUrl(item.media.resource || "test")}
+                  accessibleLabel={""}
+                />
+              );
+            })}
           </UKFlex>
         );
       })}
-    </div>
+    </UKFlex>
   );
 };
 

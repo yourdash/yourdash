@@ -20,6 +20,8 @@ interface IResource {
   type: "image" | "binary" | "text";
 }
 
+// TODO: use a database for this functionality instead of a map, this will allow non-volatile data retention and improved look-up speeds on instances with a large amount of resources in use (applications like photos use a lot of resources)
+
 class ResourceManager {
   instance: Instance;
   // resource id to resource

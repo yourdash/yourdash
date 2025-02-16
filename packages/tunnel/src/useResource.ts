@@ -4,26 +4,23 @@
  */
 
 import { useEffect, useState } from "react";
-
-type NotUndefined<T> = T extends undefined ? never : T;
-
-export default function useResource<T extends any, TReturn extends keyof T | undefined, TransReturn extends any>(
+export default function useResource<T extends any, TReturn extends keyof T | undefined, TransReturn = never>(
   resource: () => Promise<T>,
   options?: { dependencies?: unknown[]; return?: TReturn; transform?: (data: TReturn extends keyof T ? T[TReturn] : T) => TransReturn },
-): TransReturn extends NotUndefined<TransReturn>
-  ? TransReturn | undefined
-  : TReturn extends keyof T
-    ? T[TReturn] | undefined
-    : T | undefined {
-  const [data, setData] = useState(undefined);
+): TransReturn extends never ? (TReturn extends keyof T ? T[TReturn] | undefined : T | undefined) : TransReturn | undefined {
+  const [data, setData] = useState<
+    TransReturn extends never ? (TReturn extends keyof T ? T[TReturn] | undefined : T | undefined) : TransReturn | undefined
+    // @ts-ignore
+  >(undefined);
 
   useEffect(() => {
+    // @ts-ignore
     setData(undefined);
     resource().then((d) => {
       if (options?.return) {
         if (options?.transform) {
           // @ts-ignore
-          setData(transform(d[options.return]));
+          setData(options.transform(d[options.return]));
         } else {
           // @ts-ignore
           setData(d[options.return]);
@@ -31,7 +28,7 @@ export default function useResource<T extends any, TReturn extends keyof T | und
       } else {
         if (options?.transform) {
           // @ts-ignore
-          setData(transform(d));
+          setData(options.transform(d));
         } else {
           // @ts-ignore
           setData(d);
@@ -40,6 +37,5 @@ export default function useResource<T extends any, TReturn extends keyof T | und
     });
   }, options?.dependencies ?? []);
 
-  // @ts-ignore
   return data;
 }

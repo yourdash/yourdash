@@ -2740,6 +2740,11 @@ class RequestManager {
         const dbquery = await this.instance.database.query("SELECT widgets, size FROM panel_configuration WHERE username = $1;", [
           username,
         ]);
+
+        return {
+          widgets: dbquery.rows[0].widgets,
+          size: dbquery.rows[0].size,
+        };
       },
     );
   }

@@ -889,11 +889,12 @@
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import instance from "@yourdash/backend/src/main";
-import { getUser } from "@yourdash/backend/src/user";
 import * as fs from "node:fs";
 import path from "path";
 import { z } from "zod";
-import { PHOTOS_MEDIA_TYPE } from "../shared/types/mediaType.js";
+import { PhotosMediaType } from "../shared/types/mediaType.js";
+import { getImageDimensions } from "@yourdash/backend/src/image.js";
+import MediaGridMedia from "../shared/types/mediaGridMedia.js";
 
 export default class Application extends YourDashApplication {
   constructor() {
@@ -924,7 +925,7 @@ export default class Application extends YourDashApplication {
             200: z
               .object({
                 path: z.string(),
-                type: z.literal(PHOTOS_MEDIA_TYPE.Image),
+                type: z.literal(PhotosMediaType.Image),
                 metadata: z.object({
                   width: z.number(),
                   height: z.number(),
@@ -941,7 +942,7 @@ export default class Application extends YourDashApplication {
               .or(
                 z.object({
                   path: z.string(),
-                  type: z.literal(PHOTOS_MEDIA_TYPE.Video),
+                  type: z.literal(PhotosMediaType.Video),
                   metadata: z.object({
                     width: z.number(),
                     height: z.number(),
@@ -962,14 +963,14 @@ export default class Application extends YourDashApplication {
       },
       async (req, res) => {
         const sessionToken = instance.requestManager.getRequestSessionToken();
-        const mediaPath = req.params["*"];
+        const mediaPath = (req.params as { "*": string })["*"];
 
         let resourceId = instance.resourceManager.addImage(mediaPath);
 
         return {
           resourceId: resourceId,
           path: mediaPath,
-          type: PHOTOS_MEDIA_TYPE.Image,
+          type: PhotosMediaType.Image,
           metadata: {
             width: 400,
             height: 400,
@@ -1045,60 +1046,120 @@ export default class Application extends YourDashApplication {
               displayName: z.string(),
               path: z.string(),
               size: z.number().optional(),
-              items: z
-                .union([
-                  z.object({
-                    path: z.string(),
-                    type: z.literal(PHOTOS_MEDIA_TYPE.Image),
-                    metadata: z.object({
-                      width: z.number(),
-                      height: z.number(),
-                      contains: z
-                        .object({
-                          landmarks: z.string().array(),
-                          people: z.string().array(),
-                          objects: z.string().array(),
-                        })
-                        .optional(),
-                    }),
-                    resource: z.string(),
-                  }),
-                  z.object({
-                    path: z.string(),
-                    type: z.literal(PHOTOS_MEDIA_TYPE.Video),
-                    metadata: z.object({
-                      width: z.number(),
-                      height: z.number(),
-                      duration: z.number(),
-                      contains: z
-                        .object({
-                          landmarks: z.string().array(),
-                          people: z.string().array(),
-                          objects: z.string().array(),
-                        })
-                        .optional(),
-                    }),
-                    resource: z.string(),
-                  }),
-                ])
-                .array(),
             }),
           },
         },
       },
       async (req, res) => {
-        const albumPath = req.params["*"];
+        const albumPath = (req.params as { "*": string })["*"];
         const systemPath = path.join(instance.filesystem.commonPaths.rootDirectory(), albumPath);
 
-        const childMedia = fs.promises.readdir(systemPath);
+        if (!(await instance.filesystem.doesPathExist(systemPath))) {
+          return res.status(404).send();
+        }
+
+        const childMedia = await fs.promises.readdir(systemPath);
+        console.log({ childMedia });
+
+        if (childMedia.length === 0) return res.status(204).send();
+
+        const albums = childMedia.map((c) => {
+          // are the children directories
+        });
 
         return {
-          media: [],
-          displayName: "Bool",
+          displayName: "Display Name Of Album",
           path: systemPath,
           size: 1000000,
-          items: [],
+          albums: [],
         };
+      },
+    );
+
+    instance.request.get(
+      "/uk-ewsgit-photos/album/media/@/*",
+      {
+        schema: {
+          response: {
+            200: z
+              .union([
+                z.object({
+                  path: z.string(),
+                  type: z.literal(PhotosMediaType.Image),
+                  dimensions: z.object({
+                    width: z.number(),
+                    height: z.number(),
+                  }),
+                  contains: z
+                    .object({
+                      landmarks: z.string().array(),
+                      people: z.string().array(),
+                      objects: z.string().array(),
+                      tags: z.string().array(),
+                    })
+                    .optional(),
+                  resource: z.string(),
+                }),
+                z.object({
+                  path: z.string(),
+                  type: z.literal(PhotosMediaType.Video),
+                  dimensions: z.object({
+                    width: z.number(),
+                    height: z.number(),
+                  }),
+                  duration: z.number(),
+                  contains: z
+                    .object({
+                      landmarks: z.string().array(),
+                      people: z.string().array(),
+                      objects: z.string().array(),
+                      tags: z.string().array(),
+                    })
+                    .optional(),
+                  resource: z.string(),
+                }),
+              ])
+              .array(),
+          },
+        },
+      },
+      async (req, res) => {
+        const albumPath = (req.params as { "*": string })["*"];
+        const systemPath = path.join(instance.filesystem.commonPaths.rootDirectory(), albumPath);
+
+        if (!(await instance.filesystem.doesPathExist(systemPath))) {
+          return res.status(404).send();
+        }
+
+        const childMedia = await fs.promises.readdir(systemPath);
+        console.log({ childMedia });
+
+        if (childMedia.length === 0) return res.status(204).send();
+
+        const items = await Promise.all(
+          childMedia.map(async (media): Promise<MediaGridMedia | null> => {
+            const mediaPath = path.join(systemPath, media);
+
+            if (!(await instance.filesystem.doesPathExist(mediaPath))) {
+              return null;
+            }
+
+            const dimensions = await getImageDimensions(mediaPath);
+
+            return {
+              path: mediaPath,
+              type: PhotosMediaType.Image,
+              dimensions: {
+                width: dimensions.width || 32,
+                height: dimensions.height || 32,
+              },
+              resource: instance.resourceManager.addImage(mediaPath),
+              date: Date.now(),
+            };
+          }),
+        );
+
+        return items;
       },
     );
     //

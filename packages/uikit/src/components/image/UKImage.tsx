@@ -53,6 +53,7 @@ const UKImage: FC<{
 
   return (
     <div
+      data-src={src}
       ref={ref}
       className={clippy(styles.componentContainer, props.containerClassName, !loaded && styles.loading, hasFailed && styles.serverError)}
       style={{

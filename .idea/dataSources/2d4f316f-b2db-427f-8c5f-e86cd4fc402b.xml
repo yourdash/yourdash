@@ -3,9 +3,17 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1590</IntrospectionStateNumber>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+4||-9223372036854775808|c|G
+4||10|c|G
+4||10|C|G
+4||10|T|G</Grants>
+      <IntrospectionStateNumber>2381</IntrospectionStateNumber>
       <ServerVersion>17.2</ServerVersion>
-      <StartupTime>1739607905</StartupTime>
+      <StartupTime>1739700765</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1411,7 +1419,7 @@ false posixrules
 13265||10|C|G
 13265||-9223372036854775808|U|G
 13265||10|U|G</Grants>
-      <IntrospectionStateNumber>1590</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2381</IntrospectionStateNumber>
       <ObjectId>16398</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -8188,11 +8196,502 @@ false posixrules
     <schema id="509" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1590</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-02-15.12:37:17</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>2381</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-02-16.11:06:45</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>531</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
+    <sequence id="510" parent="509" name="configuration_config_version_seq">
+      <ObjectId>24701</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>1596</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="511" parent="509" name="panel_configuration_config_version_seq">
+      <ObjectId>24687</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>1594</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="512" parent="509" name="request_manager_log_request_id_seq">
+      <ObjectId>24678</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>1593</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="513" parent="509" name="teams_team_id_seq">
+      <ObjectId>24669</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>1592</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="514" parent="509" name="users_user_id_seq">
+      <ObjectId>24659</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>1591</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="515" parent="509" name="configuration">
+      <ObjectId>24702</ObjectId>
+      <StateNumber>1596</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="516" parent="509" name="panel_configuration">
+      <ObjectId>24688</ObjectId>
+      <StateNumber>1594</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="517" parent="509" name="request_manager_log">
+      <ObjectId>24679</ObjectId>
+      <StateNumber>1593</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="518" parent="509" name="teams">
+      <ObjectId>24670</ObjectId>
+      <StateNumber>1592</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="519" parent="509" name="uk_ewsgit_dash_dashboard">
+      <ObjectId>24716</ObjectId>
+      <StateNumber>1598</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="520" parent="509" name="users">
+      <ObjectId>24660</ObjectId>
+      <StateNumber>1591</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="521" parent="515" name="config_version">
+      <DefaultExpression>nextval(&apos;configuration_config_version_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>24701</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="522" parent="515" name="creation_date">
+      <Position>2</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="523" parent="515" name="administrator_username">
+      <DefaultExpression>&apos;admin&apos;::text</DefaultExpression>
+      <Position>3</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="524" parent="515" name="display_name">
+      <DefaultExpression>&apos;YourDash Instance&apos;::text</DefaultExpression>
+      <Position>4</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="525" parent="515" name="external_url">
+      <DefaultExpression>&apos;http://localhost:3563&apos;::text</DefaultExpression>
+      <Position>5</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="526" parent="515" name="description">
+      <DefaultExpression>&apos;This is the default instance description. Hey Admin, this can be changed in the system settings!.&apos;::text</DefaultExpression>
+      <Position>6</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="527" parent="515" name="administrator_contact_email">
+      <Position>7</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="528" parent="515" name="installed_applications">
+      <DefaultExpression>&apos;{uk-ewsgit-dash,uk-ewsgit-files,uk-ewsgit-photos,uk-ewsgit-weather,uk-ewsgit-store,uk-ewsgit-settings}&apos;::text[]</DefaultExpression>
+      <Position>8</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>text[]|0s</StoredType>
+      <TypeId>1009</TypeId>
+    </column>
+    <column id="529" parent="515" name="default_pinned_applications">
+      <DefaultExpression>&apos;{uk-ewsgit-dash,uk-ewsgit-files,uk-ewsgit-store,uk-ewsgit-weather}&apos;::text[]</DefaultExpression>
+      <Position>9</Position>
+      <StateNumber>1596</StateNumber>
+      <StoredType>text[]|0s</StoredType>
+      <TypeId>1009</TypeId>
+    </column>
+    <index id="530" parent="515" name="configuration_pkey">
+      <ColNames>config_version</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24714</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1596</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="531" parent="515" name="configuration_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24715</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1596</StateNumber>
+      <UnderlyingIndexId>24714</UnderlyingIndexId>
+    </key>
+    <column id="532" parent="516" name="config_version">
+      <DefaultExpression>nextval(&apos;panel_configuration_config_version_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1594</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>24687</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="533" parent="516" name="username">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1594</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="534" parent="516" name="pinned_applications">
+      <DefaultExpression>&apos;{uk-ewsgit-dash,uk-ewsgit-files,uk-ewsgit-store,uk-ewsgit-weather}&apos;::text[]</DefaultExpression>
+      <Position>3</Position>
+      <StateNumber>1594</StateNumber>
+      <StoredType>text[]|0s</StoredType>
+      <TypeId>1009</TypeId>
+    </column>
+    <column id="535" parent="516" name="widgets">
+      <DefaultExpression>&apos;{InstanceLogo,ApplicationLauncher,Separator,QuickShortcuts,LocalhostIndicator,UserProfile}&apos;::text[]</DefaultExpression>
+      <Position>4</Position>
+      <StateNumber>1594</StateNumber>
+      <StoredType>text[]|0s</StoredType>
+      <TypeId>1009</TypeId>
+    </column>
+    <column id="536" parent="516" name="side">
+      <DefaultExpression>&apos;left&apos;::text</DefaultExpression>
+      <Position>5</Position>
+      <StateNumber>1594</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="537" parent="516" name="size">
+      <DefaultExpression>&apos;medium&apos;::text</DefaultExpression>
+      <Position>6</Position>
+      <StateNumber>1594</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="538" parent="516" name="panel_configuration_pkey">
+      <ColNames>config_version</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24698</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1594</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="539" parent="516" name="panel_configuration_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24699</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1594</StateNumber>
+      <UnderlyingIndexId>24698</UnderlyingIndexId>
+    </key>
+    <column id="540" parent="517" name="request_id">
+      <DefaultExpression>nextval(&apos;request_manager_log_request_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1593</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>24678</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="541" parent="517" name="request_timestamp">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1593</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="542" parent="517" name="request_method">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>1593</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="543" parent="517" name="request_path">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>1593</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="544" parent="517" name="request_body">
+      <Position>5</Position>
+      <StateNumber>1593</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="545" parent="517" name="request_manager_log_pkey">
+      <ColNames>request_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24685</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1593</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="546" parent="517" name="request_manager_log_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24686</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1593</StateNumber>
+      <UnderlyingIndexId>24685</UnderlyingIndexId>
+    </key>
+    <column id="547" parent="518" name="team_id">
+      <DefaultExpression>nextval(&apos;teams_team_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1592</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>24669</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="548" parent="518" name="teamname">
+      <Position>2</Position>
+      <StateNumber>1592</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="549" parent="518" name="owner_username">
+      <Position>3</Position>
+      <StateNumber>1592</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="550" parent="518" name="members">
+      <Position>4</Position>
+      <StateNumber>1592</StateNumber>
+      <StoredType>text[]|0s</StoredType>
+      <TypeId>1009</TypeId>
+    </column>
+    <column id="551" parent="518" name="bio">
+      <Position>5</Position>
+      <StateNumber>1592</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="552" parent="518" name="teams_pkey">
+      <ColNames>team_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24676</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1592</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="553" parent="518" name="teams_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24677</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1592</StateNumber>
+      <UnderlyingIndexId>24676</UnderlyingIndexId>
+    </key>
+    <column id="554" parent="519" name="username">
+      <Position>1</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="555" parent="519" name="header_welcome_message">
+      <DefaultExpression>&apos;Hiya, %username%&apos;::text</DefaultExpression>
+      <Position>2</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="556" parent="519" name="header_size">
+      <DefaultExpression>&apos;medium&apos;::text</DefaultExpression>
+      <Position>3</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="557" parent="519" name="header_font_size">
+      <DefaultExpression>4.0</DefaultExpression>
+      <Position>4</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>double precision|0s</StoredType>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="558" parent="519" name="header_font_weight">
+      <DefaultExpression>900</DefaultExpression>
+      <Position>5</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="559" parent="519" name="header_font_family">
+      <Position>6</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="560" parent="519" name="header_style">
+      <DefaultExpression>&apos;floating&apos;::text</DefaultExpression>
+      <Position>7</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="561" parent="519" name="header_background_blur">
+      <DefaultExpression>0.25</DefaultExpression>
+      <Position>8</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>double precision|0s</StoredType>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="562" parent="519" name="header_background_opacity">
+      <DefaultExpression>0.75</DefaultExpression>
+      <Position>9</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>double precision|0s</StoredType>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="563" parent="519" name="background_type">
+      <DefaultExpression>&apos;image&apos;::text</DefaultExpression>
+      <Position>10</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="564" parent="519" name="background_value">
+      <Position>11</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="565" parent="519" name="content_background_blur">
+      <DefaultExpression>0.25</DefaultExpression>
+      <Position>12</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>double precision|0s</StoredType>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="566" parent="519" name="content_background_opacity">
+      <DefaultExpression>0.75</DefaultExpression>
+      <Position>13</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>double precision|0s</StoredType>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="567" parent="519" name="content_pages">
+      <DefaultExpression>ARRAY[]::json[]</DefaultExpression>
+      <Position>14</Position>
+      <StateNumber>1598</StateNumber>
+      <StoredType>json[]|0s</StoredType>
+      <TypeId>199</TypeId>
+    </column>
+    <column id="568" parent="520" name="user_id">
+      <DefaultExpression>nextval(&apos;users_user_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>24659</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="569" parent="520" name="username">
+      <Position>2</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="570" parent="520" name="forename">
+      <Position>3</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="571" parent="520" name="surname">
+      <Position>4</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="572" parent="520" name="bio">
+      <DefaultExpression>&apos;I&apos;&apos;m new here, say hello!.&apos;::text</DefaultExpression>
+      <Position>5</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="573" parent="520" name="storage_quota">
+      <Position>6</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="574" parent="520" name="permissions">
+      <Position>7</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>text[]|0s</StoredType>
+      <TypeId>1009</TypeId>
+    </column>
+    <column id="575" parent="520" name="session_tokens">
+      <Position>8</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>text[]|0s</StoredType>
+      <TypeId>1009</TypeId>
+    </column>
+    <column id="576" parent="520" name="nextcloud_session_tokens">
+      <Position>9</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>text[]|0s</StoredType>
+      <TypeId>1009</TypeId>
+    </column>
+    <column id="577" parent="520" name="password_hash">
+      <Position>10</Position>
+      <StateNumber>1591</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="578" parent="520" name="users_pkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24667</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1591</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="579" parent="520" name="users_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24668</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1591</StateNumber>
+      <UnderlyingIndexId>24667</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>

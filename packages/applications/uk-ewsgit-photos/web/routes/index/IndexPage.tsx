@@ -20,7 +20,7 @@ const IndexPage: FC = () => {
       <UKSeparator direction={"column"} />
       {/* Media */}
       <UKContainer>
-        <AlbumMediaGrid />
+        <AlbumMediaGrid albumPath={"./Users/admin/Pictures/"} />
       </UKContainer>
     </>
   );
