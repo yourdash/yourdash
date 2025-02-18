@@ -11,7 +11,6 @@ import UKFlex from "@yourdash/uikit/src/components/flex/UKFlex.js";
 import { FC, useEffect, useRef, useState } from "react";
 import UKImage from "@yourdash/uikit/src/components/image/UKImage.js";
 import { z } from "zod";
-import { MediaAlbumLargeGridItem } from "../../shared/.backup/types/endpoints/media/album/large-grid.js";
 import { PhotosMediaType } from "../../shared/types/mediaType.js";
 import splitItemsIntoRows from "../lib/splitItemsIntoRows.js";
 import generateUUID from "@yourdash/shared/web/helpers/uuid.js";
@@ -82,6 +81,30 @@ const AlbumMediaGrid: FC<{ albumPath: string }> = ({ albumPath }) => {
 
     setRows(splitItemsIntoRows(albumData, containerRef.current?.getBoundingClientRect().width ?? 200, MAX_HEIGHT));
   }, [albumData, containerRef.current]);
+
+  useEffect(() => {
+    let timer: NodeJS.Timer;
+    function debounce(func: () => void, timeout = 300) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func();
+      }, timeout);
+    }
+
+    const listener = () => {
+      console.log("evnt");
+      debounce(() => {
+        console.log("evnt Call");
+        setRows(splitItemsIntoRows(albumData, containerRef.current?.getBoundingClientRect().width ?? 200, MAX_HEIGHT));
+      }, 250);
+    };
+
+    window.addEventListener("resize", listener);
+
+    return () => {
+      window.removeEventListener("resize", listener);
+    };
+  }, []);
 
   return (
     <UKFlex
