@@ -66,6 +66,7 @@ const AlbumMediaGrid: FC<{ albumPath: string }> = ({ albumPath }) => {
         ),
       {
         return: "data",
+        dependencies: [albumPath],
       },
     ) ?? [];
 
@@ -76,10 +77,17 @@ const AlbumMediaGrid: FC<{ albumPath: string }> = ({ albumPath }) => {
     }[]
   >([]);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
+  console.log({ albumData });
+
+  const updateRows = () => {
+    console.log({ albumData });
 
     setRows(splitItemsIntoRows(albumData, containerRef.current?.getBoundingClientRect().width ?? 200, MAX_HEIGHT));
+  };
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    updateRows();
   }, [albumData, containerRef.current]);
 
   useEffect(() => {
@@ -92,11 +100,9 @@ const AlbumMediaGrid: FC<{ albumPath: string }> = ({ albumPath }) => {
     }
 
     const listener = () => {
-      console.log("evnt");
       debounce(() => {
-        console.log("evnt Call");
-        setRows(splitItemsIntoRows(albumData, containerRef.current?.getBoundingClientRect().width ?? 200, MAX_HEIGHT));
-      }, 250);
+        updateRows();
+      }, 500);
     };
 
     window.addEventListener("resize", listener);
@@ -115,13 +121,14 @@ const AlbumMediaGrid: FC<{ albumPath: string }> = ({ albumPath }) => {
         const uuid = generateUUID();
         return (
           <UKFlex
-            style={{ height: row.displayHeight }}
+            style={{ height: row.displayHeight, width: "100%" }}
             direction={"row"}
             key={uuid}
           >
             {row.items.map((item) => {
               return (
                 <UKImage
+                  style={{ width: item.displayWidth, height: row.displayHeight }}
                   key={item.media.path}
                   src={toResourceUrl(item.media.resource || "test")}
                   accessibleLabel={""}

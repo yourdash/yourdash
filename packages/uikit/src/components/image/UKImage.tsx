@@ -5,7 +5,7 @@
 
 import { UKIcons } from "../../core/iconDictionary.ts";
 import styles from "./image.module.scss";
-import { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import clippy from "@yourdash/shared/web/helpers/clippy.ts";
 import UKIcon from "../icon/UKIcon.tsx";
 
@@ -18,6 +18,7 @@ const UKImage: FC<{
   noRounding?: boolean;
   width?: number;
   height?: number;
+  style?: React.CSSProperties;
 }> = (props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [src, setSrc] = useState<string>(props.src);
@@ -37,7 +38,7 @@ const UKImage: FC<{
       const bounds = rc.getBoundingClientRect();
 
       setBackgroundSize(bounds.height > bounds.width ? bounds.height : bounds.width);
-    }, 0);
+    }, 20);
   }, [src]);
 
   useEffect(() => {
@@ -59,6 +60,7 @@ const UKImage: FC<{
       style={{
         // @ts-ignore
         "--background-size": backgroundSize + "px",
+        ...props.style,
       }}
     >
       {!hasFailed ? (
@@ -89,7 +91,10 @@ const UKImage: FC<{
             setLoaded(e.currentTarget.complete);
             attempts.current = 0;
           }}
-          src={src || "/assets/branding/yourdash256.png"}
+          onLoadStart={() => {
+            setLoaded(false);
+          }}
+          src={src ?? "/assets/branding/yourdash256.png"}
         />
       ) : (
         <UKIcon icon={UKIcons.ServerError} />
