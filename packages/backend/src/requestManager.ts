@@ -5,25 +5,25 @@
 
 import fastifyCookie from "@fastify/cookie";
 import cors from "@fastify/cors";
-import fastifySwagger from "@fastify/swagger";
 import fastifyFormBody from "@fastify/formbody";
+import { fastifyRequestContext, requestContext } from "@fastify/request-context";
+import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUI from "@fastify/swagger-ui";
 import { LoginLayout } from "@yourdash/shared/core/login/loginLayout.js";
 import chalk from "chalk";
-import Fastify, { fastify, FastifyError, FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { fastifyRequestContext, requestContext } from "@fastify/request-context";
+import Fastify, { FastifyError, FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { jsonSchemaTransform, serializerCompiler, validatorCompiler, ZodTypeProvider } from "fastify-type-provider-zod";
 import { createReadStream } from "fs";
+import { mkdir } from "fs/promises";
 import path from "path";
 import { fetch } from "undici";
 import { z, ZodError } from "zod";
 import { YourDashApplication } from "./applications.js";
 import { YourDashSessionType } from "./authorization.js";
+import { resizeImage } from "./image.js";
 import { type Instance } from "./main.js";
 import { INSTANCE_STATUS } from "./types/instanceStatus.js";
 import User from "./user.js";
-import { resizeImage } from "./image.js";
-import { mkdir } from "fs/promises";
 
 declare module "zod" {
   interface ZodError {
@@ -32,8 +32,8 @@ declare module "zod" {
 }
 
 class RequestManager {
-  private instance: Instance;
   app: FastifyInstance;
+  private instance: Instance;
 
   constructor(instance: Instance) {
     this.instance = instance;
@@ -61,13 +61,13 @@ class RequestManager {
     this.instance.log.info("request_manager", "Starting RequestManager...");
     try {
       await this.instance.database.query(`CREATE TABLE IF NOT EXISTS public.request_manager_log
-                                     (
-                                       request_id serial primary key,
-                                       request_timestamp bigint NOT NULL,
-                                       request_method text NOT NULL,
-                                       request_path text   NOT NULL,
-                                       request_body text
-                                     )`);
+                                           (
+                                               request_id        serial primary key,
+                                               request_timestamp bigint NOT NULL,
+                                               request_method    text   NOT NULL,
+                                               request_path      text   NOT NULL,
+                                               request_body      text
+                                           )`);
     } catch (err) {
       console.error(err);
     }
@@ -83,8 +83,7 @@ class RequestManager {
       if (cause.name === "ZodError") {
         reply.status(400).send({
           statusCode: 400,
-          error: "Bad Request",
-          // @ts-ignore
+          error: "Bad Request", // @ts-ignore
           httpPart: error.httpPart!,
           issues: cause.issues,
         });
@@ -2264,11 +2263,15 @@ class RequestManager {
     this.app.get("/login/is-authenticated", { config: { isPublic: true } }, async (req, res) => {
       const authorization = req.cookies["authorization"];
 
-      if (!authorization) return res.status(401).send();
+      if (!authorization) {
+        return res.status(401).send();
+      }
 
       const [username, sessionToken] = authorization.split(" ");
 
-      if (!(await this.instance.authorization.authorizeUser(username, `${username} ${sessionToken}`))) return res.status(401).send();
+      if (!(await this.instance.authorization.authorizeUser(username, `${username} ${sessionToken}`))) {
+        return res.status(401).send();
+      }
 
       return res.status(200).send();
     });
@@ -2323,7 +2326,9 @@ class RequestManager {
 
       const app = this.instance.applications.loadedApplications.find((a) => a.__internal_params.id === applicationId);
 
-      if (!app) return res.status(404);
+      if (!app) {
+        return res.status(404);
+      }
 
       if (
         await this.instance.filesystem.doesPathExist(
@@ -2390,7 +2395,9 @@ class RequestManager {
 
       const app = this.instance.applications.loadedApplications.find((a) => a.__internal_params.id === applicationId);
 
-      if (!app) return res.status(404);
+      if (!app) {
+        return res.status(404);
+      }
 
       if (
         await this.instance.filesystem.doesPathExist(
@@ -2457,7 +2464,9 @@ class RequestManager {
 
       const app = this.instance.applications.loadedApplications.find((a) => a.__internal_params.id === applicationId);
 
-      if (!app) return res.status(404);
+      if (!app) {
+        return res.status(404);
+      }
 
       if (
         await this.instance.filesystem.doesPathExist(
@@ -2627,7 +2636,9 @@ class RequestManager {
 
       const app = this.instance.applications.loadedApplications.find((a) => a.__internal_params.id === applicationId);
 
-      if (!app) return res.status(404);
+      if (!app) {
+        return res.status(404);
+      }
 
       if (
         await this.instance.filesystem.doesPathExist(
@@ -2706,7 +2717,9 @@ class RequestManager {
               [username],
             );
 
-            if (previousPins.rows[0].pinned_applications.includes(applicationId)) return { success: false };
+            if (previousPins.rows[0].pinned_applications.includes(applicationId)) {
+              return { success: false };
+            }
 
             const newPins = [...previousPins.rows[0].pinned_applications, applicationId];
 

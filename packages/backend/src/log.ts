@@ -21,7 +21,7 @@ export default class Log {
   logHistory: {
     type: LogType;
     level: string;
-    message: (string | Uint8Array)[];
+    message: (string | Uint8Array<ArrayBufferLike>)[];
   }[] = [];
 
   constructor(instance: Instance) {

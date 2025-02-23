@@ -9,7 +9,7 @@ import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js";
 import UKText from "@yourdash/uikit/src/components/text/UKText.js";
 import React from "react";
 
-interface IKeyPointsCard {
+const KeyPointsCard: React.FC<{
   title: string;
   content: string;
   action: {
@@ -17,9 +17,7 @@ interface IKeyPointsCard {
     onClick(): void;
   };
   spanTwoColumns?: boolean;
-}
-
-const KeyPointsCard: React.FC<IKeyPointsCard> = ({ title, content, action }) => {
+}> = ({ title, content, action }) => {
   return (
     <UKCard
       actions={

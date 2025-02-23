@@ -22,7 +22,7 @@
   }
 
   .title {
-    margin: 0 0 0 calc(var(#{$theme+$gap}) / 2 * -1);
+    margin: 0 0 0 calc($UKGap / 2 * -1);
   }
 
   .subtitle {
@@ -92,8 +92,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-top: calc(var(#{$theme+$padding}) / 2);
-  padding-bottom: calc(var(#{$theme+$padding}) / 2);
+  padding-top: calc($UKPadding / 2);
+  padding-bottom: calc($UKPadding / 2);
 }
 
 
@@ -101,39 +101,11 @@
   border-bottom: none;
   border-left: none;
   border-right: none;
-
-
-  .brand {
-    align-items: center;
-    justify-content: center;
-
-    .logo {
-      height: 2rem;
-      border-radius: 0;
-    }
-
-    .name {
-      margin: 0;
-    }
-
-    .socials {
-      gap: 0.5rem;
-      align-items: center;
-      justify-content: center;
-      margin-left: 10rem;
-
-      .icon {
-        background: transparent;
-        border: none;
-        padding: 0.25rem;
-        height: 2rem;
-
-        &:hover {
-          scale: 1.1;
-        }
-      }
-    }
-  }
+  padding: 0;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .license {
     margin-left: auto;

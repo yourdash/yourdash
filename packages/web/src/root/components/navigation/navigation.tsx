@@ -50,7 +50,7 @@ const Navigation: FC<{ subtitle?: string }> = ({ subtitle }) => {
           className={styles.link}
           text={"Docs"}
           onClick={() => {
-            navigate("/docs");
+            window.location.href = "https://github.com/yourdash/yourdash/tree/main/docs";
           }}
         />
         <UKTextButton
@@ -82,48 +82,19 @@ const Navigation: FC<{ subtitle?: string }> = ({ subtitle }) => {
       <Outlet />
       <UKBox className={styles.footer}>
         <UKFlex
-          className={styles.brand}
-          direction={"row"}
-        >
-          <UKImage
-            src={"/assets/branding/yourdash.svg"}
-            accessibleLabel={"YourDash Logo"}
-            className={styles.logo}
-          />
-          <UKHeading
-            level={2}
-            className={styles.name}
-            text={"YourDash"}
-          />
-          <UKFlex
-            direction={"row"}
-            className={styles.socials}
-          >
-            <UKIconButton
-              className={styles.icon}
-              preserveColor
-              accessibleLabel={"Ewsgit on GitHub"}
-              icon={UKIcons.Ewsgit}
-              onClick={() => {
-                navigate("https://github.com/ewsgit");
-              }}
-            />
-            <UKIconButton
-              accessibleLabel={"YourDash on GitHub"}
-              className={styles.icon}
-              icon={UKIcons.LinkExternal}
-              onClick={() => {
-                navigate("");
-              }}
-            />
-          </UKFlex>
-        </UKFlex>
-        <UKSeparator direction={"column"} />
-        <UKFlex
           direction={"row"}
           className={styles.license}
         >
-          <UKText text={"©2022-2024 Ewsgit and YourDash Contributors."} />
+          <UKText text={"©2022-2025"} />
+          <UKLink
+            hideLinkIcon={true}
+            to={"https://ewsgit.uk"}
+            text={"Ewsgit"}
+          />
+          <UKSeparator
+            direction={"row"}
+            disableMargin={true}
+          />
           <UKLink
             hideLinkIcon={true}
             to={"https://ewsgit.mit-license.org"}

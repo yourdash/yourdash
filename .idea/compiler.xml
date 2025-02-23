@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="TypeScriptCompiler">
-    <option name="nodeInterpreterTextField" value="$APPLICATION_CONFIG_DIR$/node/versions/23.4.0/bin/node" />
     <option name="useTypesFromServer" value="true" />
     <option name="versionType" value="EMBEDDED" />
   </component>

@@ -19,7 +19,6 @@ import AppLayout from "./app/AppLayout.tsx";
 import LoginIndexPagePreload from "./root/login/index.preload.tsx";
 import LoginInstancePage from "./root/login/instance/index.tsx";
 import Navigation from "./root/components/navigation/navigation.tsx";
-import DocsLayout from "./root/docs/Layout.tsx";
 import ErrorElement from "./ErrorElement.tsx";
 import Index from "./root/index/Index.tsx";
 import LoginRedirect from "./deprecatedLogin/Redirect.tsx";
@@ -31,7 +30,6 @@ import LinkerDesktopClientStartupPage from "./root/linkerDesktopClientStartup/In
 import WebsocketToasts from "./WebsocketToasts.tsx";
 
 const AppRouter = loadable(() => import("./app/AppRouter.tsx"));
-const DocsRouter = loadable(() => import("./root/docs/DocsRouter.tsx"));
 const ProjectsRouter = loadable(() => import("./root/projects/ProjectsRouter.tsx"));
 
 const element = document.getElementById("root") as HTMLElement;
@@ -70,17 +68,6 @@ ReactDOM.createRoot(element).render(
                 path={"*"}
                 element={<NotFoundPage />}
               />
-            </Route>
-            <Route element={<Navigation subtitle={"Docs"} />}>
-              <Route
-                path={"docs/*"}
-                element={<DocsLayout />}
-              >
-                <Route
-                  path={"*"}
-                  element={<DocsRouter />}
-                />
-              </Route>
             </Route>
             <Route element={<Navigation subtitle={"Projects"} />}>
               <Route
