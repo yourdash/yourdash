@@ -27,6 +27,7 @@
 
   .subtitle {
     margin: 0 var(--side-spacing) 0 0;
+    transition: $UKTransition;
     width: 10ch;
     text-align: left;
     font-weight: 300;

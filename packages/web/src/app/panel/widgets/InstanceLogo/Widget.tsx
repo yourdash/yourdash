@@ -3,25 +3,25 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import tun from "@yourdash/tunnel/src/index.js";
+import toAuthImgUrl from "@yourdash/tunnel/src/getAuthImage.js";
 import { useNavigate } from "react-router";
 import styles from "./Widget.module.scss";
 import React, { memo } from "react";
+import UKImage from "@yourdash/uikit/src/components/image/UKImage";
 
 const InstanceLogoWidget: React.FC<{ panelSize: "small" | "medium" | "large" }> = ({ panelSize }) => {
   const navigate = useNavigate();
 
-  const INSTANCE_PANEL_LOGOS = {
+  const InstancePanelLogos = {
     small: "/panel/logo/small",
     medium: "/panel/logo/medium",
     large: "/panel/logo/large",
   };
 
   return (
-    <img
-      src={`${tun.baseUrl}${INSTANCE_PANEL_LOGOS[panelSize]}`}
-      alt={"Instance logo"}
-      draggable={false}
+    <UKImage
+      src={toAuthImgUrl(InstancePanelLogos[panelSize])}
+      accessibleLabel={"Instance logo"}
       className={styles.icon}
       onClick={() => {
         navigate("/app/a/uk-ewsgit-dash");

@@ -14,7 +14,7 @@ const AppLayout: React.FC = () => {
   const isStandalone = new URLSearchParams(window.location.search).has("standalone");
 
   const [applicationDisplayName, setApplicationDisplayName] = useState<string>("");
-  const [applicationIcon, setApplicationIcon] = useState<string>("");
+  const [applicationIcon, setApplicationIcon] = useState<string | undefined>(undefined);
   const [controls, setControls] = useState<React.ReactNode>(<></>);
   const [onBackButton, setOnBackButton] = useState<() => void>(() => {});
   const [showBackButton, setShowBackButton] = useState<boolean>(false);

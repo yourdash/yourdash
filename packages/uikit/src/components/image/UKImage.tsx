@@ -19,6 +19,7 @@ const UKImage: FC<{
   width?: number;
   height?: number;
   style?: React.CSSProperties;
+  onClick?: () => void;
 }> = (props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [src, setSrc] = useState<string>(props.src);
@@ -56,6 +57,7 @@ const UKImage: FC<{
     <div
       data-src={src}
       ref={ref}
+      onClick={props.onClick}
       className={clippy(styles.componentContainer, props.containerClassName, !loaded && styles.loading, hasFailed && styles.serverError)}
       style={{
         // @ts-ignore

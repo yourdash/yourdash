@@ -18,7 +18,7 @@ const PanelLayout: React.FC<{
   onBackButton: () => void;
   controls: React.ReactNode;
   applicationDisplayName: string;
-  applicationIcon: string;
+  applicationIcon?: string;
 }> = ({ showBackButton, onBackButton, controls, applicationDisplayName, applicationIcon }) => {
   const [panelSide, setPanelSide] = React.useState<"top" | "right" | "bottom" | "left" | undefined>(undefined);
   const [reloadNumber, setReloadNumber] = React.useState<number>(0);
@@ -70,7 +70,7 @@ const PanelLayout: React.FC<{
               )}
               <UKImage
                 className={styles.applicationIcon}
-                src={applicationIcon}
+                src={applicationIcon ?? "/favicon.svg"}
                 accessibleLabel={""}
               />
               <UKText
@@ -106,7 +106,7 @@ const PanelLayout: React.FC<{
               )}
               <UKImage
                 className={styles.applicationIcon}
-                src={applicationIcon}
+                src={applicationIcon ?? "/favicon.svg"}
                 accessibleLabel={""}
               />
               <UKText
@@ -138,7 +138,7 @@ const PanelLayout: React.FC<{
               )}
               <UKImage
                 className={styles.applicationIcon}
-                src={applicationIcon}
+                src={applicationIcon ?? "/favicon.svg"}
                 accessibleLabel={""}
               />
               <UKText
@@ -174,7 +174,7 @@ const PanelLayout: React.FC<{
               )}
               <UKImage
                 className={styles.applicationIcon}
-                src={applicationIcon}
+                src={applicationIcon ?? "/favicon.svg"}
                 accessibleLabel={""}
               />
               <UKText
