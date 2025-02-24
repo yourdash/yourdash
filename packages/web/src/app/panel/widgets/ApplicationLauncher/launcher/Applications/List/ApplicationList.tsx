@@ -1,30 +1,31 @@
 /*
- * Copyright ©2024 Ewsgit<https://github.com/ewsgit> and YourDash<https://github.com/yourdash> contributors.
+ * Copyright ©2025 Ewsgit<https://github.com/ewsgit> and YourDash<https://github.com/yourdash> contributors.
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import DropdownIconButton from "@yourdash/chiplet/components/dropdownIconButton/DropdownIconButton.tsx";
-import { UKIcon } from "@yourdash/chiplet/components/icon/iconDictionary.ts";
-import RightClickMenu from "@yourdash/chiplet/components/rightClickMenu/RightClickMenu.tsx";
+import toAuthImgUrl from "@yourdash/tunnel/src/getAuthImage.js";
+import UKContextMenu from "@yourdash/uikit/src/components/contextMenu/UKContextMenu.js";
 import React from "react";
 import IPanelApplicationsLauncherFrontendModule from "@yourdash/shared/core/panel/applicationsLauncher/application.ts";
-import coreCSI from "@yourdash/csi/coreCSI.ts";
 import styles from "./ApplicationList.module.scss";
 import { useNavigate } from "react-router";
+import UKCard from "@yourdash/uikit/src/components/card/UKCard.js";
+import tun from "@yourdash/tunnel/src";
+import { z } from "zod";
 
-const ApplicationList: React.FC<{ applications: IPanelApplicationsLauncherFrontendModule[] }> = ({ applications }) => {
+const ApplicationList: React.FC<{ modules: IPanelApplicationsLauncherFrontendModule[] }> = ({ modules }) => {
   const navigate = useNavigate();
 
   return (
     <section className={styles.grid}>
-      {applications.map((application) => {
+      {modules.map((module) => {
         return (
-          <RightClickMenu
+          <UKContextMenu
             items={[
               {
                 label: "Pin To Panel",
                 async onClick() {
-                  await coreCSI.postJson("/core/panel/quick-shortcuts/create", { id: application.id, moduleType: application.type });
+                  await tun.post("/core/panel/quick-shortcuts/create", { id: module.id, moduleType: module.type }, "json", z.object({}));
                   // @ts-ignore
                   window.__yourdashCorePanelQuickShortcutsReload?.();
                   return 0;
@@ -33,50 +34,34 @@ const ApplicationList: React.FC<{ applications: IPanelApplicationsLauncherFronte
               {
                 label: "Open In New Tab",
                 onClick() {
-                  window.open(`${window.location.origin}${window.location.pathname}/app/a/${application.id}`, "_blank");
+                  window.open(`${window.location.origin}${window.location.pathname}/app/a/${module.id}`, "_blank");
                   return 0;
                 },
               },
             ]}
             className={styles.item}
-            key={application.id}
-            onClick={() => {
-              navigate(application.url);
-            }}
+            key={module.id}
           >
-            <div className={styles.itemContent}>
+            <UKCard
+              className={styles.itemContent}
+              onClick={() => {
+                if (module.type === "frontend") {
+                  navigate(`${module.endpoint}`);
+                } else {
+                  navigate(`${module.url}`);
+                }
+              }}
+            >
               <img
                 loading={"lazy"}
                 className={styles.itemIcon}
-                src={`${coreCSI.getInstanceUrl()}${application.icon}`}
+                src={toAuthImgUrl(`/core/panel/applications/app/list/${module.id}`)}
                 draggable={false}
                 alt=""
               />
-              <span className={styles.itemLabel}>{application.displayName}</span>
-              <DropdownIconButton
-                className={"ml-auto"}
-                items={[
-                  {
-                    label: "Pin To Panel",
-                    async onClick() {
-                      await coreCSI.postJson("/core/panel/quick-shortcuts/create", { id: application.id, moduleType: application.type });
-                      // @ts-ignore
-                      window.__yourdashCorePanelQuickShortcutsReload?.();
-                      return 0;
-                    },
-                  },
-                  {
-                    label: "Open In New Tab",
-                    onClick() {
-                      window.open(`${window.location.origin}${window.location.pathname}/app/a/${application.id}`, "_blank");
-                      return 0;
-                    },
-                  },
-                ]}
-                icon={UKIcon.ThreeBars}
-              />
-            </div>
-          </RightClickMenu>
+              <span className={styles.itemLabel}>{module.displayName}</span>
+            </UKCard>
+          </UKContextMenu>
         );
       })}
     </section>

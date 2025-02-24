@@ -1,9 +1,9 @@
 /*!
- * Copyright ©2024 Ewsgit<https://github.com/ewsgit> and YourDash<https://github.com/yourdash> contributors.
+ * Copyright ©2025 Ewsgit<https://github.com/ewsgit> and YourDash<https://github.com/yourdash> contributors.
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-@import "../../../../../../node_modules/@yourdash/uikit/theme/themeValues";
+@use "@yourdash/uikit/src/theme/themeValues" as *;
 
 .navigationBar {
   --side-spacing: 10rem;
@@ -22,11 +22,12 @@
   }
 
   .title {
-    margin: 0 0 0 calc(var(#{$theme+$gap}) / 2 * -1);
+    margin: 0 0 0 calc($UKGap / 2 * -1);
   }
 
   .subtitle {
     margin: 0 var(--side-spacing) 0 0;
+    transition: $UKTransition;
     width: 10ch;
     text-align: left;
     font-weight: 300;
@@ -92,8 +93,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-top: calc(var(#{$theme+$padding}) / 2);
-  padding-bottom: calc(var(#{$theme+$padding}) / 2);
+  padding-top: calc($UKPadding / 2);
+  padding-bottom: calc($UKPadding / 2);
 }
 
 
@@ -101,39 +102,11 @@
   border-bottom: none;
   border-left: none;
   border-right: none;
-
-
-  .brand {
-    align-items: center;
-    justify-content: center;
-
-    .logo {
-      height: 2rem;
-      border-radius: 0;
-    }
-
-    .name {
-      margin: 0;
-    }
-
-    .socials {
-      gap: 0.5rem;
-      align-items: center;
-      justify-content: center;
-      margin-left: 10rem;
-
-      .icon {
-        background: transparent;
-        border: none;
-        padding: 0.25rem;
-        height: 2rem;
-
-        &:hover {
-          scale: 1.1;
-        }
-      }
-    }
-  }
+  padding: 0;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .license {
     margin-left: auto;
