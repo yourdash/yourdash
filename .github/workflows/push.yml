@@ -28,8 +28,11 @@ jobs:
         with:
           bun-version: 1.0.11 # or "latest"
 
+      - name: Install PNPM
+        run: npm install -g pnpm
+
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Build website
         run: (cd ./packages/web && bun run build)
