@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [21.7.1]
+        node-version: [latest]
 
     permissions:
       contents: write
@@ -28,15 +28,11 @@ jobs:
         with:
           bun-version: 1.0.11 # or "latest"
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
       - name: Install dependencies
-        run: pnpm install
+        run: npx pnpm install
 
       - name: Build website
-        run: (cd ./packages/web && bun run build)
+        run: (cd ./packages/web && npx pnpm run build)
 
       - name: Deploy to "yourdash.ewsgit.uk" and "yourdash.github.io"
         uses: cpina/github-action-push-to-another-repository@main
