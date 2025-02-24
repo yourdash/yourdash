@@ -28,8 +28,9 @@ jobs:
         with:
           bun-version: 1.0.11 # or "latest"
 
-      - name: Install PNPM
-        run: npm install -g pnpm
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
       - name: Install dependencies
         run: pnpm install
