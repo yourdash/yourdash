@@ -1,0 +1,5 @@
+const bold16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M4%202a1%201%200%2000-1%201v10a1%201%200%20001%201h5.5a3.5%203.5%200%20001.852-6.47A3.5%203.5%200%20008.5%202H4zm4.5%205a1.5%201.5%200%20100-3H5v3h3.5zM5%209v3h4.5a1.5%201.5%200%20000-3H5z'%20/%3e%3c/svg%3e";
+export {
+  bold16 as default
+};
+//# sourceMappingURL=bold-16-BVnterGS.js.map

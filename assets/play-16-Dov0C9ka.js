@@ -1,0 +1,5 @@
+const play16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M1.5%208a6.5%206.5%200%201113%200%206.5%206.5%200%2001-13%200zM8%200a8%208%200%20100%2016A8%208%200%20008%200zM6.379%205.227A.25.25%200%20006%205.442v5.117a.25.25%200%2000.379.214l4.264-2.559a.25.25%200%20000-.428L6.379%205.227z'%20/%3e%3c/svg%3e";
+export {
+  play16 as default
+};
+//# sourceMappingURL=play-16-Dov0C9ka.js.map

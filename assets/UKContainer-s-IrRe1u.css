@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/*!
+ * Copyright ©2025 Ewsgit<https://github.com/ewsgit> and YourDash<https://github.com/yourdash> contributors.
+ * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
+ */
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._component_194wg_10 {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-weight: var(--utfontwgt);
+  font-size: var(--utfontsize);
+  font-family: var(--utfontfam);
+  background: rgb(var(--utbgn));
+  padding: var(--utpdn);
+  border-radius: var(--utrad);
+  gap: var(--utgap);
+}
+
+._disableRounding_194wg_23 {
+  border-radius: 0;
+}

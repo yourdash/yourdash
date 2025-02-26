@@ -1,0 +1,5 @@
+const markdown16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M14.85%203H1.15C.52%203%200%203.52%200%204.15v7.69C0%2012.48.52%2013%201.15%2013h13.69c.64%200%201.15-.52%201.15-1.15v-7.7C16%203.52%2015.48%203%2014.85%203zM9%2011H7V8L5.5%209.92%204%208v3H2V5h2l1.5%202L7%205h2v6zm2.99.5L9.5%208H11V5h2v3h1.5l-2.51%203.5z'%20/%3e%3c/svg%3e";
+export {
+  markdown16 as default
+};
+//# sourceMappingURL=markdown-16-f1C8mnaU.js.map

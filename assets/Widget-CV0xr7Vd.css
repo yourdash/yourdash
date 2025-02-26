@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/*!
+ * Copyright ©2023 @Ewsgit and YourDash contributors.
+ * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
+ */
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._applicationIcon_e1cvh_10 {
+  max-width: 100%;
+  max-height: 100%;
+  transition: var(--transition);
+  aspect-ratio: 1/1;
+  background: rgb(var(--utbgn));
+}
+
+._applicationLabel_e1cvh_18 {
+  position: absolute;
+  padding: 0.25rem 0.75rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: var(--uttrans);
+  opacity: 0;
+  border: var(--utbrd);
+  border-radius: var(--utrad);
+  background: rgb(var(--utbgn));
+  color: rgb(var(--utcol));
+  pointer-events: none;
+}
+
+._application_e1cvh_10 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._application_e1cvh_10 ._applicationIcon_e1cvh_10 {
+  transition: var(--transition);
+}
+._application_e1cvh_10 ._applicationLabel_e1cvh_18 {
+  transition: var(--transition);
+}
+._application_e1cvh_10:hover {
+  cursor: pointer;
+}
+._application_e1cvh_10:hover ._applicationIcon_e1cvh_10 {
+  transition: var(--transition-fast);
+  scale: 1.1;
+}
+._application_e1cvh_10:hover ._applicationLabel_e1cvh_18 {
+  transition: var(--transition-fast);
+  pointer-events: all;
+  opacity: 1;
+}
+._application_e1cvh_10:active ._applicationIcon_e1cvh_10 {
+  scale: 0.9;
+}
+
+._left_e1cvh_59 {
+  margin-top: 0.0625rem;
+  margin-bottom: 0.0625rem;
+}
+._left_e1cvh_59 ._applicationLabel_e1cvh_18 {
+  left: calc(var(--app-panel-size));
+}
+._left_e1cvh_59 ._applicationIcon_e1cvh_10 {
+  width: calc(var(--app-panel-size) - var(--app-panel-padding));
+}
+
+._right_e1cvh_70 {
+  margin-top: 0.0625rem;
+  margin-bottom: 0.0625rem;
+}
+._right_e1cvh_70 ._applicationLabel_e1cvh_18 {
+  right: calc(var(--app-panel-size));
+}
+._right_e1cvh_70 ._applicationIcon_e1cvh_10 {
+  width: calc(var(--app-panel-size) - var(--app-panel-padding));
+}
+
+._bottom_e1cvh_81 {
+  margin-left: 0.0625rem;
+  margin-right: 0.0625rem;
+}
+._bottom_e1cvh_81 ._applicationLabel_e1cvh_18 {
+  bottom: calc(var(--app-panel-size));
+}
+._bottom_e1cvh_81 ._applicationIcon_e1cvh_10 {
+  height: calc(var(--app-panel-size) - var(--app-panel-padding));
+}
+
+._top_e1cvh_92 {
+  margin-left: 0.0625rem;
+  margin-right: 0.0625rem;
+}
+._top_e1cvh_92 ._applicationLabel_e1cvh_18 {
+  top: calc(var(--app-panel-size));
+}
+._top_e1cvh_92 ._applicationIcon_e1cvh_10 {
+  height: calc(var(--app-panel-size) - var(--app-panel-padding));
+}

@@ -1,0 +1,5 @@
+const feedMerged16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M8%2016A8%208%200%20108%200a8%208%200%20000%2016zm.25-11.25a1.75%201.75%200%2001-1.207%201.664A2%202%200%20009%208h.571a1.75%201.75%200%20110%201H9a2.99%202.99%200%2001-2-.764v1.336a1.75%201.75%200%2011-1%200V6.428A1.75%201.75%200%20118.25%204.75z'%20/%3e%3c/svg%3e";
+export {
+  feedMerged16 as default
+};
+//# sourceMappingURL=feed-merged-16-BUgjrdUu.js.map

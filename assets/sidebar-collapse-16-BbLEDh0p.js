@@ -1,0 +1,5 @@
+const sidebarCollapse16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M6.823%207.823L4.427%205.427A.25.25%200%20004%205.604v4.792c0%20.223.27.335.427.177l2.396-2.396a.25.25%200%20000-.354z'%20/%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M1.75%200A1.75%201.75%200%20000%201.75v12.5C0%2015.216.784%2016%201.75%2016h12.5A1.75%201.75%200%200016%2014.25V1.75A1.75%201.75%200%200014.25%200H1.75zM1.5%201.75a.25.25%200%2001.25-.25H9.5v13H1.75a.25.25%200%2001-.25-.25V1.75zM11%2014.5v-13h3.25a.25.25%200%2001.25.25v12.5a.25.25%200%2001-.25.25H11z'%20/%3e%3c/svg%3e";
+export {
+  sidebarCollapse16 as default
+};
+//# sourceMappingURL=sidebar-collapse-16-BbLEDh0p.js.map

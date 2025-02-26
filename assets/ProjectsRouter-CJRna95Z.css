@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._component_1kaw9_6 {
+  height: calc(var(--nav-height) - var(--utpdn));
+  aspect-ratio: 1/1;
+  border-radius: 0;
+}
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._component_yv1j4_6 {
+  --nav-height: calc(2rem + var(--utpdn));
+  width: 100%;
+  height: calc(var(--nav-height) + var(--utpdn) * 2);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  padding: var(--utpdn);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  justify-content: center;
+  align-items: center;
+}
+
+._segment_yv1j4_20 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

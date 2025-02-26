@@ -1,0 +1,5 @@
+const upload16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M8.53%201.22a.75.75%200%2000-1.06%200L3.72%204.97a.75.75%200%20001.06%201.06l2.47-2.47v6.69a.75.75%200%20001.5%200V3.56l2.47%202.47a.75.75%200%20101.06-1.06L8.53%201.22zM3.75%2013a.75.75%200%20000%201.5h8.5a.75.75%200%20000-1.5h-8.5z'%20/%3e%3c/svg%3e";
+export {
+  upload16 as default
+};
+//# sourceMappingURL=upload-16-BLPX_xG8.js.map

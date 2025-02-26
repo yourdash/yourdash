@@ -1,0 +1,5 @@
+const paperAirplane16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M1.592%202.712L2.38%207.25h4.87a.75.75%200%20110%201.5H2.38l-.788%204.538L13.929%208%201.592%202.712zM.989%208L.064%202.68a1.341%201.341%200%20011.85-1.462l13.402%205.744a1.13%201.13%200%20010%202.076L1.913%2014.782a1.341%201.341%200%2001-1.85-1.463L.99%208z'%20/%3e%3c/svg%3e";
+export {
+  paperAirplane16 as default
+};
+//# sourceMappingURL=paper-airplane-16-DlI8M6L6.js.map

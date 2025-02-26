@@ -1,1 +1,0 @@
-import{H as o,j as n,d as i,A as a,I as t}from"./index-Lb0rA5T7.js";const c="_component_194wg_10",d="_disableRounding_194wg_23",s={component:c,disableRounding:d},u=e=>{const l=e.level||o();return n.jsx("div",{className:i(s.component,e.className,e.disableRounding&&s.disableRounding,a(l)),children:n.jsx(t,{children:e.children})})};export{u as U};

@@ -1,0 +1,5 @@
+const deviceMobile16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M3.75%200A1.75%201.75%200%20002%201.75v12.5c0%20.966.784%201.75%201.75%201.75h8.5A1.75%201.75%200%200014%2014.25V1.75A1.75%201.75%200%200012.25%200h-8.5zM3.5%201.75a.25.25%200%2001.25-.25h8.5a.25.25%200%2001.25.25v12.5a.25.25%200%2001-.25.25h-8.5a.25.25%200%2001-.25-.25V1.75zM8%2013a1%201%200%20100-2%201%201%200%20000%202z'%20/%3e%3c/svg%3e";
+export {
+  deviceMobile16 as default
+};
+//# sourceMappingURL=device-mobile-16-C-he1uGv.js.map

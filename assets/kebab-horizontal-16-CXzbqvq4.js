@@ -1,0 +1,5 @@
+const kebabHorizontal16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20d='M8%209a1.5%201.5%200%20100-3%201.5%201.5%200%20000%203zM1.5%209a1.5%201.5%200%20100-3%201.5%201.5%200%20000%203zm13%200a1.5%201.5%200%20100-3%201.5%201.5%200%20000%203z'/%3e%3c/svg%3e";
+export {
+  kebabHorizontal16 as default
+};
+//# sourceMappingURL=kebab-horizontal-16-CXzbqvq4.js.map

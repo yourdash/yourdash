@@ -1,0 +1,5 @@
+const listUnordered16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M2%204a1%201%200%20100-2%201%201%200%20000%202zm3.75-1.5a.75.75%200%20000%201.5h8.5a.75.75%200%20000-1.5h-8.5zm0%205a.75.75%200%20000%201.5h8.5a.75.75%200%20000-1.5h-8.5zm0%205a.75.75%200%20000%201.5h8.5a.75.75%200%20000-1.5h-8.5zM3%208a1%201%200%2011-2%200%201%201%200%20012%200zm-1%206a1%201%200%20100-2%201%201%200%20000%202z'%20/%3e%3c/svg%3e";
+export {
+  listUnordered16 as default
+};
+//# sourceMappingURL=list-unordered-16-BNIW2tfz.js.map

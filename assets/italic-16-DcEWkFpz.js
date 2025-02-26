@@ -1,0 +1,5 @@
+const italic16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M6%202.75A.75.75%200%20016.75%202h6.5a.75.75%200%20010%201.5h-2.505l-3.858%209H9.25a.75.75%200%20010%201.5h-6.5a.75.75%200%20010-1.5h2.505l3.858-9H6.75A.75.75%200%20016%202.75z'%20/%3e%3c/svg%3e";
+export {
+  italic16 as default
+};
+//# sourceMappingURL=italic-16-DcEWkFpz.js.map

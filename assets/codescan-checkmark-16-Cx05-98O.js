@@ -1,0 +1,5 @@
+const codescanCheckmark16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20d='M10.28%206.28a.75.75%200%2010-1.06-1.06L6.25%208.19l-.97-.97a.75.75%200%2000-1.06%201.06l1.5%201.5a.75.75%200%20001.06%200l3.5-3.5z'%20/%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M7.5%2015a7.469%207.469%200%20004.746-1.693l2.474%202.473a.75.75%200%20101.06-1.06l-2.473-2.474A7.5%207.5%200%20107.5%2015zm0-13.5a6%206%200%20104.094%2010.386.75.75%200%2001.293-.292A6%206%200%20007.5%201.5z'%20/%3e%3c/svg%3e";
+export {
+  codescanCheckmark16 as default
+};
+//# sourceMappingURL=codescan-checkmark-16-Cx05-98O.js.map

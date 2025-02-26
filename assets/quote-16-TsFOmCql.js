@@ -1,0 +1,5 @@
+const quote16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M1.75%202.5a.75.75%200%20000%201.5h10.5a.75.75%200%20000-1.5H1.75zm4%205a.75.75%200%20000%201.5h8.5a.75.75%200%20000-1.5h-8.5zm0%205a.75.75%200%20000%201.5h8.5a.75.75%200%20000-1.5h-8.5zM2.5%207.75a.75.75%200%2000-1.5%200v6a.75.75%200%20001.5%200v-6z'%20/%3e%3c/svg%3e";
+export {
+  quote16 as default
+};
+//# sourceMappingURL=quote-16-TsFOmCql.js.map

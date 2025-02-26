@@ -1,0 +1,5 @@
+const triangleRight16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20d='M6.427%204.427l3.396%203.396a.25.25%200%20010%20.354l-3.396%203.396A.25.25%200%20016%2011.396V4.604a.25.25%200%2001.427-.177z'/%3e%3c/svg%3e";
+export {
+  triangleRight16 as default
+};
+//# sourceMappingURL=triangle-right-16-mIh6OHuk.js.map

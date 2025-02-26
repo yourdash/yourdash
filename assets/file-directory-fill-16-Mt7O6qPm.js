@@ -1,0 +1,5 @@
+const fileDirectoryFill16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20d='M1.75%201A1.75%201.75%200%20000%202.75v10.5C0%2014.216.784%2015%201.75%2015h12.5A1.75%201.75%200%200016%2013.25v-8.5A1.75%201.75%200%200014.25%203H7.5a.25.25%200%2001-.2-.1l-.9-1.2C6.07%201.26%205.55%201%205%201H1.75z'/%3e%3c/svg%3e";
+export {
+  fileDirectoryFill16 as default
+};
+//# sourceMappingURL=file-directory-fill-16-Mt7O6qPm.js.map

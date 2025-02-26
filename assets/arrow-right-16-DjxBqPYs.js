@@ -1,0 +1,5 @@
+const arrowRight16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M8.22%202.97a.75.75%200%20011.06%200l4.25%204.25a.75.75%200%20010%201.06l-4.25%204.25a.75.75%200%2001-1.06-1.06l2.97-2.97H3.75a.75.75%200%20010-1.5h7.44L8.22%204.03a.75.75%200%20010-1.06z'%20/%3e%3c/svg%3e";
+export {
+  arrowRight16 as default
+};
+//# sourceMappingURL=arrow-right-16-DjxBqPYs.js.map

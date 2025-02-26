@@ -1,0 +1,5 @@
+const dash16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M2%207.75A.75.75%200%20012.75%207h10a.75.75%200%20010%201.5h-10A.75.75%200%20012%207.75z'%20/%3e%3c/svg%3e";
+export {
+  dash16 as default
+};
+//# sourceMappingURL=dash-16-lSeZrMlI.js.map

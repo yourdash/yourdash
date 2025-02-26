@@ -1,0 +1,5 @@
+const triangleLeft16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20d='M9.573%204.427L6.177%207.823a.25.25%200%20000%20.354l3.396%203.396a.25.25%200%2000.427-.177V4.604a.25.25%200%2000-.427-.177z'/%3e%3c/svg%3e";
+export {
+  triangleLeft16 as default
+};
+//# sourceMappingURL=triangle-left-16-DdYLbez1.js.map

@@ -1,0 +1,5 @@
+const pulse16 = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%3e%3cpath%20fill-rule='evenodd'%20fill='%23ffffff'%20d='M6%202a.75.75%200%2001.696.471L10%2010.731l1.304-3.26A.75.75%200%200112%207h3.25a.75.75%200%20010%201.5h-2.742l-1.812%204.528a.75.75%200%2001-1.392%200L6%204.77%204.696%208.03A.75.75%200%20014%208.5H.75a.75.75%200%20010-1.5h2.742l1.812-4.529A.75.75%200%20016%202z'%20/%3e%3c/svg%3e";
+export {
+  pulse16 as default
+};
+//# sourceMappingURL=pulse-16-DUSBp840.js.map

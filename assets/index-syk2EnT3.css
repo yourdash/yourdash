@@ -1,0 +1,215 @@
+@charset "UTF-8";
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._component_1qh5j_6 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+._icon_1qh5j_12 {
+  height: 4rem;
+}
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._component_h0o6i_6 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+._connectionContainer_h0o6i_12 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._component_1bxth_10 {
+  display: flex;
+  padding: 0.25rem;
+  background: hotpink;
+  border-radius: calc(var(--utrad) / 2);
+}
+
+._odd_1bxth_17 {
+  background: #555555;
+}
+
+._even_1bxth_21 {
+  background: #333333;
+}
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._view_t7uw3_10 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._view_1qf6d_6 {
+  display: flex;
+  gap: 0.5rem;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+._content_1qf6d_13 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  overflow-y: auto;
+}
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._component_h0o6i_6 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+._connectionContainer_h0o6i_12 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._componentCardContainer_1xjus_6 {
+  width: -moz-max-content;
+  width: max-content;
+}
+
+._component_1xjus_6 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: -moz-max-content;
+  width: max-content;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+._icon_1xjus_19 {
+  height: 4rem;
+  width: 4rem;
+}
+/*!
+ * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
+ * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
+ */
+._tabBar_1sxpl_6 {
+  display: flex;
+  padding: calc(var(--utpdn) / 2);
+  padding-bottom: 0;
+  background: rgb(var(--utbgn));
+  border-bottom: var(--utbrd);
+  box-sizing: content-box;
+}
+
+._tabViewContainer_1sxpl_15 {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  background: orange;
+}
+
+._tab_1sxpl_6 {
+  --separator-color: #e5e7eb55;
+  display: flex;
+  flex-direction: row;
+  border: none;
+  border-right: solid 0.125rem var(--separator-color);
+  border-radius: 0;
+  color: rgb(var(--utbtncol));
+  background-color: rgb(var(--utbtnbgn));
+  transition: var(--uttrans), border-bottom 0s linear;
+  height: -moz-max-content;
+  height: max-content;
+}
+._tab_1sxpl_6 ._innerButton_1sxpl_36 {
+  border-radius: 0;
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  text-align: start;
+}
+._tab_1sxpl_6:first-of-type {
+  border-top-left-radius: var(--utbtnrad);
+  border-bottom-left-radius: var(--utbtnrad);
+}
+._tab_1sxpl_6:last-of-type {
+  border-top-right-radius: var(--utbtnrad);
+  border-bottom-right-radius: var(--utbtnrad);
+}
+._tab_1sxpl_6._active_1sxpl_51 {
+  background-color: rgb(var(--utbtnatvbgn));
+  border-radius: var(--utbtnrad);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: solid 0.25rem rgb(var(--utacn));
+  margin-left: calc(var(--utgap) / 2);
+  margin-right: calc(var(--utgap) / 2);
+  border-right: 0 solid var(--separator-color);
+}
+._tab_1sxpl_6._active_1sxpl_51 + * {
+  border-top-left-radius: var(--utbtnrad);
+  border-bottom-left-radius: var(--utbtnrad);
+}
+._tab_1sxpl_6:has(+ ._active_1sxpl_51) {
+  border-top-right-radius: var(--utbtnrad);
+  border-bottom-right-radius: var(--utbtnrad);
+  border-right: 0 solid var(--separator-color);
+}
+._tab_1sxpl_6:first-of-type {
+  margin-left: var(--utgap);
+}
+._tab_1sxpl_6:last-of-type {
+  border-right: 0 solid var(--separator-color);
+  margin-right: var(--utgap);
+}
+
+._tabCloseButton_1sxpl_78 {
+  height: var(--utinphei);
+  width: var(--utinphei);
+  border: solid 0 transparent;
+  background-color: transparent;
+}
+
+._page_1sxpl_85 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
