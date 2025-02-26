@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="Application:Chatbots" pattern="file[YourDash]:applications/chatbots//*" />
-</component>

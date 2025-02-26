@@ -1,8 +1,0 @@
-{
-  "proseWrap": "preserve",
-  "printWidth": 140,
-  "tabWidth": 2,
-  "useTabs": false,
-  "singleAttributePerLine": true,
-  "endOfLine": "lf"
-}

@@ -1,0 +1,1 @@
+import{c as i,j as a,i as c}from"./index-Lb0rA5T7.js";const p=s=>{const t=i.c(2),{side:r}=s,e=r==="top"||r==="bottom"?"row":"column";let o;return t[0]!==e?(o=a.jsx(c,{direction:e}),t[0]=e,t[1]=o):o=t[1],o};export{p as default};
