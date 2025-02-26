@@ -2768,7 +2768,7 @@ class RequestManager {
     this.instance.log.info("request_manager", "Starting RequestManager Listening...");
     try {
       await this.app.ready();
-      await this.app.listen({ port: this.instance.flags.port });
+      await this.app.listen({ port: this.instance.flags.port, host: "0.0.0.0" });
       this.instance.log.info(
         "request_manager",
         `YourDash ReSrc Instance Backend Online & listening at ${this.instance.log.addEmphasisToString(`port "${this.instance.flags.port}"`)}`,
