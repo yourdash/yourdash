@@ -14,7 +14,7 @@ import UKCard from "@yourdash/uikit/src/components/card/UKCard.js";
 import UKFlex from "@yourdash/uikit/src/components/flex/UKFlex.js";
 import UKHeading from "@yourdash/uikit/src/components/heading/UKHeading.js";
 import UKCarousel from "@yourdash/uikit/src/views/carousel/UKCarousel.js";
-import ApplicationPanelContext from "@yourdash/web/src/app/panel/ApplicationPanelContext.js";
+import ApplicationPanelContext from "@yourdash/web/src/app/panel/ApplicationPanelContext.tsx";
 import React, { useEffect, useState } from "react";
 import styles from "./dashApplication.module.scss";
 import { z } from "zod";

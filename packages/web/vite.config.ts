@@ -26,8 +26,10 @@ export default defineConfig({
   base: "./",
   build: {
     rollupOptions: {
-      external: ["chart.js"],
+      external: ["chart.js", "@yourdash/web/src/app/panel/ApplicationPanelContext.tsx"],
     },
+    sourcemap: true,
+    minify: false,
   },
   css: {
     preprocessorOptions: {
