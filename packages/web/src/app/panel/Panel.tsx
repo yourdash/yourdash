@@ -6,8 +6,7 @@
 import clippy from "@yourdash/shared/web/helpers/clippy.ts";
 import UKBox from "@yourdash/uikit/src/components/box/UKBox.js";
 import styles from "./Panel.module.scss";
-import React, { memo, useEffect, useState } from "react";
-import loadable from "@loadable/component";
+import React, { lazy, memo, useEffect, useState } from "react";
 import tun from "@yourdash/tunnel/src";
 import { z } from "zod";
 
@@ -69,7 +68,7 @@ const Panel: React.FC<{
     >
       {widgets.map((widget) => {
         // noinspection LocalVariableNamingConventionJS
-        const LoadableWidget = loadable(() => import(`./widgets/${widget}/Widget`));
+        const LoadableWidget = lazy(() => import(`./widgets/${widget}/Widget`));
 
         return (
           <LoadableWidget

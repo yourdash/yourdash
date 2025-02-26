@@ -6,14 +6,11 @@
 import "animate.css";
 import "./tailwindcss.css";
 import "./main.css";
-import UKText from "@yourdash/uikit/src/components/text/UKText.js";
 import UIKitRoot from "@yourdash/uikit/src/core/root.js";
-import UKDialog from "@yourdash/uikit/src/views/dialog/UKDialog.js";
-import React from "react";
+import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createRoutesFromElements, Route, RouterProvider } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
-import loadable from "@loadable/component";
 import ApplicationRedirectToDash from "./app/ApplicationRedirectToDash.tsx";
 import AppLayout from "./app/AppLayout.tsx";
 import LoginIndexPagePreload from "./root/login/index.preload.tsx";
@@ -29,8 +26,8 @@ import ProjectsIndexPage from "./root/projects/Index.tsx";
 import LinkerDesktopClientStartupPage from "./root/linkerDesktopClientStartup/Index.tsx";
 import WebsocketToasts from "./WebsocketToasts.tsx";
 
-const AppRouter = loadable(() => import("./app/AppRouter.tsx"));
-const ProjectsRouter = loadable(() => import("./root/projects/ProjectsRouter.tsx"));
+const AppRouter = lazy(() => import("./app/AppRouter.tsx"));
+const ProjectsRouter = lazy(() => import("./root/projects/ProjectsRouter.tsx"));
 
 const element = document.getElementById("root") as HTMLElement;
 
@@ -49,9 +46,6 @@ ReactDOM.createRoot(element).render(
   <UIKitRoot>
     <WebsocketToasts />
     <RouterProvider
-      future={{
-        v7_startTransition: true,
-      }}
       router={createBrowserRouter(
         createRoutesFromElements(
           <Route errorElement={<ErrorElement />}>
@@ -134,17 +128,6 @@ ReactDOM.createRoot(element).render(
                   }
                 />
               </Route>
-            </Route>
-            <Route path={"uikit-testing"}>
-              <Route
-                path={"dialog"}
-                element={
-                  <>
-                    <UKDialog>sa</UKDialog>
-                    <UKText text={"Hello world"} />
-                  </>
-                }
-              />
             </Route>
           </Route>,
         ),
