@@ -49,9 +49,9 @@ const Index: React.FC = () => {
       {/* Key Points Cards */}
       <section className={"w-full p-4 pt-0 pb-0 gap-2 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 grid mb-4 max-w-6xl ml-auto mr-auto"}>
         <KeyPointsCard
-          title={"Unleash Deep Personalization"}
+          title={"Unleash Your Creativity"}
           content={
-            "Customize YourDash to perfectly align with your needs. Leverage downloadable themes and plugins, or even develop your own, to craft a truly unique dashboard experience."
+            "Customize YourDash to perfectly align with your needs. Leverage downloadable themes and plugins, or even develop your own, to craft a truly unique, personalized experience."
           }
           action={{
             label: "Discover Customization Options",
@@ -68,7 +68,7 @@ const Index: React.FC = () => {
           action={{
             label: "Explore the Source Code",
             onClick() {
-              navigate("/docs/faq");
+              window.location.href = "https://github.com/yourdash/yourdash";
             },
           }}
         />
