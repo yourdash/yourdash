@@ -1,4 +1,5 @@
 **/node_modules/
+**/dist/
 /fs/
 /packages/backend/**/*.js
 /packages/backend/**/*.js.map

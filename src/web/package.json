@@ -1,0 +1,61 @@
+{
+  "name": "@yourdash/web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=21.0.0"
+  },
+  "scripts": {
+    "dev": "bun run --bun bunx --bun vite --host",
+    "dev-all": "run-p dev-all-uikit dev-all-tunnel dev",
+    "dev-all-uikit": "pnpm run -C \"../uikit\" dev",
+    "dev-all-tunnel": "pnpm run -C \"../tunnel\" dev",
+    "build": "pnpm exec vite build",
+    "preview": "bun run --bun vite preview",
+    "visualize-bundle": "bun run --bun vite-bundle-visualizer"
+  },
+  "devDependencies": {
+    "@types/loadable__component": "^5.13.9",
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^20.1.4",
+    "@types/path-browserify": "^1.0.0",
+    "@types/react": "^18.2.62",
+    "@types/react-dom": "^18.2.7"
+  },
+  "dependencies": {
+    "@loadable/component": "^5.16.4",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "@yourdash/backend": "workspace:*",
+    "@yourdash/panel-context": "workspace:*",
+    "@yourdash/tunnel-embedded": "workspace:*",
+    "@yourdash/uikit-embedded": "workspace:*",
+    "@yourdash/uikit": "workspace:*",
+    "animate.css": "^4.1.1",
+    "autoprefixer": "^10.4.20",
+    "babel-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
+    "clsx": "^2.1.1",
+    "eslint": "^9.21.0",
+    "path": "^0.12.7",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.27",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.2.0",
+    "react-router-dom": "^7.2.0",
+    "sass": "^1.85.1",
+    "tailwindcss": "^3.3.3",
+    "type-fest": "^4.14.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0",
+    "vite-plugin-dynamic-import": "^1.5.0",
+    "xml2js": "^0.6.2",
+    "zod": "^3.24.1",
+    "npm-run-all": "^4.1.5"
+  }
+}

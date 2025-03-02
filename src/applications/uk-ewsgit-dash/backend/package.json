@@ -1,0 +1,8 @@
+{
+  "name": "@app/backend",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "@yourdash/backend": "workspace:../../../src/backend"
+  }
+}

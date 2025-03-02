@@ -6,10 +6,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "web": "bun run --cwd=packages/web dev",
-    "backend": "bun run --cwd=packages/backend dev",
-    "legacy-backend": "bun run --cwd=packages/backend legacy-dev",
-    "production-backend": "bun run --cwd=packages/backend production"
+    "web": "bun run --cwd=src/web dev",
+    "web-all": "pnpm run -C \"src/web\" dev-all",
+    "backend": "bun run --cwd=src/backend dev",
+    "legacy-backend": "bun run --cwd=src/backend legacy-dev",
+    "production-backend": "bun run --cwd=src/backend production"
   },
   "dependencies": {
     "prettier": "^3.3.3",
