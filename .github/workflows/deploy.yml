@@ -32,12 +32,12 @@ jobs:
         run: npx pnpm install
 
       - name: Build website
-        run: (cd ./packages/web && npx pnpm run build)
+        run: (cd ./src/web && npx pnpm run build)
 
       - name: Deploy to prod
         uses: moodiest/push-to-branch-action@develop
         env:
           REPO: self
           BRANCH: prod
-          FOLDER: packages/web/dist/
+          FOLDER: src/web/dist/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

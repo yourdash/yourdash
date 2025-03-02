@@ -33,4 +33,4 @@ jobs:
         run: npx pnpm install
 
       - name: Build website
-        run: (cd ./packages/web && npx pnpm run build)
+        run: (cd ./src/web && npx pnpm run build)
