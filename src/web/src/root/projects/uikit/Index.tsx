@@ -10,9 +10,9 @@ import UKSeparator from "@yourdash/uikit-embedded/src/components/separator/UKSep
 import UKText from "@yourdash/uikit-embedded/src/components/text/UKText.js";
 import { UKIcons } from "@yourdash/uikit-embedded/src/core/iconDictionary.js";
 import UKPageHeader from "@yourdash/uikit-embedded/src/views/header/UKPageHeader.js";
-import UKNavbarNavImage from "@yourdash/uikit/src/views/navBar/components/navImage/UKNavbarNavImage.js";
-import UKNavbarNavTitle from "@yourdash/uikit/src/views/navBar/components/navTitle/UKNavbarNavTitle.js";
-import UKNavBar from "@yourdash/uikit/src/views/navBar/UKNavBar.js";
+import UKNavbarNavImage from "@yourdash/uikit-embedded/src/views/navBar/components/navImage/UKNavbarNavImage.js";
+import UKNavbarNavTitle from "@yourdash/uikit-embedded/src/views/navBar/components/navTitle/UKNavbarNavTitle.js";
+import UKNavBar from "@yourdash/uikit-embedded/src/views/navBar/UKNavBar.js";
 import React from "react";
 import { useNavigate } from "react-router";
 
