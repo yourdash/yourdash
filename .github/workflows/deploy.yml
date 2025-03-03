@@ -32,6 +32,9 @@ jobs:
         run: npx pnpm install
 
       - name: Build website
+        env:
+          VITE_BUILD_COMMIT_SHA: ${{ github.sha }}
+          VITE_BUILD_COMMIT_BRANCH: ${{ github.head_ref }}
         run: (cd ./src/web && npx pnpm run build)
 
       - name: Deploy to prod

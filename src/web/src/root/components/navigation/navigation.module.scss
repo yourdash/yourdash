@@ -103,13 +103,11 @@
   border-left: none;
   border-right: none;
   padding: 0;
-  height: 3rem;
+  height: max-content;
   display: flex;
   align-items: center;
-  justify-content: center;
 
-  .license {
-    margin-left: auto;
-    margin-right: auto;
+  .link {
+    height: 2rem;
   }
 }

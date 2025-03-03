@@ -77,14 +77,18 @@ const Navigation: FC<{ subtitle?: string }> = ({ subtitle }) => {
           text={"learn more."}
         />
       </UKBox>
+      {/* @ts-ignore */}
       <Outlet />
       <UKBox className={styles.footer}>
         <UKFlex
+          centerHorizontally={true}
+          centerVertically={true}
           direction={"row"}
           className={styles.license}
         >
           <UKText text={"©2022-2025"} />
           <UKLink
+            className={styles.link}
             hideLinkIcon={true}
             to={"https://ewsgit.uk"}
             text={"Ewsgit"}
@@ -94,9 +98,34 @@ const Navigation: FC<{ subtitle?: string }> = ({ subtitle }) => {
             disableMargin={true}
           />
           <UKLink
+            className={styles.link}
             hideLinkIcon={true}
             to={"https://ewsgit.mit-license.org"}
             text={"Licensed under the MIT License"}
+          />
+        </UKFlex>
+        <UKSeparator
+          direction={"column"}
+          disableMargin={true}
+        />
+        <UKFlex
+          centerHorizontally={true}
+          centerVertically={true}
+          direction={"row"}
+          className={styles.license}
+        >
+          <UKLink
+            className={styles.link}
+            hideLinkIcon={true}
+            text={import.meta.env.VITE_BUILD_COMMIT_SHA || "Not production build"}
+            to={`https://github.com/yourdash/yourdash/tree/${import.meta.env.VITE_BUILD_COMMIT_SHA || "Not production build"}`}
+          />
+          <UKText text={` @ `} />
+          <UKLink
+            className={styles.link}
+            hideLinkIcon={true}
+            text={import.meta.env.VITE_BUILD_COMMIT_BRANCH || "Not production build"}
+            to={`https://github.com/yourdash/yourdash/tree/${import.meta.env.VITE_BUILD_COMMIT_BRANCH || "Not production build"}`}
           />
         </UKFlex>
       </UKBox>
