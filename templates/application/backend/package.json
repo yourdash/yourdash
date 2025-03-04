@@ -1,0 +1,8 @@
+{
+  "name": "@yourdash/application-uk-ewsgit-template-backend",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "@yourdash/backend": "workspace:*"
+  }
+}

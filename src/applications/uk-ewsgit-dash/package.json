@@ -1,0 +1,9 @@
+{
+  "name": "@yourdash/application-uk-ewsgit-dash",
+  "scripts": {
+    "dev-web": "pnpm run -C \"./web\" dev"
+  },
+  "author": "Ewsgit",
+  "private": true,
+  "license": "MIT"
+}
