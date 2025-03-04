@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./Widget-BsYJ9oS5.js","./Widget-BUdP-UQ1.css","./Widget-BlytxZCu.js","./Widget-CMqR_5Pm.css","./Widget-D2ckU6Qd.js","./Widget-CV0xr7Vd.css","./Widget-B554DQgR.js","./Widget-Dabsi-s1.css","./ProjectsRouter-DPxQtuWg.js","./ProjectsRouter-CJRna95Z.css"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./Widget-BCFoHKmI.js","./Widget-BUdP-UQ1.css","./Widget-CtrSy4DI.js","./Widget-CMqR_5Pm.css","./Widget-dzNNx5O6.js","./Widget-CV0xr7Vd.css","./Widget-DQIXMedc.js","./Widget-Dabsi-s1.css","./ProjectsRouter-7QBIpgJN.js","./ProjectsRouter-CJRna95Z.css"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
@@ -504,8 +504,8 @@ function requireReact_production() {
   react_production.createRef = function() {
     return { current: null };
   };
-  react_production.forwardRef = function(render) {
-    return { $$typeof: REACT_FORWARD_REF_TYPE, render };
+  react_production.forwardRef = function(render3) {
+    return { $$typeof: REACT_FORWARD_REF_TYPE, render: render3 };
   };
   react_production.isValidElement = isValidElement;
   react_production.lazy = function(ctor) {
@@ -547,8 +547,8 @@ function requireReact_production() {
   react_production.useCallback = function(callback, deps) {
     return ReactSharedInternals.H.useCallback(callback, deps);
   };
-  react_production.useContext = function(Context) {
-    return ReactSharedInternals.H.useContext(Context);
+  react_production.useContext = function(Context2) {
+    return ReactSharedInternals.H.useContext(Context2);
   };
   react_production.useDebugValue = function() {
   };
@@ -636,6 +636,8 @@ function requireCompilerRuntime() {
   return compilerRuntime.exports;
 }
 var compilerRuntimeExports = requireCompilerRuntime();
+var reactExports = requireReact();
+const React = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
 function r(e) {
   var t, f, n = "";
   if ("string" == typeof e || "number" == typeof e) n += e;
@@ -649,23 +651,10 @@ function clsx() {
   for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
   return n;
 }
-function clippy(...input2) {
+function clippy$1(...input2) {
   return clsx(...input2).replaceAll(`
 `, ``).split(" ").filter((str) => str !== "").join(" ");
 }
-function isMobileDevice() {
-  const nav = window.navigator;
-  const searchParams = new URLSearchParams(window.location.search);
-  if (searchParams.has("ukmobile")) return true;
-  if (nav == null ? void 0 : nav.userAgentData) {
-    return nav.userAgentData.mobile || false;
-  } else {
-    const mobileDeviceRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-    return navigator.userAgent.match(mobileDeviceRegex) !== null;
-  }
-}
-var reactExports = requireReact();
-const React = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
 const component$j = "_component_kjav3_10";
 const styles$y = {
   component: component$j
@@ -674,7 +663,7 @@ const UKButton = (props) => {
   const $ = compilerRuntimeExports.c(7);
   let t0;
   if ($[0] !== props.className) {
-    t0 = clippy(styles$y.component, props.className);
+    t0 = clippy$1(styles$y.component, props.className);
     $[0] = props.className;
     $[1] = t0;
   } else {
@@ -834,12 +823,6 @@ const ContextMenuRoot = (t0) => {
 function _temp$9(item) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(UKButton, { className: styles$x.button, text: item.label, onClick: item.onClick }, item.label);
 }
-function generateUUID() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
-    const r2 = Math.random() * 16 | 0, v = c == "x" ? r2 : r2 & 3 | 8;
-    return v.toString(16);
-  });
-}
 const component$h = "_component_psvf3_10";
 const h1component = "_h1component_psvf3_17";
 const h2component = "_h2component_psvf3_22";
@@ -895,7 +878,7 @@ const UKHeading = (props) => {
     case 1: {
       let t0;
       if ($[0] !== props.className) {
-        t0 = clippy(styles$w.component, styles$w.h1component, props.className);
+        t0 = clippy$1(styles$w.component, styles$w.h1component, props.className);
         $[0] = props.className;
         $[1] = t0;
       } else {
@@ -916,7 +899,7 @@ const UKHeading = (props) => {
     case 2: {
       let t0;
       if ($[6] !== props.className) {
-        t0 = clippy(styles$w.component, styles$w.h2component, props.className);
+        t0 = clippy$1(styles$w.component, styles$w.h2component, props.className);
         $[6] = props.className;
         $[7] = t0;
       } else {
@@ -937,7 +920,7 @@ const UKHeading = (props) => {
     case 3: {
       let t0;
       if ($[12] !== props.className) {
-        t0 = clippy(styles$w.component, styles$w.h3component, props.className);
+        t0 = clippy$1(styles$w.component, styles$w.h3component, props.className);
         $[12] = props.className;
         $[13] = t0;
       } else {
@@ -958,7 +941,7 @@ const UKHeading = (props) => {
     case 4: {
       let t0;
       if ($[18] !== props.className) {
-        t0 = clippy(styles$w.component, styles$w.h4component, props.className);
+        t0 = clippy$1(styles$w.component, styles$w.h4component, props.className);
         $[18] = props.className;
         $[19] = t0;
       } else {
@@ -979,7 +962,7 @@ const UKHeading = (props) => {
     case 5: {
       let t0;
       if ($[24] !== props.className) {
-        t0 = clippy(styles$w.component, styles$w.h5component, props.className);
+        t0 = clippy$1(styles$w.component, styles$w.h5component, props.className);
         $[24] = props.className;
         $[25] = t0;
       } else {
@@ -1000,7 +983,7 @@ const UKHeading = (props) => {
     case 6: {
       let t0;
       if ($[30] !== props.className) {
-        t0 = clippy(styles$w.component, styles$w.h6component, props.className);
+        t0 = clippy$1(styles$w.component, styles$w.h6component, props.className);
         $[30] = props.className;
         $[31] = t0;
       } else {
@@ -1031,28 +1014,35 @@ const styles$u = {
   column: column$1
 };
 const UKSeparator = (props) => {
-  const $ = compilerRuntimeExports.c(5);
+  const $ = compilerRuntimeExports.c(6);
   const t0 = styles$u[props.direction];
   const t1 = props.disableMargin && styles$u.disableMargin;
   let t2;
-  if ($[0] !== t0 || $[1] !== t1) {
-    t2 = clippy(styles$u.component, t0, t1);
-    $[0] = t0;
-    $[1] = t1;
-    $[2] = t2;
+  if ($[0] !== props.className || $[1] !== t0 || $[2] !== t1) {
+    t2 = clippy$1(styles$u.component, t0, t1, props.className);
+    $[0] = props.className;
+    $[1] = t0;
+    $[2] = t1;
+    $[3] = t2;
   } else {
-    t2 = $[2];
+    t2 = $[3];
   }
   let t3;
-  if ($[3] !== t2) {
+  if ($[4] !== t2) {
     t3 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: t2 });
-    $[3] = t2;
-    $[4] = t3;
+    $[4] = t2;
+    $[5] = t3;
   } else {
-    t3 = $[4];
+    t3 = $[5];
   }
   return t3;
 };
+function generateUUID() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+    const r2 = Math.random() * 16 | 0, v = c == "x" ? r2 : r2 & 3 | 8;
+    return v.toString(16);
+  });
+}
 const IncrementLevel = (props) => {
   const $ = compilerRuntimeExports.c(3);
   const t0 = useLevel() + 1;
@@ -1073,7 +1063,7 @@ const styles$t = {
 };
 const UKBox = (props) => {
   const level = props.level || useLevel();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy(styles$t.component, props.className, useLevelClass(level)), style: props.style, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IncrementLevel, { children: props.children }) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy$1(styles$t.component, props.className, useLevelClass(level)), style: props.style, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IncrementLevel, { children: props.children }) });
 };
 const component$e = "_component_173cg_10";
 const clickable = "_clickable_173cg_25";
@@ -1104,16 +1094,16 @@ const DecrementLevel = (props) => {
 const UKCard = (props) => {
   const level = props.level || useLevel();
   if (props.onClick) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IncrementLevel, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { style: props.style, className: clippy(styles$s.component, useLevelClass(level), props.containerClassName, styles$s.clickable), onClick: props.onClick, children: [
-      props.header && /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: clippy(styles$s.header, props.headerClassName), children: props.header }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy(styles$s.content, props.className), children: props.children }),
-      props.actions && /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: clippy(styles$s.actions, props.actionsClassName), children: props.actions })
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IncrementLevel, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { style: props.style, className: clippy$1(styles$s.component, useLevelClass(level), props.containerClassName, styles$s.clickable), onClick: props.onClick, children: [
+      props.header && /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: clippy$1(styles$s.header, props.headerClassName), children: props.header }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy$1(styles$s.content, props.className), children: props.children }),
+      props.actions && /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: clippy$1(styles$s.actions, props.actionsClassName), children: props.actions })
     ] }) }) });
   }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IncrementLevel, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: props.style, className: clippy(styles$s.component, useLevelClass(level), props.containerClassName), children: [
-    props.header && /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: clippy(styles$s.header, props.headerClassName), children: props.header }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy(styles$s.content, props.className), children: props.children }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(DecrementLevel, { children: props.actions && /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: clippy(styles$s.actions, props.actionsClassName), children: props.actions }) })
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IncrementLevel, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: props.style, className: clippy$1(styles$s.component, useLevelClass(level), props.containerClassName), children: [
+    props.header && /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: clippy$1(styles$s.header, props.headerClassName), children: props.header }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy$1(styles$s.content, props.className), children: props.children }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(DecrementLevel, { children: props.actions && /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: clippy$1(styles$s.actions, props.actionsClassName), children: props.actions }) })
   ] }) }) });
 };
 const UKIcons = {
@@ -1486,7 +1476,7 @@ const UKIconButton = (props) => {
   const t2 = props.accessibleLabel;
   let t3;
   if ($[0] !== props.className) {
-    t3 = clippy(styles$q.component, props.className);
+    t3 = clippy$1(styles$q.component, props.className);
     $[0] = props.className;
     $[1] = t3;
   } else {
@@ -1523,7 +1513,7 @@ const UKText = (props) => {
   const $ = compilerRuntimeExports.c(5);
   let t0;
   if ($[0] !== props.className) {
-    t0 = clippy(styles$p.component, props.className);
+    t0 = clippy$1(styles$p.component, props.className);
     $[0] = props.className;
     $[1] = t0;
   } else {
@@ -1615,7 +1605,7 @@ const Toasts = (t0) => {
   if ($[2] !== toasts) {
     let t42;
     if ($[4] === Symbol.for("react.memo_cache_sentinel")) {
-      t42 = (t_2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(UKCard, { actions: t_2.persist ? /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { accessibleLabel: "Close toasts", icon: UKIcons.X, onClick: () => setToasts((toasts_0) => toasts_0.filter((x) => x.uuid !== t_2.uuid)) }) : null, className: clippy(styles$o.cardContent, t_2.type && styles$o[t_2.type]), containerClassName: clippy(styles$o.component, t_2.persist && styles$o.pointerEvents, t_2.animatingOut ? "animate__animated animate__fadeOutRightBig" : "animate__animated animate__fadeInDown"), children: [
+      t42 = (t_2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(UKCard, { actions: t_2.persist ? /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { accessibleLabel: "Close toasts", icon: UKIcons.X, onClick: () => setToasts((toasts_0) => toasts_0.filter((x) => x.uuid !== t_2.uuid)) }) : null, className: clippy$1(styles$o.cardContent, t_2.type && styles$o[t_2.type]), containerClassName: clippy$1(styles$o.component, t_2.persist && styles$o.pointerEvents, t_2.animatingOut ? "animate__animated animate__fadeOutRightBig" : "animate__animated animate__fadeInDown"), children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(UKHeading, { className: styles$o.heading, level: 3, text: t_2.content.title }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(UKSeparator, { direction: "column" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { className: styles$o.body, text: t_2.content.body })
@@ -1652,11 +1642,22 @@ const Toasts = (t0) => {
   }
   return t5;
 };
+function isMobileDevice() {
+  const nav = window.navigator;
+  const searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.has("ukmobile")) return true;
+  if (nav == null ? void 0 : nav.userAgentData) {
+    return nav.userAgentData.mobile || false;
+  } else {
+    const mobileDeviceRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    return navigator.userAgent.match(mobileDeviceRegex) !== null;
+  }
+}
 const UIKitRoot = (props) => {
   const $ = compilerRuntimeExports.c(3);
   let t0;
   if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
-    t0 = clippy(styles$v.theme, styles$v.level0, isMobileDevice() && styles$v.mobile);
+    t0 = clippy$1(styles$v.theme, styles$v.level0, isMobileDevice() && styles$v.mobile);
     $[0] = t0;
   } else {
     t0 = $[0];
@@ -13269,7 +13270,7 @@ function createBrowserHistory(options = {}) {
     options
   );
 }
-function invariant(value, message2) {
+function invariant$1(value, message2) {
   if (value === false || value === null || typeof value === "undefined") {
     throw new Error(message2);
   }
@@ -13394,7 +13395,7 @@ function getUrlBasedHistory(getLocation, createHref2, validateLocation, options 
     let base = window2.location.origin !== "null" ? window2.location.origin : window2.location.href;
     let href2 = typeof to === "string" ? to : createPath(to);
     href2 = href2.replace(/ $/, "%20");
-    invariant(
+    invariant$1(
       base,
       `No window.location.(origin|href) available to create URL for href: ${href2}`
     );
@@ -13453,11 +13454,11 @@ function convertRoutesToDataRoutes(routes, mapRouteProperties2, parentPath = [],
   return routes.map((route, index) => {
     let treePath = [...parentPath, String(index)];
     let id = typeof route.id === "string" ? route.id : treePath.join("-");
-    invariant(
+    invariant$1(
       route.index !== true || !route.children,
       `Cannot specify children on an index route`
     );
-    invariant(
+    invariant$1(
       !manifest[id],
       `Found a route id collision on id "${id}".  Route id's must be globally unique within Data Router usages`
     );
@@ -13530,7 +13531,7 @@ function flattenRoutes(routes, branches = [], parentsMeta = [], parentPath = "")
       route
     };
     if (meta.relativePath.startsWith("/")) {
-      invariant(
+      invariant$1(
         meta.relativePath.startsWith(parentPath),
         `Absolute route path "${meta.relativePath}" nested under path "${parentPath}" is not valid. An absolute child route path must start with the combined path of all its parent routes.`
       );
@@ -13539,7 +13540,7 @@ function flattenRoutes(routes, branches = [], parentsMeta = [], parentPath = "")
     let path = joinPaths([parentPath, meta.relativePath]);
     let routesMeta = parentsMeta.concat(meta);
     if (route.children && route.children.length > 0) {
-      invariant(
+      invariant$1(
         // Our types know better, but runtime JS may not!
         // @ts-expect-error
         route.index !== true,
@@ -13808,15 +13809,15 @@ function resolveTo(toArg, routePathnames, locationPathname, isPathRelative = fal
     to = parsePath(toArg);
   } else {
     to = { ...toArg };
-    invariant(
+    invariant$1(
       !to.pathname || !to.pathname.includes("?"),
       getInvalidPathError("?", "pathname", "search", to)
     );
-    invariant(
+    invariant$1(
       !to.pathname || !to.pathname.includes("#"),
       getInvalidPathError("#", "pathname", "hash", to)
     );
-    invariant(
+    invariant$1(
       !to.search || !to.search.includes("#"),
       getInvalidPathError("#", "search", "hash", to)
     );
@@ -13917,7 +13918,7 @@ var ResetLoaderDataSymbol = Symbol("ResetLoaderData");
 function createRouter(init) {
   const routerWindow = init.window ? init.window : typeof window !== "undefined" ? window : void 0;
   const isBrowser2 = typeof routerWindow !== "undefined" && typeof routerWindow.document !== "undefined" && typeof routerWindow.document.createElement !== "undefined";
-  invariant(
+  invariant$1(
     init.routes.length > 0,
     "You must provide a non-empty routes array to createRouter"
   );
@@ -14905,7 +14906,7 @@ function createRouter(init) {
     );
     let routesToUse = inFlightDataRoutes || dataRoutes;
     let matches = state.navigation.state !== "idle" ? matchRoutes(routesToUse, state.navigation.location, basename) : state.matches;
-    invariant(matches, "Didn't find any matches after fetcher action");
+    invariant$1(matches, "Didn't find any matches after fetcher action");
     let loadId = ++incrementingLoadId;
     fetchReloadIds.set(key, loadId);
     let loadFetcher = getLoadingFetcher(submission, actionResult.data);
@@ -14995,7 +14996,7 @@ function createRouter(init) {
     }
     abortStaleFetchLoads(loadId);
     if (state.navigation.state === "loading" && loadId > pendingNavigationLoadId) {
-      invariant(pendingAction, "Expected pending action");
+      invariant$1(pendingAction, "Expected pending action");
       pendingNavigationController && pendingNavigationController.abort();
       completeNavigation(state.navigation.location, {
         matches,
@@ -15106,7 +15107,7 @@ function createRouter(init) {
       isRevalidationRequired = true;
     }
     let location = redirect2.response.headers.get("Location");
-    invariant(location, "Expected a Location header on the redirect Response");
+    invariant$1(location, "Expected a Location header on the redirect Response");
     location = normalizeRedirectLocation(
       location,
       new URL(request.url),
@@ -15332,7 +15333,7 @@ function createRouter(init) {
     let updatedFetchers = false;
     for (let key of fetchRedirectIds) {
       let fetcher = state.fetchers.get(key);
-      invariant(fetcher, `Expected fetcher: ${key}`);
+      invariant$1(fetcher, `Expected fetcher: ${key}`);
       if (fetcher.state === "loading") {
         fetchRedirectIds.delete(key);
         doneKeys.push(key);
@@ -15347,7 +15348,7 @@ function createRouter(init) {
     for (let [key, id] of fetchReloadIds) {
       if (id < landedId) {
         let fetcher = state.fetchers.get(key);
-        invariant(fetcher, `Expected fetcher: ${key}`);
+        invariant$1(fetcher, `Expected fetcher: ${key}`);
         if (fetcher.state === "loading") {
           abortFetcher(key);
           fetchReloadIds.delete(key);
@@ -15371,7 +15372,7 @@ function createRouter(init) {
   }
   function updateBlocker(key, newBlocker) {
     let blocker = state.blockers.get(key) || IDLE_BLOCKER;
-    invariant(
+    invariant$1(
       blocker.state === "unblocked" && newBlocker.state === "blocked" || blocker.state === "blocked" && newBlocker.state === "blocked" || blocker.state === "blocked" && newBlocker.state === "proceeding" || blocker.state === "blocked" && newBlocker.state === "unblocked" || blocker.state === "proceeding" && newBlocker.state === "unblocked",
       `Invalid blocker state transition: ${blocker.state} -> ${newBlocker.state}`
     );
@@ -15699,7 +15700,7 @@ function normalizeNavigateOptions(isFetcher, path, opts) {
       }
     }
   }
-  invariant(
+  invariant$1(
     typeof FormData === "function",
     "FormData is not available in this environment"
   );
@@ -15900,7 +15901,7 @@ function patchRoutesImpl(routeId, children, routesToUse, manifest, mapRoutePrope
   let childrenToPatch;
   if (routeId) {
     let route = manifest[routeId];
-    invariant(
+    invariant$1(
       route,
       `No route found to patch children into: routeId = ${routeId}`
     );
@@ -15950,7 +15951,7 @@ async function loadLazyRouteModule(route, mapRouteProperties2, manifest) {
     return;
   }
   let routeToUpdate = manifest[route.id];
-  invariant(routeToUpdate, "No route found in manifest");
+  invariant$1(routeToUpdate, "No route found in manifest");
   let routeUpdates = {};
   for (let lazyRouteProperty in lazyRoute) {
     let staticRouteValue = routeToUpdate[lazyRouteProperty];
@@ -16184,7 +16185,7 @@ async function convertDataStrategyResultToDataResult(dataStrategyResult) {
 }
 function normalizeRelativeRoutingRedirectResponse(response, request, routeId, matches, basename) {
   let location = response.headers.get("Location");
-  invariant(
+  invariant$1(
     location,
     "Redirects returned/thrown from loaders/actions must have a Location header"
   );
@@ -16260,7 +16261,7 @@ function processRouteLoaderData(matches, results, pendingActionResult, isStaticH
     }
     let id = match.route.id;
     let result = results[id];
-    invariant(
+    invariant$1(
       !isRedirectResult(result),
       "Cannot handle redirect results in processLoaderData"
     );
@@ -16319,7 +16320,7 @@ function processLoaderData(state, matches, results, pendingActionResult, revalid
   revalidatingFetchers.forEach((rf) => {
     let { key, match, controller } = rf;
     let result = fetcherResults[key];
-    invariant(result, "Did not find corresponding fetcher result");
+    invariant$1(result, "Did not find corresponding fetcher result");
     if (controller && controller.signal.aborted) {
       return;
     } else if (isErrorResult(result)) {
@@ -16332,7 +16333,7 @@ function processLoaderData(state, matches, results, pendingActionResult, revalid
       }
       state.fetchers.delete(key);
     } else if (isRedirectResult(result)) {
-      invariant(false, "Unhandled fetcher revalidation redirect");
+      invariant$1(false, "Unhandled fetcher revalidation redirect");
     } else {
       let doneFetcher = getDoneFetcher(result.data);
       state.fetchers.set(key, doneFetcher);
@@ -16704,7 +16705,7 @@ RouteContext.displayName = "Route";
 var RouteErrorContext = reactExports.createContext(null);
 RouteErrorContext.displayName = "RouteError";
 function useHref(to, { relative } = {}) {
-  invariant(
+  invariant$1(
     useInRouterContext(),
     // TODO: This error is probably because they somehow have 2 versions of the
     // router loaded. We can help them understand how to avoid that.
@@ -16722,7 +16723,7 @@ function useInRouterContext() {
   return reactExports.useContext(LocationContext) != null;
 }
 function useLocation() {
-  invariant(
+  invariant$1(
     useInRouterContext(),
     // TODO: This error is probably because they somehow have 2 versions of the
     // router loaded. We can help them understand how to avoid that.
@@ -16742,7 +16743,7 @@ function useNavigate() {
   return isDataRoute ? useNavigateStable() : useNavigateUnstable();
 }
 function useNavigateUnstable() {
-  invariant(
+  invariant$1(
     useInRouterContext(),
     // TODO: This error is probably because they somehow have 2 versions of the
     // router loaded. We can help them understand how to avoid that.
@@ -16822,7 +16823,7 @@ function useRoutes(routes, locationArg) {
 }
 function useRoutesImpl(routes, locationArg, dataRouterState, future) {
   var _a;
-  invariant(
+  invariant$1(
     useInRouterContext(),
     // TODO: This error is probably because they somehow have 2 versions of the
     // router loaded. We can help them understand how to avoid that.
@@ -16849,7 +16850,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   let location;
   if (locationArg) {
     let parsedLocationArg = typeof locationArg === "string" ? parsePath(locationArg) : locationArg;
-    invariant(
+    invariant$1(
       parentPathnameBase === "/" || ((_a = parsedLocationArg.pathname) == null ? void 0 : _a.startsWith(parentPathnameBase)),
       `When overriding the location using \`<Routes location>\` or \`useRoutes(routes, location)\`, the location pathname must begin with the portion of the URL pathname that was matched by all parent routes. The current pathname base is "${parentPathnameBase}" but pathname "${parsedLocationArg.pathname}" was given in the \`location\` prop.`
     );
@@ -17004,7 +17005,7 @@ function _renderMatches(matches, parentMatches = [], dataRouterState = null, fut
     let errorIndex = renderedMatches.findIndex(
       (m) => m.route.id && (errors == null ? void 0 : errors[m.route.id]) !== void 0
     );
-    invariant(
+    invariant$1(
       errorIndex >= 0,
       `Could not find a matching route for errors on route IDs: ${Object.keys(
         errors
@@ -17106,23 +17107,23 @@ function getDataRouterConsoleError(hookName) {
 }
 function useDataRouterContext(hookName) {
   let ctx = reactExports.useContext(DataRouterContext);
-  invariant(ctx, getDataRouterConsoleError(hookName));
+  invariant$1(ctx, getDataRouterConsoleError(hookName));
   return ctx;
 }
 function useDataRouterState(hookName) {
   let state = reactExports.useContext(DataRouterStateContext);
-  invariant(state, getDataRouterConsoleError(hookName));
+  invariant$1(state, getDataRouterConsoleError(hookName));
   return state;
 }
 function useRouteContext(hookName) {
   let route = reactExports.useContext(RouteContext);
-  invariant(route, getDataRouterConsoleError(hookName));
+  invariant$1(route, getDataRouterConsoleError(hookName));
   return route;
 }
 function useCurrentRouteId(hookName) {
   let route = useRouteContext(hookName);
   let thisRoute = route.matches[route.matches.length - 1];
-  invariant(
+  invariant$1(
     thisRoute.route.id,
     `${hookName} can only be used on routes that contain a unique "id"`
   );
@@ -17441,7 +17442,7 @@ function Outlet(props) {
   return useOutlet(props.context);
 }
 function Route(_props) {
-  invariant(
+  invariant$1(
     false,
     `A <Route> is only ever to be used as the child of <Routes> element, never rendered directly. Please wrap your <Route> in a <Routes>.`
   );
@@ -17454,7 +17455,7 @@ function Router({
   navigator: navigator2,
   static: staticProp = false
 }) {
-  invariant(
+  invariant$1(
     !useInRouterContext(),
     `You cannot render a <Router> inside another <Router>. You should never have more than one in your app.`
   );
@@ -17523,11 +17524,11 @@ function createRoutesFromChildren(children, parentPath = []) {
       );
       return;
     }
-    invariant(
+    invariant$1(
       element2.type === Route,
       `[${typeof element2.type === "string" ? element2.type : element2.type.name}] is not a <Route> component. All component children of <Routes> must be a <Route> or <React.Fragment>`
     );
-    invariant(
+    invariant$1(
       !element2.props.index || !element2.props.children,
       "An index route cannot have child routes."
     );
@@ -18308,7 +18309,7 @@ function getDataRouterConsoleError2(hookName) {
 }
 function useDataRouterContext3(hookName) {
   let ctx = reactExports.useContext(DataRouterContext);
-  invariant(ctx, getDataRouterConsoleError2(hookName));
+  invariant$1(ctx, getDataRouterConsoleError2(hookName));
   return ctx;
 }
 function useLinkClickHandler(to, {
@@ -18396,7 +18397,7 @@ function useSubmit() {
 function useFormAction(action, { relative } = {}) {
   let { basename } = reactExports.useContext(NavigationContext);
   let routeContext = reactExports.useContext(RouteContext);
-  invariant(routeContext, "useFormAction must be used inside a RouteContext");
+  invariant$1(routeContext, "useFormAction must be used inside a RouteContext");
   let [match] = routeContext.matches.slice(-1);
   let path = { ...useResolvedPath(action ? action : ".", { relative }) };
   let location = useLocation();
@@ -18422,7 +18423,7 @@ function useFormAction(action, { relative } = {}) {
 }
 function useViewTransitionState(to, opts = {}) {
   let vtContext = reactExports.useContext(ViewTransitionContext);
-  invariant(
+  invariant$1(
     vtContext != null,
     "`useViewTransitionState` must be used within `react-router-dom`'s `RouterProvider`.  Did you accidentally import `RouterProvider` from `react-router`?"
   );
@@ -18533,7 +18534,7 @@ const UKFlex = (props) => {
   const t5 = props.padding && styles$n.padding;
   let t6;
   if ($[0] !== props.className || $[1] !== t2 || $[2] !== t3 || $[3] !== t4 || $[4] !== t5) {
-    t6 = clippy(styles$n.component, t2, props.className, t3, t4, t5);
+    t6 = clippy$1(styles$n.component, t2, props.className, t3, t4, t5);
     $[0] = props.className;
     $[1] = t2;
     $[2] = t3;
@@ -18556,24 +18557,6 @@ const UKFlex = (props) => {
   }
   return t7;
 };
-const DASH_ICON = "" + new URL("icon-CrymklYA.avif", import.meta.url).href;
-const ApplicationPanelContext = React.createContext({
-  setApplicationDisplayName: () => {
-    console.error("How did we get here?");
-  },
-  setOnBackButton: () => {
-    console.error("How did we get here?");
-  },
-  setControls: () => {
-    console.error("How did we get here?");
-  },
-  setApplicationIcon: () => {
-    console.error("How did we get here?");
-  },
-  setShowBackButton: () => {
-    console.error("How did we get here?");
-  }
-});
 var util;
 (function(util2) {
   util2.assertEqual = (val) => val;
@@ -18621,8 +18604,8 @@ var util;
     return void 0;
   };
   util2.isInteger = typeof Number.isInteger === "function" ? (val) => Number.isInteger(val) : (val) => typeof val === "number" && isFinite(val) && Math.floor(val) === val;
-  function joinValues(array, separator = " | ") {
-    return array.map((val) => typeof val === "string" ? `'${val}'` : val).join(separator);
+  function joinValues(array, separator2 = " | ") {
+    return array.map((val) => typeof val === "string" ? `'${val}'` : val).join(separator2);
   }
   util2.joinValues = joinValues;
   util2.jsonStringifyReplacer = (_, value) => {
@@ -22617,19 +22600,24 @@ var z = /* @__PURE__ */ Object.freeze({
   ZodError
 });
 const ApplicationRedirectToDash = () => {
-  const $ = compilerRuntimeExports.c(7);
+  const $ = compilerRuntimeExports.c(4);
   const navigate = useNavigate();
-  const applicationPanelContext = React.useContext(ApplicationPanelContext);
   let t0;
-  if ($[0] !== applicationPanelContext) {
+  if ($[0] !== navigate) {
     t0 = () => {
-      applicationPanelContext.setApplicationDisplayName("Dash");
-      applicationPanelContext.setApplicationIcon(DASH_ICON);
-      applicationPanelContext.setOnBackButton(_temp$8);
-      applicationPanelContext.setShowBackButton(false);
-      applicationPanelContext.setControls([]);
+      if (!localStorage.getItem("instance_url")) {
+        navigate("/login");
+      } else {
+        tun.get("/login/is-authenticated", "text", z.string()).then(() => {
+          console.log("Should navigate");
+          navigate("/app/a/uk-ewsgit-dash");
+        }).catch(() => {
+          console.warn("User was not authenticated!");
+          navigate("/login");
+        });
+      }
     };
-    $[0] = applicationPanelContext;
+    $[0] = navigate;
     $[1] = t0;
   } else {
     t0 = $[1];
@@ -22643,44 +22631,14 @@ const ApplicationRedirectToDash = () => {
   }
   reactExports.useEffect(t0, t1);
   let t2;
-  if ($[3] !== navigate) {
-    t2 = () => {
-      if (!localStorage.getItem("instance_url")) {
-        navigate("/login");
-      } else {
-        tun.get("/login/is-authenticated", "text", z.string()).then(() => {
-          console.log("Should navigate");
-          navigate("/app/a/uk-ewsgit-dash");
-        }).catch(() => {
-          console.warn("User was not authenticated!");
-          navigate("/login");
-        });
-      }
-    };
-    $[3] = navigate;
-    $[4] = t2;
+  if ($[3] === Symbol.for("react.memo_cache_sentinel")) {
+    t2 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKFlex, { padding: true, direction: "column", centerHorizontally: true, centerVertically: true, className: "h-full", children: /* @__PURE__ */ jsxRuntimeExports.jsx(UKHeading, { level: 1, text: "Redirecting..." }) });
+    $[3] = t2;
   } else {
-    t2 = $[4];
+    t2 = $[3];
   }
-  let t3;
-  if ($[5] === Symbol.for("react.memo_cache_sentinel")) {
-    t3 = [];
-    $[5] = t3;
-  } else {
-    t3 = $[5];
-  }
-  reactExports.useEffect(t2, t3);
-  let t4;
-  if ($[6] === Symbol.for("react.memo_cache_sentinel")) {
-    t4 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKFlex, { padding: true, direction: "column", centerHorizontally: true, centerVertically: true, className: "h-full", children: /* @__PURE__ */ jsxRuntimeExports.jsx(UKHeading, { level: 1, text: "Redirecting..." }) });
-    $[6] = t4;
-  } else {
-    t4 = $[6];
-  }
-  return t4;
+  return t2;
 };
-function _temp$8() {
-}
 const componentContainer = "_componentContainer_1d6hn_10";
 const component$8 = "_component_1d6hn_10";
 const noRounding = "_noRounding_1d6hn_27";
@@ -22776,7 +22734,7 @@ const UKImage = (props) => {
   const t8 = hasFailed && styles$m.serverError;
   let t9;
   if ($[11] !== props.containerClassName || $[12] !== t7 || $[13] !== t8) {
-    t9 = clippy(styles$m.componentContainer, props.containerClassName, t7, t8);
+    t9 = clippy$1(styles$m.componentContainer, props.containerClassName, t7, t8);
     $[11] = props.containerClassName;
     $[12] = t7;
     $[13] = t8;
@@ -22799,12 +22757,12 @@ const UKImage = (props) => {
   }
   let t12;
   if ($[18] !== hasFailed || $[19] !== loaded2 || $[20] !== props.accessibleLabel || $[21] !== props.className || $[22] !== props.disableLazyLoading || $[23] !== props.height || $[24] !== props.noRounding || $[25] !== props.width || $[26] !== src) {
-    t12 = !hasFailed ? /* @__PURE__ */ jsxRuntimeExports.jsx("img", { className: clippy(styles$m.component, props.className, loaded2 && styles$m.loaded, props.noRounding && styles$m.noRounding), draggable: false, width: props.width, height: props.height, onError: () => {
+    t12 = !hasFailed ? /* @__PURE__ */ jsxRuntimeExports.jsx("img", { className: clippy$1(styles$m.component, props.className, loaded2 && styles$m.loaded, props.noRounding && styles$m.noRounding), draggable: false, width: props.width, height: props.height, onError: () => {
       setHasFailed(true);
       attempts.current = attempts.current + 1;
       setTimeout(() => {
         if (attempts.current && attempts.current <= 3) {
-          setSrc(_temp$7);
+          setSrc(_temp$8);
         }
       }, 500);
     }, loading: props.disableLazyLoading ? "eager" : "lazy", alt: props.accessibleLabel, onLoad: (e) => {
@@ -22840,11 +22798,15 @@ const UKImage = (props) => {
   }
   return t13;
 };
-function _temp$7(old) {
+function _temp$8(old) {
   if (old.includes("?refresh=")) {
     return old.slice(0, old.indexOf("?refresh=")) + "?refresh=" + Date.now();
   }
   return `${old}?refresh=${Date.now()}`;
+}
+function clippy(...input2) {
+  return clsx(...input2).replaceAll(`
+`, ``).split(" ").filter((str) => str !== "").join(" ");
 }
 const panel = "_panel_9netq_10";
 const panelFadeIn = "_panelFadeIn_9netq_1";
@@ -22901,22 +22863,22 @@ function __variableDynamicImportRuntime0__(path) {
   switch (path) {
     case "./widgets/ApplicationLauncher/Widget":
     case "./widgets/ApplicationLauncher/Widget.tsx":
-      return __vitePreload(() => import("./Widget-BsYJ9oS5.js"), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+      return __vitePreload(() => import("./Widget-BCFoHKmI.js"), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
     case "./widgets/InstanceLogo/Widget":
     case "./widgets/InstanceLogo/Widget.tsx":
-      return __vitePreload(() => import("./Widget-BlytxZCu.js"), true ? __vite__mapDeps([2,3]) : void 0, import.meta.url);
+      return __vitePreload(() => import("./Widget-CtrSy4DI.js"), true ? __vite__mapDeps([2,3]) : void 0, import.meta.url);
     case "./widgets/LocalhostIndicator/Widget":
     case "./widgets/LocalhostIndicator/Widget.tsx":
-      return __vitePreload(() => import("./Widget-DOAmUfDc.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./Widget-LVBwInA-.js"), true ? [] : void 0, import.meta.url);
     case "./widgets/QuickShortcuts/Widget":
     case "./widgets/QuickShortcuts/Widget.tsx":
-      return __vitePreload(() => import("./Widget-D2ckU6Qd.js"), true ? __vite__mapDeps([4,5]) : void 0, import.meta.url);
+      return __vitePreload(() => import("./Widget-dzNNx5O6.js"), true ? __vite__mapDeps([4,5]) : void 0, import.meta.url);
     case "./widgets/Separator/Widget":
     case "./widgets/Separator/Widget.tsx":
-      return __vitePreload(() => import("./Widget-JVdnUkrl.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./Widget-T_cHThTV.js"), true ? [] : void 0, import.meta.url);
     case "./widgets/UserProfile/Widget":
     case "./widgets/UserProfile/Widget.tsx":
-      return __vitePreload(() => import("./Widget-B554DQgR.js"), true ? __vite__mapDeps([6,7]) : void 0, import.meta.url);
+      return __vitePreload(() => import("./Widget-DQIXMedc.js"), true ? __vite__mapDeps([6,7]) : void 0, import.meta.url);
     default:
       return new Promise(function(resolve, reject) {
         (typeof queueMicrotask === "function" ? queueMicrotask : setTimeout)(
@@ -22950,7 +22912,7 @@ const styles$k = {
   applicationDisplayName
 };
 const PanelLayout = (t0) => {
-  const $ = compilerRuntimeExports.c(87);
+  const $ = compilerRuntimeExports.c(100);
   const {
     showBackButton,
     onBackButton,
@@ -22958,443 +22920,463 @@ const PanelLayout = (t0) => {
     applicationDisplayName: applicationDisplayName2,
     applicationIcon: applicationIcon2
   } = t0;
-  const [panelSide, setPanelSide] = React.useState(void 0);
-  const [reloadNumber, setReloadNumber] = React.useState(0);
-  let t1;
-  if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = () => {
-      if (window.innerWidth < 768) {
-        setPanelSide("bottom");
-      } else {
-        setPanelSide("left");
-      }
-    };
-    $[0] = t1;
-  } else {
-    t1 = $[0];
-  }
-  let t2;
-  if ($[1] !== reloadNumber) {
-    t2 = [reloadNumber];
-    $[1] = reloadNumber;
-    $[2] = t2;
-  } else {
-    t2 = $[2];
-  }
-  reactExports.useEffect(t1, t2);
-  let t3;
-  let t4;
-  if ($[3] === Symbol.for("react.memo_cache_sentinel")) {
-    t3 = () => {
-      if (window.innerWidth < 768) {
-        setPanelSide("bottom");
-      } else {
-        setPanelSide("left");
-      }
-      window.addEventListener("resize", () => {
-        if (window.innerWidth < 768) {
-          setPanelSide("bottom");
-        } else {
-          setPanelSide("left");
-        }
-      });
-    };
-    t4 = [];
-    $[3] = t3;
-    $[4] = t4;
-  } else {
-    t3 = $[3];
-    t4 = $[4];
-  }
-  reactExports.useEffect(t3, t4);
-  if (panelSide === void 0) {
-    let t5;
-    if ($[5] === Symbol.for("react.memo_cache_sentinel")) {
-      t5 = /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
-      $[5] = t5;
+  const [panelSide, setPanelSide] = React.useState(getPanelSize);
+  function getPanelSize() {
+    if (window.innerWidth < 768) {
+      return "bottom";
     } else {
-      t5 = $[5];
+      return "left";
     }
-    return t5;
+  }
+  let t1;
+  if ($[0] !== getPanelSize || $[1] !== setPanelSide) {
+    t1 = function updatePanelSide2() {
+      setPanelSide(getPanelSize());
+    };
+    $[0] = getPanelSize;
+    $[1] = setPanelSide;
+    $[2] = t1;
+  } else {
+    t1 = $[2];
+  }
+  const updatePanelSide = t1;
+  let t2;
+  if ($[3] !== updatePanelSide) {
+    t2 = () => {
+      window.addEventListener("resize", () => {
+        updatePanelSide();
+      });
+      return () => {
+        window.removeEventListener("resize", () => {
+          updatePanelSide();
+        });
+      };
+    };
+    $[3] = updatePanelSide;
+    $[4] = t2;
+  } else {
+    t2 = $[4];
+  }
+  let t3;
+  if ($[5] === Symbol.for("react.memo_cache_sentinel")) {
+    t3 = [];
+    $[5] = t3;
+  } else {
+    t3 = $[5];
+  }
+  reactExports.useEffect(t2, t3);
+  if (panelSide === void 0) {
+    let t4;
+    if ($[6] === Symbol.for("react.memo_cache_sentinel")) {
+      t4 = /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: "Undefined panel side" });
+      $[6] = t4;
+    } else {
+      t4 = $[6];
+    }
+    return t4;
   }
   switch (panelSide) {
     case "top": {
-      let t5;
-      if ($[6] === Symbol.for("react.memo_cache_sentinel")) {
-        t5 = clippy(styles$k.layout, styles$k.top);
-        $[6] = t5;
+      let t4;
+      if ($[7] === Symbol.for("react.memo_cache_sentinel")) {
+        t4 = clippy(styles$k.layout, styles$k.top);
+        $[7] = t4;
       } else {
-        t5 = $[6];
+        t4 = $[7];
+      }
+      let t5;
+      if ($[8] !== updatePanelSide) {
+        t5 = /* @__PURE__ */ jsxRuntimeExports.jsx(Panel$2, { side: "top", setLayoutReloadNumber: () => updatePanelSide() });
+        $[8] = updatePanelSide;
+        $[9] = t5;
+      } else {
+        t5 = $[9];
       }
       let t6;
-      if ($[7] === Symbol.for("react.memo_cache_sentinel")) {
-        t6 = /* @__PURE__ */ jsxRuntimeExports.jsx(Panel$2, { side: "top", setLayoutReloadNumber: (num_2) => setReloadNumber(num_2) });
-        $[7] = t6;
+      if ($[10] !== onBackButton || $[11] !== showBackButton) {
+        t6 = showBackButton && /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { icon: UKIcons.ChevronLeft, accessibleLabel: "Go Back", onClick: onBackButton });
+        $[10] = onBackButton;
+        $[11] = showBackButton;
+        $[12] = t6;
       } else {
-        t6 = $[7];
+        t6 = $[12];
       }
-      let t7;
-      if ($[8] !== onBackButton || $[9] !== showBackButton) {
-        t7 = showBackButton && /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { icon: UKIcons.ChevronLeft, accessibleLabel: "Go Back", onClick: onBackButton });
-        $[8] = onBackButton;
-        $[9] = showBackButton;
-        $[10] = t7;
+      const t7 = applicationIcon2 ?? "/favicon.svg";
+      let t8;
+      if ($[13] !== t7) {
+        t8 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKImage, { className: styles$k.applicationIcon, src: t7, accessibleLabel: "" });
+        $[13] = t7;
+        $[14] = t8;
       } else {
-        t7 = $[10];
+        t8 = $[14];
       }
-      const t8 = applicationIcon2 ?? "/favicon.svg";
       let t9;
-      if ($[11] !== t8) {
-        t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKImage, { className: styles$k.applicationIcon, src: t8, accessibleLabel: "" });
-        $[11] = t8;
-        $[12] = t9;
+      if ($[15] !== applicationDisplayName2) {
+        t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: applicationDisplayName2, className: styles$k.applicationDisplayName });
+        $[15] = applicationDisplayName2;
+        $[16] = t9;
       } else {
-        t9 = $[12];
+        t9 = $[16];
       }
       let t10;
-      if ($[13] !== applicationDisplayName2) {
-        t10 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: applicationDisplayName2, className: styles$k.applicationDisplayName });
-        $[13] = applicationDisplayName2;
-        $[14] = t10;
+      if ($[17] !== controls) {
+        t10 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: controls }, "controls");
+        $[17] = controls;
+        $[18] = t10;
       } else {
-        t10 = $[14];
+        t10 = $[18];
       }
       let t11;
-      if ($[15] !== controls) {
-        t11 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: controls }, "controls");
-        $[15] = controls;
-        $[16] = t11;
+      if ($[19] !== t10 || $[20] !== t6 || $[21] !== t8 || $[22] !== t9) {
+        t11 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanel, children: [
+          t6,
+          t8,
+          t9,
+          t10
+        ] });
+        $[19] = t10;
+        $[20] = t6;
+        $[21] = t8;
+        $[22] = t9;
+        $[23] = t11;
       } else {
-        t11 = $[16];
+        t11 = $[23];
       }
       let t12;
-      if ($[17] !== t10 || $[18] !== t11 || $[19] !== t7 || $[20] !== t9) {
-        t12 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanel, children: [
-          t7,
-          t9,
-          t10,
-          t11
-        ] });
-        $[17] = t10;
-        $[18] = t11;
-        $[19] = t7;
-        $[20] = t9;
-        $[21] = t12;
+      if ($[24] === Symbol.for("react.memo_cache_sentinel")) {
+        t12 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$k.applicationFrame, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}, 1) }, 1);
+        $[24] = t12;
       } else {
-        t12 = $[21];
+        t12 = $[24];
       }
       let t13;
-      if ($[22] === Symbol.for("react.memo_cache_sentinel")) {
-        t13 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$k.applicationFrame, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}, 1) }, 1);
-        $[22] = t13;
+      if ($[25] !== t11) {
+        t13 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanelFrame, children: [
+          t11,
+          t12
+        ] });
+        $[25] = t11;
+        $[26] = t13;
       } else {
-        t13 = $[22];
+        t13 = $[26];
       }
       let t14;
-      if ($[23] !== t12) {
-        t14 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: t5, children: [
-          t6,
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanelFrame, children: [
-            t12,
-            t13
-          ] })
+      if ($[27] !== t13 || $[28] !== t5) {
+        t14 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: t4, children: [
+          t5,
+          t13
         ] });
-        $[23] = t12;
-        $[24] = t14;
+        $[27] = t13;
+        $[28] = t5;
+        $[29] = t14;
       } else {
-        t14 = $[24];
+        t14 = $[29];
       }
       return t14;
     }
     case "left": {
-      let t5;
-      if ($[25] === Symbol.for("react.memo_cache_sentinel")) {
-        t5 = clippy(styles$k.layout, styles$k.left);
-        $[25] = t5;
+      let t4;
+      if ($[30] === Symbol.for("react.memo_cache_sentinel")) {
+        t4 = clippy(styles$k.layout, styles$k.left);
+        $[30] = t4;
       } else {
-        t5 = $[25];
+        t4 = $[30];
+      }
+      let t5;
+      if ($[31] !== updatePanelSide) {
+        t5 = /* @__PURE__ */ jsxRuntimeExports.jsx(Panel$2, { side: "left", setLayoutReloadNumber: () => updatePanelSide() });
+        $[31] = updatePanelSide;
+        $[32] = t5;
+      } else {
+        t5 = $[32];
       }
       let t6;
-      if ($[26] === Symbol.for("react.memo_cache_sentinel")) {
-        t6 = /* @__PURE__ */ jsxRuntimeExports.jsx(Panel$2, { side: "left", setLayoutReloadNumber: (num_1) => setReloadNumber(num_1) });
-        $[26] = t6;
+      if ($[33] !== onBackButton || $[34] !== showBackButton) {
+        t6 = showBackButton && /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { icon: UKIcons.ChevronLeft, accessibleLabel: "Go Back", onClick: onBackButton });
+        $[33] = onBackButton;
+        $[34] = showBackButton;
+        $[35] = t6;
       } else {
-        t6 = $[26];
+        t6 = $[35];
       }
-      let t7;
-      if ($[27] !== onBackButton || $[28] !== showBackButton) {
-        t7 = showBackButton && /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { icon: UKIcons.ChevronLeft, accessibleLabel: "Go Back", onClick: onBackButton });
-        $[27] = onBackButton;
-        $[28] = showBackButton;
-        $[29] = t7;
+      const t7 = applicationIcon2 ?? "/favicon.svg";
+      let t8;
+      if ($[36] !== t7) {
+        t8 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKImage, { className: styles$k.applicationIcon, src: t7, accessibleLabel: "" });
+        $[36] = t7;
+        $[37] = t8;
       } else {
-        t7 = $[29];
+        t8 = $[37];
       }
-      const t8 = applicationIcon2 ?? "/favicon.svg";
       let t9;
-      if ($[30] !== t8) {
-        t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKImage, { className: styles$k.applicationIcon, src: t8, accessibleLabel: "" });
-        $[30] = t8;
-        $[31] = t9;
+      if ($[38] !== applicationDisplayName2) {
+        t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: applicationDisplayName2, className: styles$k.applicationDisplayName });
+        $[38] = applicationDisplayName2;
+        $[39] = t9;
       } else {
-        t9 = $[31];
+        t9 = $[39];
       }
       let t10;
-      if ($[32] !== applicationDisplayName2) {
-        t10 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: applicationDisplayName2, className: styles$k.applicationDisplayName });
-        $[32] = applicationDisplayName2;
-        $[33] = t10;
+      if ($[40] !== controls) {
+        t10 = /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children: controls });
+        $[40] = controls;
+        $[41] = t10;
       } else {
-        t10 = $[33];
+        t10 = $[41];
       }
       let t11;
-      if ($[34] !== controls) {
-        t11 = /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children: controls });
-        $[34] = controls;
-        $[35] = t11;
+      if ($[42] !== t10 || $[43] !== t6 || $[44] !== t8 || $[45] !== t9) {
+        t11 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanel, children: [
+          t6,
+          t8,
+          t9,
+          t10
+        ] });
+        $[42] = t10;
+        $[43] = t6;
+        $[44] = t8;
+        $[45] = t9;
+        $[46] = t11;
       } else {
-        t11 = $[35];
+        t11 = $[46];
       }
       let t12;
-      if ($[36] !== t10 || $[37] !== t11 || $[38] !== t7 || $[39] !== t9) {
-        t12 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanel, children: [
-          t7,
-          t9,
-          t10,
-          t11
-        ] });
-        $[36] = t10;
-        $[37] = t11;
-        $[38] = t7;
-        $[39] = t9;
-        $[40] = t12;
+      if ($[47] === Symbol.for("react.memo_cache_sentinel")) {
+        t12 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$k.applicationFrame, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}, 1) }, 1);
+        $[47] = t12;
       } else {
-        t12 = $[40];
+        t12 = $[47];
       }
       let t13;
-      if ($[41] === Symbol.for("react.memo_cache_sentinel")) {
-        t13 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$k.applicationFrame, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}, 1) }, 1);
-        $[41] = t13;
+      if ($[48] !== t11) {
+        t13 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanelFrame, children: [
+          t11,
+          t12
+        ] });
+        $[48] = t11;
+        $[49] = t13;
       } else {
-        t13 = $[41];
+        t13 = $[49];
       }
       let t14;
-      if ($[42] !== t12) {
-        t14 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: t5, children: [
-          t6,
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanelFrame, children: [
-            t12,
-            t13
-          ] })
+      if ($[50] !== t13 || $[51] !== t5) {
+        t14 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: t4, children: [
+          t5,
+          t13
         ] });
-        $[42] = t12;
-        $[43] = t14;
+        $[50] = t13;
+        $[51] = t5;
+        $[52] = t14;
       } else {
-        t14 = $[43];
+        t14 = $[52];
       }
       return t14;
     }
     case "bottom": {
+      let t4;
+      if ($[53] === Symbol.for("react.memo_cache_sentinel")) {
+        t4 = clippy(styles$k.layout, styles$k.bottom);
+        $[53] = t4;
+      } else {
+        t4 = $[53];
+      }
       let t5;
-      if ($[44] === Symbol.for("react.memo_cache_sentinel")) {
-        t5 = clippy(styles$k.layout, styles$k.bottom);
-        $[44] = t5;
+      if ($[54] !== onBackButton || $[55] !== showBackButton) {
+        t5 = showBackButton && /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { icon: UKIcons.ChevronLeft, accessibleLabel: "Go Back", onClick: onBackButton });
+        $[54] = onBackButton;
+        $[55] = showBackButton;
+        $[56] = t5;
       } else {
-        t5 = $[44];
+        t5 = $[56];
       }
-      let t6;
-      if ($[45] !== onBackButton || $[46] !== showBackButton) {
-        t6 = showBackButton && /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { icon: UKIcons.ChevronLeft, accessibleLabel: "Go Back", onClick: onBackButton });
-        $[45] = onBackButton;
-        $[46] = showBackButton;
-        $[47] = t6;
+      const t6 = applicationIcon2 ?? "/favicon.svg";
+      let t7;
+      if ($[57] !== t6) {
+        t7 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKImage, { className: styles$k.applicationIcon, src: t6, accessibleLabel: "" });
+        $[57] = t6;
+        $[58] = t7;
       } else {
-        t6 = $[47];
+        t7 = $[58];
       }
-      const t7 = applicationIcon2 ?? "/favicon.svg";
       let t8;
-      if ($[48] !== t7) {
-        t8 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKImage, { className: styles$k.applicationIcon, src: t7, accessibleLabel: "" });
-        $[48] = t7;
-        $[49] = t8;
+      if ($[59] !== applicationDisplayName2) {
+        t8 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: applicationDisplayName2, className: styles$k.applicationDisplayName });
+        $[59] = applicationDisplayName2;
+        $[60] = t8;
       } else {
-        t8 = $[49];
+        t8 = $[60];
       }
       let t9;
-      if ($[50] !== applicationDisplayName2) {
-        t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: applicationDisplayName2, className: styles$k.applicationDisplayName });
-        $[50] = applicationDisplayName2;
-        $[51] = t9;
+      if ($[61] !== controls) {
+        t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children: controls });
+        $[61] = controls;
+        $[62] = t9;
       } else {
-        t9 = $[51];
+        t9 = $[62];
       }
       let t10;
-      if ($[52] !== controls) {
-        t10 = /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children: controls });
-        $[52] = controls;
-        $[53] = t10;
+      if ($[63] !== t5 || $[64] !== t7 || $[65] !== t8 || $[66] !== t9) {
+        t10 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanel, children: [
+          t5,
+          t7,
+          t8,
+          t9
+        ] });
+        $[63] = t5;
+        $[64] = t7;
+        $[65] = t8;
+        $[66] = t9;
+        $[67] = t10;
       } else {
-        t10 = $[53];
+        t10 = $[67];
       }
       let t11;
-      if ($[54] !== t10 || $[55] !== t6 || $[56] !== t8 || $[57] !== t9) {
-        t11 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanel, children: [
-          t6,
-          t8,
-          t9,
-          t10
-        ] });
-        $[54] = t10;
-        $[55] = t6;
-        $[56] = t8;
-        $[57] = t9;
-        $[58] = t11;
+      if ($[68] === Symbol.for("react.memo_cache_sentinel")) {
+        t11 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$k.applicationFrame, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}, 1) }, 1);
+        $[68] = t11;
       } else {
-        t11 = $[58];
+        t11 = $[68];
       }
       let t12;
-      if ($[59] === Symbol.for("react.memo_cache_sentinel")) {
-        t12 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$k.applicationFrame, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}, 1) }, 1);
-        $[59] = t12;
+      if ($[69] !== t10) {
+        t12 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanelFrame, children: [
+          t10,
+          t11
+        ] });
+        $[69] = t10;
+        $[70] = t12;
       } else {
-        t12 = $[59];
+        t12 = $[70];
       }
       let t13;
-      if ($[60] !== t11) {
-        t13 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanelFrame, children: [
-          t11,
-          t12
-        ] });
-        $[60] = t11;
-        $[61] = t13;
+      if ($[71] !== updatePanelSide) {
+        t13 = /* @__PURE__ */ jsxRuntimeExports.jsx(Panel$2, { side: "bottom", setLayoutReloadNumber: () => updatePanelSide() });
+        $[71] = updatePanelSide;
+        $[72] = t13;
       } else {
-        t13 = $[61];
+        t13 = $[72];
       }
       let t14;
-      if ($[62] === Symbol.for("react.memo_cache_sentinel")) {
-        t14 = /* @__PURE__ */ jsxRuntimeExports.jsx(Panel$2, { side: "bottom", setLayoutReloadNumber: (num_0) => setReloadNumber(num_0) });
-        $[62] = t14;
-      } else {
-        t14 = $[62];
-      }
-      let t15;
-      if ($[63] !== t13) {
-        t15 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: t5, children: [
-          t13,
-          t14
+      if ($[73] !== t12 || $[74] !== t13) {
+        t14 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: t4, children: [
+          t12,
+          t13
         ] });
-        $[63] = t13;
-        $[64] = t15;
+        $[73] = t12;
+        $[74] = t13;
+        $[75] = t14;
       } else {
-        t15 = $[64];
+        t14 = $[75];
       }
-      return t15;
+      return t14;
     }
     case "right": {
+      let t4;
+      if ($[76] === Symbol.for("react.memo_cache_sentinel")) {
+        t4 = clippy(styles$k.layout, styles$k.right);
+        $[76] = t4;
+      } else {
+        t4 = $[76];
+      }
       let t5;
-      if ($[65] === Symbol.for("react.memo_cache_sentinel")) {
-        t5 = clippy(styles$k.layout, styles$k.right);
-        $[65] = t5;
+      if ($[77] !== onBackButton || $[78] !== showBackButton) {
+        t5 = showBackButton && /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { icon: UKIcons.ChevronLeft, accessibleLabel: "Go Back", onClick: onBackButton });
+        $[77] = onBackButton;
+        $[78] = showBackButton;
+        $[79] = t5;
       } else {
-        t5 = $[65];
+        t5 = $[79];
       }
-      let t6;
-      if ($[66] !== onBackButton || $[67] !== showBackButton) {
-        t6 = showBackButton && /* @__PURE__ */ jsxRuntimeExports.jsx(UKIconButton, { icon: UKIcons.ChevronLeft, accessibleLabel: "Go Back", onClick: onBackButton });
-        $[66] = onBackButton;
-        $[67] = showBackButton;
-        $[68] = t6;
+      const t6 = applicationIcon2 ?? "/favicon.svg";
+      let t7;
+      if ($[80] !== t6) {
+        t7 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKImage, { className: styles$k.applicationIcon, src: t6, accessibleLabel: "" });
+        $[80] = t6;
+        $[81] = t7;
       } else {
-        t6 = $[68];
+        t7 = $[81];
       }
-      const t7 = applicationIcon2 ?? "/favicon.svg";
       let t8;
-      if ($[69] !== t7) {
-        t8 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKImage, { className: styles$k.applicationIcon, src: t7, accessibleLabel: "" });
-        $[69] = t7;
-        $[70] = t8;
+      if ($[82] !== applicationDisplayName2) {
+        t8 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: applicationDisplayName2, className: styles$k.applicationDisplayName });
+        $[82] = applicationDisplayName2;
+        $[83] = t8;
       } else {
-        t8 = $[70];
+        t8 = $[83];
       }
       let t9;
-      if ($[71] !== applicationDisplayName2) {
-        t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: applicationDisplayName2, className: styles$k.applicationDisplayName });
-        $[71] = applicationDisplayName2;
-        $[72] = t9;
+      if ($[84] !== controls) {
+        t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children: controls });
+        $[84] = controls;
+        $[85] = t9;
       } else {
-        t9 = $[72];
+        t9 = $[85];
       }
       let t10;
-      if ($[73] !== controls) {
-        t10 = /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children: controls });
-        $[73] = controls;
-        $[74] = t10;
+      if ($[86] !== t5 || $[87] !== t7 || $[88] !== t8 || $[89] !== t9) {
+        t10 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanel, children: [
+          t5,
+          t7,
+          t8,
+          t9
+        ] });
+        $[86] = t5;
+        $[87] = t7;
+        $[88] = t8;
+        $[89] = t9;
+        $[90] = t10;
       } else {
-        t10 = $[74];
+        t10 = $[90];
       }
       let t11;
-      if ($[75] !== t10 || $[76] !== t6 || $[77] !== t8 || $[78] !== t9) {
-        t11 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanel, children: [
-          t6,
-          t8,
-          t9,
-          t10
-        ] });
-        $[75] = t10;
-        $[76] = t6;
-        $[77] = t8;
-        $[78] = t9;
-        $[79] = t11;
+      if ($[91] === Symbol.for("react.memo_cache_sentinel")) {
+        t11 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$k.applicationFrame, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}, 1) }, 1);
+        $[91] = t11;
       } else {
-        t11 = $[79];
+        t11 = $[91];
       }
       let t12;
-      if ($[80] === Symbol.for("react.memo_cache_sentinel")) {
-        t12 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$k.applicationFrame, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}, 1) }, 1);
-        $[80] = t12;
+      if ($[92] !== t10) {
+        t12 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanelFrame, children: [
+          t10,
+          t11
+        ] });
+        $[92] = t10;
+        $[93] = t12;
       } else {
-        t12 = $[80];
+        t12 = $[93];
       }
       let t13;
-      if ($[81] !== t11) {
-        t13 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$k.applicationPanelFrame, children: [
-          t11,
-          t12
-        ] });
-        $[81] = t11;
-        $[82] = t13;
+      if ($[94] !== updatePanelSide) {
+        t13 = /* @__PURE__ */ jsxRuntimeExports.jsx(Panel$2, { side: "right", setLayoutReloadNumber: () => updatePanelSide() });
+        $[94] = updatePanelSide;
+        $[95] = t13;
       } else {
-        t13 = $[82];
+        t13 = $[95];
       }
       let t14;
-      if ($[83] === Symbol.for("react.memo_cache_sentinel")) {
-        t14 = /* @__PURE__ */ jsxRuntimeExports.jsx(Panel$2, { side: "right", setLayoutReloadNumber: (num) => setReloadNumber(num) });
-        $[83] = t14;
-      } else {
-        t14 = $[83];
-      }
-      let t15;
-      if ($[84] !== t13) {
-        t15 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: t5, children: [
-          t13,
-          t14
+      if ($[96] !== t12 || $[97] !== t13) {
+        t14 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: t4, children: [
+          t12,
+          t13
         ] });
-        $[84] = t13;
-        $[85] = t15;
+        $[96] = t12;
+        $[97] = t13;
+        $[98] = t14;
       } else {
-        t15 = $[85];
+        t14 = $[98];
       }
-      return t15;
+      return t14;
     }
     default: {
-      let t5;
-      if ($[86] === Symbol.for("react.memo_cache_sentinel")) {
-        t5 = /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: "An Unexpected Error Occurred" });
-        $[86] = t5;
+      let t4;
+      if ($[99] === Symbol.for("react.memo_cache_sentinel")) {
+        t4 = /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: "An Unexpected Error Occurred" });
+        $[99] = t4;
       } else {
-        t5 = $[86];
+        t4 = $[99];
       }
-      return t5;
+      return t4;
     }
   }
 };
@@ -23414,6 +23396,23 @@ const styles$j = {
   applicationFrame,
   applicationFadeIn
 };
+const ApplicationPanelContext = React.createContext({
+  setApplicationDisplayName: () => {
+    console.error("How did we get here?");
+  },
+  setOnBackButton: () => {
+    console.error("How did we get here?");
+  },
+  setControls: () => {
+    console.error("How did we get here?");
+  },
+  setApplicationIcon: () => {
+    console.error("How did we get here?");
+  },
+  setShowBackButton: () => {
+    console.error("How did we get here?");
+  }
+});
 const AppLayout = () => {
   const $ = compilerRuntimeExports.c(9);
   const isStandalone = new URLSearchParams(window.location.search).has("standalone");
@@ -23427,7 +23426,7 @@ const AppLayout = () => {
     t0 = $[0];
   }
   const [controls, setControls] = reactExports.useState(t0);
-  const [onBackButton, setOnBackButton] = reactExports.useState(_temp$6);
+  const [onBackButton, setOnBackButton] = reactExports.useState(_temp$7);
   const [showBackButton, setShowBackButton] = reactExports.useState(false);
   if (isStandalone) {
     let t12;
@@ -23476,7 +23475,7 @@ const AppLayout = () => {
   }
   return t2;
 };
-function _temp$6() {
+function _temp$7() {
 }
 const background = "_background_l6sy4_26";
 const backgroundFadeIn = "_backgroundFadeIn_l6sy4_1";
@@ -23513,12 +23512,6 @@ const UKDialog = (t0) => {
   }
   return t1;
 };
-var LoginLayout = /* @__PURE__ */ ((LoginLayout2) => {
-  LoginLayout2[LoginLayout2["SIDEBAR"] = 0] = "SIDEBAR";
-  LoginLayout2[LoginLayout2["MODAL"] = 1] = "MODAL";
-  LoginLayout2[LoginLayout2["CARDS"] = 2] = "CARDS";
-  return LoginLayout2;
-})(LoginLayout || {});
 const component$7 = "_component_7t5t1_6";
 const container$1 = "_container_7t5t1_17";
 const infiniteSpin = "_infiniteSpin_7t5t1_1";
@@ -23558,8 +23551,8 @@ const UKSpinner = (props) => {
       t0,
       t1,
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$h.spinnerCutoutContainer, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy(styles$h.spinnerCutoutOne, styles$h.spinnerCutout) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy(styles$h.spinnerCutoutTwo, styles$h.spinnerCutout) })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy$1(styles$h.spinnerCutoutOne, styles$h.spinnerCutout) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: clippy$1(styles$h.spinnerCutoutTwo, styles$h.spinnerCutout) })
       ] })
     ] });
     $[2] = t2;
@@ -23589,7 +23582,7 @@ const UKSubtext = (props) => {
   const $ = compilerRuntimeExports.c(5);
   let t0;
   if ($[0] !== props.className) {
-    t0 = clippy(styles$g.component, props.className);
+    t0 = clippy$1(styles$g.component, props.className);
     $[0] = props.className;
     $[1] = t0;
   } else {
@@ -23684,7 +23677,7 @@ const UKTextInput = (props) => {
   reactExports.useEffect(t2, t3);
   let t4;
   if ($[6] !== props.className) {
-    t4 = clippy(styles$f.component, props.className);
+    t4 = clippy$1(styles$f.component, props.className);
     $[6] = props.className;
     $[7] = t4;
   } else {
@@ -23705,7 +23698,7 @@ const UKTextInput = (props) => {
   const t10 = !props.icon && styles$f.noIcon;
   let t11;
   if ($[10] !== t10) {
-    t11 = clippy(styles$f.input, t10);
+    t11 = clippy$1(styles$f.input, t10);
     $[10] = t10;
     $[11] = t11;
   } else {
@@ -23832,7 +23825,7 @@ const IndexCardsPage = (props) => {
           headers: {
             "Access-Control-Allow-Origin": "*"
           }
-        }).then(_temp$5).then((resp) => {
+        }).then(_temp$6).then((resp) => {
           if (resp.error) {
             setUser({
               avatar: "",
@@ -23878,7 +23871,7 @@ const IndexCardsPage = (props) => {
         headers: {
           "Access-Control-Allow-Origin": "*"
         }
-      }).then(_temp2$3).then((resp_0) => {
+      }).then(_temp2$4).then((resp_0) => {
         if (resp_0.error) {
           setUser({
             avatar: "",
@@ -24084,10 +24077,10 @@ const IndexCardsPage = (props) => {
   }
   return t21;
 };
-function _temp$5(res) {
+function _temp$6(res) {
   return res.json();
 }
-function _temp2$3(res_0) {
+function _temp2$4(res_0) {
   return res_0.json();
 }
 function _temp3() {
@@ -24105,19 +24098,12 @@ function useResource(resource, options) {
     t0 = () => {
       setData(void 0);
       resource().then((d) => {
-        if (options == null ? void 0 : options.return) {
-          if (options == null ? void 0 : options.transform) {
-            setData(options.transform(d[options.return]));
-          } else {
-            setData(d[options.return]);
-          }
-        } else {
-          if (options == null ? void 0 : options.transform) {
-            setData(options.transform(d));
-          } else {
-            setData(d);
-          }
+        let result = d;
+        if ((options == null ? void 0 : options.return) && typeof options.return !== "undefined") {
+          result = d[options.return];
         }
+        const transformFunction = (options == null ? void 0 : options.transform) ?? _temp$5;
+        setData(transformFunction(result));
       });
     };
     $[0] = options;
@@ -24137,12 +24123,22 @@ function useResource(resource, options) {
   reactExports.useEffect(t0, t1);
   return data;
 }
+function _temp$5(data_0) {
+  return data_0;
+}
+var LoginLayout = /* @__PURE__ */ ((LoginLayout2) => {
+  LoginLayout2[LoginLayout2["SIDEBAR"] = 0] = "SIDEBAR";
+  LoginLayout2[LoginLayout2["MODAL"] = 1] = "MODAL";
+  LoginLayout2[LoginLayout2["CARDS"] = 2] = "CARDS";
+  return LoginLayout2;
+})(LoginLayout || {});
 const LoginIndexPage = () => {
   const $ = compilerRuntimeExports.c(6);
   let t0;
   if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
     t0 = {
-      return: "data"
+      return: "data",
+      transform: _temp2$3
     };
     $[0] = t0;
   } else {
@@ -24153,13 +24149,13 @@ const LoginIndexPage = () => {
   if ($[1] !== instanceMetadata) {
     t1 = () => {
       switch (instanceMetadata == null ? void 0 : instanceMetadata.loginLayout) {
-        case LoginLayout.MODAL: {
+        case 1: {
           return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: "MODAL layout" });
         }
-        case LoginLayout.CARDS: {
+        case 2: {
           return /* @__PURE__ */ jsxRuntimeExports.jsx(IndexCardsPage, { metadata: instanceMetadata });
         }
-        case LoginLayout.SIDEBAR: {
+        case 0: {
           return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: "SIDEBAR layout" });
         }
         default: {
@@ -24196,6 +24192,9 @@ function _temp$4() {
     message: z.string(),
     loginLayout: z.nativeEnum(LoginLayout)
   }));
+}
+function _temp2$3(v) {
+  return v;
 }
 var INSTANCE_STATUS = /* @__PURE__ */ ((INSTANCE_STATUS2) => {
   INSTANCE_STATUS2[INSTANCE_STATUS2["MAINTENANCE"] = 0] = "MAINTENANCE";
@@ -24401,7 +24400,7 @@ const UKLink = (props) => {
   const t0 = props.to;
   let t1;
   if ($[0] !== props.className) {
-    t1 = clippy(styles$9.component, props.className);
+    t1 = clippy$1(styles$9.component, props.className);
     $[0] = props.className;
     $[1] = t1;
   } else {
@@ -24439,7 +24438,7 @@ const UKTextButton = (props) => {
   const $ = compilerRuntimeExports.c(6);
   let t0;
   if ($[0] !== props.className) {
-    t0 = clippy(styles$8.component, props.className);
+    t0 = clippy$1(styles$8.component, props.className);
     $[0] = props.className;
     $[1] = t0;
   } else {
@@ -24457,16 +24456,16 @@ const UKTextButton = (props) => {
   }
   return t1;
 };
-const navigationBar = "_navigationBar_zeaji_10";
-const logo = "_logo_zeaji_20";
-const title = "_title_zeaji_24";
-const subtitle = "_subtitle_zeaji_27";
-const slideDown = "_slideDown_zeaji_1";
-const link$1 = "_link_zeaji_48";
-const source = "_source_zeaji_60";
-const notice$1 = "_notice_zeaji_81";
-const footer = "_footer_zeaji_94";
-const license = "_license_zeaji_104";
+const navigationBar = "_navigationBar_z9ghc_10";
+const logo = "_logo_z9ghc_20";
+const title = "_title_z9ghc_24";
+const subtitle = "_subtitle_z9ghc_27";
+const slideDown = "_slideDown_z9ghc_1";
+const link$1 = "_link_z9ghc_48";
+const source = "_source_z9ghc_60";
+const notice$1 = "_notice_z9ghc_81";
+const footer = "_footer_z9ghc_94";
+const separator = "_separator_z9ghc_116";
 const styles$7 = {
   navigationBar,
   logo,
@@ -24477,10 +24476,10 @@ const styles$7 = {
   source,
   notice: notice$1,
   footer,
-  license
+  separator
 };
 const Navigation = (t0) => {
-  const $ = compilerRuntimeExports.c(19);
+  const $ = compilerRuntimeExports.c(24);
   const {
     subtitle: subtitle2
   } = t0;
@@ -24572,31 +24571,66 @@ const Navigation = (t0) => {
     t11 = $[15];
   }
   let t12;
+  let t13;
+  let t14;
   if ($[16] === Symbol.for("react.memo_cache_sentinel")) {
-    t12 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKBox, { className: styles$7.footer, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(UKFlex, { direction: "row", className: styles$7.license, children: [
+    t12 = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: "©2022-2025" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(UKLink, { hideLinkIcon: true, to: "https://ewsgit.uk", text: "Ewsgit" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(UKSeparator, { direction: "row", disableMargin: true }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(UKLink, { hideLinkIcon: true, to: "https://ewsgit.mit-license.org", text: "Licensed under the MIT License" })
-    ] }) });
+      /* @__PURE__ */ jsxRuntimeExports.jsx(UKLink, { className: styles$7.link, hideLinkIcon: true, to: "https://ewsgit.uk", text: "Ewsgit" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(UKSeparator, { className: styles$7.separator, direction: "row", disableMargin: true }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(UKLink, { className: styles$7.link, hideLinkIcon: true, to: "https://ewsgit.mit-license.org", text: "Licensed under the MIT License" })
+    ] });
+    t13 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKSeparator, { direction: "column" });
+    t14 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: `Built from ` });
     $[16] = t12;
+    $[17] = t13;
+    $[18] = t14;
   } else {
     t12 = $[16];
+    t13 = $[17];
+    t14 = $[18];
   }
-  let t13;
-  if ($[17] !== t9) {
-    t13 = /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+  let t15;
+  let t16;
+  if ($[19] === Symbol.for("react.memo_cache_sentinel")) {
+    t15 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKLink, { className: styles$7.link, hideLinkIcon: true, text: "6e998cc964d72a36a00d7a130dd1abd6f882946e", to: `https://github.com/yourdash/yourdash/tree/${"6e998cc964d72a36a00d7a130dd1abd6f882946e"}` });
+    t16 = /* @__PURE__ */ jsxRuntimeExports.jsx(UKText, { text: ` @ ` });
+    $[19] = t15;
+    $[20] = t16;
+  } else {
+    t15 = $[19];
+    t16 = $[20];
+  }
+  let t17;
+  if ($[21] === Symbol.for("react.memo_cache_sentinel")) {
+    t17 = /* @__PURE__ */ jsxRuntimeExports.jsxs(UKBox, { className: styles$7.footer, children: [
+      t12,
+      t13,
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        t14,
+        t15,
+        t16,
+        /* @__PURE__ */ jsxRuntimeExports.jsx(UKLink, { className: styles$7.link, hideLinkIcon: true, text: "Not production build", to: `https://github.com/yourdash/yourdash/tree/${"Not production build"}` })
+      ] })
+    ] });
+    $[21] = t17;
+  } else {
+    t17 = $[21];
+  }
+  let t18;
+  if ($[22] !== t9) {
+    t18 = /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       t9,
       t10,
       t11,
-      t12
+      t17
     ] });
-    $[17] = t9;
-    $[18] = t13;
+    $[22] = t9;
+    $[23] = t18;
   } else {
-    t13 = $[18];
+    t18 = $[23];
   }
-  return t13;
+  return t18;
 };
 function _temp$3() {
   window.location.href = "https://github.com/yourdash/yourdash/tree/main/docs";
@@ -24723,7 +24757,7 @@ const UKButtonLink = (props) => {
   const t1 = props.text;
   let t2;
   if ($[3] !== props.className) {
-    t2 = clippy(styles$5.component, props.className);
+    t2 = clippy$1(styles$5.component, props.className);
     $[3] = props.className;
     $[4] = t2;
   } else {
@@ -25330,8 +25364,538 @@ const WebsocketToasts = () => {
   }
   return t0;
 };
-const AppRouter = reactExports.lazy(() => __vitePreload(() => import("./AppRouter-F58SfK94.js"), true ? [] : void 0, import.meta.url));
-const ProjectsRouter = reactExports.lazy(() => __vitePreload(() => import("./ProjectsRouter-DPxQtuWg.js"), true ? __vite__mapDeps([8,9]) : void 0, import.meta.url));
+function _objectWithoutPropertiesLoose(r2, e) {
+  if (null == r2) return {};
+  var t = {};
+  for (var n in r2) if ({}.hasOwnProperty.call(r2, n)) {
+    if (-1 !== e.indexOf(n)) continue;
+    t[n] = r2[n];
+  }
+  return t;
+}
+function _extends() {
+  return _extends = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r2 in t) ({}).hasOwnProperty.call(t, r2) && (n[r2] = t[r2]);
+    }
+    return n;
+  }, _extends.apply(null, arguments);
+}
+function _assertThisInitialized(e) {
+  if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  return e;
+}
+function _setPrototypeOf(t, e) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(t2, e2) {
+    return t2.__proto__ = e2, t2;
+  }, _setPrototypeOf(t, e);
+}
+function _inheritsLoose(t, o) {
+  t.prototype = Object.create(o.prototype), t.prototype.constructor = t, _setPrototypeOf(t, o);
+}
+var reactIs = { exports: {} };
+var reactIs_production_min = {};
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var hasRequiredReactIs_production_min;
+function requireReactIs_production_min() {
+  if (hasRequiredReactIs_production_min) return reactIs_production_min;
+  hasRequiredReactIs_production_min = 1;
+  var b = "function" === typeof Symbol && Symbol.for, c = b ? Symbol.for("react.element") : 60103, d = b ? Symbol.for("react.portal") : 60106, e = b ? Symbol.for("react.fragment") : 60107, f = b ? Symbol.for("react.strict_mode") : 60108, g = b ? Symbol.for("react.profiler") : 60114, h = b ? Symbol.for("react.provider") : 60109, k = b ? Symbol.for("react.context") : 60110, l = b ? Symbol.for("react.async_mode") : 60111, m = b ? Symbol.for("react.concurrent_mode") : 60111, n = b ? Symbol.for("react.forward_ref") : 60112, p = b ? Symbol.for("react.suspense") : 60113, q = b ? Symbol.for("react.suspense_list") : 60120, r2 = b ? Symbol.for("react.memo") : 60115, t = b ? Symbol.for("react.lazy") : 60116, v = b ? Symbol.for("react.block") : 60121, w = b ? Symbol.for("react.fundamental") : 60117, x = b ? Symbol.for("react.responder") : 60118, y = b ? Symbol.for("react.scope") : 60119;
+  function z2(a) {
+    if ("object" === typeof a && null !== a) {
+      var u = a.$$typeof;
+      switch (u) {
+        case c:
+          switch (a = a.type, a) {
+            case l:
+            case m:
+            case e:
+            case g:
+            case f:
+            case p:
+              return a;
+            default:
+              switch (a = a && a.$$typeof, a) {
+                case k:
+                case n:
+                case t:
+                case r2:
+                case h:
+                  return a;
+                default:
+                  return u;
+              }
+          }
+        case d:
+          return u;
+      }
+    }
+  }
+  function A(a) {
+    return z2(a) === m;
+  }
+  reactIs_production_min.AsyncMode = l;
+  reactIs_production_min.ConcurrentMode = m;
+  reactIs_production_min.ContextConsumer = k;
+  reactIs_production_min.ContextProvider = h;
+  reactIs_production_min.Element = c;
+  reactIs_production_min.ForwardRef = n;
+  reactIs_production_min.Fragment = e;
+  reactIs_production_min.Lazy = t;
+  reactIs_production_min.Memo = r2;
+  reactIs_production_min.Portal = d;
+  reactIs_production_min.Profiler = g;
+  reactIs_production_min.StrictMode = f;
+  reactIs_production_min.Suspense = p;
+  reactIs_production_min.isAsyncMode = function(a) {
+    return A(a) || z2(a) === l;
+  };
+  reactIs_production_min.isConcurrentMode = A;
+  reactIs_production_min.isContextConsumer = function(a) {
+    return z2(a) === k;
+  };
+  reactIs_production_min.isContextProvider = function(a) {
+    return z2(a) === h;
+  };
+  reactIs_production_min.isElement = function(a) {
+    return "object" === typeof a && null !== a && a.$$typeof === c;
+  };
+  reactIs_production_min.isForwardRef = function(a) {
+    return z2(a) === n;
+  };
+  reactIs_production_min.isFragment = function(a) {
+    return z2(a) === e;
+  };
+  reactIs_production_min.isLazy = function(a) {
+    return z2(a) === t;
+  };
+  reactIs_production_min.isMemo = function(a) {
+    return z2(a) === r2;
+  };
+  reactIs_production_min.isPortal = function(a) {
+    return z2(a) === d;
+  };
+  reactIs_production_min.isProfiler = function(a) {
+    return z2(a) === g;
+  };
+  reactIs_production_min.isStrictMode = function(a) {
+    return z2(a) === f;
+  };
+  reactIs_production_min.isSuspense = function(a) {
+    return z2(a) === p;
+  };
+  reactIs_production_min.isValidElementType = function(a) {
+    return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || a === q || "object" === typeof a && null !== a && (a.$$typeof === t || a.$$typeof === r2 || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n || a.$$typeof === w || a.$$typeof === x || a.$$typeof === y || a.$$typeof === v);
+  };
+  reactIs_production_min.typeOf = z2;
+  return reactIs_production_min;
+}
+var hasRequiredReactIs;
+function requireReactIs() {
+  if (hasRequiredReactIs) return reactIs.exports;
+  hasRequiredReactIs = 1;
+  {
+    reactIs.exports = requireReactIs_production_min();
+  }
+  return reactIs.exports;
+}
+var hoistNonReactStatics_cjs;
+var hasRequiredHoistNonReactStatics_cjs;
+function requireHoistNonReactStatics_cjs() {
+  if (hasRequiredHoistNonReactStatics_cjs) return hoistNonReactStatics_cjs;
+  hasRequiredHoistNonReactStatics_cjs = 1;
+  var reactIs2 = requireReactIs();
+  var REACT_STATICS = {
+    childContextTypes: true,
+    contextType: true,
+    contextTypes: true,
+    defaultProps: true,
+    displayName: true,
+    getDefaultProps: true,
+    getDerivedStateFromError: true,
+    getDerivedStateFromProps: true,
+    mixins: true,
+    propTypes: true,
+    type: true
+  };
+  var KNOWN_STATICS = {
+    name: true,
+    length: true,
+    prototype: true,
+    caller: true,
+    callee: true,
+    arguments: true,
+    arity: true
+  };
+  var FORWARD_REF_STATICS = {
+    "$$typeof": true,
+    render: true,
+    defaultProps: true,
+    displayName: true,
+    propTypes: true
+  };
+  var MEMO_STATICS = {
+    "$$typeof": true,
+    compare: true,
+    defaultProps: true,
+    displayName: true,
+    propTypes: true,
+    type: true
+  };
+  var TYPE_STATICS = {};
+  TYPE_STATICS[reactIs2.ForwardRef] = FORWARD_REF_STATICS;
+  TYPE_STATICS[reactIs2.Memo] = MEMO_STATICS;
+  function getStatics(component2) {
+    if (reactIs2.isMemo(component2)) {
+      return MEMO_STATICS;
+    }
+    return TYPE_STATICS[component2["$$typeof"]] || REACT_STATICS;
+  }
+  var defineProperty = Object.defineProperty;
+  var getOwnPropertyNames = Object.getOwnPropertyNames;
+  var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+  var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  var getPrototypeOf = Object.getPrototypeOf;
+  var objectPrototype = Object.prototype;
+  function hoistNonReactStatics2(targetComponent, sourceComponent, blacklist) {
+    if (typeof sourceComponent !== "string") {
+      if (objectPrototype) {
+        var inheritedComponent = getPrototypeOf(sourceComponent);
+        if (inheritedComponent && inheritedComponent !== objectPrototype) {
+          hoistNonReactStatics2(targetComponent, inheritedComponent, blacklist);
+        }
+      }
+      var keys = getOwnPropertyNames(sourceComponent);
+      if (getOwnPropertySymbols) {
+        keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+      }
+      var targetStatics = getStatics(targetComponent);
+      var sourceStatics = getStatics(sourceComponent);
+      for (var i = 0; i < keys.length; ++i) {
+        var key = keys[i];
+        if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+          var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+          try {
+            defineProperty(targetComponent, key, descriptor);
+          } catch (e) {
+          }
+        }
+      }
+    }
+    return targetComponent;
+  }
+  hoistNonReactStatics_cjs = hoistNonReactStatics2;
+  return hoistNonReactStatics_cjs;
+}
+var hoistNonReactStatics_cjsExports = requireHoistNonReactStatics_cjs();
+const hoistNonReactStatics = /* @__PURE__ */ getDefaultExportFromCjs(hoistNonReactStatics_cjsExports);
+function invariant(condition, message2) {
+  if (condition) return;
+  var error2 = new Error("loadable: " + message2);
+  error2.framesToPop = 1;
+  error2.name = "Invariant Violation";
+  throw error2;
+}
+var Context = /* @__PURE__ */ React.createContext();
+var LOADABLE_SHARED = {
+  initialChunks: {}
+};
+var STATUS_PENDING = "PENDING";
+var STATUS_RESOLVED = "RESOLVED";
+var STATUS_REJECTED = "REJECTED";
+function resolveConstructor(ctor) {
+  if (typeof ctor === "function") {
+    return {
+      requireAsync: ctor,
+      resolve: function resolve() {
+        return void 0;
+      },
+      chunkName: function chunkName() {
+        return void 0;
+      }
+    };
+  }
+  return ctor;
+}
+var withChunkExtractor = function withChunkExtractor2(Component) {
+  var LoadableWithChunkExtractor = function LoadableWithChunkExtractor2(props) {
+    return React.createElement(Context.Consumer, null, function(extractor) {
+      return React.createElement(Component, Object.assign({
+        __chunkExtractor: extractor
+      }, props));
+    });
+  };
+  if (Component.displayName) {
+    LoadableWithChunkExtractor.displayName = Component.displayName + "WithChunkExtractor";
+  }
+  return LoadableWithChunkExtractor;
+};
+var identity = function identity2(v) {
+  return v;
+};
+function createLoadable(_ref) {
+  var _ref$defaultResolveCo = _ref.defaultResolveComponent, defaultResolveComponent2 = _ref$defaultResolveCo === void 0 ? identity : _ref$defaultResolveCo, _render = _ref.render, onLoad2 = _ref.onLoad;
+  function loadable2(loadableConstructor, options) {
+    if (options === void 0) {
+      options = {};
+    }
+    var ctor = resolveConstructor(loadableConstructor);
+    var cache = {};
+    function _getCacheKey(props) {
+      if (options.cacheKey) {
+        return options.cacheKey(props);
+      }
+      if (ctor.resolve) {
+        return ctor.resolve(props);
+      }
+      return "static";
+    }
+    function resolve(module, props, Loadable2) {
+      var Component = options.resolveComponent ? options.resolveComponent(module, props) : defaultResolveComponent2(module);
+      hoistNonReactStatics(Loadable2, Component, {
+        preload: true
+      });
+      return Component;
+    }
+    var cachedLoad = function cachedLoad2(props) {
+      var cacheKey = _getCacheKey(props);
+      var promise = cache[cacheKey];
+      if (!promise || promise.status === STATUS_REJECTED) {
+        promise = ctor.requireAsync(props);
+        promise.status = STATUS_PENDING;
+        cache[cacheKey] = promise;
+        promise.then(function() {
+          promise.status = STATUS_RESOLVED;
+        }, function(error2) {
+          console.error("loadable-components: failed to asynchronously load component", {
+            fileName: ctor.resolve(props),
+            chunkName: ctor.chunkName(props),
+            error: error2 ? error2.message : error2
+          });
+          promise.status = STATUS_REJECTED;
+        });
+      }
+      return promise;
+    };
+    var InnerLoadable = /* @__PURE__ */ function(_React$Component) {
+      _inheritsLoose(InnerLoadable2, _React$Component);
+      InnerLoadable2.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
+        var cacheKey = _getCacheKey(props);
+        return _extends({}, state, {
+          cacheKey,
+          // change of a key triggers loading state automatically
+          loading: state.loading || state.cacheKey !== cacheKey
+        });
+      };
+      function InnerLoadable2(props) {
+        var _this;
+        _this = _React$Component.call(this, props) || this;
+        _this.state = {
+          result: null,
+          error: null,
+          loading: true,
+          cacheKey: _getCacheKey(props)
+        };
+        invariant(!props.__chunkExtractor || ctor.requireSync, "SSR requires `@loadable/babel-plugin`, please install it");
+        if (props.__chunkExtractor) {
+          if (options.ssr === false) {
+            return _assertThisInitialized(_this);
+          }
+          ctor.requireAsync(props)["catch"](function() {
+            return null;
+          });
+          _this.loadSync();
+          props.__chunkExtractor.addChunk(ctor.chunkName(props));
+          return _assertThisInitialized(_this);
+        }
+        if (options.ssr !== false && // is ready - was loaded in this session
+        (ctor.isReady && ctor.isReady(props) || // is ready - was loaded during SSR process
+        ctor.chunkName && LOADABLE_SHARED.initialChunks[ctor.chunkName(props)])) {
+          _this.loadSync();
+        }
+        return _this;
+      }
+      var _proto = InnerLoadable2.prototype;
+      _proto.componentDidMount = function componentDidMount() {
+        this.mounted = true;
+        var cachedPromise = this.getCache();
+        if (cachedPromise && cachedPromise.status === STATUS_REJECTED) {
+          this.setCache();
+        }
+        if (this.state.loading) {
+          this.loadAsync();
+        }
+      };
+      _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+        if (prevState.cacheKey !== this.state.cacheKey) {
+          this.loadAsync();
+        }
+      };
+      _proto.componentWillUnmount = function componentWillUnmount() {
+        this.mounted = false;
+      };
+      _proto.safeSetState = function safeSetState(nextState, callback) {
+        if (this.mounted) {
+          this.setState(nextState, callback);
+        }
+      };
+      _proto.getCacheKey = function getCacheKey() {
+        return _getCacheKey(this.props);
+      };
+      _proto.getCache = function getCache() {
+        return cache[this.getCacheKey()];
+      };
+      _proto.setCache = function setCache(value) {
+        if (value === void 0) {
+          value = void 0;
+        }
+        cache[this.getCacheKey()] = value;
+      };
+      _proto.triggerOnLoad = function triggerOnLoad() {
+        var _this2 = this;
+        if (onLoad2) {
+          setTimeout(function() {
+            onLoad2(_this2.state.result, _this2.props);
+          });
+        }
+      };
+      _proto.loadSync = function loadSync() {
+        if (!this.state.loading) return;
+        try {
+          var loadedModule = ctor.requireSync(this.props);
+          var result = resolve(loadedModule, this.props, Loadable);
+          this.state.result = result;
+          this.state.loading = false;
+        } catch (error2) {
+          console.error("loadable-components: failed to synchronously load component, which expected to be available", {
+            fileName: ctor.resolve(this.props),
+            chunkName: ctor.chunkName(this.props),
+            error: error2 ? error2.message : error2
+          });
+          this.state.error = error2;
+        }
+      };
+      _proto.loadAsync = function loadAsync() {
+        var _this3 = this;
+        var promise = this.resolveAsync();
+        promise.then(function(loadedModule) {
+          var result = resolve(loadedModule, _this3.props, Loadable);
+          _this3.safeSetState({
+            result,
+            loading: false
+          }, function() {
+            return _this3.triggerOnLoad();
+          });
+        })["catch"](function(error2) {
+          return _this3.safeSetState({
+            error: error2,
+            loading: false
+          });
+        });
+        return promise;
+      };
+      _proto.resolveAsync = function resolveAsync() {
+        var _this$props = this.props;
+        _this$props.__chunkExtractor;
+        _this$props.forwardedRef;
+        var props = _objectWithoutPropertiesLoose(_this$props, ["__chunkExtractor", "forwardedRef"]);
+        return cachedLoad(props);
+      };
+      _proto.render = function render3() {
+        var _this$props2 = this.props, forwardedRef = _this$props2.forwardedRef, propFallback = _this$props2.fallback;
+        _this$props2.__chunkExtractor;
+        var props = _objectWithoutPropertiesLoose(_this$props2, ["forwardedRef", "fallback", "__chunkExtractor"]);
+        var _this$state = this.state, error2 = _this$state.error, loading2 = _this$state.loading, result = _this$state.result;
+        if (options.suspense) {
+          var cachedPromise = this.getCache() || this.loadAsync();
+          if (cachedPromise.status === STATUS_PENDING) {
+            throw this.loadAsync();
+          }
+        }
+        if (error2) {
+          throw error2;
+        }
+        var fallback = propFallback || options.fallback || null;
+        if (loading2) {
+          return fallback;
+        }
+        return _render({
+          fallback,
+          result,
+          options,
+          props: _extends({}, props, {
+            ref: forwardedRef
+          })
+        });
+      };
+      return InnerLoadable2;
+    }(React.Component);
+    var EnhancedInnerLoadable = withChunkExtractor(InnerLoadable);
+    var Loadable = React.forwardRef(function(props, ref) {
+      return React.createElement(EnhancedInnerLoadable, Object.assign({
+        forwardedRef: ref
+      }, props));
+    });
+    Loadable.displayName = "Loadable";
+    Loadable.preload = function(props) {
+      Loadable.load(props);
+    };
+    Loadable.load = function(props) {
+      return cachedLoad(props);
+    };
+    return Loadable;
+  }
+  function lazy2(ctor, options) {
+    return loadable2(ctor, _extends({}, options, {
+      suspense: true
+    }));
+  }
+  return {
+    loadable: loadable2,
+    lazy: lazy2
+  };
+}
+function defaultResolveComponent(loadedModule) {
+  return loadedModule.__esModule ? loadedModule["default"] : loadedModule["default"] || loadedModule;
+}
+var _createLoadable = /* @__PURE__ */ createLoadable({
+  defaultResolveComponent,
+  render: function render(_ref) {
+    var Component = _ref.result, props = _ref.props;
+    return React.createElement(Component, props);
+  }
+}), loadable = _createLoadable.loadable, lazy = _createLoadable.lazy;
+var _createLoadable$1 = /* @__PURE__ */ createLoadable({
+  onLoad: function onLoad(result, props) {
+    if (result && props.forwardedRef) {
+      if (typeof props.forwardedRef === "function") {
+        props.forwardedRef(result);
+      } else {
+        props.forwardedRef.current = result;
+      }
+    }
+  },
+  render: function render2(_ref) {
+    var result = _ref.result, props = _ref.props;
+    if (props.children) {
+      return props.children(result);
+    }
+    return null;
+  }
+}), loadable$1 = _createLoadable$1.loadable, lazy$1 = _createLoadable$1.lazy;
+var loadable$2 = loadable;
+loadable$2.lib = loadable$1;
+var lazy$2 = lazy;
+lazy$2.lib = lazy$1;
+const ProjectsRouter = loadable$2(() => __vitePreload(() => import("./ProjectsRouter-7QBIpgJN.js"), true ? __vite__mapDeps([8,9]) : void 0, import.meta.url));
 const element = document.getElementById("root");
 const loadingElement = document.createElement("h1");
 loadingElement.style.display = "flex";
@@ -25349,10 +25913,10 @@ ReactDOM.createRoot(element).render(/* @__PURE__ */ jsxRuntimeExports.jsxs(UIKit
       /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { index: true, element: /* @__PURE__ */ jsxRuntimeExports.jsx(Index$1, {}) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "*", element: /* @__PURE__ */ jsxRuntimeExports.jsx(NotFoundPage, {}) })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { element: /* @__PURE__ */ jsxRuntimeExports.jsx(Navigation, { subtitle: "Projects" }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "projects", index: true, element: /* @__PURE__ */ jsxRuntimeExports.jsx(ProjectsIndexPage, {}) }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "projects/*", element: /* @__PURE__ */ jsxRuntimeExports.jsx(ProjectsRouter, {}) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "project/*", element: /* @__PURE__ */ jsxRuntimeExports.jsx(ProjectsRouter, {}) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "proj/*", element: /* @__PURE__ */ jsxRuntimeExports.jsx(ProjectsRouter, {}) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(Route, { element: /* @__PURE__ */ jsxRuntimeExports.jsx(Navigation, { subtitle: "Projects" }), children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "projects", index: true, element: /* @__PURE__ */ jsxRuntimeExports.jsx(ProjectsIndexPage, {}) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { element: /* @__PURE__ */ jsxRuntimeExports.jsx(ProjectsRouter, {}) })
+    ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(Route, { path: "login", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { index: true, element: /* @__PURE__ */ jsxRuntimeExports.jsx(LoginIndexPagePreload, {}) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "success", element: /* @__PURE__ */ jsxRuntimeExports.jsx(LoginSuccessPage, {}) }),
@@ -25363,10 +25927,13 @@ ReactDOM.createRoot(element).render(/* @__PURE__ */ jsxRuntimeExports.jsxs(UIKit
         /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "*", element: /* @__PURE__ */ jsxRuntimeExports.jsx(LoginRedirect, {}) })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "app", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Route, { element: /* @__PURE__ */ jsxRuntimeExports.jsx(AppLayout, {}), children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(Route, { path: "app", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { index: true, element: /* @__PURE__ */ jsxRuntimeExports.jsx(ApplicationRedirectToDash, {}) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "a/*", errorElement: /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorElement, {}), element: /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(AppRouter, {}) }) })
-    ] }) })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { element: /* @__PURE__ */ jsxRuntimeExports.jsx(AppLayout, {}), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "a/*", errorElement: /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorElement, {}), element: (
+        /* <AppRouter fallback={<UKHeading text={"Loading applications..."} />} /> */
+        "applications coming soon..."
+      ) }) })
+    ] })
   ] })), {
     future: {
       v7_fetcherPersist: true,
@@ -25378,42 +25945,36 @@ ReactDOM.createRoot(element).render(/* @__PURE__ */ jsxRuntimeExports.jsxs(UIKit
   }) })
 ] }));
 export {
-  UKButton as A,
-  DASH_ICON as B,
-  useLevel as C,
+  useLevelClass as A,
   DecrementLevel as D,
-  generateUUID as E,
-  useParams as F,
   IncrementLevel as I,
-  Outlet as O,
   Routes as R,
   UKImage as U,
-  __vitePreload as _,
-  Route as a,
-  UKHeading as b,
+  UKHeading as a,
+  clippy$1 as b,
   compilerRuntimeExports as c,
-  clippy as d,
-  UKFlex as e,
-  UKBox as f,
-  UKIconButton as g,
-  UKIcons as h,
-  UKSeparator as i,
+  UKFlex as d,
+  UKBox as e,
+  UKIconButton as f,
+  UKIcons as g,
+  UKSeparator as h,
+  UKPageHeader as i,
   jsxRuntimeExports as j,
-  UKPageHeader as k,
-  UKText as l,
+  UKText as k,
+  Route as l,
   contextMenuRootContext as m,
   useToast as n,
   UKCard as o,
   toAuthImgUrl as p,
   React as q,
   reactExports as r,
-  UKTextInput as s,
+  clippy as s,
   tun as t,
   useNavigate as u,
-  useResource as v,
-  useLocation as w,
-  UKIcon as x,
-  useLevelClass as y,
+  UKTextInput as v,
+  useResource as w,
+  useLocation as x,
+  UKIcon as y,
   z
 };
-//# sourceMappingURL=index-B8tqQDmo.js.map
+//# sourceMappingURL=index-DQoorauR.js.map

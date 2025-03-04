@@ -1,4 +1,4 @@
-import { c as compilerRuntimeExports, d as clippy, j as jsxRuntimeExports, l as UKText } from "./index-B8tqQDmo.js";
+import { c as compilerRuntimeExports, s as clippy, j as jsxRuntimeExports, k as UKText } from "./index-DQoorauR.js";
 const LocalhostIndicator = (t0) => {
   const $ = compilerRuntimeExports.c(8);
   const {
@@ -42,4 +42,4 @@ const LocalhostIndicator = (t0) => {
 export {
   LocalhostIndicator as default
 };
-//# sourceMappingURL=Widget-DOAmUfDc.js.map
+//# sourceMappingURL=Widget-LVBwInA-.js.map

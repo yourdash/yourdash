@@ -4757,6 +4757,9 @@ video {
   --tw-rotate: -12deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .resize {
   resize: both;
 }
@@ -5398,8 +5401,6 @@ video {
 body, #root, html {
   overflow: hidden;
   height: 100%;
-  color: rgb(var(--base-50));
-  background-image: linear-gradient(to bottom right, rgb(var(--base-700) / 1), rgb(var(--base-900) / 1));
 }
 
 .animate__animated.animate__50ms {
@@ -7039,7 +7040,7 @@ body, #root, html {
  * Copyright ©2025 Ewsgit <https://ewsgit.uk> and YourDash <https://yourdash.ewsgit.uk> contributors.
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
-._navigationBar_zeaji_10 {
+._navigationBar_z9ghc_10 {
   --side-spacing: 10rem;
   border: none;
   width: 100%;
@@ -7049,14 +7050,14 @@ body, #root, html {
   align-items: center;
   justify-content: center;
 }
-._navigationBar_zeaji_10 ._logo_zeaji_20 {
+._navigationBar_z9ghc_10 ._logo_z9ghc_20 {
   height: 2.5rem;
   border-radius: 0;
 }
-._navigationBar_zeaji_10 ._title_zeaji_24 {
+._navigationBar_z9ghc_10 ._title_z9ghc_24 {
   margin: 0 0 0 calc(var(--utgap) / 2 * -1);
 }
-._navigationBar_zeaji_10 ._subtitle_zeaji_27 {
+._navigationBar_z9ghc_10 ._subtitle_z9ghc_27 {
   margin: 0 var(--side-spacing) 0 0;
   transition: var(--uttrans);
   width: 10ch;
@@ -7064,7 +7065,7 @@ body, #root, html {
   font-weight: 300;
   letter-spacing: -0.1rem;
 }
-@keyframes _slideDown_zeaji_1 {
+@keyframes _slideDown_z9ghc_1 {
   0% {
     opacity: 0;
     transform: translateY(-100%);
@@ -7074,43 +7075,43 @@ body, #root, html {
     transform: translateY(0);
   }
 }
-._navigationBar_zeaji_10 ._subtitle_zeaji_27:not(:empty) {
-  animation: _slideDown_zeaji_1 0.5s ease-in-out forwards;
+._navigationBar_z9ghc_10 ._subtitle_z9ghc_27:not(:empty) {
+  animation: _slideDown_z9ghc_1 0.5s ease-in-out forwards;
 }
-._navigationBar_zeaji_10 ._link_zeaji_48 {
+._navigationBar_z9ghc_10 ._link_z9ghc_48 {
   font-size: 1.1rem;
   padding-right: 0.25rem;
   padding-left: 0.25rem;
 }
-._navigationBar_zeaji_10 ._link_zeaji_48:first-child {
+._navigationBar_z9ghc_10 ._link_z9ghc_48:first-child {
   padding-left: 0;
 }
-._navigationBar_zeaji_10 ._link_zeaji_48:last-child {
+._navigationBar_z9ghc_10 ._link_z9ghc_48:last-child {
   padding-right: 0;
 }
 @media (max-width: 768px) {
-  ._navigationBar_zeaji_10 ._source_zeaji_60 {
+  ._navigationBar_z9ghc_10 ._source_z9ghc_60 {
     display: none;
     visibility: hidden;
   }
 }
 @media (max-width: 960px) {
-  ._navigationBar_zeaji_10 {
+  ._navigationBar_z9ghc_10 {
     --side-spacing: 5rem;
   }
 }
 @media (max-width: 560px) {
-  ._navigationBar_zeaji_10 {
+  ._navigationBar_z9ghc_10 {
     --side-spacing: 3rem;
   }
 }
 @media (max-width: 440px) {
-  ._navigationBar_zeaji_10 {
+  ._navigationBar_z9ghc_10 {
     --side-spacing: 0;
   }
 }
 
-._notice_zeaji_81 {
+._notice_z9ghc_81 {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -7123,19 +7124,32 @@ body, #root, html {
   padding-bottom: calc(var(--utpdn) / 2);
 }
 
-._footer_zeaji_94 {
+._footer_z9ghc_94 {
   border-bottom: none;
   border-left: none;
   border-right: none;
   padding: 0;
-  height: 3rem;
+  height: -moz-max-content;
+  height: max-content;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
-._footer_zeaji_94 ._license_zeaji_104 {
-  margin-left: auto;
-  margin-right: auto;
+._footer_z9ghc_94 > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--utgap);
+}
+._footer_z9ghc_94 > div:first-child {
+  padding-top: var(--utpdn);
+}
+._footer_z9ghc_94 > div:last-child {
+  padding-bottom: var(--utpdn);
+}
+._footer_z9ghc_94 > div > ._separator_z9ghc_116 {
+  flex-grow: 1;
+  height: 1rem;
 }
 /*!
  * Copyright ©2025 Ewsgit<https://github.com/ewsgit> and YourDash<https://github.com/yourdash> contributors.

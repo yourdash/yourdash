@@ -1,4 +1,4 @@
-import { c as compilerRuntimeExports, j as jsxRuntimeExports, U as UKImage, l as UKText } from "./index-B8tqQDmo.js";
+import { c as compilerRuntimeExports, j as jsxRuntimeExports, U as UKImage, k as UKText } from "./index-DQoorauR.js";
 const component = "_component_fr1oe_10";
 const label = "_label_fr1oe_16";
 const styles = {
@@ -29,4 +29,4 @@ const UserProfileWidget = () => {
 export {
   UserProfileWidget as default
 };
-//# sourceMappingURL=Widget-B554DQgR.js.map
+//# sourceMappingURL=Widget-DQIXMedc.js.map

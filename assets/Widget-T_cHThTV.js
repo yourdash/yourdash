@@ -1,4 +1,4 @@
-import { c as compilerRuntimeExports, j as jsxRuntimeExports, i as UKSeparator } from "./index-B8tqQDmo.js";
+import { c as compilerRuntimeExports, j as jsxRuntimeExports, h as UKSeparator } from "./index-DQoorauR.js";
 const SeparatorWidget = (t0) => {
   const $ = compilerRuntimeExports.c(2);
   const {
@@ -18,4 +18,4 @@ const SeparatorWidget = (t0) => {
 export {
   SeparatorWidget as default
 };
-//# sourceMappingURL=Widget-JVdnUkrl.js.map
+//# sourceMappingURL=Widget-T_cHThTV.js.map

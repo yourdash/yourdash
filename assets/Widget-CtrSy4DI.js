@@ -1,4 +1,4 @@
-import { r as reactExports, c as compilerRuntimeExports, u as useNavigate, p as toAuthImgUrl, U as UKImage, j as jsxRuntimeExports } from "./index-B8tqQDmo.js";
+import { r as reactExports, c as compilerRuntimeExports, u as useNavigate, p as toAuthImgUrl, U as UKImage, j as jsxRuntimeExports } from "./index-DQoorauR.js";
 const icon = "_icon_1qyyl_6";
 const styles = {
   icon
@@ -52,4 +52,4 @@ const Widget = reactExports.memo(InstanceLogoWidget);
 export {
   Widget as default
 };
-//# sourceMappingURL=Widget-BlytxZCu.js.map
+//# sourceMappingURL=Widget-CtrSy4DI.js.map
