@@ -28,7 +28,7 @@ import LinkerDesktopClientStartupPage from "./root/linkerDesktopClientStartup/In
 import WebsocketToasts from "./WebsocketToasts.tsx";
 import loadable from "@loadable/component";
 
-const AppRouter = loadable(() => import("./app/AppRouter.tsx"));
+// const AppRouter = loadable(() => import("./app/AppRouter.tsx"));
 const ProjectsRouter = loadable(() => import("./root/projects/ProjectsRouter.tsx"));
 
 const element = document.getElementById("root") as HTMLElement;
@@ -112,7 +112,7 @@ ReactDOM.createRoot(element).render(
                 <Route
                   path={"a/*"}
                   errorElement={<ErrorElement />}
-                  element={<AppRouter fallback={<UKHeading text={"Loading applications..."} />} />}
+                  element={/* <AppRouter fallback={<UKHeading text={"Loading applications..."} />} /> */ "applications coming soon..."}
                 />
               </Route>
             </Route>
