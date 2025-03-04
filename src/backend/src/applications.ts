@@ -80,9 +80,9 @@ class Applications {
     this.instance.log.info("application", `Loading application @ ${applicationPath}.`);
     try {
       // import index.ts at applicationPath
-      let applicationImport = await import("@yourdash/applications/" + path.posix.join(applicationPath, "/backend/index.ts"));
+      let applicationImport = await import("../../applications/" + path.posix.join(applicationPath, "/backend/index.ts"));
       let application = new applicationImport.default();
-      application.__internal_initializedPath = path.resolve(path.posix.join("../applications/" + applicationPath));
+      application.__internal_initializedPath = path.resolve(path.posix.join("../../applications/" + applicationPath));
       this.loadedApplications.push(application);
       application?.onLoad?.();
       return application;

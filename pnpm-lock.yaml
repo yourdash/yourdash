@@ -20,8 +20,8 @@ importers:
   src/applications/uk-ewsgit-dash/backend:
     dependencies:
       '@yourdash/backend':
-        specifier: workspace:../../../src/backend
-        version: link:../../../src/backend
+        specifier: workspace:*
+        version: link:../../../backend
 
   src/applications/uk-ewsgit-dash/standalone:
     dependencies:

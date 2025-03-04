@@ -107,7 +107,24 @@
   display: flex;
   align-items: center;
 
-  .link {
-    height: 2rem;
+  > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: $UKGap;
+
+    &:first-child {
+    padding-top: $UKPadding;
+    }
+
+    &:last-child {
+      padding-bottom: $UKPadding;
+    }
+
+    > .separator {
+      flex-grow: 1;
+      height: 1rem;
+    }
   }
 }

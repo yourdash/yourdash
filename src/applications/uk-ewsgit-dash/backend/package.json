@@ -1,8 +1,8 @@
 {
-  "name": "@app/backend",
+  "name": "@yourdash/application-uk-ewsgit-dash-backend",
   "private": true,
   "scripts": {},
   "dependencies": {
-    "@yourdash/backend": "workspace:../../../src/backend"
+    "@yourdash/backend": "workspace:*"
   }
 }
