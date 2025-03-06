@@ -9,7 +9,6 @@
       "ESNext"
     ],
     "allowJs": false,
-    "skipLibCheck": true,
     "esModuleInterop": true,
     "sourceMap": true,
     "removeComments": true,

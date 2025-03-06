@@ -2,6 +2,7 @@
   "name": "@yourdash/application-uk-ewsgit-dash-backend",
   "private": true,
   "scripts": {},
+  "type": "module",
   "dependencies": {
     "@yourdash/backend": "workspace:*"
   }

@@ -73,7 +73,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "bun --watch src/main.ts --dev --color=full --log-requests",
+    "dev": "bun run --cwd=.. --watch src/backend/src/main.ts --dev --color=full --log-requests",
     "production": "bun src/main.ts --color=full --log-requests"
   }
 }

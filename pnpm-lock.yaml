@@ -33,7 +33,7 @@ importers:
         version: 19.0.4(@types/react@19.0.10)
       '@vitejs/plugin-react':
         specifier: ^4.3.4
-        version: 4.3.4(vite@6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
+        version: 4.3.4(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
       '@yourdash/application-uk-ewsgit-dash-web':
         specifier: workspace:*
         version: link:../web
@@ -51,7 +51,7 @@ importers:
         version: 19.0.0(react@19.0.0)
       vite:
         specifier: ^6.2.0
-        version: 6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
+        version: 6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
       vite-plugin-dynamic-import:
         specifier: ^1.6.0
         version: 1.6.0
@@ -64,6 +64,105 @@ importers:
       '@yourdash/panel-context':
         specifier: workspace:*
         version: link:../../../panelContext
+      animate.css:
+        specifier: ^4.1.1
+        version: 4.1.1
+      babel-plugin-react-compiler:
+        specifier: 19.0.0-beta-e1e972c-20250221
+        version: 19.0.0-beta-e1e972c-20250221
+      glob:
+        specifier: ^11.0.1
+        version: 11.0.1
+      npm-run-all:
+        specifier: ^4.1.5
+        version: 4.1.5
+      vite:
+        specifier: ^6.2.0
+        version: 6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
+      vite-plugin-dynamic-import:
+        specifier: ^1.6.0
+        version: 1.6.0
+      vite-plugin-lib-inject-css:
+        specifier: ^2.2.1
+        version: 2.2.1(vite@6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
+    devDependencies:
+      '@types/node':
+        specifier: ^22.13.8
+        version: 22.13.8
+      '@types/react':
+        specifier: ^19.0.10
+        version: 19.0.10
+      '@types/react-dom':
+        specifier: ^19.0.4
+        version: 19.0.4(@types/react@19.0.10)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      react-router:
+        specifier: ^7.2.0
+        version: 7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react-router-dom:
+        specifier: ^7.2.0
+        version: 7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+
+  src/applications/uk-ewsgit-nextcloud: {}
+
+  src/applications/uk-ewsgit-nextcloud/backend:
+    dependencies:
+      '@types/bun':
+        specifier: ^1.1.6
+        version: 1.2.1
+      '@types/node':
+        specifier: ^22.13.9
+        version: 22.13.9
+      '@yourdash/backend':
+        specifier: workspace:*
+        version: link:../../../backend
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
+
+  src/applications/uk-ewsgit-nextcloud/standalone:
+    dependencies:
+      '@types/react':
+        specifier: ^19.0.10
+        version: 19.0.10
+      '@types/react-dom':
+        specifier: ^19.0.4
+        version: 19.0.4(@types/react@19.0.10)
+      '@vitejs/plugin-react':
+        specifier: ^4.3.4
+        version: 4.3.4(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
+      '@yourdash/application-uk-ewsgit-template-web':
+        specifier: workspace:*
+        version: link:../web
+      animate.css:
+        specifier: ^4.1.1
+        version: 4.1.1
+      babel-plugin-react-compiler:
+        specifier: 19.0.0-beta-e1e972c-20250221
+        version: 19.0.0-beta-e1e972c-20250221
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      vite:
+        specifier: ^6.2.0
+        version: 6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
+      vite-plugin-dynamic-import:
+        specifier: ^1.6.0
+        version: 1.6.0
+
+  src/applications/uk-ewsgit-nextcloud/web:
+    dependencies:
+      '@vitejs/plugin-react':
+        specifier: ^4.3.4
+        version: 4.3.4(vite@6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
@@ -292,29 +391,29 @@ importers:
   src/panelContext:
     dependencies:
       '@types/react':
-        specifier: ^18.3.5
-        version: 18.3.18
+        specifier: ^19.0.0
+        version: 19.0.10
       '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.5(@types/react@18.3.18)
+        specifier: ^19.0.0
+        version: 19.0.4(@types/react@19.0.10)
       path-browserify:
         specifier: ^1.0.1
         version: 1.0.1
       react:
-        specifier: ^18.3.1
-        version: 18.3.1
+        specifier: ^19.0.0
+        version: 19.0.0
       react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
       react-router:
-        specifier: ^6.26.2
-        version: 6.28.2(react@18.3.1)
+        specifier: ^7.2.0
+        version: 7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-router-dom:
-        specifier: ^6.26.2
-        version: 6.28.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^7.2.0
+        version: 7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       vite-plugin-lib-inject-css:
         specifier: ^2.2.1
-        version: 2.2.1(vite@6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
+        version: 2.2.1(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
       zod:
         specifier: ^3.24.1
         version: 3.24.2
@@ -390,7 +489,7 @@ importers:
         version: 6.28.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       vite-plugin-lib-inject-css:
         specifier: ^2.2.1
-        version: 2.2.1(vite@6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
+        version: 2.2.1(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
       zod:
         specifier: ^3.24.1
         version: 3.24.1
@@ -445,7 +544,7 @@ importers:
     dependencies:
       '@tailwindcss/container-queries':
         specifier: ^0.1.1
-        version: 0.1.1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3)))
+        version: 0.1.1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3)))
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.25.0
         version: 8.25.0(@typescript-eslint/parser@8.25.0(eslint@9.21.0(jiti@1.21.7))(typescript@5.7.3))(eslint@9.21.0(jiti@1.21.7))(typescript@5.7.3)
@@ -454,10 +553,10 @@ importers:
         version: 8.25.0(eslint@9.21.0(jiti@1.21.7))(typescript@5.7.3)
       '@vitejs/plugin-react':
         specifier: ^4.3.4
-        version: 4.3.4(vite@6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
+        version: 4.3.4(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
       '@vitejs/plugin-react-swc':
         specifier: ^3.8.0
-        version: 3.8.0(vite@6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
+        version: 3.8.0(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
       '@yourdash/backend':
         specifier: workspace:*
         version: link:../backend
@@ -511,7 +610,7 @@ importers:
         version: 7.1.0
       tailwindcss:
         specifier: ^3.3.3
-        version: 3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3))
+        version: 3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3))
       type-fest:
         specifier: ^4.14.0
         version: 4.33.0
@@ -520,7 +619,7 @@ importers:
         version: 5.7.3
       vite:
         specifier: ^6.2.0
-        version: 6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
+        version: 6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
       vite-plugin-dynamic-import:
         specifier: ^1.5.0
         version: 1.6.0
@@ -532,11 +631,11 @@ importers:
         version: 3.24.1
     devDependencies:
       '@types/react':
-        specifier: ^18.2.62
-        version: 18.3.18
+        specifier: ^19.0.10
+        version: 19.0.10
       '@types/react-dom':
-        specifier: ^18.2.7
-        version: 18.3.5(@types/react@18.3.18)
+        specifier: ^19.0.4
+        version: 19.0.4(@types/react@19.0.10)
 
   src/web:
     dependencies:
@@ -650,11 +749,11 @@ importers:
         specifier: ^1.0.0
         version: 1.0.3
       '@types/react':
-        specifier: ^18.2.62
-        version: 18.3.18
+        specifier: ^19.0.10
+        version: 19.0.10
       '@types/react-dom':
-        specifier: ^18.2.7
-        version: 18.3.5(@types/react@18.3.18)
+        specifier: ^19.0.4
+        version: 19.0.4(@types/react@19.0.10)
 
 packages:
 
@@ -1770,6 +1869,9 @@ packages:
 
   '@types/node@22.13.8':
     resolution: {integrity: sha512-G3EfaZS+iOGYWLLRCEAXdWK9my08oHNZ+FHluRiggIYJPOXzhOiDgpVCUHaUvyIC5/fj7C/p637jdzC666AOKQ==}
+
+  '@types/node@22.13.9':
+    resolution: {integrity: sha512-acBjXdRJ3A6Pb3tqnw9HZmyR3Fiol3aGxRCK1x3d+6CDAMjl7I649wpSd+yNURCjbOUGu9tqtLKnTGxmK6CyGw==}
 
   '@types/path-browserify@1.0.3':
     resolution: {integrity: sha512-ZmHivEbNCBtAfcrFeBCiTjdIc2dey0l7oCGNGpSuRTy8jP6UVND7oUowlvDujBy8r2Hoa8bfFUOCiPWfmtkfxw==}
@@ -5345,9 +5447,9 @@ snapshots:
     dependencies:
       tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@20.17.16)(typescript@5.7.3))
 
-  '@tailwindcss/container-queries@0.1.1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3)))':
+  '@tailwindcss/container-queries@0.1.1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3)))':
     dependencies:
-      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3))
 
   '@tsconfig/node10@1.0.11':
     optional: true
@@ -5460,6 +5562,10 @@ snapshots:
       undici-types: 6.19.8
 
   '@types/node@22.13.8':
+    dependencies:
+      undici-types: 6.20.0
+
+  '@types/node@22.13.9':
     dependencies:
       undici-types: 6.20.0
 
@@ -5647,10 +5753,10 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitejs/plugin-react-swc@3.8.0(vite@6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))':
+  '@vitejs/plugin-react-swc@3.8.0(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))':
     dependencies:
       '@swc/core': 1.11.1
-      vite: 6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
+      vite: 6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -5673,6 +5779,17 @@ snapshots:
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
       vite: 6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@vitejs/plugin-react@4.3.4(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))':
+    dependencies:
+      '@babel/core': 7.26.7
+      '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.7)
+      '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.7)
+      '@types/babel__core': 7.20.5
+      react-refresh: 0.14.2
+      vite: 6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -7433,13 +7550,13 @@ snapshots:
       postcss: 8.5.3
       ts-node: 10.9.2(@swc/core@1.11.1)(@types/node@20.17.16)(typescript@5.7.3)
 
-  postcss-load-config@4.0.2(postcss@8.5.3)(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3)):
+  postcss-load-config@4.0.2(postcss@8.5.3)(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.7.0
     optionalDependencies:
       postcss: 8.5.3
-      ts-node: 10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3)
+      ts-node: 10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3)
 
   postcss-nested@6.2.0(postcss@8.5.3):
     dependencies:
@@ -8106,7 +8223,7 @@ snapshots:
     transitivePeerDependencies:
       - ts-node
 
-  tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3)):
+  tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -8125,7 +8242,7 @@ snapshots:
       postcss: 8.5.3
       postcss-import: 15.1.0(postcss@8.5.3)
       postcss-js: 4.0.1(postcss@8.5.3)
-      postcss-load-config: 4.0.2(postcss@8.5.3)(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3))
+      postcss-load-config: 4.0.2(postcss@8.5.3)(ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3))
       postcss-nested: 6.2.0(postcss@8.5.3)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.10
@@ -8217,14 +8334,14 @@ snapshots:
       '@swc/core': 1.11.1
     optional: true
 
-  ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.8)(typescript@5.7.3):
+  ts-node@10.9.2(@swc/core@1.11.1)(@types/node@22.13.9)(typescript@5.7.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.13.8
+      '@types/node': 22.13.9
       acorn: 8.14.0
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -8356,6 +8473,13 @@ snapshots:
       picocolors: 1.1.1
       vite: 6.2.0(@types/node@22.13.8)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
 
+  vite-plugin-lib-inject-css@2.2.1(vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)):
+    dependencies:
+      '@ast-grep/napi': 0.32.3
+      magic-string: 0.30.17
+      picocolors: 1.1.1
+      vite: 6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
+
   vite@6.2.0(@types/node@20.17.16)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0):
     dependencies:
       esbuild: 0.25.0
@@ -8377,6 +8501,20 @@ snapshots:
       rollup: 4.32.1
     optionalDependencies:
       '@types/node': 22.13.8
+      fsevents: 2.3.3
+      jiti: 1.21.7
+      sass: 1.85.1
+      sass-embedded: 1.83.4
+      tsx: 4.19.2
+      yaml: 2.7.0
+
+  vite@6.2.0(@types/node@22.13.9)(jiti@1.21.7)(sass-embedded@1.83.4)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0):
+    dependencies:
+      esbuild: 0.25.0
+      postcss: 8.5.3
+      rollup: 4.32.1
+    optionalDependencies:
+      '@types/node': 22.13.9
       fsevents: 2.3.3
       jiti: 1.21.7
       sass: 1.85.1

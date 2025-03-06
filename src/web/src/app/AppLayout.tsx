@@ -18,11 +18,13 @@ const AppLayout: React.FC = () => {
   const [onBackButton, setOnBackButton] = useState<() => void>(() => {});
   const [showBackButton, setShowBackButton] = useState<boolean>(false);
 
+  return <>{"AppLayout Wont render lmao"}</>;
+  /* 
   // Standalone mode displays only the application and not the Panel
   if (isStandalone) {
     return (
       <div className={styles.applicationFrame}>
-        {/* @ts-ignore */}
+        {/!* @ts-ignore *!/}
         <Outlet />
       </div>
     );
@@ -56,7 +58,7 @@ const AppLayout: React.FC = () => {
         showBackButton={showBackButton}
       />
     </ApplicationPanelContext.Provider>
-  );
+  ); */
 };
 
 export default AppLayout;

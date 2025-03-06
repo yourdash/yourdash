@@ -6,7 +6,7 @@
 import clippy from "../../core/clippy.js";
 import styles from "./heading.module.scss";
 import React, { FC, useContext } from "react";
-import LevelContext from "../../core/level";
+import LevelContext from "../../core/level.jsx";
 
 const UKHeading: FC<{ text: string; level?: 1 | 2 | 3 | 4 | 5 | 6; className?: string; style?: React.CSSProperties }> = (props) => {
   const level = useContext(LevelContext);

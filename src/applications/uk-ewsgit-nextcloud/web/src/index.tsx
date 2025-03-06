@@ -3,13 +3,10 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-enum InstanceStatus {
-  // eslint-disable-next-line no-unused-vars
-  MAINTENANCE,
-  OK,
-  INVISIBLE,
-  NON_FUNCTIONAL,
-  UNKNOWN,
-}
+import React from "react";
 
-export { InstanceStatus };
+const Index: React.FC = () => {
+  return <div>Hello world from YourDash Application Template</div>;
+};
+
+export default Index;

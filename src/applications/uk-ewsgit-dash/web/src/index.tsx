@@ -5,7 +5,6 @@
 
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
-import DashApplication from "./dashApplication";
 import DASH_ICON from "../icon.avif";
 import ApplicationPanelContext from "@yourdash/panel-context/src/index.js";
 
@@ -23,7 +22,7 @@ const DashRouter: React.FC = () => {
     <Routes>
       <Route
         index
-        element={<DashApplication />}
+        element={<>Welcome to the dash application</>}
       />
       <Route
         path="settings"

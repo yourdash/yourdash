@@ -1,12 +1,22 @@
 {
   "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true,
     "target": "ESNext",
-    "module": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ESNext"
+    ],
+    "allowJs": false,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "sourceMap": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "rootDir": "../../../../..",
+    "traceResolution": true,
+    "strict": true
   },
   "include": [
     "src"

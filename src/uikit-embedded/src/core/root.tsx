@@ -11,7 +11,7 @@ import React from "react";
 import LevelContext from "./level.tsx";
 import isMobileDevice from "./isPhone.ts";
 
-const UIKitRoot: React.FC<{ children: React.ReactNode | React.ReactNode[] }> = (props) => {
+const UIKitRoot: React.FC<React.PropsWithChildren> = (props) => {
   return (
     <div className={clippy(styles.theme, styles.level0, isMobileDevice() && styles.mobile)}>
       <ContextMenuRoot>

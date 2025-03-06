@@ -10,8 +10,7 @@ import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading
 import UIKitRoot from "@yourdash/uikit-embedded/src/core/root.js";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createRoutesFromElements, Route, RouterProvider } from "react-router";
-import { createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router";
 import ApplicationRedirectToDash from "./app/ApplicationRedirectToDash.tsx";
 import AppLayout from "./app/AppLayout.tsx";
 import LoginIndexPagePreload from "./root/login/index.preload.tsx";
@@ -40,94 +39,92 @@ loadingElement.style.width = "100%";
 loadingElement.style.height = "100%";
 loadingElement.style.justifyContent = "center";
 loadingElement.style.alignItems = "center";
-loadingElement.innerText = "Loading YourDash...";
+loadingElement.innerText = "Initializing YourDash...";
 
 element.appendChild(loadingElement);
 
-ReactDOM.createRoot(element).render(
+const root = ReactDOM.createRoot(element);
+
+root.render(
   <UIKitRoot>
     <WebsocketToasts />
-    <RouterProvider
-      router={createBrowserRouter(
-        createRoutesFromElements(
-          <Route errorElement={<ErrorElement />}>
+    <BrowserRouter>
+      <Routes>
+        <Route errorElement={<ErrorElement />}>
+          <Route
+            path={"/linker-desktop-client-startup"}
+            element={<LinkerDesktopClientStartupPage />}
+          />
+          <Route element={<Navigation />}>
             <Route
-              path={"/linker-desktop-client-startup"}
-              element={<LinkerDesktopClientStartupPage />}
+              index
+              element={<Index />}
             />
-            <Route element={<Navigation />}>
+            <Route
+              path={"*"}
+              element={<NotFoundPage />}
+            />
+          </Route>
+          <Route element={<Navigation subtitle={"Projects"} />}>
+            <Route
+              path={"projects"}
+              index
+              element={<ProjectsIndexPage />}
+            />
+            <Route element={<ProjectsRouter />} />
+          </Route>
+          <Route path={"login"}>
+            <Route
+              index
+              element={<LoginIndexPagePreload />}
+            />
+            <Route
+              path={"success"}
+              element={<LoginSuccessPage />}
+            />
+            <Route element={<Navigation subtitle={"Instance"} />}>
+              <Route
+                path={"signup"}
+                element={<SignupPage />}
+              />
+            </Route>
+            <Route
+              path={"signup"}
+              element={<UKHeading text={"TODO: implement me"}></UKHeading>}
+            />
+            <Route path={"instance"}>
               <Route
                 index
-                element={<Index />}
+                element={<LoginInstancePage />}
               />
               <Route
                 path={"*"}
-                element={<NotFoundPage />}
+                element={<LoginRedirect />}
               />
             </Route>
-            <Route element={<Navigation subtitle={"Projects"} />}>
-              <Route
-                path={"projects"}
-                index
-                element={<ProjectsIndexPage />}
-              />
-              <Route element={<ProjectsRouter />} />
-            </Route>
-            <Route path={"login"}>
-              <Route
-                index
-                element={<LoginIndexPagePreload />}
-              />
-              <Route
-                path={"success"}
-                element={<LoginSuccessPage />}
-              />
-              <Route element={<Navigation subtitle={"Instance"} />}>
-                <Route
-                  path={"signup"}
-                  element={<SignupPage />}
-                />
-              </Route>
-              <Route
-                path={"signup"}
-                element={<>TODO: implement me @ewsgit</>}
-              />
-              <Route path={"instance"}>
-                <Route
-                  index
-                  element={<LoginInstancePage />}
-                />
-                <Route
-                  path={"*"}
-                  element={<LoginRedirect />}
-                />
-              </Route>
-            </Route>
-            <Route path={"app"}>
+          </Route>
+          <Route path={"app"}>
+            <Route
+              index
+              element={<ApplicationRedirectToDash />}
+            />
+            <Route
+              element={<AppLayout />}
+              path={"a"}
+            >
               <Route
                 index
                 element={<ApplicationRedirectToDash />}
               />
-              <Route element={<AppLayout />}>
-                <Route
-                  path={"a/*"}
-                  errorElement={<ErrorElement />}
-                  element={/* <AppRouter fallback={<UKHeading text={"Loading applications..."} />} /> */ "applications coming soon..."}
-                />
-              </Route>
+              <Route
+                path={"*"}
+                errorElement={<ErrorElement />}
+                element={/* <AppRouter fallback={<UKHeading text={"Loading applications..."} />} /> */ "applications coming soon..."}
+              />
             </Route>
-          </Route>,
-        ),
-        {
-          future: {
-            v7_fetcherPersist: true,
-            v7_normalizeFormMethod: true,
-            v7_partialHydration: true,
-            v7_relativeSplatPath: true,
-            v7_skipActionErrorRevalidation: true,
-          },
-        },
-      )}
-    />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </UIKitRoot>,
 );

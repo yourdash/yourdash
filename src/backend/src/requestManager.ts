@@ -21,7 +21,7 @@ import { YourDashApplication } from "./applications.js";
 import { YourDashSessionType } from "./authorization.js";
 import { resizeImage } from "./image.js";
 import { type Instance } from "./main.js";
-import { INSTANCE_STATUS } from "./types/instanceStatus.js";
+import { InstanceStatus } from "./types/instanceStatus.js";
 import User from "./user.js";
 
 enum LoginLayout {
@@ -147,7 +147,7 @@ class RequestManager {
       uiConfig: {},
       logo: {
         type: "image/png",
-        content: (await Bun.file(path.join(process.cwd(), "./defaults/yourdash.png")).bytes()) as unknown as string,
+        content: (await Bun.file(path.join(process.cwd(), "./src/backend/defaults/yourdash.png")).bytes()) as unknown as string,
         href: "/swagger",
         target: "_blank",
       },
@@ -159,7 +159,7 @@ class RequestManager {
             rel: "icon",
             sizes: "1024x1024",
             type: "image/png",
-            content: (await Bun.file(path.join(process.cwd(), "./defaults/yourdash.png")).bytes()) as unknown as string,
+            content: (await Bun.file(path.join(process.cwd(), "./src/backend/defaults/yourdash.png")).bytes()) as unknown as string,
           },
         ],
         css: [
@@ -2117,7 +2117,7 @@ class RequestManager {
               200: z.object({
                 version: z.object({ major: z.number(), minor: z.number() }),
                 type: z.literal("YourDash"),
-                status: z.nativeEnum(INSTANCE_STATUS),
+                status: z.nativeEnum(InstanceStatus),
               }),
             },
           },
@@ -2126,7 +2126,7 @@ class RequestManager {
           return {
             version: { major: 0, minor: 1 },
             type: "YourDash" as const,
-            status: this.instance.getStatus() || INSTANCE_STATUS.NON_FUNCTIONAL,
+            status: this.instance.getStatus() || InstanceStatus.NON_FUNCTIONAL,
           };
         },
       );
@@ -2785,7 +2785,7 @@ class RequestManager {
         // @ts-ignore
         .then((data: { success?: boolean }) => {
           if (data?.success) {
-            this.instance.setStatus(INSTANCE_STATUS.OK);
+            this.instance.setStatus(InstanceStatus.OK);
             return this.instance.log.success("self_ping_test", "self ping successful - The server is receiving requests");
           }
 

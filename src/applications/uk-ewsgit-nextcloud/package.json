@@ -1,0 +1,9 @@
+{
+  "name": "@yourdash/template-application",
+  "scripts": {
+    "dev-web": "pnpm run -C \"./web\" dev"
+  },
+  "author": "Ewsgit",
+  "private": true,
+  "license": "MIT"
+}
