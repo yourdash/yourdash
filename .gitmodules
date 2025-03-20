@@ -1,0 +1,15 @@
+[submodule "instance"]
+	path = instance
+	url = git@github.com:yourdash/instance
+[submodule "uk-ewsgit-dash"]
+	path = uk-ewsgit-dash
+	url = git@github.com:yourdash/uk-ewsgit-dash
+[submodule "web"]
+	path = web
+	url = git@github.com:yourdash/web
+[submodule "tunnel"]
+	path = tunnel
+	url = git@github.com:yourdash/tunnel
+[submodule "uikit"]
+	path = uikit
+	url = git@github.com:yourdash/uikit
