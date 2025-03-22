@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/tunnel" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/uikit" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/uk-ewsgit-dash" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/uk-ewsgit-nextcloud" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/web" vcs="Git" />
   </component>
 </project>
