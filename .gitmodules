@@ -13,3 +13,6 @@
 [submodule "uikit"]
 	path = uikit
 	url = git@github.com:yourdash/uikit
+[submodule "uk-ewsgit-nextcloud"]
+	path = uk-ewsgit-nextcloud
+	url = git@github.com:yourdash/uk-ewsgit-nextcloud
