@@ -6,6 +6,8 @@
         <option value="../uk-ewsgit-dash" />
         <option value="--load-app" />
         <option value="../uk-ewsgit-nextcloud" />
+        <option value="--load-app" />
+        <option value="../uk-ewsgit-settings" />
         <option value="--dev" />
       </list>
     </option>

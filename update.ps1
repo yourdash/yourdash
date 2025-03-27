@@ -1,3 +1,6 @@
+Write-Host "Updating Git Repo..."
+git pull
+
 # Update all Git submodules
 Write-Host "Updating Git submodules..."
 git submodule update --init --recursive
