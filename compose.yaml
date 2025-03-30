@@ -1,0 +1,69 @@
+services:
+  web:
+    depends_on:
+      backend:
+        condition: "service_started"
+    image: "ubuntu:latest"
+    ports:
+      - "5173:5173"
+    domainname: "yourdash.dev"
+    container_name: "yourdash_web"
+    develop:
+      watch:
+        - action: sync
+          path: ./instance/web/
+          target: /web/
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./instance/web/package.json
+        - action: rebuild
+          path: ./instance/web/vite.config.ts
+    build:
+      dockerfile: ./instance/web/Dockerfile
+  backend:
+    depends_on:
+      postgres:
+        condition: "service_healthy"
+    image: "ubuntu:latest"
+    container_name: "yourdash_backend"
+    ports:
+      - "3563:3563"
+    domainname: "yourdash_backend.dev"
+    working_dir: "/backend"
+    entrypoint: "/backend/start.sh"
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+              count: 1
+    develop:
+      watch:
+        - action: sync
+          path: ./instance/backend/
+          target: /backend/
+          ignore:
+            - node_modules/
+    build:
+      dockerfile: ./instance/backend/Dockerfile
+  postgres:
+    container_name: "yourdash_postgres"
+    image: "postgres"
+    shm_size: 128mb
+    hostname: yourdash_postgres.dev
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
