@@ -1,0 +1,13 @@
+{
+  "name": "@yourdash/application-uk-ewsgit-template-backend",
+  "private": true,
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@types/bun": "^1.1.6",
+    "@types/node": "^22.13.9",
+    "@yourdash/backend": "link:C:/Users/ewsgi/projects/yourdash/instance/backend",
+    "zod": "^3.24.2",
+    "fastify": "^5.2.1"
+  }
+}

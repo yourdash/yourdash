@@ -1,0 +1,94 @@
+@use "../../theme/themeValues.scss" as *;
+
+.containerComponent {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: var(--carousel-height, 24rem);
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.component {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  height: 100%;
+  gap: 10rem;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  scrollbar-width: none;
+  padding-bottom: 2.5rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.page {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  opacity: 0.5;
+  transition: $UKTransition;
+
+  &:first-of-type {
+    margin-left: 100%;
+  }
+
+  &:last-of-type {
+    margin-right: 100%;
+  }
+}
+
+.activePage {
+  opacity: 1;
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: $UKGap;
+  width: max-content;
+}
+
+.indicatorContainer {
+  width: max-content;
+  overflow: unset;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: row;
+  gap: var(#{$theme+$gap});
+  padding: calc(calc(var(#{$theme+$padding}) / 4) * 3);
+  border-radius: var(#{$theme+$radius});
+  min-width: max-content;
+
+  .pageIndicator {
+    background-color: rgb(var(#{$theme+$color}));
+    height: calc($UKPadding + calc($UKPadding / 4));
+    border-radius: calc(var(#{$theme+$radius}) * 0.5);
+    transition: $UKTransition;
+    aspect-ratio: 1 / 1;
+    opacity: 0.8;
+    display: flex;
+
+    &.selected {
+      aspect-ratio: 3 / 1;
+      opacity: 1;
+    }
+  }
+}

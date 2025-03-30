@@ -1,0 +1,24 @@
+.layout {
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr auto;
+}
+
+.header {
+  grid-column: 1 / 4;
+}
+
+.footer {
+  grid-column: 1 / 4;
+}
+
+.children {
+  grid-column: 2 / 3;
+}
+
+.primarySidebar {
+  grid-column: 1 / 2;
+}
+
+.secondarySidebar {
+  grid-column: 3 / 4;
+}

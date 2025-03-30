@@ -1,0 +1,6 @@
+**/*.js
+**/*.js.map
+.env
+!.env.template
+/node_modules/
+/fs

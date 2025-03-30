@@ -1,0 +1,24 @@
+{
+  "name": "@yourdash/application-uk-ewsgit-dash-standalone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "animate.css": "^4.1.1",
+    "babel-plugin-react-compiler": "19.0.0-beta-e1e972c-20250221",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vite": "^6.2.0",
+    "vite-plugin-dynamic-import": "^1.6.0",
+    "@yourdash/application-uk-ewsgit-dash-web": "file:../web"
+  }
+}

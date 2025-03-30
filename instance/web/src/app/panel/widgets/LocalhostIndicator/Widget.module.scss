@@ -1,0 +1,21 @@
+.component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--app-panel-size);
+  width: var(--app-panel-size);
+  margin: calc(var(--app-panel-padding) * -1);
+}
+
+.top {
+  margin-left: auto;
+}
+.left {
+  margin-top: auto;
+}
+.right {
+  margin-left: auto;
+}
+.bottom {
+  margin-top: auto;
+}

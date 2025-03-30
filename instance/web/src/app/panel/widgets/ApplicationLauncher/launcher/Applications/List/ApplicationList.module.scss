@@ -1,0 +1,73 @@
+/*!
+ * Copyright ©2023 @Ewsgit and YourDash contributors.
+ * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
+ */
+
+@use "@yourdash/uikit-embedded/src/theme/themeValues" as *;
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.itemIcon {
+  width: 2rem;
+  height: 2rem;
+  scale: 0.85;
+  transition: var(--transition);
+}
+
+.itemLabel {
+  text-align: center;
+  max-height: 1.5rem;
+  transition: var(--transition);
+  height: max-content;
+  overflow: hidden;
+}
+
+.item {
+  position: relative;
+  height: 2.75rem;
+  width: 100%;
+}
+
+.itemContent {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.25rem 0.25rem 0.3rem;
+  transition: var(--transition);
+  height: 100%;
+  overflow: hidden;
+
+  &:hover {
+    transition: var(--transition-fast);
+    background: rgb($UKButtonHoverBackground);
+    z-index: 20;
+    outline-width: 0.25rem;
+
+    .itemIcon {
+      scale: 1;
+      transition: var(--transition-fast);
+    }
+
+    .itemLabel {
+      max-height: unset;
+    }
+  }
+
+  &:active {
+    background: rgb($UKButtonActiveBackground);
+
+    .itemIcon {
+      scale: 0.95;
+    }
+  }
+}

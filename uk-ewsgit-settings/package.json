@@ -1,0 +1,17 @@
+{
+  "name": "@yourdash/uk-ewsgit-settings",
+  "scripts": {
+    "dev-web": "pnpm run -C \"./web\" dev",
+    "postinstall": "concurrently \"pnpm -C web install\" \"pnpm -C standalone install\" \"pnpm -C backend install\""
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  },
+  "author": "Ewsgit",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6"
+}

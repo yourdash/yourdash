@@ -1,0 +1,46 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [latest]
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.0.11 # or "latest"
+
+      - name: Install dependencies
+        run: npx pnpm install
+
+      - name: Build website
+        env:
+          VITE_BUILD_COMMIT_SHA: ${{ github.sha }}
+          VITE_BUILD_COMMIT_BRANCH: ${{ github.head_ref }}
+        run: (npx pnpm run build)
+
+      - name: Deploy to prod
+        uses: moodiest/push-to-branch-action@develop
+        env:
+          REPO: self
+          BRANCH: prod
+          FOLDER: dist/
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

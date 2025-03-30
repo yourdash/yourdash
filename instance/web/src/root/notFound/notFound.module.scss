@@ -1,0 +1,19 @@
+.component {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.heading {
+  font-size: 4.5rem !important;
+  line-height: 1 !important;
+  padding-bottom: 1rem;
+}
+
+.button {
+  margin-top: 2rem;
+}
