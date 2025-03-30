@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-pnpm dev
+yarn dev

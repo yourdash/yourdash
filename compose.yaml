@@ -3,7 +3,6 @@ services:
     depends_on:
       backend:
         condition: "service_started"
-    image: "ubuntu:latest"
     ports:
       - "5173:5173"
     domainname: "yourdash.dev"
@@ -21,24 +20,23 @@ services:
           path: ./instance/web/vite.config.ts
     build:
       dockerfile: ./instance/web/Dockerfile
+
   backend:
     depends_on:
       postgres:
         condition: "service_healthy"
-    image: "ubuntu:latest"
     container_name: "yourdash_backend"
     ports:
       - "3563:3563"
     domainname: "yourdash_backend.dev"
-    working_dir: "/backend"
-    entrypoint: "/backend/start.sh"
-
     deploy:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]
+            - capabilities: [ gpu ]
               count: 1
+    volumes:
+      - ./fs:/fs/
     develop:
       watch:
         - action: sync
@@ -48,6 +46,7 @@ services:
             - node_modules/
     build:
       dockerfile: ./instance/backend/Dockerfile
+
   postgres:
     container_name: "yourdash_postgres"
     image: "postgres"

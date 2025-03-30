@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev-compile": "vite build --watch",
-    "dev-standalone": "pnpm run -C \"../standalone\" dev",
+    "dev-standalone": "yarn run -C \"../standalone\" dev",
     "dev": "run-p dev-compile dev-standalone"
   },
   "keywords": [],

@@ -30,7 +30,7 @@ jobs:
           bun-version: 1.0.11 # or "latest"
 
       - name: Install dependencies
-        run: npx pnpm install
+        run: npx yarn
 
       - name: Build website
-        run: (npx pnpm run build)
+        run: (npx yarn run build)

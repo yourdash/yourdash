@@ -2,14 +2,12 @@ FROM ubuntu:latest
 LABEL authors="ewsgit"
 LABEL license="MIT"
 LABEL product="YourDash Backend"
-USER ubuntu
+USER root
 
-VOLUME /fs/
 RUN mkdir /fs/
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-USER root
 RUN apt-get -y update; apt-get -y install curl unzip
 
 ENV NODE_VERSION="22.14.0"
@@ -29,17 +27,16 @@ WORKDIR /
 # install bun.sh
 RUN curl -fsSL https://bun.sh/install | bash
 
-RUN npm install --global pnpm
+RUN npm install --global yarn
 
-COPY . /backend
+RUN mkdir /backend/
+COPY ./instance/backend/ /backend/
 
 WORKDIR /backend/
-RUN pnpm install
+RUN yarn
 
 EXPOSE 3563
 
 RUN chmod +x /backend/start.sh
 
-CMD echo $CWD
-
-ENTRYPOINT [". start.sh"]
+ENTRYPOINT exec "/backend/start.sh"

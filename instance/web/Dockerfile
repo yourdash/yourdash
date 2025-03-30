@@ -2,11 +2,10 @@ FROM ubuntu:latest
 LABEL authors="ewsgit"
 LABEL license="MIT"
 LABEL product="YourDash Web"
-USER ubuntu
+USER root
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-USER root
 RUN apt-get -y update; apt-get -y install curl unzip
 
 ENV NODE_VERSION="22.14.0"
@@ -23,12 +22,23 @@ RUN nvm install $NODE_VERSION
 
 WORKDIR /
 
-RUN npm install --global pnpm
+RUN npm install --global yarn
 
-COPY . /web
+RUN mkdir /backend/
+COPY ./instance/backend/ /backend/
+
+WORKDIR /backend/
+RUN yarn
+
+WORKDIR /
+
+RUN mkdir /web/
+RUN npm install --global yarn
+
+COPY ./instance/web/ /web/
 
 WORKDIR /web/
-RUN pnpm install
+RUN yarn
 
 EXPOSE 5173:80
 EXPOSE 5173:5173
@@ -37,4 +47,4 @@ RUN chmod +x /web/start.sh
 
 CMD echo $CWD
 
-ENTRYPOINT [". start.sh"]
+ENTRYPOINT exec "/web/start.sh"
