@@ -122,7 +122,7 @@ class Instance {
                                                           password: this.flags.postgresPassword,
                                                           user: this.flags.postgresUser,
                                                           database: "postgres",
-                                                          host: "yourdash_postgres.dev"
+                                                          host: "yourdash_postgres.localhost"
                                                         });
 
       await tempDatabaseClient.connect();
@@ -146,7 +146,7 @@ class Instance {
                                       port: this.flags.postgresPort,
                                       user: this.flags.postgresUser,
                                       database: this.flags.postgresDatabase,
-                                      host: "yourdash_postgres.dev"
+                                      host: "yourdash_postgres.localhost"
                                     });
     } catch (e) {
       this.log.error("database", "Failed to setup connection to PostgreSQL Database");

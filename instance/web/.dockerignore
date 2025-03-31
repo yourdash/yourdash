@@ -1,5 +1,3 @@
 Dockerfile
 .dockerignore
-node_modules
-lib/tunnel-embedded/node_modules
-lib/uikit-embedded/node_modules
+**/node_modules

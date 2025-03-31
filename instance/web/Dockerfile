@@ -4,7 +4,7 @@ LABEL license="MIT"
 LABEL product="YourDash Web"
 USER root
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/bash", "-c"]
 
 RUN apt-get -y update; apt-get -y install curl unzip
 
@@ -41,10 +41,9 @@ WORKDIR /web/
 RUN yarn
 
 EXPOSE 5173:80
-EXPOSE 5173:5173
 
 RUN chmod +x /web/start.sh
 
 CMD echo $CWD
 
-ENTRYPOINT exec "/web/start.sh"
+ENTRYPOINT ["/usr/bin/bash", "/web/start.sh"]

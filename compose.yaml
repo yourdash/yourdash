@@ -5,7 +5,7 @@ services:
         condition: "service_started"
     ports:
       - "5173:5173"
-    domainname: "yourdash.dev"
+    hostname: yourdash.localhost
     container_name: "yourdash_web"
     develop:
       watch:
@@ -25,10 +25,11 @@ services:
     depends_on:
       postgres:
         condition: "service_healthy"
+        required: true
     container_name: "yourdash_backend"
     ports:
       - "3563:3563"
-    domainname: "yourdash_backend.dev"
+    hostname: yourdash_backend.localhost
     deploy:
       resources:
         reservations:
@@ -51,7 +52,7 @@ services:
     container_name: "yourdash_postgres"
     image: "postgres"
     shm_size: 128mb
-    hostname: yourdash_postgres.dev
+    hostname: yourdash_postgres.localhost
     ports:
       - "5432:5432"
     healthcheck:

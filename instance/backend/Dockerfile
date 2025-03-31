@@ -6,7 +6,7 @@ USER root
 
 RUN mkdir /fs/
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/bash", "-c"]
 
 RUN apt-get -y update; apt-get -y install curl unzip
 
@@ -30,6 +30,7 @@ RUN curl -fsSL https://bun.sh/install | bash
 RUN npm install --global yarn
 
 RUN mkdir /backend/
+
 COPY ./instance/backend/ /backend/
 
 WORKDIR /backend/
@@ -39,4 +40,4 @@ EXPOSE 3563
 
 RUN chmod +x /backend/start.sh
 
-ENTRYPOINT exec "/backend/start.sh"
+ENTRYPOINT ["/usr/bin/bash", "/backend/start.sh"]
