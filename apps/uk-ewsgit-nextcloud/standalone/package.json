@@ -1,5 +1,5 @@
 {
-  "name": "@yourdash/application-uk-ewsgit-template-standalone",
+  "name": "@yourdash/application-uk-ewsgit-nextcloud-standalone",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,6 +19,6 @@
     "react-dom": "^19.0.0",
     "vite": "^6.2.0",
     "vite-plugin-dynamic-import": "^1.6.0",
-    "@yourdash/application-uk-ewsgit-template-web": "workspace:*"
+    "@yourdash/application-uk-ewsgit-nextcloud-web": "workspace:*"
   }
 }

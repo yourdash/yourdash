@@ -1,8 +1,9 @@
 {
-  "name": "@yourdash/uk-ewsgit-settings",
+  "name": "@yourdash/uk-ewsgit-nextcloud",
+  "version": "0.0.1",
   "scripts": {
     "dev-web": "yarn run -C \"./web\" dev",
-    "postinstall": "concurrently \"yarn --cwd ./web install\" \"yarn --cwd ./standalone install\" \"yarn --cwd ./backend install\""
+    "postinstall": "concurrently \"yarn --cwd ./web\" \"yarn --cwd ./standalone\" \"yarn --cwd ./backend\""
   },
   "dependencies": {
     "concurrently": "^9.1.2"

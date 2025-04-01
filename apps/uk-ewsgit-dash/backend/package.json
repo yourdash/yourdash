@@ -1,6 +1,7 @@
 {
-  "name": "@yourdash/application-uk-ewsgit-settings-backend",
+  "name": "@yourdash/application-uk-ewsgit-dash-backend",
   "private": true,
+  "version": "0.0.1",
   "scripts": {},
   "type": "module",
   "dependencies": {

@@ -48,6 +48,11 @@ services:
           target: /backend/
           ignore:
             - node_modules/
+        - action: sync
+          path: ./apps/
+          target: /backend/apps/
+          ignore:
+            - node_modules/
     build:
       dockerfile: ./instance/backend/Dockerfile
 

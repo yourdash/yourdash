@@ -1,7 +1,8 @@
 {
-  "name": "@yourdash/application-uk-ewsgit-template-backend",
+  "name": "@yourdash/application-uk-ewsgit-nextcloud-backend",
   "private": true,
   "scripts": {},
+  "version": "0.0.1",
   "type": "module",
   "dependencies": {
     "@types/bun": "^1.1.6",
