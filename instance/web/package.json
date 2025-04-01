@@ -13,7 +13,7 @@
     "build": "yarn exec vite build",
     "preview": "bun run --bun vite preview",
     "visualize-bundle": "bun run --bun vite-bundle-visualizer",
-    "postinstall": "concurrently \"yarn -C lib/tunnel-embedded\" \"yarn -C lib/uikit-embedded\""
+    "postinstall": "concurrently \"yarn --cwd ./lib/tunnel-embedded install\" \"yarn --cwd ./lib/uikit-embedded install\""
   },
   "devDependencies": {
     "@types/loadable__component": "^5.13.9",

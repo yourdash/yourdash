@@ -18,7 +18,7 @@
     "@types/ffmpeg": "^1.0.7",
     "@types/fluent-ffmpeg": "^2.1.24",
     "@types/kill-port": "^2.0.1",
-    "@types/node": "^20.6.2",
+    "@types/node": "^22.13.16",
     "@types/node-schedule": "^2.1.0",
     "@types/pg": "^8.11.10",
     "@types/source-map-support": "^0.5.7",

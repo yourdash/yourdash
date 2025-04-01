@@ -7,6 +7,8 @@ services:
       - "5173:5173"
     hostname: yourdash.localhost
     container_name: "yourdash_web"
+    volumes:
+      - web_app_router:/web/src/web_app_router/
     develop:
       watch:
         - action: sync
@@ -38,6 +40,7 @@ services:
               count: 1
     volumes:
       - ./fs:/fs/
+      - web_app_router:/web_app_router/
     develop:
       watch:
         - action: sync
@@ -67,3 +70,6 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+volumes:
+  web_app_router:
+    name: yourdash_web_app_router

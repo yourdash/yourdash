@@ -107,12 +107,12 @@ class Applications {
     }
 
     if (this.instance.flags.linkDevelopmentApplications) {
-      Bun.spawnSync([ "yarn", "add", process.cwd() ], {
+      Bun.spawnSync([ "yarn", "add", path.relative(path.join(absoluteApplicationPath, "backend"), process.cwd()) ], {
         cwd: path.join(absoluteApplicationPath, "backend"),
         stdout: "inherit",
         stderr: "inherit"
       })
-      Bun.spawnSync([ "yarn", "add", path.join(process.cwd(), "../web") ], {
+      Bun.spawnSync([ "yarn", "add", path.relative(path.join(absoluteApplicationPath, "web"), path.join(process.cwd(), "../web")) ], {
         cwd: path.join(absoluteApplicationPath, "web"),
         stdout: "inherit",
         stderr: "inherit"
