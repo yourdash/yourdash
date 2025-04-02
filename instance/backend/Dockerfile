@@ -36,6 +36,14 @@ COPY ./instance/backend/ /backend/
 WORKDIR /backend/
 RUN yarn
 
+WORKDIR /backend/
+RUN mkdir apps
+WORKDIR /backend/apps/
+# copy each application's backend dir
+COPY --parents ./apps/*/backend .
+# copy each application's assets dir
+# run yarn in each application's backend dir
+
 EXPOSE 3563
 
 RUN chmod +x /backend/start.sh
