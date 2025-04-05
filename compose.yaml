@@ -7,13 +7,16 @@ services:
       - "5173:5173"
     hostname: yourdash.localhost
     container_name: "yourdash_web"
-    volumes:
-      - web_app_router:/web/src/web_app_router/
     develop:
       watch:
         - action: sync
           path: ./instance/web/
           target: /web/
+          ignore:
+            - node_modules/
+        - action: sync
+          path: ./apps/
+          target: /web/src/app/apps/
           ignore:
             - node_modules/
         - action: rebuild
@@ -22,6 +25,8 @@ services:
           path: ./instance/web/vite.config.ts
     build:
       dockerfile: ./instance/web/Dockerfile
+    environment:
+      - VITE_IS_DOCKER=true
 
   backend:
     depends_on:
@@ -32,15 +37,8 @@ services:
     ports:
       - "3563:3563"
     hostname: yourdash_backend.localhost
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [ gpu ]
-              count: 1
     volumes:
       - ./fs:/fs/
-      - web_app_router:/web_app_router/
     develop:
       watch:
         - action: sync
@@ -55,6 +53,8 @@ services:
             - node_modules/
     build:
       dockerfile: ./instance/backend/Dockerfile
+    environment:
+      - IS_DOCKER=true
 
   postgres:
     container_name: "yourdash_postgres"
@@ -75,6 +75,3 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-volumes:
-  web_app_router:
-    name: yourdash_web_app_router

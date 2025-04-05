@@ -34,17 +34,19 @@ RUN mkdir /backend/
 COPY ./instance/backend/ /backend/
 
 WORKDIR /backend/
-RUN yarn
+RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn
 
 WORKDIR /backend/
 RUN mkdir apps
 WORKDIR /backend/apps/
 # copy each application's backend dir
-COPY --parents ./apps/*/backend .
+COPY ./apps/*/backend .
 # copy each application's assets dir
 # run yarn in each application's backend dir
 
 EXPOSE 3563
+
+WORKDIR /backend
 
 RUN chmod +x /backend/start.sh
 

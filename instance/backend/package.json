@@ -9,8 +9,6 @@
     "node": ">=21.0.0"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/bcryptjs": "^2.4.6",
     "@types/bun": "^1.1.6",
     "@types/compression": "^1.7.3",
     "@types/express": "^4.17.17",
@@ -38,7 +36,6 @@
     "@fastify/websocket": "^11.0.1",
     "@types/minimist": "^1.2.5",
     "array-includes": "^3.1.7",
-    "bcrypt": "^5.1.1",
     "chalk": "^5.2.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",

@@ -28,7 +28,7 @@ RUN mkdir /backend/
 COPY ./instance/backend/ /backend/
 
 WORKDIR /backend/
-RUN yarn
+RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn
 
 WORKDIR /
 
@@ -38,7 +38,9 @@ RUN npm install --global yarn
 COPY ./instance/web/ /web/
 
 WORKDIR /web/
-RUN yarn
+RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn
+
+COPY ./apps/ /web/src/app/apps/
 
 EXPOSE 5173:80
 
