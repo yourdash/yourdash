@@ -11,7 +11,7 @@ import * as fs from "node:fs";
 // enable for https testing. import mkcert from "vite-plugin-mkcert"
 
 function applicationRouter() {
-  const virtualModuleId = 'virtual:application-router/index.tsx'
+  const virtualModuleId = 'virtual:application-router'
   const resolvedVirtualModuleId = '\0' + virtualModuleId
 
   return {
@@ -44,7 +44,7 @@ import loadable from "@loadable/component";
             path.resolve(path.join(appsDirectoryPath, `${allApps[i]}`)),
             "./web/src/index.tsx"
           ).replaceAll(path.sep, path.posix.sep)}"));`;
-          routeRegionReplacement += `<Route path={"${allApps[i]}/*"} element={<Application${i}/>}/>,`;
+          routeRegionReplacement += `React.createElement(Route, {path:{"${allApps[i]}/*"}, element:{<Application${i}/>}}),`;
         }
 
         fileTemplate = fileTemplate.replace("/* region loadable */", loadableRegionReplacement);

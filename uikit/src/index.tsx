@@ -3,6 +3,16 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
+// Core
+export { default as UIKitRoot } from "../lib/core/root.js"
+export { default as clippy } from "../lib/core/clippy.js"
+export { default as useToasts } from "../lib/core/toasts/useToast.js"
+export type { default as IToastAction } from "../lib/core/toasts/toastAction.js"
+export type { default as IToast } from "../lib/core/toasts/toast.js"
+export { default as UKDecrementLevel } from "../lib/core/decrementLevel.js"
+export { default as UKIncrementLevel } from "../lib/core/incrementLevel.js"
+export * as utils from "../lib/core/utils.js"
+
 // Icons
 export { UKIcons } from "../lib/core/iconDictionary.js"
 export type { UKIconType } from "../lib/core/iconDictionary.js"

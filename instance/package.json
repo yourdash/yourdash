@@ -3,7 +3,9 @@
   "license": "MIT",
   "author": "Ewsgit",
   "scripts": {
-    "postinstall": "concurrently \"yarn --cwd ./backend\" \"yarn --cwd ./web\""
+    "postinstall": "concurrently \"yarn --cwd ./backend\" \"yarn --cwd ./web\"",
+    "backend": "yarn --cwd ./backend dev",
+    "web": "yarn --cwd ./web dev"
   },
   "dependencies": {
     "concurrently": "^9.1.2"

@@ -9,7 +9,7 @@
     "node": ">=21.0.0"
   },
   "scripts": {
-    "dev": "cross-env VITE_INSTANCE_BACKEND_URL=http://localhost:3563 vite --host",
+    "dev": "vite --host",
     "build": "yarn exec vite build",
     "preview": "bun run --bun vite preview",
     "visualize-bundle": "bun run --bun vite-bundle-visualizer",
@@ -33,7 +33,6 @@
     "@vitejs/plugin-react-swc": "^3.8.0",
     "@yourdash/tunnel-embedded": "file:./lib/tunnel-embedded/",
     "@yourdash/uikit-embedded": "file:./lib/uikit-embedded/",
-    "@yourdash/backend": "file:../backend",
     "@yourdash/web": "file:.",
     "@yourdash/uikit": "^0.1.4",
     "@yourdash/tunnel": "^0.1.4",
@@ -51,14 +50,10 @@
     "react-router-dom": "^7.2.0",
     "sass": "^1.85.1",
     "tailwindcss": "^3.3.3",
-    "type-fest": "^4.14.0",
     "typescript": "^5.7.3",
     "vite": "^6.2.0",
     "vite-plugin-dynamic-import": "^1.5.0",
-    "xml2js": "^0.6.2",
-    "zod": "^3.24.1",
-    "npm-run-all": "^4.1.5",
-    "cross-env": "^7.0.3"
+    "zod": "^3.24.1"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

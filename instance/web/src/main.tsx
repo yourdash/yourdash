@@ -19,8 +19,10 @@ import ErrorElement from "./ErrorElement.tsx";
 import SignupPage from "./root/login/signup/index.tsx";
 import LoginSuccessPage from "./root/login/success/index.tsx";
 import NotFoundPage from "./root/notFound/notFound.tsx";
-import AppRouter from "virtual:application-router/index.tsx"
 import LoginIndexPage from "@yourdash/web/src/root/login";
+
+// @ts-ignore
+import AppRouter from "virtual:application-router"
 
 const element = document.getElementById("root") as HTMLElement;
 

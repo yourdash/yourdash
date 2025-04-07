@@ -1,0 +1,63 @@
+{
+  "name": "@yourdash/uikit",
+  "version": "0.1.12",
+  "description": "The YourDash ReactJS UI library",
+  "scripts": {
+    "dev-compile": "vite build --watch",
+    "dev": "vite dev",
+    "compile": "vite build",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "Ewsgit",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "exports": {
+    "./lib/theme/themeValues.scss": {
+      "default": "./dist/themeValues.scss"
+    },
+    "./themeValues.scss": {
+      "default": "./dist/themeValues.scss"
+    },
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "animate.css": "^4.1.1",
+    "babel-plugin-react-compiler": "19.0.0-beta-e1e972c-20250221",
+    "clsx": "^2.1.1",
+    "glob": "^11.0.1",
+    "npm-run-all": "^4.1.5",
+    "vite": "^6.2.0",
+    "vite-plugin-dynamic-import": "^1.6.0",
+    "vite-plugin-lib-inject-css": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.8",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@types/react-router": "^5.1.20",
+    "@types/react-router-dom": "^5.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.2.0",
+    "react-router-dom": "^7.2.0",
+    "sass-embedded": "^1.85.1",
+    "vite-plugin-dts": "^4.5.3"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

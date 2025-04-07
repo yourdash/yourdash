@@ -5,7 +5,7 @@
 
 import type IToastAction from "./toastAction.ts";
 
-export default interface Toast {
+export default interface IToast {
   type: "success" | "error" | "warning" | "info" | "debug";
   content: { title: string; body: string; actions?: IToastAction[] };
   persist?: boolean;

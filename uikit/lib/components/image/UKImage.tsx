@@ -8,6 +8,7 @@ import styles from "./image.module.scss";
 import React, { FC, useEffect, useRef, useState } from "react";
 import clippy from "../../core/clippy.ts";
 import UKIcon from "../icon/UKIcon.tsx";
+import { useLevel, useLevelClass } from "../../core/level.tsx";
 
 const UKImage: FC<{
   src: string;
@@ -20,8 +21,10 @@ const UKImage: FC<{
   height?: number;
   style?: React.CSSProperties;
   onClick?: () => void;
+
 }> = (props) => {
   const ref = useRef<HTMLDivElement>(null);
+  const level= useLevel()
   const [src, setSrc] = useState<string>(props.src);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [hasFailed, setHasFailed] = useState<boolean>(false);
@@ -67,7 +70,7 @@ const UKImage: FC<{
     >
       {!hasFailed ? (
         <img
-          className={clippy(styles.component, props.className, loaded && styles.loaded, props.noRounding && styles.noRounding)}
+          className={clippy(styles.component, useLevelClass(level), props.className, loaded && styles.loaded, props.noRounding && styles.noRounding)}
           draggable={false}
           width={props.width}
           height={props.height}

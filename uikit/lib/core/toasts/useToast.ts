@@ -4,14 +4,14 @@
  */
 
 import React from "react";
-import Toast from "./toast.ts";
+import IToast from "./toast.ts";
 import ToastContext from "./toastContext.ts";
 
-export default function useToast() {
+export default function useToasts() {
   const toastCtx = React.useContext(ToastContext);
 
   return {
-    create(data: Toast) {
+    create(data: IToast) {
       toastCtx.showToast(data);
     },
   };

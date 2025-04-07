@@ -10,7 +10,7 @@
 }
 
 .component {
-  border-radius: var(#{$theme}#{$radius});
+  border-radius: $UKRadius;
   opacity: 0;
   width: 100%;
   height: 100%;
@@ -28,7 +28,7 @@
 }
 
 .loaded {
-  transition: opacity 750ms linear;
+  transition: opacity 250ms ease-out;
   opacity: 1;
 }
 

@@ -3,6 +3,12 @@ services:
     depends_on:
       backend:
         condition: "service_started"
+    build:
+      dockerfile: ./instance/web/Dockerfile
+    volumes:
+      - ./instance/web:/web
+      - /web/node_modules
+    restart: always
     ports:
       - "5173:5173"
     hostname: yourdash.localhost
@@ -23,10 +29,9 @@ services:
           path: ./instance/web/package.json
         - action: rebuild
           path: ./instance/web/vite.config.ts
-    build:
-      dockerfile: ./instance/web/Dockerfile
     environment:
       - VITE_IS_DOCKER=true
+      - VITE_INSTANCE_BACKEND_URL=http://localhost:3563
 
   backend:
     depends_on:
@@ -37,8 +42,13 @@ services:
     ports:
       - "3563:3563"
     hostname: yourdash_backend.localhost
+    build:
+      dockerfile: ./instance/backend/Dockerfile
     volumes:
       - ./fs:/fs/
+      - ./instance/backend:/backend
+      - /backend/node_modules
+    restart: always
     develop:
       watch:
         - action: sync
@@ -51,8 +61,6 @@ services:
           target: /backend/apps/
           ignore:
             - node_modules/
-    build:
-      dockerfile: ./instance/backend/Dockerfile
     environment:
       - IS_DOCKER=true
 
@@ -64,7 +72,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
       retries: 5
       start_period: 30s
