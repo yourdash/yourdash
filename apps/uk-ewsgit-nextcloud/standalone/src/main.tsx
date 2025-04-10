@@ -7,7 +7,7 @@ import "animate.css";
 import "./main.css";
 import { createRoot } from "react-dom/client";
 // @ts-ignore
-import ApplicationComponent from "@app/web/dist/index.js";
+import ApplicationComponent from "@yourdash/application-uk-ewsgit-nextcloud-web/dist/index.js";
 
 const element = document.getElementById("root") as HTMLElement;
 

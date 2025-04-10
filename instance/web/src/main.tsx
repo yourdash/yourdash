@@ -22,7 +22,7 @@ import NotFoundPage from "./root/notFound/notFound.tsx";
 import LoginIndexPage from "@yourdash/web/src/root/login";
 
 // @ts-ignore
-import AppRouter from "virtual:application-router"
+import AppRouter from "virtual:application-router/file"
 
 const element = document.getElementById("root") as HTMLElement;
 
@@ -75,7 +75,8 @@ root.render(
                 index
                 element={<ApplicationRedirectToDash />}
               />
-              {...(AppRouter as React.ReactNode[])}
+              {/* @ts-ignore */}
+              {...AppRouter}
             </Route>
           </Route>
           <Route path={"*"} element={<NotFoundPage/>}/>

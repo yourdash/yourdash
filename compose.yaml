@@ -29,6 +29,12 @@ services:
         - action: sync+restart
           path: ./instance/web/vite.config.ts
           target: /web/vite.config.ts
+        - action: sync+restart
+          path: ./instance/web/tsconfig.json
+          target: /web/tsconfig.json
+        - action: sync+restart
+          path: ./instance/web/tsconfig.node.json
+          target: /web/tsconfig.node.json
     environment:
       - VITE_IS_DOCKER=true
       - VITE_INSTANCE_BACKEND_URL=http://localhost:3563
