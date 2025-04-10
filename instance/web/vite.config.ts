@@ -44,7 +44,7 @@ import loadable from "@loadable/component";
             path.resolve(path.join(appsDirectoryPath, `${allApps[i]}`)),
             "./web/src/index.tsx"
           ).replaceAll(path.sep, path.posix.sep)}"));`;
-          routeRegionReplacement += `React.createElement(Route, {path:{"${allApps[i]}/*"}, element:{<Application${i}/>}}),`;
+          routeRegionReplacement += `React.createElement(Route, {path:"${allApps[i]}/*", element:Application${i}}),`;
         }
 
         fileTemplate = fileTemplate.replace("/* region loadable */", loadableRegionReplacement);

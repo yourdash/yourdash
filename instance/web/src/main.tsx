@@ -75,7 +75,7 @@ root.render(
                 index
                 element={<ApplicationRedirectToDash />}
               />
-              {...AppRouter}
+              {...(AppRouter as React.ReactNode[])}
             </Route>
           </Route>
           <Route path={"*"} element={<NotFoundPage/>}/>

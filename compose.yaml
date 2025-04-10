@@ -4,10 +4,9 @@ services:
       backend:
         condition: "service_started"
     build:
-      dockerfile: ./instance/web/Dockerfile
-    volumes:
-      - ./instance/web:/web
-      - /web/node_modules
+      context: ./
+      dockerfile: ./Dockerfile
+      target: web-release
     restart: always
     ports:
       - "5173:5173"
@@ -16,8 +15,8 @@ services:
     develop:
       watch:
         - action: sync
-          path: ./instance/web/
-          target: /web/
+          path: ./instance/web/src/
+          target: /web/src/
           ignore:
             - node_modules/
         - action: sync
@@ -27,8 +26,9 @@ services:
             - node_modules/
         - action: rebuild
           path: ./instance/web/package.json
-        - action: rebuild
+        - action: sync+restart
           path: ./instance/web/vite.config.ts
+          target: /web/vite.config.ts
     environment:
       - VITE_IS_DOCKER=true
       - VITE_INSTANCE_BACKEND_URL=http://localhost:3563
@@ -43,20 +43,20 @@ services:
       - "3563:3563"
     hostname: yourdash_backend.localhost
     build:
-      dockerfile: ./instance/backend/Dockerfile
+      context: ./
+      dockerfile: ./Dockerfile
+      target: backend-release
     volumes:
       - ./fs:/fs/
-      - ./instance/backend:/backend
-      - /backend/node_modules
     restart: always
     develop:
       watch:
-        - action: sync
+        - action: sync+restart
           path: ./instance/backend/
           target: /backend/
           ignore:
             - node_modules/
-        - action: sync
+        - action: sync+restart
           path: ./apps/
           target: /backend/apps/
           ignore:
@@ -78,8 +78,11 @@ services:
       start_period: 30s
       timeout: 10s
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - yourdash-postgres-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
+volumes:
+  yourdash-postgres-data:
