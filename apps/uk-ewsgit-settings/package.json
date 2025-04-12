@@ -4,9 +4,6 @@
   "scripts": {
     "dev-web": "yarn run -C \"./web\" dev"
   },
-  "dependencies": {
-    "concurrently": "^9.1.2"
-  },
   "devDependencies": {
     "prettier": "^3.5.3"
   },

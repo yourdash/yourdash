@@ -5,6 +5,7 @@
   "scripts": {},
   "type": "module",
   "dependencies": {
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "@yourdash/backend": "workspace:*"
   }
 }

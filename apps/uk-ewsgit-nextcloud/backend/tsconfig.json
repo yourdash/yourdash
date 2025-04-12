@@ -16,9 +16,7 @@
     "experimentalDecorators": true,
     "rootDir": "../../../../..",
     "strict": true,
-    "paths": {
-      "@yourdash/backend": ["../../instance/backend"]
-    }
+
   },
   "include": [
     "src"

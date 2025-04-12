@@ -27,7 +27,6 @@
     "@types/react-dom": "^19.0.4"
   },
   "dependencies": {
-    "concurrently": "^9.1.2",
     "@loadable/component": "^5.16.4",
     "@tailwindcss/container-queries": "^0.1.1",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
@@ -36,7 +35,7 @@
     "@vitejs/plugin-react-swc": "^3.8.0",
     "@yourdash/tunnel-embedded": "file:./lib/tunnel-embedded/",
     "@yourdash/uikit-embedded": "file:./lib/uikit-embedded/",
-    "@yourdash/web": "file:.",
+    "@yourdash/web": "workspace:*",
     "@yourdash/uikit": "^0.1.13",
     "@yourdash/tunnel": "^0.1.4",
     "animate.css": "^4.1.1",

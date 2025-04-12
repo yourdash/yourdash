@@ -8,6 +8,7 @@
     "@types/bun": "^1.1.6",
     "@types/node": "^22.13.9",
     "zod": "^3.24.2",
-    "fastify": "^5.2.1"
+    "fastify": "^5.2.1",
+    "@yourdash/backend": "workspace:*"
   }
 }
