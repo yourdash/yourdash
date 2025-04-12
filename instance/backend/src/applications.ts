@@ -83,7 +83,6 @@ class Applications {
       }
 
       this.instance.log.info("application", `Loading application @ ${this.instance.log.addEmphasisToString(this.getApplicationAbsolutePath(applicationPath))}.`);
-      console.log(path.posix.join(this.getApplicationAbsolutePath(applicationPath), "/backend/src/index.ts"))
       // import index.ts at applicationPath
       let applicationImport = await import(path.posix.join(this.getApplicationAbsolutePath(applicationPath), "/backend/src/index.ts"));
       let application = new applicationImport.default();
