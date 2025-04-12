@@ -65,7 +65,7 @@ class Applications {
   }
 
   async getInstalledApplications(): Promise<string[]> {
-    let installedApplications = await fs.promises.readdir(path.join(process.cwd(), "src/applications"))
+    let installedApplications = await fs.promises.readdir(path.join(process.cwd(), this.instance.flags.isDocker ? "src/apps" : "../../apps"))
 
     installedApplications = installedApplications.filter(a => !a.endsWith(".txt"))
 
@@ -73,7 +73,7 @@ class Applications {
   }
 
   getApplicationAbsolutePath(applicationPath: string) {
-    return path.resolve(path.join(process.cwd(), "src/applications", applicationPath))
+    return path.resolve(path.join(process.cwd(), this.instance.flags.isDocker ? "src/apps" : "../../apps", applicationPath))
   }
 
   async loadApplication(applicationPath: string): Promise<YourDashApplication | null> {
@@ -83,6 +83,7 @@ class Applications {
       }
 
       this.instance.log.info("application", `Loading application @ ${this.instance.log.addEmphasisToString(this.getApplicationAbsolutePath(applicationPath))}.`);
+      console.log(path.posix.join(this.getApplicationAbsolutePath(applicationPath), "/backend/src/index.ts"))
       // import index.ts at applicationPath
       let applicationImport = await import(path.posix.join(this.getApplicationAbsolutePath(applicationPath), "/backend/src/index.ts"));
       let application = new applicationImport.default();

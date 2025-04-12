@@ -8,12 +8,15 @@
   "engines": {
     "node": ">=21.0.0"
   },
+  "workspaces": [
+    "./lib/tunnel-embedded/",
+    "./lib/uikit-embedded/"
+  ],
   "scripts": {
     "dev": "vite --host",
     "build": "yarn exec vite build",
     "preview": "bun run --bun vite preview",
-    "visualize-bundle": "bun run --bun vite-bundle-visualizer",
-    "postinstall": "yarn --cwd ./lib/tunnel-embedded && yarn --cwd ./lib/uikit-embedded"
+    "visualize-bundle": "bun run --bun vite-bundle-visualizer"
   },
   "devDependencies": {
     "@types/loadable__component": "^5.13.9",
@@ -34,7 +37,7 @@
     "@yourdash/tunnel-embedded": "file:./lib/tunnel-embedded/",
     "@yourdash/uikit-embedded": "file:./lib/uikit-embedded/",
     "@yourdash/web": "file:.",
-    "@yourdash/uikit": "^0.1.4",
+    "@yourdash/uikit": "^0.1.13",
     "@yourdash/tunnel": "^0.1.4",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.20",

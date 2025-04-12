@@ -30,7 +30,7 @@ class Filesystem {
   constructor(instance: Instance) {
     this.instance = instance;
 
-    this.FS_ROOT = path.resolve(path.join(process.cwd(), "../fs/"));
+    this.FS_ROOT = path.resolve(path.join(process.cwd(), this.instance.flags.isDocker ? "../fs" : "../../fs"));
     this.instance.log.info("filesystem", `filesystem root is set to ${instance.log.addEmphasisToString(this.FS_ROOT)}`);
 
     return this;

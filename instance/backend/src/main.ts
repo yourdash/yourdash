@@ -28,12 +28,14 @@ class Instance {
     isDevMode: boolean;
     port: number;
     postgresPassword: string;
+    postgresHostname: string;
     postgresPort: number;
     postgresUser: string;
     postgresDatabase: string;
     cookieSecret: string;
     loadDevelopmentApplications: string[];
     linkDevelopmentApplications: boolean;
+    isDocker: boolean;
   };
   arguments: minimist.ParsedArgs;
   log!: Log;
@@ -74,6 +76,7 @@ class Instance {
       logQueryParameters: false,
       isDevMode: false,
       port: 3563,
+      postgresHostname: (process.env.IS_DOCKER === "true") ? "yourdash_postgres.localhost" : "localhost",
       postgresPassword: "postgres",
       postgresPort: 5432,
       postgresUser: "postgres",
@@ -81,7 +84,8 @@ class Instance {
       // FIXME: actually use a secure string
       cookieSecret: "this should be a random and unknown string to ensure security",
       loadDevelopmentApplications: [],
-      linkDevelopmentApplications: false
+      linkDevelopmentApplications: false,
+      isDocker: process.env.IS_DOCKER === "true"
     }
 
     this.log = new Log(this);
@@ -122,7 +126,7 @@ class Instance {
                                                           password: this.flags.postgresPassword,
                                                           user: this.flags.postgresUser,
                                                           database: "postgres",
-                                                          host: "yourdash_postgres.localhost"
+                                                          host: this.flags.postgresHostname
                                                         });
 
       await tempDatabaseClient.connect();
@@ -146,7 +150,7 @@ class Instance {
                                       port: this.flags.postgresPort,
                                       user: this.flags.postgresUser,
                                       database: this.flags.postgresDatabase,
-                                      host: "yourdash_postgres.localhost"
+                                      host: this.flags.postgresHostname
                                     });
     } catch (e) {
       this.log.error("database", "Failed to setup connection to PostgreSQL Database");
@@ -367,7 +371,7 @@ class Instance {
   }
 }
 
-export { type Instance };
+export { Instance };
 
 const instance = new Instance();
 

@@ -1681,7 +1681,7 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.5.13.tgz#87b309a6379c22b926e696893237826f64339b6f"
   integrity sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==
 
-"@yourdash/backend@file:./instance/backend", "@yourdash/backend@file:instance/backend":
+"@yourdash/backend@file:./instance/backend":
   version "1.0.0"
   dependencies:
     "@asteasolutions/zod-to-openapi" "^7.2.0"
@@ -1695,7 +1695,7 @@
     "@fastify/swagger-ui" "^5.2.0"
     "@fastify/websocket" "^11.0.1"
     "@types/minimist" "^1.2.5"
-    "@yourdash/backend" "file:./../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-backend-1.0.0-d2d2174b-e416-4a3e-a075-24feaecc5479-1743947324845/node_modules/@yourdash/backend"
+    "@yourdash/backend" "file:./../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-backend-1.0.0-0a158378-522f-428b-8933-f99d62130749-1744413551822/node_modules/@yourdash/backend"
     array-includes "^3.1.7"
     chalk "^5.2.0"
     compression "^1.7.4"
@@ -1757,20 +1757,17 @@
     "@typescript-eslint/parser" "^8.25.0"
     "@vitejs/plugin-react" "^4.3.4"
     "@vitejs/plugin-react-swc" "^3.8.0"
-    "@yourdash/backend" "file:../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-web-1.0.0-478487c2-4dd5-40d7-b914-766b57f098f1-1743947324841/node_modules/@yourdash/backend"
     "@yourdash/tunnel" "^0.1.4"
-    "@yourdash/tunnel-embedded" "file:./../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-web-1.0.0-478487c2-4dd5-40d7-b914-766b57f098f1-1743947324841/node_modules/@yourdash/web/lib/tunnel-embedded"
-    "@yourdash/uikit" "^0.1.4"
-    "@yourdash/uikit-embedded" "file:./../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-web-1.0.0-478487c2-4dd5-40d7-b914-766b57f098f1-1743947324841/node_modules/@yourdash/web/lib/uikit-embedded"
-    "@yourdash/web" "file:./../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-web-1.0.0-478487c2-4dd5-40d7-b914-766b57f098f1-1743947324841/node_modules/@yourdash/web"
+    "@yourdash/tunnel-embedded" "file:./../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-web-1.0.0-8cd789b2-0e53-4ce5-8bf5-90f5bf70d592-1744413551818/node_modules/@yourdash/web/lib/tunnel-embedded"
+    "@yourdash/uikit" "^0.1.13"
+    "@yourdash/uikit-embedded" "file:./../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-web-1.0.0-8cd789b2-0e53-4ce5-8bf5-90f5bf70d592-1744413551818/node_modules/@yourdash/web/lib/uikit-embedded"
+    "@yourdash/web" "file:./../../AppData/Local/Yarn/Cache/v6/npm-@yourdash-web-1.0.0-8cd789b2-0e53-4ce5-8bf5-90f5bf70d592-1744413551818/node_modules/@yourdash/web"
     animate.css "^4.1.1"
     autoprefixer "^10.4.20"
     babel-plugin-react-compiler "^19.0.0-beta-e552027-20250112"
     clsx "^2.1.1"
     concurrently "^9.1.2"
-    cross-env "^7.0.3"
     eslint "^9.21.0"
-    npm-run-all "^4.1.5"
     path "^0.12.7"
     path-browserify "^1.0.1"
     postcss "^8.4.27"
@@ -1780,11 +1777,9 @@
     react-router-dom "^7.2.0"
     sass "^1.85.1"
     tailwindcss "^3.3.3"
-    type-fest "^4.14.0"
     typescript "^5.7.3"
     vite "^6.2.0"
     vite-plugin-dynamic-import "^1.5.0"
-    xml2js "^0.6.2"
     zod "^3.24.1"
 
 abstract-logging@^2.0.1:

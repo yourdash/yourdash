@@ -14,13 +14,16 @@
     "resolveJsonModule": true,
     "experimentalDecorators": true,
     "rootDir": "../..",
-    "traceResolution": true,
+    "traceResolution": false,
     "strict": true,
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@yourdash/backend": ["."]
+    }
   },
   "include": [
     "src"

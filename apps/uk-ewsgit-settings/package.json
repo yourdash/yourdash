@@ -2,8 +2,7 @@
   "name": "@yourdash/uk-ewsgit-settings",
   "version": "0.0.1",
   "scripts": {
-    "dev-web": "yarn run -C \"./web\" dev",
-    "postinstall": "concurrently \"yarn --cwd ./web install\" \"yarn --cwd ./standalone install\" \"yarn --cwd ./backend install\""
+    "dev-web": "yarn run -C \"./web\" dev"
   },
   "dependencies": {
     "concurrently": "^9.1.2"

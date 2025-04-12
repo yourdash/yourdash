@@ -15,8 +15,10 @@
     "resolveJsonModule": true,
     "experimentalDecorators": true,
     "rootDir": "../../../../..",
-    "traceResolution": true,
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@yourdash/backend": ["../../instance/backend"]
+    }
   },
   "include": [
     "src"

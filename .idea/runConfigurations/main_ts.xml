@@ -2,10 +2,6 @@
   <configuration default="false" name="main.ts" type="BunRunConfiguration" nameIsGenerated="true">
     <option name="applicationParameters">
       <list>
-        <option value="--load-app" />
-        <option value="../uk-ewsgit-dash" />
-        <option value="--load-app" />
-        <option value="../uk-ewsgit-nextcloud" />
         <option value="--dev" />
       </list>
     </option>

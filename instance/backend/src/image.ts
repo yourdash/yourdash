@@ -3,7 +3,7 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import sharp, { FormatEnum } from "sharp";
+import sharp, { type FormatEnum } from "sharp";
 import instance from "./main.js";
 
 // NOTE: imagePath and outputPath provided must be absolute!
