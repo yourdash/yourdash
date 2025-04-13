@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Dev Backend" type="BunRunConfiguration">
+    <option name="applicationParameters">
+      <list>
+        <option value="--dev" />
+      </list>
+    </option>
+    <option name="program" value="src/main.ts" />
+    <option name="workingDirectory" value="$PROJECT_DIR$/instance/backend" />
+    <method v="2" />
+  </configuration>
+</component>

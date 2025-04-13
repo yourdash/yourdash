@@ -13,7 +13,7 @@ export default defineConfig({
   plugins: [
     // @ts-ignore
     dynamicImport(),
-    dtsPlugin(),
+    dtsPlugin({ rollupTypes: true }),
   ],
                               build: {
                                 lib: {

@@ -7,6 +7,11 @@
   "devDependencies": {
     "prettier": "^3.5.3"
   },
+  "workspaces": [
+    "web",
+    "backend",
+    "standalone"
+  ],
   "author": "Ewsgit",
   "private": true,
   "license": "MIT",

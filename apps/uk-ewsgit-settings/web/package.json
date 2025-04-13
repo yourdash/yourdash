@@ -17,9 +17,9 @@
   ],
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "@yourdash/tunnel": "^0.1.4",
-    "@yourdash/uikit": "^0.1.13",
-    "@yourdash/web": "workspace:*",
+    "@yourdash/tunnel": "^0.1.5",
+    "@yourdash/uikit": "^0.1.16",
+    "@yourdash/web": "workspace:instance/web",
     "animate.css": "^4.1.1",
     "babel-plugin-react-compiler": "19.0.0-beta-e1e972c-20250221",
     "glob": "^11.0.1",

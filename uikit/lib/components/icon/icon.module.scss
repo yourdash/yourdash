@@ -6,6 +6,8 @@
 .component {
   aspect-ratio: 1 / 1;
   width: var(--size);
+  user-select: none;
+  pointer-events: none;
 
   background-color: var(--color, currentColor);
   -webkit-mask-image: var(--icon);

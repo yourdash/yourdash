@@ -1,14 +1,13 @@
 {
   "name": "@yourdash/application-uk-ewsgit-nextcloud-backend",
   "private": true,
-  "scripts": {},
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
     "@types/bun": "^1.1.6",
     "@types/node": "^22.13.9",
-    "zod": "^3.24.2",
+    "@yourdash/backend": "workspace:instance/backend",
     "fastify": "^5.2.1",
-    "@yourdash/backend": "workspace:*"
+    "zod": "^3.24.2"
   }
 }

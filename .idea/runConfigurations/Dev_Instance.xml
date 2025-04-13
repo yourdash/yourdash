@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Dev Instance" type="CompoundRunConfigurationType">
+    <toRun name="Dev Backend" type="BunRunConfiguration" />
+    <toRun name="Dev Web" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>

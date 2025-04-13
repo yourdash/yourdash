@@ -1,20 +1,14 @@
 import React from "react";
 import styles from "./UKLayout.module.scss";
 
-interface IUKLayoutProps {
+const UKLayout: React.FC<React.PropsWithChildren<{
   primarySidebar?: React.ReactNode,
   secondarySidebar?: React.ReactNode,
   header?: React.ReactNode,
   footer?: React.ReactNode,
-}
-
-const UKLayout: React.FC<React.PropsWithChildren<IUKLayoutProps>> = ({
-                                                                       primarySidebar,
-                                                                       secondarySidebar,
-                                                                       footer,
-                                                                       header,
-                                                                       children
-                                                                     }) => {
+}>> = ({
+         primarySidebar, secondarySidebar, footer, header, children
+       }) => {
   return <div className={styles.layout}>
     {header && <div className={styles.header}>{header}</div>}
     {primarySidebar && <div className={styles.primarySidebar}>{primarySidebar}</div>}

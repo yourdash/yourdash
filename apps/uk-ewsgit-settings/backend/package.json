@@ -1,11 +1,10 @@
 {
   "name": "@yourdash/application-uk-ewsgit-settings-backend",
   "private": true,
-  "scripts": {},
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "zod": "^3.24.2",
-    "@yourdash/backend": "workspace:*"
+    "@yourdash/backend": "workspace:instance/backend",
+    "zod": "^3.24.2"
   }
 }

@@ -60,3 +60,4 @@ export { default as UKSidebar } from "../lib/views/sidebar/UKSidebar.js";
 export { default as UKSidebarContainer } from "../lib/views/sidebar/UKSidebarContainer.js";
 export { default as UKSidebarContext } from "../lib/views/sidebar/UKSidebarContext.js";
 export { default as UKSidebarToggleButton } from "../lib/views/sidebar/UKSidebarToggleButton.js";
+export { default as UKLayout } from "../lib/views/layout/UKLayout.js"

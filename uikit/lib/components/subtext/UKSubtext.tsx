@@ -5,10 +5,10 @@
 
 import clippy from "../../core/clippy";
 import styles from "./subtext.module.scss";
-import { FC } from "react";
+import React, { FC } from "react";
 
-const UKSubtext: FC<{ text: string; className?: string }> = (props) => {
-  return <div className={clippy(styles.component, props.className)}>{props.text}</div>;
+const UKSubtext: FC<{ text: string; className?: string, style?: React.CSSProperties }> = (props) => {
+  return <div className={clippy(styles.component, props.className)} style={props.style}>{props.text}</div>;
 };
 
 export default UKSubtext;

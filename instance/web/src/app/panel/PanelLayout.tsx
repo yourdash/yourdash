@@ -68,6 +68,7 @@ const PanelLayout: React.FC<{
                 />
               )}
               <UKImage
+                key={applicationIcon ?? "/favicon.svg"}
                 className={styles.applicationIcon}
                 src={applicationIcon ?? "/favicon.svg"}
                 accessibleLabel={""}
@@ -104,6 +105,7 @@ const PanelLayout: React.FC<{
                 />
               )}
               <UKImage
+                key={applicationIcon ?? "/favicon.svg"}
                 className={styles.applicationIcon}
                 src={applicationIcon ?? "/favicon.svg"}
                 accessibleLabel={""}
@@ -136,6 +138,7 @@ const PanelLayout: React.FC<{
                 />
               )}
               <UKImage
+                key={applicationIcon ?? "/favicon.svg"}
                 className={styles.applicationIcon}
                 src={applicationIcon ?? "/favicon.svg"}
                 accessibleLabel={""}
@@ -172,6 +175,7 @@ const PanelLayout: React.FC<{
                 />
               )}
               <UKImage
+                key={applicationIcon ?? "/favicon.svg"}
                 className={styles.applicationIcon}
                 src={applicationIcon ?? "/favicon.svg"}
                 accessibleLabel={""}

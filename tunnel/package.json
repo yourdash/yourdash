@@ -1,11 +1,12 @@
 {
   "name": "@yourdash/tunnel",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "",
   "scripts": {
     "dev-compile": "vite build --watch",
     "dev": "vite dev",
-    "compile": "vite build"
+    "compile": "vite build",
+    "build": "vite build"
   },
   "keywords": [],
   "author": "Ewsgit",
@@ -16,9 +17,9 @@
   ],
   "exports": {
     ".": {
+      "import": "./dist/tunnel/src/index.mjs",
       "types": "./dist/src/index.d.ts",
-      "import": "./dist/src/index.mjs",
-      "default": "./dist/src/index.mjs"
+      "default": "./dist/tunnel/src/index.mjs"
     }
   },
   "dependencies": {
@@ -38,6 +39,7 @@
     "@types/react-dom": "^19.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "typescript": "^5.8.3",
     "vite-plugin-dts": "^4.5.3"
   },
   "peerDependencies": {

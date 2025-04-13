@@ -8,10 +8,6 @@
   "engines": {
     "node": ">=21.0.0"
   },
-  "workspaces": [
-    "./lib/tunnel-embedded/",
-    "./lib/uikit-embedded/"
-  ],
   "scripts": {
     "dev": "vite --host",
     "build": "yarn exec vite build",
@@ -33,11 +29,10 @@
     "@typescript-eslint/parser": "^8.25.0",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-react-swc": "^3.8.0",
-    "@yourdash/tunnel-embedded": "file:./lib/tunnel-embedded/",
-    "@yourdash/uikit-embedded": "file:./lib/uikit-embedded/",
-    "@yourdash/web": "workspace:*",
-    "@yourdash/uikit": "^0.1.13",
-    "@yourdash/tunnel": "^0.1.4",
+    "@yourdash/tunnel": "^0.1.5",
+    "@yourdash/tunnel-embedded": "workspace:*",
+    "@yourdash/uikit": "^0.1.15",
+    "@yourdash/uikit-embedded": "workspace:*",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.20",
     "babel-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
