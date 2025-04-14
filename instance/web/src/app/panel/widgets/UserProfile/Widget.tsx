@@ -3,18 +3,14 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import UKImage from "@yourdash/uikit-embedded/src/components/image/UKImage.js";
 import React from "react";
 import styles from "./Widget.module.scss";
-import UKText from "@yourdash/uikit-embedded/src/components/text/UKText.js";
+import { UKImage, UKText } from "@yourdash/uikit";
 
 const UserProfileWidget: React.FC = () => {
   return (
     <div className={styles.component}>
-      <UKImage
-        src={"/favicon.png"}
-        accessibleLabel={"User profile"}
-      />
+      <UKImage src={"/favicon.png"} accessibleLabel={"User profile"} />
       <span className={styles.label}>
         <UKText text={"User profile"} />
       </span>

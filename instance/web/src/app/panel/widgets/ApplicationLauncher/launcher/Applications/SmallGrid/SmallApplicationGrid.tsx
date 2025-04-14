@@ -8,8 +8,9 @@ import tun from "@yourdash/tunnel-embedded/src/index.js";
 import React from "react";
 import { z } from "zod";
 import styles from "./SmallApplicationGrid.module.scss";
-import { useNavigate } from "react-router";
 import UKContextMenu from "@yourdash/uikit-embedded/src/components/contextMenu/UKContextMenu";
+import { UKCard, UKImage, UKLink } from "@yourdash/uikit";
+import useToast from "@yourdash/uikit-embedded/src/core/toasts/useToast.ts";
 
 interface IPanelApplicationsLauncherFrontendModule {
   id: string;
@@ -24,7 +25,7 @@ interface IPanelApplicationsLauncherFrontendModule {
 const SmallApplicationGrid: React.FC<{
   modules: IPanelApplicationsLauncherFrontendModule[];
 }> = ({ modules }) => {
-  const navigate = useNavigate();
+  const toast = useToast();
 
   return (
     <section className={styles.grid}>
@@ -35,21 +36,49 @@ const SmallApplicationGrid: React.FC<{
               {
                 label: "Pin To Panel",
                 async onClick() {
-                  await tun.post(
+                  let success = await tun.post(
                     "/core/panel/quick-shortcuts/create",
-                    { id: module.id, moduleType: module.type },
+                    { id: module.id },
                     "json",
-                    z.object({ success: z.boolean() }),
+                    z.object({
+                      success: z.boolean(),
+                    }),
                   );
-                  // @ts-ignore
-                  window.__yourdashCorePanelQuickShortcutsReload?.();
+
+                  if (success.data.success) {
+                    // @ts-ignore
+                    window.__yourdashCorePanelQuickShortcutsReload?.();
+                    toast.create({
+                      type: "success",
+                      content: {
+                        title: "Application pinned successfully",
+                        body: "",
+                      },
+                    });
+                  } else {
+                    toast.create({
+                      type: "error",
+                      content: {
+                        body: "An application must only be pinned once to the panel.",
+                        title: "Failed to pin application",
+                      },
+                    });
+                  }
+
                   return 0;
                 },
               },
               {
                 label: "Open In New Tab",
                 onClick() {
-                  window.open(`${window.location.origin}${window.location.pathname}/app/a/${module.id}`, "_blank");
+                  if (module.type === "frontend") {
+                    window.open(
+                      `${window.location.origin}${module.endpoint}`,
+                      "_blank",
+                    );
+                  } else {
+                    window.open(`${module.url}`, "_blank");
+                  }
                   return 0;
                 },
               },
@@ -57,25 +86,25 @@ const SmallApplicationGrid: React.FC<{
             className={styles.item}
             key={module.id}
           >
-            <div
-              className={styles.itemContent}
-              onClick={() => {
-                if (module.type === "frontend") {
-                  navigate(`${module.endpoint}`);
-                } else {
-                  navigate(`${module.url}`);
-                }
-              }}
+            <UKLink
+              className={styles.itemLink}
+              to={
+                module.type === "frontend"
+                  ? `${module.endpoint}`
+                  : `${module.url}`
+              }
             >
-              <img
-                loading={"lazy"}
-                className={styles.itemIcon}
-                src={toAuthImgUrl(`/core/panel/applications/app/smallGrid/${module.id}`)}
-                draggable={false}
-                alt=""
-              />
-              <span className={styles.itemLabel}>{module.displayName}</span>
-            </div>
+              <UKCard className={styles.itemContent}>
+                <UKImage
+                  className={styles.itemIcon}
+                  src={toAuthImgUrl(
+                    `/core/panel/applications/app/smallGrid/${module.id}`,
+                  )}
+                  accessibleLabel=""
+                />
+                <span className={styles.itemLabel}>{module.displayName}</span>
+              </UKCard>
+            </UKLink>
           </UKContextMenu>
         );
       })}

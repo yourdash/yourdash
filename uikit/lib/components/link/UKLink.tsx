@@ -7,23 +7,28 @@ import clippy from "../../core/clippy.ts";
 import UKIcon from "../icon/UKIcon.tsx";
 import { UKIcons } from "../../core/iconDictionary.ts";
 import styles from "./link.module.scss";
-import { FC } from "react";
+import React, { FC } from "react";
+import { NavLink } from "react-router";
 
-const UKLink: FC<{ text: string; to: string; className?: string; hideLinkIcon?: boolean }> = (props) => {
-  return (
-    <a
-      href={props.to}
+const UKLink: FC<React.PropsWithChildren<{
+  text?: string;
+  to: string;
+  className?: string;
+  hideLinkIcon?: boolean
+}>> = (props) => {
+  return (<NavLink
+      to={props.to}
+      viewTransition={true}
       className={clippy(styles.component, props.className)}
     >
-      {props.text}
-      {!props.hideLinkIcon && (
-        <UKIcon
-          icon={UKIcons.Link}
-          className={styles.icon}
-        />
-      )}
-    </a>
-  );
+      {props.children ? props.children : <>
+        {props.text}
+        {!props.hideLinkIcon && (<UKIcon
+            icon={UKIcons.Link}
+            className={styles.icon}
+          />)}
+      </>}
+    </NavLink>);
 };
 
 export default UKLink;

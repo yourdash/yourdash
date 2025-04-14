@@ -7,9 +7,11 @@ import toAuthImgUrl from "@yourdash/tunnel-embedded/src/getAuthImage.js";
 import { useNavigate } from "react-router";
 import styles from "./Widget.module.scss";
 import React, { memo } from "react";
-import UKImage from "@yourdash/uikit-embedded/src/components/image/UKImage";
+import { UKImage } from "@yourdash/uikit";
 
-const InstanceLogoWidget: React.FC<{ panelSize: "small" | "medium" | "large" }> = ({ panelSize }) => {
+const InstanceLogoWidget: React.FC<{
+  panelSize: "small" | "medium" | "large";
+}> = ({ panelSize }) => {
   const navigate = useNavigate();
 
   const InstancePanelLogos = {

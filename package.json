@@ -13,6 +13,9 @@
     "tunnel-embedded",
     "apps/*"
   ],
+  "dependencies": {
+    "prettier": "^3.5.3"
+  },
   "scripts": {
     "backend": "yarn --cwd ./instance/backend dev",
     "web": "yarn --cwd ./instance/web dev",

@@ -10,6 +10,7 @@
 }
 
 .component {
+  border: none;
   border-radius: $UKRadius;
   opacity: 0;
   width: 100%;
@@ -35,21 +36,18 @@
 .loading {
   @keyframes loading {
     from {
-      background-position: calc(var(--background-size) * -1) calc(var(--background-size) * -1);
+      background-position: calc(100% * -1) calc(100% * -1);
     }
 
     to {
-      background-position: var(--background-size) var(--background-size);
+      background-position: 100% 100%;
     }
   }
 
-  & {
-    background: linear-gradient(to bottom right, transparent 12.5%, #bbbbbb, #ffffff 25%, transparent 12.5%, transparent 12.5%, #bbbbbb, #ffffff 25%, transparent 12.5%);
-    background-repeat: no-repeat;
-    background-size: calc(var(--background-size) * 4) calc(var(--background-size) * 4);
-    animation: loading 1.25s infinite forwards cubic-bezier(0.25, 0.5, 0.5, 0.25);
-    box-shadow: inset 0 0 0.5rem #0003;
-  }
+  background: linear-gradient(to bottom right, transparent 12.5%, #bbbbbb, #ffffff 25%, transparent 12.5%, transparent 12.5%, #bbbbbb, #ffffff 25%, transparent 12.5%) no-repeat;
+  background-size: calc(100% * 4) calc(100% * 4);
+  animation: loading 1.25s infinite forwards cubic-bezier(0.25, 0.5, 0.5, 0.25);
+  box-shadow: inset 0 0 0.5rem #0003;
 }
 
 .serverError {
@@ -57,25 +55,21 @@
 
   @keyframes fail {
     0% {
-      background-size: var(--background-size) var(--background-size);
+      background-size: 100% 100%;
     }
 
     50% {
-      background-size: calc(var(--background-size) * 4) calc(var(--background-size) * 4);
+      background-size: calc(100% * 4) calc(100% * 4);
     }
 
     100% {
-      background-size: var(--background-size) var(--background-size);
+      background-size: 100% 100%;
     }
   }
 
-  & {
-    background: radial-gradient(transparent, #ff0000);
-    background-repeat: no-repeat;
-    background-size: var(--background-size) var(--background-size);
-    background-position: center center;
-    animation: fail 1s infinite forwards cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 1rem #fff;
-    border-radius: 0;
-  }
+  background-size: 100% 100%;
+  background: radial-gradient(transparent, #ff0000) no-repeat center center;
+  animation: fail 1s infinite forwards cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 1rem #fff;
+  border-radius: 0;
 }

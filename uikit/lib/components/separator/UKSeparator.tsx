@@ -5,10 +5,10 @@
 
 import clippy from "../../core/clippy.js";
 import styles from "./separator.module.scss";
-import { FC } from "react";
+import React, { FC } from "react";
 
-const UKSeparator: FC<{ direction: "column" | "row"; disableMargin?: boolean }> = (props) => {
-  return <div className={clippy(styles.component, styles[props.direction], props.disableMargin && styles.disableMargin)} />;
+const UKSeparator: FC<{ direction: "column" | "row"; disableMargin?: boolean, className?: string, style?: React.CSSProperties }> = (props) => {
+  return <div className={clippy(styles.component, styles[props.direction], props.disableMargin && styles.disableMargin, props.className)} style={props.style} />;
 };
 
 export default UKSeparator;

@@ -4,8 +4,14 @@
  */
 
 .searchBar {
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-bottom: -0.5rem;
-  width: calc(100% - 2rem);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: calc(100% - 2rem);
+}
+
+.separator {
+    margin-bottom: -0.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    width: calc(100% - 3rem);
 }

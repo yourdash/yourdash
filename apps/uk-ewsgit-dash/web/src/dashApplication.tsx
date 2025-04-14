@@ -274,7 +274,6 @@ const DashApplication: React.FC = () => {
         </>
       ) : (
         <UKFlex direction={"row"} className={styles.widgetsCarouselContainer}>
-          <UKText text={"TODO: fix the carousel"} />
           <UKCarousel
             className={styles.carousel}
             items={[

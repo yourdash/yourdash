@@ -7,7 +7,6 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
 import SETTINGS_ICON from "../../assets/icon.png";
 import ApplicationPanelContext from "@yourdash/web/src/lib/panelContext.ts";
-import NotFoundPage from "@yourdash/web/src/root/notFound/notFound.tsx";
 import IndexPage from "./root/index/Index.tsx";
 
 const DashRouter: React.FC = () => {
@@ -22,11 +21,7 @@ const DashRouter: React.FC = () => {
 
   return (
     <Routes>
-      <Route
-        path="settings"
-        element={<IndexPage/>}
-      />
-      <Route path={"*"} element={<NotFoundPage/>}/>
+      <Route index element={<IndexPage />} />
     </Routes>
   );
 };

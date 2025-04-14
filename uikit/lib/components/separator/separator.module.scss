@@ -7,14 +7,15 @@
 
 .component {
   display: flex;
-  border: var(#{$theme}#{$border});
-  border-radius: var(#{$theme}#{$radius});
+  border: $UKBorder;
+  border-radius: $UKRadius;
 }
 
 .row {
   width: 0;
-  height: calc(100% - calc(var(#{$theme}#{$gap})) * 2);
-  margin: var(#{$theme}#{$gap});
+  //height: calc(100% - calc(var(#{$theme}#{$gap})) * 2);
+  align-self: stretch;
+  margin: $UKGap;
   border-left: none;
 
   &.disableMargin {
@@ -25,9 +26,10 @@
 }
 
 .column {
-  width: calc(100% - calc(var(#{$theme}#{$gap})) * 2);
+  //width: calc(100% - calc(var(#{$theme}#{$gap})) * 2);
+  justify-self: stretch;
   height: 0;
-  margin: var(#{$theme}#{$gap});
+  margin: $UKGap;
   border-bottom: none;
 
   &.disableMargin {

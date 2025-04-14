@@ -3,15 +3,17 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import UKImage from "@yourdash/uikit-embedded/src/components/image/UKImage.js";
-import UKText from "@yourdash/uikit-embedded/src/components/text/UKText.js";
-import { UKIcons } from "@yourdash/uikit-embedded/src/core/iconDictionary.js";
 import React, { useEffect } from "react";
 import { Outlet } from "react-router";
 import Panel from "./Panel.tsx";
 import styles from "./PanelLayout.module.scss";
-import UKIconButton from "@yourdash/uikit-embedded/src/components/iconButton/UKIconButton.js";
-import clippy from "../../lib/clippy.ts";
+import {
+  clippy,
+  UKIconButton,
+  UKIcons,
+  UKImage,
+  UKText,
+} from "@yourdash/uikit";
 
 const PanelLayout: React.FC<{
   showBackButton: boolean;
@@ -19,8 +21,16 @@ const PanelLayout: React.FC<{
   controls: React.ReactNode;
   applicationDisplayName: string;
   applicationIcon?: string;
-}> = ({ showBackButton, onBackButton, controls, applicationDisplayName, applicationIcon }) => {
-  const [panelSide, setPanelSide] = React.useState<"top" | "right" | "bottom" | "left">(getPanelSize);
+}> = ({
+  showBackButton,
+  onBackButton,
+  controls,
+  applicationDisplayName,
+  applicationIcon,
+}) => {
+  const [panelSide, setPanelSide] = React.useState<
+    "top" | "right" | "bottom" | "left"
+  >(getPanelSize);
 
   function getPanelSize() {
     if (window.innerWidth < 768) {
@@ -54,10 +64,7 @@ const PanelLayout: React.FC<{
     case "top":
       return (
         <div className={clippy(styles.layout, styles.top)}>
-          <Panel
-            side={"top"}
-            setLayoutReloadNumber={() => updatePanelSide()}
-          />
+          <Panel side={"top"} setLayoutReloadNumber={() => updatePanelSide()} />
           <div className={styles.applicationPanelFrame}>
             <div className={styles.applicationPanel}>
               {showBackButton && (
@@ -79,10 +86,7 @@ const PanelLayout: React.FC<{
               />
               <div key={"controls"}>{controls}</div>
             </div>
-            <div
-              key={1}
-              className={styles.applicationFrame}
-            >
+            <div key={1} className={styles.applicationFrame}>
               <Outlet />
             </div>
           </div>
@@ -116,10 +120,7 @@ const PanelLayout: React.FC<{
               />
               <React.Fragment>{controls}</React.Fragment>
             </div>
-            <div
-              key={1}
-              className={styles.applicationFrame}
-            >
+            <div key={1} className={styles.applicationFrame}>
               <Outlet />
             </div>
           </div>
@@ -149,10 +150,7 @@ const PanelLayout: React.FC<{
               />
               <React.Fragment>{controls}</React.Fragment>
             </div>
-            <div
-              key={1}
-              className={styles.applicationFrame}
-            >
+            <div key={1} className={styles.applicationFrame}>
               <Outlet />
             </div>
           </div>
@@ -186,10 +184,7 @@ const PanelLayout: React.FC<{
               />
               <React.Fragment>{controls}</React.Fragment>
             </div>
-            <div
-              key={1}
-              className={styles.applicationFrame}
-            >
+            <div key={1} className={styles.applicationFrame}>
               <Outlet />
             </div>
           </div>

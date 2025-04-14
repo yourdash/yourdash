@@ -34,6 +34,10 @@
   width: 100%;
 }
 
+.itemLink {
+  width: 100%;
+}
+
 .itemContent {
   position: absolute;
   width: 100%;
@@ -43,16 +47,10 @@
   gap: 0.25rem;
   cursor: pointer;
   padding: 0.25rem;
-  border-radius: $UKButtonRadius;
-  background: rgb($UKButtonBackground);
   transition: var(--transition);
-  height: 100%;
   overflow: hidden;
 
   &:hover {
-    transition: var(--transition-fast);
-    border-radius: $UKButtonHoverRadius;
-    background: rgb($UKButtonHoverBackground);
     z-index: 20;
 
     .itemIcon {
@@ -66,8 +64,6 @@
   }
 
   &:active {
-    background: rgb(var(--button-active-bg));
-
     .itemIcon {
       scale: 0.95;
     }

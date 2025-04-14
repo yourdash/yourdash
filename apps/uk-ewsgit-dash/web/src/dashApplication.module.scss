@@ -146,6 +146,10 @@
 
 .parameterContainer {
   gap: $UKGap;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 50rem));
 
   .heading {
     margin-bottom: $UKGap;

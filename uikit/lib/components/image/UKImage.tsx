@@ -21,89 +21,57 @@ const UKImage: FC<{
   height?: number;
   style?: React.CSSProperties;
   onClick?: () => void;
-
 }> = (props) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const level= useLevel()
-  const [src, setSrc] = useState<string>(props.src);
+  const level = useLevel();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [hasFailed, setHasFailed] = useState<boolean>(false);
-  const [backgroundSize, setBackgroundSize] = useState<number>(0);
-  const attempts = useRef<number>(0);
-
-  useEffect(() => {
-    const rc = ref.current;
-
-    if (!rc) {
-      return;
-    }
-
-    setTimeout(() => {
-      const bounds = rc.getBoundingClientRect();
-
-      setBackgroundSize(bounds.height > bounds.width ? bounds.height : bounds.width);
-    }, 20);
-  }, [src]);
 
   useEffect(() => {
     setHasFailed(false);
     setLoaded(false);
-  }, [src]);
-
-  useEffect(() => {
-    if (props.src !== src) {
-      setSrc(props.src);
-    }
   }, [props.src]);
 
   return (
     <div
-      data-src={src}
-      ref={ref}
       onClick={props.onClick}
-      className={clippy(styles.componentContainer, props.containerClassName, !loaded && styles.loading, hasFailed && styles.serverError)}
+      className={clippy(
+        styles.componentContainer,
+        props.containerClassName,
+        !loaded && styles.loading,
+        hasFailed && styles.serverError,
+      )}
       style={{
-        // @ts-ignore
-        "--background-size": backgroundSize + "px",
         ...props.style,
       }}
     >
-      {!hasFailed ? (
-        <img
-          className={clippy(styles.component, useLevelClass(level), props.className, loaded && styles.loaded, props.noRounding && styles.noRounding)}
-          draggable={false}
-          width={props.width}
-          height={props.height}
-          onError={() => {
-            setHasFailed(true);
-            attempts.current++;
-
-            setTimeout(() => {
-              if (attempts.current && attempts.current <= 3) {
-                setSrc((old) => {
-                  if (old.includes("?refresh=")) {
-                    return old.slice(0, old.indexOf("?refresh=")) + "?refresh=" + Date.now();
-                  }
-
-                  return `${old}?refresh=${Date.now()}`;
-                });
-              }
-            }, 500);
-          }}
-          loading={props.disableLazyLoading ? "eager" : "lazy"}
-          alt={props.accessibleLabel}
-          onLoad={(e) => {
-            setLoaded(e.currentTarget.complete);
-            attempts.current = 0;
-          }}
-          onLoadStart={() => {
-            setLoaded(false);
-          }}
-          src={src ?? "/assets/branding/yourdash256.png"}
-        />
-      ) : (
-        <UKIcon icon={UKIcons.ServerError} />
-      )}
+      <img
+        className={clippy(
+          styles.component,
+          useLevelClass(level),
+          props.className,
+          loaded && styles.loaded,
+          props.noRounding && styles.noRounding,
+        )}
+        style={{
+          opacity: hasFailed ? 0 : 1,
+        }}
+        draggable={false}
+        width={props.width}
+        height={props.height}
+        onError={() => {
+          setHasFailed(true);
+        }}
+        loading={props.disableLazyLoading ? "eager" : "lazy"}
+        alt={props.accessibleLabel}
+        onLoad={(e) => {
+          setLoaded(e.currentTarget.complete);
+        }}
+        onLoadStart={() => {
+          setLoaded(false);
+        }}
+        src={props.src ?? "/assets/branding/yourdash256.png"}
+      />
+      {hasFailed && <UKIcon icon={UKIcons.ServerError} />}
     </div>
   );
 };

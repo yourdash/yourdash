@@ -1,73 +1,71 @@
 import React from "react";
-import { UKBox, UKButton, UKCard, UKContainer, UKHeading, UKLayout, UKSeparator, UKSubText } from "@yourdash/uikit";
+import {
+  UKBox,
+  UKButton,
+  UKCard,
+  UKContainer,
+  UKHeading,
+  UKLayout,
+  UKSeparator,
+  UKSubText,
+} from "@yourdash/uikit";
 import UserHeader from "./components/UserHeader/UserHeader";
 import styles from "./Index.module.scss";
 import QuickActions from "./components/QuickActions/QuickActions.tsx";
+import BooleanSetting from "../components/BooleanSetting/BooleanSetting.tsx";
+import BaseSetting from "../components/BaseSetting/BaseSetting.tsx";
 
 const IndexPage: React.FC = () => {
-  return <UKLayout
-    primarySidebar={<UKBox>
-      <UKHeading level={2} text={"Categories"} />
+  return (
+    <UKLayout
+      primarySidebar={
+        <UKBox
+          style={{
+            borderLeft: "none",
+            borderTop: "none",
+            borderBottom: "none",
+            height: "100%",
+          }}
+        >
+          <UKHeading level={2} text={"Categories"} />
+          <UKSeparator direction={"column"} />
+          <UKButton onClick={() => {}} text={"Hello world!"} />
+          <UKButton onClick={() => {}} text={"Hello world!"} />
+          <UKButton onClick={() => {}} text={"Hello world!"} />
+          <UKButton onClick={() => {}} text={"Hello world!"} />
+          <UKSubText text={"YourDash Pre-Alpha"} />
+        </UKBox>
+      }
+    >
+      <UserHeader />
+      <QuickActions />
       <UKSeparator direction={"column"} />
-      <UKButton onClick={() => {}} text={"Hello world!"} />
-      <UKButton onClick={() => {}} text={"Hello world!"} />
-      <UKButton onClick={() => {}} text={"Hello world!"} />
-      <UKButton onClick={() => {}} text={"Hello world!"} />
-      <UKSubText text={"YourDash Pre-Alpha"} />
-    </UKBox>}
-  >
-    <UserHeader />
-    <QuickActions/>
-    <UKSeparator direction={"column"} />
-    <UKContainer className={styles.content}>
-      <div>
-        <UKHeading text={"Overview"} />
-        <UKSeparator direction={"column"} />
-      </div>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-      <UKCard>
-        This is a setting
-      </UKCard>
-  </UKContainer>
-  </UKLayout>;
+      <UKContainer className={styles.content}>
+        <div>
+          <UKHeading text={"Overview"} />
+          <UKSeparator direction={"column"} />
+        </div>
+        <BooleanSetting
+          title={"Boolean Setting"}
+          settingId={"boolean.setting.id"}
+          description={"Boolean Setting Description"}
+          defaultValue={false}
+          currentValue={true}
+          disabled={false}
+          setValue={() => {}}
+        />
+        <BaseSetting
+          description={"Base Setting Description"}
+          settingId={"base.setting.id"}
+          title={"Base Setting Test"}
+          setDefaultValue={() => {}}
+          isDefaultValue={true}
+        >
+          Base Setting Children
+        </BaseSetting>
+      </UKContainer>
+    </UKLayout>
+  );
 };
 
 export default IndexPage;

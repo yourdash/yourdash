@@ -2424,8 +2424,8 @@ __metadata:
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
     "@vitejs/plugin-react": "npm:^4.3.4"
-    "@yourdash/tunnel": "npm:^0.1.5"
-    "@yourdash/uikit": "npm:^0.1.15"
+    "@yourdash/tunnel": "workspace:tunnel"
+    "@yourdash/uikit": "workspace:uikit"
     "@yourdash/web": "workspace:instance/web"
     animate.css: "npm:^4.1.1"
     babel-plugin-react-compiler: "npm:19.0.0-beta-e1e972c-20250221"
@@ -2433,8 +2433,8 @@ __metadata:
     npm-run-all: "npm:^4.1.5"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
-    react-router: "npm:^7.2.0"
-    react-router-dom: "npm:^7.2.0"
+    react-router: "npm:^7.5.0"
+    react-router-dom: "npm:^7.5.0"
     sass-embedded: "npm:^1.86.0"
     vite: "npm:^6.2.0"
     vite-plugin-dynamic-import: "npm:^1.6.0"
@@ -2443,8 +2443,8 @@ __metadata:
   peerDependencies:
     react: ^19.0.0
     react-dom: ^19.0.0
-    react-router: ^7.2.0
-    react-router-dom: ^7.2.0
+    react-router: ^7.5.0
+    react-router-dom: ^7.5.0
   languageName: unknown
   linkType: soft
 
@@ -2485,8 +2485,8 @@ __metadata:
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
     "@vitejs/plugin-react": "npm:^4.3.4"
-    "@yourdash/tunnel": "npm:^0.1.5"
-    "@yourdash/uikit": "npm:^0.1.15"
+    "@yourdash/tunnel": "workspace:tunnel"
+    "@yourdash/uikit": "workspace:uikit"
     "@yourdash/web": "workspace:instance/web"
     animate.css: "npm:^4.1.1"
     babel-plugin-react-compiler: "npm:19.0.0-beta-e1e972c-20250221"
@@ -2494,8 +2494,8 @@ __metadata:
     npm-run-all: "npm:^4.1.5"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
-    react-router: "npm:^7.2.0"
-    react-router-dom: "npm:^7.2.0"
+    react-router: "npm:^7.5.0"
+    react-router-dom: "npm:^7.5.0"
     vite: "npm:^6.2.0"
     vite-plugin-dynamic-import: "npm:^1.6.0"
     vite-plugin-lib-inject-css: "npm:^2.2.1"
@@ -2503,8 +2503,8 @@ __metadata:
   peerDependencies:
     react: ^19.0.0
     react-dom: ^19.0.0
-    react-router: ^7.2.0
-    react-router-dom: ^7.2.0
+    react-router: ^7.5.0
+    react-router-dom: ^7.5.0
   languageName: unknown
   linkType: soft
 
@@ -2542,8 +2542,8 @@ __metadata:
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
     "@vitejs/plugin-react": "npm:^4.3.4"
-    "@yourdash/tunnel": "npm:^0.1.5"
-    "@yourdash/uikit": "npm:^0.1.16"
+    "@yourdash/tunnel": "workspace:tunnel"
+    "@yourdash/uikit": "workspace:uikit"
     "@yourdash/web": "workspace:instance/web"
     animate.css: "npm:^4.1.1"
     babel-plugin-react-compiler: "npm:19.0.0-beta-e1e972c-20250221"
@@ -2551,8 +2551,8 @@ __metadata:
     npm-run-all: "npm:^4.1.5"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
-    react-router: "npm:^7.2.0"
-    react-router-dom: "npm:^7.2.0"
+    react-router: "npm:^7.5.0"
+    react-router-dom: "npm:^7.5.0"
     sass-embedded: "npm:^1.86.0"
     vite: "npm:^6.2.0"
     vite-plugin-dynamic-import: "npm:^1.6.0"
@@ -2561,8 +2561,8 @@ __metadata:
   peerDependencies:
     react: ^19.0.0
     react-dom: ^19.0.0
-    react-router: ^7.2.0
-    react-router-dom: ^7.2.0
+    react-router: ^7.5.0
+    react-router-dom: ^7.5.0
   languageName: unknown
   linkType: soft
 
@@ -2648,7 +2648,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/tunnel@npm:^0.1.5, @yourdash/tunnel@workspace:tunnel":
+"@yourdash/tunnel@workspace:*, @yourdash/tunnel@workspace:tunnel":
   version: 0.0.0-use.local
   resolution: "@yourdash/tunnel@workspace:tunnel"
   dependencies:
@@ -2695,8 +2695,8 @@ __metadata:
     postcss: "npm:^8.4.27"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
-    react-router: "npm:^7.2.0"
-    react-router-dom: "npm:^7.2.0"
+    react-router: "npm:^7.5.0"
+    react-router-dom: "npm:^7.5.0"
     sass: "npm:^1.85.1"
     strip-ansi: "npm:^7.1.0"
     tailwindcss: "npm:^3.3.3"
@@ -2709,7 +2709,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/uikit@npm:^0.1.15, @yourdash/uikit@npm:^0.1.16, @yourdash/uikit@workspace:uikit":
+"@yourdash/uikit@workspace:*, @yourdash/uikit@workspace:uikit":
   version: 0.0.0-use.local
   resolution: "@yourdash/uikit@workspace:uikit"
   dependencies:
@@ -2726,8 +2726,8 @@ __metadata:
     npm-run-all: "npm:^4.1.5"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
-    react-router: "npm:^7.2.0"
-    react-router-dom: "npm:^7.2.0"
+    react-router: "npm:^7.5.0"
+    react-router-dom: "npm:^7.5.0"
     sass-embedded: "npm:^1.85.1"
     typescript: "npm:^5.8.3"
     vite: "npm:^6.2.0"
@@ -2780,9 +2780,9 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.25.0"
     "@vitejs/plugin-react": "npm:^4.3.4"
     "@vitejs/plugin-react-swc": "npm:^3.8.0"
-    "@yourdash/tunnel": "npm:^0.1.5"
+    "@yourdash/tunnel": "workspace:*"
     "@yourdash/tunnel-embedded": "workspace:*"
-    "@yourdash/uikit": "npm:^0.1.15"
+    "@yourdash/uikit": "workspace:*"
     "@yourdash/uikit-embedded": "workspace:*"
     animate.css: "npm:^4.1.1"
     autoprefixer: "npm:^10.4.20"
@@ -2794,8 +2794,8 @@ __metadata:
     postcss: "npm:^8.4.27"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
-    react-router: "npm:^7.2.0"
-    react-router-dom: "npm:^7.2.0"
+    react-router: "npm:^7.5.0"
+    react-router-dom: "npm:^7.5.0"
     sass: "npm:^1.85.1"
     tailwindcss: "npm:^3.3.3"
     typescript: "npm:^5.7.3"
@@ -2821,8 +2821,9 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.25.0"
     "@vitejs/plugin-react": "npm:^4.3.4"
     "@vitejs/plugin-react-swc": "npm:^3.8.0"
-    "@yourdash/tunnel-embedded": "workspace:tunnel-embedded"
-    "@yourdash/uikit-embedded": "workspace:uikit-embedded"
+    "@yourdash/tunnel-embedded": "workspace:*"
+    "@yourdash/uikit": "workspace:*"
+    "@yourdash/uikit-embedded": "workspace:*"
     animate.css: "npm:^4.1.1"
     autoprefixer: "npm:^10.4.20"
     babel-plugin-react-compiler: "npm:^19.0.0-beta-e552027-20250112"
@@ -2834,8 +2835,8 @@ __metadata:
     postcss: "npm:^8.4.27"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
-    react-router: "npm:^7.2.0"
-    react-router-dom: "npm:^7.2.0"
+    react-router: "npm:^7.5.0"
+    react-router-dom: "npm:^7.5.0"
     sass: "npm:^1.85.1"
     tailwindcss: "npm:^3.3.3"
     type-fest: "npm:^4.14.0"
@@ -6982,7 +6983,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^7.2.0":
+"react-router-dom@npm:^7.5.0":
   version: 7.5.0
   resolution: "react-router-dom@npm:7.5.0"
   dependencies:
@@ -7005,7 +7006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:7.5.0, react-router@npm:^7.2.0":
+"react-router@npm:7.5.0, react-router@npm:^7.5.0":
   version: 7.5.0
   resolution: "react-router@npm:7.5.0"
   dependencies:
@@ -9006,6 +9007,8 @@ __metadata:
 "yourdash@workspace:.":
   version: 0.0.0-use.local
   resolution: "yourdash@workspace:."
+  dependencies:
+    prettier: "npm:^3.5.3"
   languageName: unknown
   linkType: soft
 

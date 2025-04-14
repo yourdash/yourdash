@@ -7,6 +7,7 @@ import React, { useEffect } from "react";
 import ApplicationPanelContext from "@yourdash/web/src/lib/panelContext.ts";
 import { Route, Routes } from "react-router";
 import LoginNextcloudFlowV2Page from "./login/flow/v2";
+import NEXTCLOUD_ICON from "../../assets/icon.png";
 
 const DashRouter: React.FC = () => {
   // @ts-ignore
@@ -14,20 +15,22 @@ const DashRouter: React.FC = () => {
 
   useEffect(() => {
     applicationPanelContext.setApplicationDisplayName("Nextcloud");
-    applicationPanelContext.setApplicationIcon("");
-    applicationPanelContext.setOnBackButton(() => { });
+    applicationPanelContext.setApplicationIcon(NEXTCLOUD_ICON);
+    applicationPanelContext.setOnBackButton(() => {});
     applicationPanelContext.setShowBackButton(false);
   }, []);
 
   return (
     <Routes>
-      <Route index element={<>The YourDash Nextcloud compatability layer - created by Ewsgit</>} />
+      <Route
+        index
+        element={
+          <>The YourDash Nextcloud compatability layer - created by Ewsgit</>
+        }
+      />
       <Route path={"flow"}>
         <Route path={"v2"}>
-          <Route
-            path={":token"}
-            element={<LoginNextcloudFlowV2Page />}
-          />
+          <Route path={":token"} element={<LoginNextcloudFlowV2Page />} />
         </Route>
       </Route>
     </Routes>

@@ -5,16 +5,17 @@
 
 import useResource from "@yourdash/tunnel-embedded/src/useResource.ts";
 import tun from "@yourdash/tunnel-embedded/src/index.js";
-import UKImage from "@yourdash/uikit-embedded/src/components/image/UKImage.js";
 import IncrementLevel from "@yourdash/uikit-embedded/src/core/incrementLevel.js";
 import { useLevelClass } from "@yourdash/uikit-embedded/src/core/level.js";
 import { To, useNavigate } from "react-router-dom";
-import clippy from "../../../../lib/clippy.js";
 import styles from "./Widget.module.scss";
 import React from "react";
 import z from "zod";
+import { clippy, UKImage } from "@yourdash/uikit";
 
-const QuickShortcuts: React.FC<{ side: "top" | "right" | "bottom" | "left" }> = ({ side }) => {
+const QuickShortcuts: React.FC<{
+  side: "top" | "right" | "bottom" | "left";
+}> = ({ side }) => {
   const navigate = useNavigate();
 
   const [num, setNum] = React.useState<number>(0);
@@ -23,7 +24,14 @@ const QuickShortcuts: React.FC<{ side: "top" | "right" | "bottom" | "left" }> = 
       tun.get(
         "/core/panel/quick-shortcuts",
         "json",
-        z.object({ displayName: z.string(), id: z.string(), endpoint: z.string().optional(), url: z.string().optional() }).array(),
+        z
+          .object({
+            displayName: z.string(),
+            id: z.string(),
+            endpoint: z.string().optional(),
+            url: z.string().optional(),
+          })
+          .array(),
       ),
     { dependencies: [num], return: "data" },
   );
@@ -37,7 +45,12 @@ const QuickShortcuts: React.FC<{ side: "top" | "right" | "bottom" | "left" }> = 
     <>
       {quickShortcutApplications?.map(
         // @ts-ignore
-        (application: { id: React.Key | null | undefined; endpoint: To; url: string; displayName: string }) => {
+        (application: {
+          id: React.Key | null | undefined;
+          endpoint: To;
+          url: string;
+          displayName: string;
+        }) => {
           if (!application) return <>Invalid Module</>;
 
           return (
@@ -61,11 +74,17 @@ const QuickShortcuts: React.FC<{ side: "top" | "right" | "bottom" | "left" }> = 
                 )}
               >
                 <UKImage
+                  noRounding={true}
                   className={styles.applicationIcon}
-                  src={tun.baseUrl + `/core/panel/quick-shortcut/icon/${application.id}`}
+                  src={
+                    tun.baseUrl +
+                    `/core/panel/quick-shortcut/icon/${application.id}`
+                  }
                   accessibleLabel={application.displayName}
                 />
-                <span className={styles.applicationLabel}>{application.displayName}</span>
+                <span className={styles.applicationLabel}>
+                  {application.displayName}
+                </span>
               </div>
             </IncrementLevel>
           );

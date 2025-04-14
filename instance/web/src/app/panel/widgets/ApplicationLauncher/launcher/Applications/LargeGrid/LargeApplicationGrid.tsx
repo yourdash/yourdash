@@ -10,8 +10,8 @@ import UKContextMenu from "@yourdash/uikit-embedded/src/components/contextMenu/U
 import useToast from "@yourdash/uikit-embedded/src/core/toasts/useToast.js";
 import React from "react";
 import styles from "./LargeApplicationGrid.module.scss";
-import { useNavigate } from "react-router";
 import { z } from "zod";
+import { UKImage, UKLink } from "@yourdash/uikit";
 
 interface IPanelApplicationsLauncherFrontendModule {
   id: string;
@@ -26,7 +26,6 @@ interface IPanelApplicationsLauncherFrontendModule {
 const LargeApplicationGrid: React.FC<{
   modules: IPanelApplicationsLauncherFrontendModule[];
 }> = ({ modules }) => {
-  const navigate = useNavigate();
   const toast = useToast();
 
   return (
@@ -52,12 +51,18 @@ const LargeApplicationGrid: React.FC<{
                     window.__yourdashCorePanelQuickShortcutsReload?.();
                     toast.create({
                       type: "success",
-                      content: { title: "Application pinned successfully", body: "" },
+                      content: {
+                        title: "Application pinned successfully",
+                        body: "",
+                      },
                     });
                   } else {
                     toast.create({
                       type: "error",
-                      content: { body: "Failed to pin application", title: "An application must only be pinned once to the panel." },
+                      content: {
+                        body: "An application must only be pinned once to the panel.",
+                        title: "Failed to pin application",
+                      },
                     });
                   }
 
@@ -68,7 +73,10 @@ const LargeApplicationGrid: React.FC<{
                 label: "Open In New Tab",
                 onClick() {
                   if (module.type === "frontend") {
-                    window.open(`${window.location.origin}${module.endpoint}`, "_blank");
+                    window.open(
+                      `${window.location.origin}${module.endpoint}`,
+                      "_blank",
+                    );
                   } else {
                     window.open(`${module.url}`, "_blank");
                   }
@@ -79,25 +87,25 @@ const LargeApplicationGrid: React.FC<{
             className={styles.item}
             key={module.id}
           >
-            <UKCard
-              onClick={() => {
-                if (module.type === "frontend") {
-                  navigate(`${module.endpoint}`);
-                } else {
-                  navigate(`${module.url}`);
-                }
-              }}
-              className={styles.itemContent}
+            <UKLink
+              className={styles.itemLink}
+              to={
+                module.type === "frontend"
+                  ? `${module.endpoint}`
+                  : `${module.url}`
+              }
             >
-              <img
-                className={styles.itemIcon}
-                src={toAuthImgUrl(`/core/panel/applications/app/largeGrid/${module.id}`)}
-                draggable={false}
-                loading={"lazy"}
-                alt=""
-              />
-              <span className={styles.itemLabel}>{module.displayName}</span>
-            </UKCard>
+              <UKCard className={styles.itemContent}>
+                <UKImage
+                  className={styles.itemIcon}
+                  src={toAuthImgUrl(
+                    `/core/panel/applications/app/largeGrid/${module.id}`,
+                  )}
+                  accessibleLabel=""
+                />
+                <span className={styles.itemLabel}>{module.displayName}</span>
+              </UKCard>
+            </UKLink>
           </UKContextMenu>
         );
       })}
