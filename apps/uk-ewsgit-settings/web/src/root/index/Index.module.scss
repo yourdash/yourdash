@@ -1,8 +1,11 @@
 @use "@yourdash/uikit/themeValues.scss" as *;
 
 .content {
-  margin-left: $UKPadding;
-  margin-right: $UKPadding;
   text-align: start;
   align-items: start;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $UKPadding;
+  padding-right: $UKPadding;
+  max-width: 96rem;
 }
