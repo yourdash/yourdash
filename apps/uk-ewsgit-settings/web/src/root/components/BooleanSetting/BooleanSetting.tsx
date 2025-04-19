@@ -1,6 +1,6 @@
 import React from "react";
 import BaseSetting from "../BaseSetting/BaseSetting";
-import { UKButton, UKText } from "@yourdash/uikit";
+import { UKButton } from "@yourdash/uikit";
 
 const BooleanSetting: React.FC<{
   title: string;
@@ -8,7 +8,6 @@ const BooleanSetting: React.FC<{
   description: string;
   defaultValue: boolean;
   currentValue: boolean;
-  setValue: (value: boolean) => void;
   disabled: boolean;
 }> = ({
   title,
@@ -16,22 +15,23 @@ const BooleanSetting: React.FC<{
   description,
   defaultValue,
   currentValue,
-  setValue,
   disabled,
 }) => {
+  const [val, setVal] = React.useState<boolean>(currentValue);
+
   return (
     <BaseSetting
       title={title}
       description={description}
       settingId={settingId}
-      isDefaultValue={currentValue === defaultValue}
-      setDefaultValue={() => setValue(defaultValue)}
+      isDefaultValue={val === defaultValue}
+      setDefaultValue={() => setVal(defaultValue)}
     >
       <UKButton
         disabled={disabled}
-        text={"Boolean Setting"}
+        text={`${val}`}
         onClick={() => {
-          setValue(false);
+          setVal(!val);
         }}
       />
     </BaseSetting>

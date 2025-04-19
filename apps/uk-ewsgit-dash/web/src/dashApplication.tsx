@@ -18,7 +18,6 @@ import {
   UKIconButton,
   UKIcons,
   UKSeparator,
-  UKText,
   UKTextInput,
 } from "@yourdash/uikit";
 
