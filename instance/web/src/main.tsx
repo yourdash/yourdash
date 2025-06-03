@@ -23,9 +23,12 @@ import LoginIndexPage from "@yourdash/web/src/root/login";
 
 // @ts-ignore
 import AppRouter from "virtual:application-router/file"
+import { tun } from "@yourdash/tunnel";
+import { INSTANCE_BACKEND_URL } from "./lib/backendUrl.ts";
+
+tun.__internal_connectTo(INSTANCE_BACKEND_URL)
 
 const element = document.getElementById("root") as HTMLElement;
-
 const loadingElement = document.createElement("h1");
 
 loadingElement.style.display = "flex";
@@ -38,6 +41,7 @@ loadingElement.innerText = "Initializing YourDash...";
 element.appendChild(loadingElement);
 
 const root = ReactDOM.createRoot(element);
+
 
 root.render(
   <UIKitRoot>

@@ -6,12 +6,12 @@
 import { useEffect, useState } from "react";
 
 export default function useResource<
-  T extends any,
-  TReturn extends keyof T | undefined,
-  TransReturn extends TReturn extends keyof T ? T[TReturn] : T,
+  T extends Promise<any>,
+  TReturn extends keyof Awaited<T> | undefined,
+  TransReturn extends TReturn extends keyof Awaited<T> ? Awaited<T>[TReturn] : Awaited<T>,
 >(
-  resource: () => Promise<T>,
-  options?: { dependencies?: unknown[]; return?: TReturn; transform?: (data: TReturn extends keyof T ? T[TReturn] : T) => TransReturn },
+  resource: () => T,
+  options?: { dependencies?: unknown[]; return?: TReturn; transform?: (data: TReturn extends keyof Awaited<T> ? Awaited<T>[TReturn] : T) => TransReturn },
 ): TransReturn | undefined {
   const [data, setData] = useState<TransReturn | undefined>(undefined);
 
@@ -19,12 +19,12 @@ export default function useResource<
     setData(undefined);
     resource().then((d) => {
       // @ts-ignore
-      let result: TReturn extends keyof T ? T[TReturn] : T = d; // Default to d if no return key.
+      let result: TReturn extends keyof Awaited<T> ? Awaited<T>[TReturn] : Awaited<T> = d; // Default to d if no return key.
       if (options?.return && typeof options.return !== "undefined") {
-        result = d[options.return] as TReturn extends keyof T ? T[TReturn] : T;
+        result = d[options.return] as TReturn extends keyof Awaited<T> ? Awaited<T>[TReturn] : Awaited<T>;
       }
       const transformFunction =
-        options?.transform ?? (((data: any) => data) as (data: TReturn extends keyof T ? T[TReturn] : T) => TransReturn);
+        options?.transform ?? (((data: any) => data) as (data: TReturn extends keyof Awaited<T> ? Awaited<T>[TReturn] : Awaited<T>) => TransReturn);
 
       setData(transformFunction(result));
     });

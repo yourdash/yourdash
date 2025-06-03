@@ -13,6 +13,7 @@ import isValidInstance from "./lib/isValidInstance.ts";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styles from "./index.preload.module.scss";
+import { INSTANCE_BACKEND_URL } from "../../lib/backendUrl.ts";
 
 const LoginIndexPagePreload: FC = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const LoginIndexPagePreload: FC = () => {
   const [ retryCounter, setRetryCounter ] = useState<number>(0);
 
   useEffect(() => {
-    isValidInstance(import.meta.env.VITE_INSTANCE_BACKEND_URL).then((isValid) => {
+    isValidInstance(INSTANCE_BACKEND_URL).then((isValid) => {
       setValidInstance(isValid);
 
       if (!isValid) {

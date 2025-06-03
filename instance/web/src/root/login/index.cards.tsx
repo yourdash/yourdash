@@ -3,22 +3,14 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import toAuthImgUrl from "@yourdash/tunnel-embedded/src/getAuthImage.js";
-import UKButton from "@yourdash/uikit-embedded/src/components/button/UKButton.js";
-import UKCard from "@yourdash/uikit-embedded/src/components/card/UKCard.js";
-import UKFlex from "@yourdash/uikit-embedded/src/components/flex/UKFlex.js";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
-import UKImage from "@yourdash/uikit-embedded/src/components/image/UKImage.js";
-import UKSubtext from "@yourdash/uikit-embedded/src/components/subtext/UKSubtext.js";
-import UKTextInput from "@yourdash/uikit-embedded/src/components/textInput/UKTextInput.js";
-import UKSeparator from "@yourdash/uikit-embedded/src/components/separator/UKSeparator.js";
-import useToast from "@yourdash/uikit-embedded/src/core/toasts/useToast.js";
+import useToast from "@yourdash/uikit-embedded/src/core/toasts/useToast.ts";
 import clippy from "../../lib/clippy.js";
 import styles from "./index.cards.module.scss";
 import loginUser from "./lib/loginUser.ts";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import tun from "@yourdash/tunnel-embedded/src/index.ts";
+import { toAuthImgUrl, tun } from "@yourdash/tunnel";
+import { UKButton, UKCard, UKFlex, UKHeading, UKImage, UKSeparator, UKSubText, UKTextInput } from "@yourdash/uikit";
 
 enum LoginLayout {
   SIDEBAR,
@@ -160,7 +152,7 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
               });
           }}
         />
-        <UKSubtext
+        <UKSubText
           className={styles.instanceUrl}
           text={tun.baseUrl}
         />
@@ -185,7 +177,7 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
             className={styles.title}
           />
           {props.metadata?.message && (
-            <UKSubtext
+            <UKSubText
               className={styles.message}
               text={props.metadata.message}
             />

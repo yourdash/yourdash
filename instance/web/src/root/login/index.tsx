@@ -9,9 +9,10 @@ import UKSpinner from "@yourdash/uikit-embedded/src/components/spinner/UKSpinner
 import { z } from "zod";
 import IndexCardsPage from "./index.cards.tsx";
 import styles from "./index.module.scss";
-import React, { FC, Suspense } from "react";
+import { FC, Suspense, useEffect } from "react";
 import useResource from "@yourdash/tunnel-embedded/src/useResource.ts";
 import tun from "@yourdash/tunnel-embedded/src/index.ts";
+import { INSTANCE_BACKEND_URL } from "../../lib/backendUrl.ts";
 
 enum LoginLayout {
   SIDEBAR,

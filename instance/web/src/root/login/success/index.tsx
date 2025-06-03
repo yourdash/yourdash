@@ -3,18 +3,12 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import useResource from "@yourdash/tunnel-embedded/src/useResource.js";
-import UKButton from "@yourdash/uikit-embedded/src/components/button/UKButton.js";
-import UKCard from "@yourdash/uikit-embedded/src/components/card/UKCard.js";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
-import UKRedirect from "@yourdash/uikit-embedded/src/components/redirect/UKRedirect.js";
-import UKSubtext from "@yourdash/uikit-embedded/src/components/subtext/UKSubtext.js";
-import UKText from "@yourdash/uikit-embedded/src/components/text/UKText.js";
 import { z } from "zod";
 import styles from "./index.module.scss";
 import { FC } from "react";
 import { useNavigate } from "react-router";
-import tun from "@yourdash/tunnel-embedded/src";
+import {tun, useResource} from "@yourdash/tunnel";
+import { UKButton, UKCard, UKHeading, UKText, UKSubText } from "@yourdash/uikit";
 
 const LoginSuccessPage: FC = () => {
   const navigate = useNavigate();
@@ -26,9 +20,6 @@ const LoginSuccessPage: FC = () => {
         "json",
         z.object({ author: z.string(), message: z.string(), timestamp: z.number(), display: z.boolean() }),
       ),
-    {
-      return: "data",
-    },
   );
 
   return (
@@ -54,7 +45,7 @@ const LoginSuccessPage: FC = () => {
                 level={1}
                 text={"Notice"}
               />
-              <UKSubtext text={"authored: " + new Date(notice.timestamp || 0).toLocaleDateString()} />
+              <UKSubText text={"authored: " + new Date(notice.timestamp || 0).toLocaleDateString()} />
             </>
           }
         >
@@ -62,7 +53,7 @@ const LoginSuccessPage: FC = () => {
             className={styles.message}
             text={notice?.message || "No message..."}
           />
-          <UKSubtext
+          <UKSubText
             className={styles.author}
             text={`- ${notice?.author || "Unknown author"}`}
           />

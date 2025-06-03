@@ -19,6 +19,7 @@
   "scripts": {
     "backend": "yarn --cwd ./instance/backend dev",
     "web": "yarn --cwd ./instance/web dev",
+    "website": "yarn --cwd ./website dev",
     "build-deps": "yarn --cwd ./tunnel build && yarn --cwd ./uikit build"
   },
   "packageManager": "yarn@4.9.1"

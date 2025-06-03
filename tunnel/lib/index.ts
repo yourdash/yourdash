@@ -14,7 +14,7 @@ async function ftch<ReponseDataType>(
   responseType: TunnelResponseType,
   headers?: { [key: string]: string },
   body?: string,
-) {
+): Promise<{data: ReponseDataType, status: number, error: boolean, response: Response}> {
   console.log(`${method} ${path}`, body || "");
   const response = await fetch(basePath + path, {
     method: method,
@@ -26,6 +26,7 @@ async function ftch<ReponseDataType>(
   if (response.status !== 200 && response.status !== 201 && response.status !== 202 && response.status !== 204) {
     throw { status: response.status, error: true, response };
   }
+
   switch (responseType) {
     case "json":
       return { data: (await response.json()) as ReponseDataType, status: response.status, error: false, response };
@@ -51,7 +52,9 @@ class Tunnel {
   }
 
   __internal_connectTo(instanceUrl: string) {
+    console.log(`Connecting to instance @ "${instanceUrl}"`)
     this.baseUrl = instanceUrl;
+    localStorage.setItem("instance_url", instanceUrl)
     return this;
   }
 
@@ -65,7 +68,7 @@ class Tunnel {
     error: boolean;
     response: Response;
   }> {
-    return await ftch<S>(this.baseUrl, path, "GET", responseType);
+    return await ftch<S["_output"]>(this.baseUrl, path, "GET", responseType);
   }
 
   async post<S extends ZodType>(
@@ -79,7 +82,7 @@ class Tunnel {
     error: boolean;
     response: Response;
   }> {
-    return await ftch<S>(this.baseUrl, path, "POST", responseType, {}, JSON.stringify(body));
+    return await ftch<S["_output"]>(this.baseUrl, path, "POST", responseType, {}, JSON.stringify(body));
   }
 
   async put<S extends ZodType>(
@@ -93,7 +96,7 @@ class Tunnel {
     error: boolean;
     response: Response;
   }> {
-    return await ftch<S>(this.baseUrl, path, "PUT", responseType, {}, body);
+    return await ftch<S["_output"]>(this.baseUrl, path, "PUT", responseType, {}, body);
   }
 
   async delete<S extends ZodType>(
@@ -106,7 +109,7 @@ class Tunnel {
     error: boolean;
     response: Response;
   }> {
-    return await ftch<S>(this.baseUrl, path, "DELETE", responseType, {});
+    return await ftch<S["_output"]>(this.baseUrl, path, "DELETE", responseType, {});
   }
 }
 
