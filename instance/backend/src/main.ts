@@ -266,11 +266,11 @@ class Instance {
     }
 
     try {
-      const doesConfigurationExist = await this.database
-        .query(`SELECT EXISTS (SELECT
-                                                                               FROM pg_tables
-                                                                               WHERE schemaname = 'public'
-                                                                                 AND tablename = 'configuration');`);
+      const doesConfigurationExist = await this.database.query(`SELECT EXISTS (
+          SELECT
+          FROM pg_tables
+          WHERE schemaname = 'public' AND tablename = 'configuration'
+        );`);
 
       if (!doesConfigurationExist.rows[0].exists) {
         this.log.info(

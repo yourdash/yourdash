@@ -5,6 +5,14 @@
 
 import instance, { Instance } from "./main.js";
 
+export enum EventTypes {
+  YourdashCreateUser = "yourdash:user_create",
+  YourdashDeleteUser = "yourdash:user_delete",
+  YourdashRenameUser = "yourdash:user_rename",
+}
+
+export type EventType = EventTypes & string;
+
 class EventHook {
   eventId: string;
   callback: (data: any) => void;
