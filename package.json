@@ -11,7 +11,8 @@
     "tunnel",
     "uikit-embedded",
     "tunnel-embedded",
-    "apps/*"
+    "apps/*",
+    "instanceManager"
   ],
   "dependencies": {
     "prettier": "^3.5.3"

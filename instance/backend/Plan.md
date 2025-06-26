@@ -40,3 +40,8 @@ Filesystem Manager
 manages the interface between the filesystem and the yourdash Instance
 allows services to recieve updates of when a file has been changed and what about that file has changed
 allows users to only access files which are in their respective areas
+accepts input in protocols
+user::ewsgit:   - the user's home dir as the origin
+team::team_name:    - the team's home dir as the origin
+core:   - the instance's cwd as the origin
+ext::ext_id:   - an external storage source as the origin, resolved by id

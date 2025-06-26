@@ -1,0 +1,22 @@
+{
+  "name": "instance_manager",
+  "packageManager": "yarn@4.9.1",
+  "bin": {
+    "ydsh": "./bin/run.js"
+  },
+  "type": "module",
+  "version": "0.0.1",
+  "oclif": {
+    "bin": "ydsh",
+    "commands": "./dist/commands",
+    "dirname": "ydsh",
+    "topicSeparator": " "
+  },
+  "dependencies": {
+    "@oclif/core": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18",
+    "ts-node": "^10.9.2"
+  }
+}
