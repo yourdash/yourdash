@@ -1,20 +1,20 @@
 import { Args, Command, Flags } from "@oclif/core";
 
 export default class Init extends Command {
-  static override args = {
-    file: Args.string({ description: "file to read" }),
-  };
+  static override args = {};
   static override description = "initialize a new YourDash instance";
   static override examples = ["<%= config.bin %> <%= command.id %>"];
   static override flags = {
-    // flag with no value (-f, --force)
     force: Flags.boolean({
       char: "f",
       description:
         "initialize a new instance even if one exists (wipes all data)",
     }),
-    // flag with a value (-n, --name=VALUE)
-    name: Flags.string({ char: "n", description: "name of the instance" }),
+    name: Flags.string({
+      char: "n",
+      description: "name of the instance",
+      required: true,
+    }),
   };
 
   public async run(): Promise<void> {

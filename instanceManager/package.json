@@ -8,7 +8,7 @@
   "version": "0.0.1",
   "oclif": {
     "bin": "ydsh",
-    "commands": "./dist/commands",
+    "commands": "./src/commands",
     "dirname": "ydsh",
     "topicSeparator": " "
   },
