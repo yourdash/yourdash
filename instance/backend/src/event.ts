@@ -83,7 +83,6 @@ class Events {
 export default Events;
 
 /*
- *
  * YourDash Event System
  *
  * An Event is created with instance.events.createEvent(eventId: string)
@@ -91,6 +90,4 @@ export default Events;
  * An Event stores an array of all YourDashEventHooks
  * A YourDashEventHook is created with new YourDashEventHook(eventId: string)
  * When an event is triggered, the eventHook's .on(cb: (data: any) => {}) will be triggered
- *
- *
  * */

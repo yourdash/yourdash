@@ -18,20 +18,34 @@ class Filesystem {
     GlobalCacheDirectory: () => `${this.FS_ROOT}/Cache/`,
     TeamsDirectory: () => `${this.FS_ROOT}/Teams/`,
     ApplicationsDirectory: () => `${this.FS_ROOT}/../src/applications/`,
-    ApplicationDirectory: (applicationId: string) => `${this.commonPaths.ApplicationsDirectory()}/${applicationId}/`,
+    ApplicationDirectory: (applicationId: string) =>
+      `${this.commonPaths.ApplicationsDirectory()}/${applicationId}/`,
     HomeDirectory: (username: string) => `${this.FS_ROOT}/Users/${username}/`,
-    UserDocumentsDirectory: (username: string) => `${this.commonPaths.HomeDirectory(username)}/Documents/`,
-    UserDownloadsDirectory: (username: string) => `${this.commonPaths.HomeDirectory(username)}/Downloads/`,
-    UserPicturesDirectory: (username: string) => `${this.commonPaths.HomeDirectory(username)}/Pictures/`,
-    UserVideosDirectory: (username: string) => `${this.commonPaths.HomeDirectory(username)}/Videos/`,
-    UserSystemDirectory: (username: string) => `${this.commonPaths.HomeDirectory(username)}/System/`,
+    UserDocumentsDirectory: (username: string) =>
+      `${this.commonPaths.HomeDirectory(username)}/Documents/`,
+    UserDownloadsDirectory: (username: string) =>
+      `${this.commonPaths.HomeDirectory(username)}/Downloads/`,
+    UserPicturesDirectory: (username: string) =>
+      `${this.commonPaths.HomeDirectory(username)}/Pictures/`,
+    UserVideosDirectory: (username: string) =>
+      `${this.commonPaths.HomeDirectory(username)}/Videos/`,
+    UserSystemDirectory: (username: string) =>
+      `${this.commonPaths.HomeDirectory(username)}/System/`,
   };
 
   constructor(instance: Instance) {
     this.instance = instance;
 
-    this.FS_ROOT = path.resolve(path.join(process.cwd(), this.instance.flags.isDocker ? "../fs" : "../../fs"));
-    this.instance.log.info("filesystem", `filesystem root is set to ${instance.log.addEmphasisToString(this.FS_ROOT)}`);
+    this.FS_ROOT = path.resolve(
+      path.join(
+        process.cwd(),
+        this.instance.flags.isDocker ? "../fs" : "../../fs",
+      ),
+    );
+    this.instance.log.info(
+      "filesystem",
+      `filesystem root is set to ${instance.log.addEmphasisToString(this.FS_ROOT)}`,
+    );
 
     return this;
   }
@@ -163,28 +177,48 @@ class Filesystem {
       );
     }
 
-    if (!(await this.doesPathExist(path.join(this.commonPaths.DefaultsDirectory(), "userAvatar.png")))) {
+    if (
+      !(await this.doesPathExist(
+        path.join(this.commonPaths.DefaultsDirectory(), "userAvatar.png"),
+      ))
+    ) {
       try {
         await fs.cp(
-          path.join(process.cwd(), "defaults/userAvatar.png"),
+          path.join(process.cwd(), "src/assets/userAvatar.png"),
           path.join(this.commonPaths.DefaultsDirectory(), "userAvatar.png"),
         );
-        this.instance.log.info("filesystem", `Copied default asset ${this.instance.log.addEmphasisToString("userAvatar.png")}.`);
+        this.instance.log.info(
+          "filesystem",
+          `Copied default asset ${this.instance.log.addEmphasisToString("userAvatar.png")}.`,
+        );
       } catch (e) {
         console.error(e);
-        this.instance.log.error("filesystem", `Failed to copy default asset ${this.instance.log.addEmphasisToString("userAvatar.png")}.`);
+        this.instance.log.error(
+          "filesystem",
+          `Failed to copy default asset ${this.instance.log.addEmphasisToString("userAvatar.png")}.`,
+        );
       }
     } else {
-      this.instance.log.info("filesystem", `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.DefaultsDirectory(), "userAvatar.png"))} exists.`);
+      this.instance.log.info(
+        "filesystem",
+        `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.DefaultsDirectory(), "userAvatar.png"))} exists.`,
+      );
     }
 
-    if (!(await this.doesPathExist(path.join(this.commonPaths.SystemDirectory(), "loginBackground.avif")))) {
+    if (
+      !(await this.doesPathExist(
+        path.join(this.commonPaths.SystemDirectory(), "loginBackground.avif"),
+      ))
+    ) {
       try {
         await fs.cp(
-          path.join(process.cwd(), "defaults/default_login_background.avif"),
+          path.join(process.cwd(), "src/assets/default_login_background.avif"),
           path.join(this.commonPaths.SystemDirectory(), "loginBackground.avif"),
         );
-        this.instance.log.info("filesystem", `Copied system asset ${this.instance.log.addEmphasisToString("loginBackground.avif")}.`);
+        this.instance.log.info(
+          "filesystem",
+          `Copied system asset ${this.instance.log.addEmphasisToString("loginBackground.avif")}.`,
+        );
       } catch (e) {
         console.error(e);
         this.instance.log.error(
@@ -193,27 +227,56 @@ class Filesystem {
         );
       }
     } else {
-      this.instance.log.info("filesystem", `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.SystemDirectory(), "loginBackground.avif"))} exists.`);
+      this.instance.log.info(
+        "filesystem",
+        `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.SystemDirectory(), "loginBackground.avif"))} exists.`,
+      );
     }
 
-    if (!(await this.doesPathExist(path.join(this.commonPaths.SystemDirectory(), "instanceLogo.png")))) {
+    if (
+      !(await this.doesPathExist(
+        path.join(this.commonPaths.SystemDirectory(), "instanceLogo.png"),
+      ))
+    ) {
       try {
         await fs.cp(
-          path.join(process.cwd(), "defaults/yourdash.png"),
+          path.join(process.cwd(), "src/assets/yourdash.png"),
           path.join(this.commonPaths.SystemDirectory(), "instanceLogo.png"),
         );
-        this.instance.log.info("filesystem", `Copied system asset ${this.instance.log.addEmphasisToString("instanceLogo.png")}.`);
+        this.instance.log.info(
+          "filesystem",
+          `Copied system asset ${this.instance.log.addEmphasisToString("instanceLogo.png")}.`,
+        );
       } catch (e) {
         console.error(e);
-        this.instance.log.error("filesystem", `Failed to copy system asset ${this.instance.log.addEmphasisToString("instanceLogo.png")}.`);
+        this.instance.log.error(
+          "filesystem",
+          `Failed to copy system asset ${this.instance.log.addEmphasisToString("instanceLogo.png")}.`,
+        );
       }
     } else {
-      this.instance.log.info("filesystem", `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.SystemDirectory(), "instanceLogo.png"))} exists.`);
+      this.instance.log.info(
+        "filesystem",
+        `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.SystemDirectory(), "instanceLogo.png"))} exists.`,
+      );
     }
 
-    if (!(await this.doesPathExist(path.join(this.instance.filesystem.commonPaths.GlobalCacheDirectory(), "panel/applications")))) {
+    if (
+      !(await this.doesPathExist(
+        path.join(
+          this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
+          "panel/applications",
+        ),
+      ))
+    ) {
       try {
-        await fs.mkdir(path.join(this.instance.filesystem.commonPaths.GlobalCacheDirectory(), "panel/applications"), { recursive: true });
+        await fs.mkdir(
+          path.join(
+            this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
+            "panel/applications",
+          ),
+          { recursive: true },
+        );
         this.instance.log.info(
           "filesystem",
           `Created ${this.instance.log.addEmphasisToString(path.join(this.instance.filesystem.commonPaths.GlobalCacheDirectory(), "panel/applications"))} directory.`,
@@ -232,16 +295,34 @@ class Filesystem {
       );
     }
 
-    if (!(await this.doesPathExist(path.join(this.instance.filesystem.commonPaths.GlobalCacheDirectory(), "panel", "invalidIcon.webp")))) {
+    if (
+      !(await this.doesPathExist(
+        path.join(
+          this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
+          "panel",
+          "invalidIcon.webp",
+        ),
+      ))
+    ) {
       try {
         await fs.cp(
-          path.join(process.cwd(), "defaults/yourdash.png"),
-          path.join(this.instance.filesystem.commonPaths.GlobalCacheDirectory(), "panel", "invalidIcon.webp"),
+          path.join(process.cwd(), "src/assets/yourdash.png"),
+          path.join(
+            this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
+            "panel",
+            "invalidIcon.webp",
+          ),
         );
-        this.instance.log.info("filesystem", `Copied system asset ${this.instance.log.addEmphasisToString("invalidIcon.webp")}.`);
+        this.instance.log.info(
+          "filesystem",
+          `Copied system asset ${this.instance.log.addEmphasisToString("invalidIcon.webp")}.`,
+        );
       } catch (e) {
         console.error(e);
-        this.instance.log.error("filesystem", `Failed to copy system asset ${this.instance.log.addEmphasisToString("invalidIcon.webp")}.`);
+        this.instance.log.error(
+          "filesystem",
+          `Failed to copy system asset ${this.instance.log.addEmphasisToString("invalidIcon.webp")}.`,
+        );
       }
     } else {
       this.instance.log.info(
