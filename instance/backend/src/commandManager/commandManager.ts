@@ -1,12 +1,12 @@
 import path from "path";
 import type { Instance } from "../main";
-import type { ICommandParameters } from "./command";
+import type { ICommandParameters, ICommandRuntimeParameters } from "./command";
 import type Command from "./command";
 import { promises as fs } from "fs";
 
 class CommandManager {
   private instance: Instance;
-  commands: Command<any, any>[];
+  commands: Command[];
 
   constructor(instance: Instance) {
     this.instance = instance;
@@ -24,10 +24,14 @@ class CommandManager {
       },
     );
 
+    // TODO: here we must take control of stdin to register input & execute commands
+
+    // [DO SOMETHING HERE]
+
     return this;
   }
 
-  executeCommand(commandId: string, parameters: ICommandParameters<any, any>) {
+  executeCommand(commandId: string, parameters: ICommandRuntimeParameters) {
     let com = this.commands.find((com) => com.commandId === commandId);
 
     if (!com) {

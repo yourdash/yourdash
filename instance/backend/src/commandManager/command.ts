@@ -1,23 +1,22 @@
 import type { Instance } from "../main";
 
-export interface ICommandParameters<
-  Flags extends CommandFlags,
-  Arguments extends CommandArguments,
-> {
-  flags: Flags;
-  arguments: Arguments;
+type CommandFlags = { [key: string]: "string" | "boolean" };
+type CommandArguments = { argumentId: string; allowedValues?: string[] }[];
+
+export interface ICommandParameters {
+  flags: Command["flags"];
+  arguments: Command["arguments"];
 }
 
-type CommandFlags = { [key: string]: string | boolean };
-type CommandArguments = { argumentId: string }[];
+export interface ICommandRuntimeParameters {
+  flags: { [key: string]: string | boolean };
+  arguments: { [key: string]: string };
+}
 
-export default abstract class Command<
-  Flags extends CommandFlags,
-  Arguments extends CommandArguments,
-> {
+export default abstract class Command {
   instance: Instance;
-  abstract flags: Flags;
-  abstract arguments: Arguments;
+  abstract flags: CommandFlags;
+  abstract arguments: CommandArguments;
   abstract commandId: string;
 
   constructor(instance: Instance) {
@@ -25,5 +24,5 @@ export default abstract class Command<
     return this;
   }
 
-  abstract run(parameters: ICommandParameters<Flags, Arguments>): this;
+  abstract run(parameters: ICommandRuntimeParameters): this;
 }

@@ -18,25 +18,15 @@ import User, { createUser, repairUser } from "./user.js";
 import path from "path";
 import timeTaken from "./timer.js";
 import minimist from "minimist";
+import type ConfigurationManager from "./configurationManager.ts";
 
 dotenv.config();
 
 class Instance {
   flags!: {
-    logQueryParameters: boolean;
-    logOptionsRequests: boolean;
-    isDevMode: boolean;
-    port: number;
-    postgresPassword: string;
-    postgresHostname: string;
-    postgresPort: number;
-    postgresUser: string;
-    postgresDatabase: string;
-    cookieSecret: string;
-    loadDevelopmentApplications: string[];
-    linkDevelopmentApplications: boolean;
     isDocker: boolean;
   };
+  configurationManager!: ConfigurationManager;
   arguments: minimist.ParsedArgs;
   log!: Log;
   resourceManager!: ResourceManager;
@@ -91,6 +81,8 @@ class Instance {
       linkDevelopmentApplications: false,
       isDocker: process.env.IS_DOCKER === "true",
     };
+
+    this.configurationManager = new ConfigurationManager(this);
 
     this.log = new Log(this);
 
@@ -168,7 +160,7 @@ class Instance {
       } catch (e) {
         self.log.error(
           "database",
-          `Failed to setup pre-startup connection to PostgreSQL Database,\nplease ensure that you have PostgreSQL installed, and the default 'postgres' database exists. (${self.log.addEmphasisToString("Will retry in 10s")})`,
+          `Failed to setup pre-startup connection to PostgreSQL Database, please ensure that you have PostgreSQL installed, and the default 'postgres' database exists. (${self.log.addEmphasisToString("Will retry in 10s")})`,
         );
 
         await new Promise((resolve) => setTimeout(resolve, 10_000));
