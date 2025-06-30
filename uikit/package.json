@@ -1,6 +1,6 @@
 {
   "name": "@yourdash/uikit",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "The YourDash ReactJS UI library",
   "scripts": {
     "dev-compile": "vite build --watch",
@@ -12,7 +12,7 @@
   "author": "Ewsgit",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist/*"
   ],
   "sideEffects": [
     "**/*.css"

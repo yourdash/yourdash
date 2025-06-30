@@ -18,11 +18,11 @@ const sampleUserData: { name: string; username: string; pronouns: string } = {
 const UserHeader: React.FC = () => {
   return (
     <UKCard containerClassName={styles.card}>
-      <UKFlex direction={"row"} style={{ height: "7.5rem" }}>
+      <UKFlex direction={"row"} style={{ height: "16rem" }}>
         <UKImage src={"/favicon.svg"} accessibleLabel={"User Profile Avatar"} />
         <UKSeparator direction={"row"} />
         <UKFlex direction={"column"} centerVertically={true}>
-          <UKHeading text={sampleUserData.name} />
+          <UKHeading className={styles.displayName} text={sampleUserData.name} />
           <UKSubText
             text={`@${sampleUserData.username}${sampleUserData.pronouns !== "" ? ` | ${sampleUserData.pronouns}` : ""}`}
             className={styles.username}

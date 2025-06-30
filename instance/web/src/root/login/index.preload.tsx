@@ -3,17 +3,12 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import UKButton from "@yourdash/uikit-embedded/src/components/button/UKButton.js";
-import UKFlex from "@yourdash/uikit-embedded/src/components/flex/UKFlex.js";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
-import UKText from "@yourdash/uikit-embedded/src/components/text/UKText.js";
-import UKDialog from "@yourdash/uikit-embedded/src/views/dialog/UKDialog.js";
-import LoginIndexPage from "./index.tsx";
 import isValidInstance from "./lib/isValidInstance.ts";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styles from "./index.preload.module.scss";
 import { INSTANCE_BACKEND_URL } from "../../lib/backendUrl.ts";
+import { UKDialog, UKHeading, UKFlex, UKButton, UKText } from "@yourdash/uikit";
 
 const LoginIndexPagePreload: FC = () => {
   const navigate = useNavigate();

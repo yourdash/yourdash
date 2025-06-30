@@ -3,14 +3,22 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import useToast from "@yourdash/uikit-embedded/src/core/toasts/useToast.ts";
 import clippy from "../../lib/clippy.js";
 import styles from "./index.cards.module.scss";
 import loginUser from "./lib/loginUser.ts";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toAuthImgUrl, tun } from "@yourdash/tunnel";
-import { UKButton, UKCard, UKFlex, UKHeading, UKImage, UKSeparator, UKSubText, UKTextInput } from "@yourdash/uikit";
+import {
+  UKButton,
+  UKCard,
+  UKFlex,
+  UKHeading,
+  UKImage,
+  UKSeparator,
+  UKSubText,
+  UKTextInput,
+} from "@yourdash/uikit";
 
 enum LoginLayout {
   SIDEBAR,
@@ -24,12 +32,18 @@ interface EndpointResponseLoginInstanceMetadata {
   loginLayout: LoginLayout;
 }
 
-const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | null }> = (props) => {
+const IndexCardsPage: FC<{
+  metadata: EndpointResponseLoginInstanceMetadata | null;
+}> = (props) => {
   const navigate = useNavigate();
   const toast = useToast();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState<{ avatar: string; fullName: { first: string; last: string }; isValid: boolean }>({
+  const [user, setUser] = useState<{
+    avatar: string;
+    fullName: { first: string; last: string };
+    isValid: boolean;
+  }>({
     avatar: "",
     fullName: { first: "", last: "" },
     isValid: false,
@@ -38,16 +52,23 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
   useEffect(() => {
     if (localStorage.getItem("current_user_username") || "" !== "") {
       setUsername(localStorage.getItem("current_user_username") || "");
-      fetch(`${tun.baseUrl}/login/user/${localStorage.getItem("current_user_username") || ""}`, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
+      fetch(
+        `${tun.baseUrl}/login/user/${localStorage.getItem("current_user_username") || ""}`,
+        {
+          mode: "cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
         },
-      })
+      )
         .then((res) => res.json())
         .then((resp) => {
           if (resp.error) {
-            setUser({ avatar: "", fullName: { first: "", last: "" }, isValid: false });
+            setUser({
+              avatar: "",
+              fullName: { first: "", last: "" },
+              isValid: false,
+            });
           } else {
             setUser({
               avatar: `/login/user/${localStorage.getItem("current_user_username") || ""}/avatar`,
@@ -57,7 +78,11 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
           }
         })
         .catch(() => {
-          setUser({ avatar: "", fullName: { first: "", last: "" }, isValid: false });
+          setUser({
+            avatar: "",
+            fullName: { first: "", last: "" },
+            isValid: false,
+          });
         });
     }
   }, []);
@@ -72,7 +97,11 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
       .then((res) => res.json())
       .then((resp) => {
         if (resp.error) {
-          setUser({ avatar: "", fullName: { first: "", last: "" }, isValid: false });
+          setUser({
+            avatar: "",
+            fullName: { first: "", last: "" },
+            isValid: false,
+          });
         } else {
           setUser({
             avatar: `/login/user/${username}/avatar`,
@@ -82,7 +111,11 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
         }
       })
       .catch(() => {
-        setUser({ avatar: "", fullName: { first: "", last: "" }, isValid: false });
+        setUser({
+          avatar: "",
+          fullName: { first: "", last: "" },
+          isValid: false,
+        });
       });
   }, [username]);
 
@@ -102,10 +135,7 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
             />
           </>
         ) : (
-          <UKHeading
-            level={3}
-            text={"Login"}
-          />
+          <UKHeading level={3} text={"Login"} />
         )}
         <UKSeparator direction={"column"} />
         <UKTextInput
@@ -129,7 +159,9 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
                   navigate("/login/success");
                 })
                 .catch(() => {
-                  console.log("TODO: implement a toasts notification here for a failed login!");
+                  console.log(
+                    "TODO: implement a toasts notification here for a failed login!",
+                  );
                 });
             }
           }}
@@ -147,15 +179,15 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
               .catch(() => {
                 toast.create({
                   type: "error",
-                  content: { title: "Login Failure", body: "You login attempt failed, please try again. The password may be incorrect!" },
+                  content: {
+                    title: "Login Failure",
+                    body: "You login attempt failed, please try again. The password may be incorrect!",
+                  },
                 });
               });
           }}
         />
-        <UKSubText
-          className={styles.instanceUrl}
-          text={tun.baseUrl}
-        />
+        <UKSubText className={styles.instanceUrl} text={tun.baseUrl} />
       </UKCard>
       <UKCard
         className={styles.metadataCard}
@@ -167,10 +199,7 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
           src={toAuthImgUrl("/login/instance/background")}
           accessibleLabel={""}
         />
-        <UKFlex
-          direction={"column"}
-          className={styles.metadata}
-        >
+        <UKFlex direction={"column"} className={styles.metadata}>
           <UKHeading
             level={1}
             text={props.metadata?.title || "Unknown instance title"}

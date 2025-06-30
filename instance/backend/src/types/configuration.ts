@@ -1,4 +1,4 @@
-export default interface YourDashInstanceConfiguration {
+export interface YourDashInstanceConfiguration {
   logQueryParameters: boolean;
   logOptionsRequests: boolean;
   isDevMode: boolean;
@@ -10,4 +10,9 @@ export default interface YourDashInstanceConfiguration {
   postgresDatabase: string;
   cookieSecret: string;
   loadDevelopmentApplications: string[];
+  featureFlags: YourDashFeatureFlags[];
+}
+
+export enum YourDashFeatureFlags {
+  SlashCommands = "slash_commands",
 }

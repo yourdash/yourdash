@@ -1,1 +1,0 @@
-Please note: Docker will place application's frontends here when the container is built

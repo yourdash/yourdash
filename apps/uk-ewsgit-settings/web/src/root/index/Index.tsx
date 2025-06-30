@@ -14,7 +14,7 @@ import styles from "./Index.module.scss";
 import QuickActions from "./components/QuickActions/QuickActions.tsx";
 import BooleanSetting from "../components/BooleanSetting/BooleanSetting.tsx";
 import BaseSetting from "../components/BaseSetting/BaseSetting.tsx";
-import tun from "@yourdash/tunnel";
+import {tun} from "@yourdash/tunnel";
 
 const IndexPage: React.FC = () => {
   const val = tun.get("/uk-ewsgit-settings/settings/overview/page/1");

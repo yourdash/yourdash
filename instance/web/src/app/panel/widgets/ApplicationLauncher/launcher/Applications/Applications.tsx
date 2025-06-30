@@ -10,9 +10,7 @@ import styles from "./Applications.module.scss";
 import { useNavigate } from "react-router";
 import SmallApplicationGrid from "./SmallGrid/SmallApplicationGrid.tsx";
 import ApplicationList from "./List/ApplicationList.tsx";
-import UKTextInput from "@yourdash/uikit-embedded/src/components/textInput/UKTextInput.js";
-import { UKIcons } from "@yourdash/uikit-embedded/src/core/iconDictionary.js";
-import { UKSeparator } from "@yourdash/uikit";
+import { UKIcons, UKSeparator, UKTextInput } from "@yourdash/uikit";
 
 interface IPanelApplicationsLauncherFrontendModule {
     id: string;

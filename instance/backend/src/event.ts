@@ -3,7 +3,8 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import instance, { Instance } from "./main.js";
+import { Instance } from "./instance.js";
+import { instance } from "./main.js";
 
 export enum EventTypes {
   YourdashCreateUser = "yourdash:user_create",

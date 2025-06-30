@@ -1,4 +1,4 @@
-import type { Instance } from "../main";
+import type { Instance } from "../instance";
 
 type CommandFlags = { [key: string]: "string" | "boolean" };
 type CommandArguments = { argumentId: string; allowedValues?: string[] }[];

@@ -3,7 +3,7 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import { Instance } from "./main.js";
+import { Instance } from "./instance.js";
 
 interface IResource {
   // the path to the resource which will be served

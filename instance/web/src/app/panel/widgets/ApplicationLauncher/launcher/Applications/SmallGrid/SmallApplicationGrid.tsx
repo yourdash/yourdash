@@ -3,14 +3,11 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import toAuthImgUrl from "@yourdash/tunnel-embedded/src/getAuthImage.js";
-import tun from "@yourdash/tunnel-embedded/src/index.js";
 import React from "react";
 import { z } from "zod";
 import styles from "./SmallApplicationGrid.module.scss";
-import UKContextMenu from "@yourdash/uikit-embedded/src/components/contextMenu/UKContextMenu";
-import { UKCard, UKImage, UKLink } from "@yourdash/uikit";
-import useToast from "@yourdash/uikit-embedded/src/core/toasts/useToast.ts";
+import { UKCard, UKContextMenu, UKImage, UKLink, useToasts } from "@yourdash/uikit";
+import { tun, toAuthImgUrl } from "@yourdash/tunnel";
 
 interface IPanelApplicationsLauncherFrontendModule {
   id: string;
@@ -25,7 +22,7 @@ interface IPanelApplicationsLauncherFrontendModule {
 const SmallApplicationGrid: React.FC<{
   modules: IPanelApplicationsLauncherFrontendModule[];
 }> = ({ modules }) => {
-  const toast = useToast();
+  const toast = useToasts();
 
   return (
     <section className={styles.grid}>

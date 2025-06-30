@@ -11,3 +11,8 @@
 .username {
   margin-top: calc($UKGap * -1);
 }
+
+.displayName {
+  width: max-content;
+  text-wrap: nowrap;
+}

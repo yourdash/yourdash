@@ -4,7 +4,6 @@
  */
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
-import instance from "@yourdash/backend/src/main.js";
 import { InstanceStatus } from "@yourdash/backend/src/types/instanceStatus.js";
 import User, { getUser } from "@yourdash/backend/src/user.js";
 import * as Bun from "bun";
@@ -12,6 +11,7 @@ import path from "path";
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
 import { FastifyRequest } from "fastify";
+import { Instance } from "@yourdash/backend/src/instance.js";
 
 export const MIMICKED_NEXTCLOUD_VERSION = {
   major: 28,
@@ -23,21 +23,24 @@ export const MIMICKED_NEXTCLOUD_VERSION = {
 };
 
 export default class Application extends YourDashApplication {
-  constructor() {
-    super({
-      version: {
-        major: 1,
-        minor: 0,
+  constructor(instance: Instance) {
+    super(
+      {
+        version: {
+          major: 1,
+          minor: 0,
+        },
+        configVersion: 1,
+        credits: {
+          authors: [{ name: "Ewsgit", site: "https://ewsgit.uk" }],
+        },
+        frontend: true,
+        displayName: "Nextcloud",
+        description: "The YourDash Nextcloud integration.",
+        id: "uk-ewsgit-nextcloud",
       },
-      configVersion: 1,
-      credits: {
-        authors: [{ name: "Ewsgit", site: "https://ewsgit.uk" }],
-      },
-      frontend: true,
-      displayName: "Nextcloud",
-      description: "The YourDash Nextcloud integration.",
-      id: "uk-ewsgit-nextcloud",
-    });
+      instance,
+    );
 
     (async () => {
       try {
@@ -59,7 +62,7 @@ export default class Application extends YourDashApplication {
   }
 
   public onLoad(): this {
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-nextcloud/hello-world",
       {
         schema: {
@@ -75,7 +78,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-nextcloud/",
       { schema: { response: { 200: z.undefined() } } },
       async (req, res) => {
@@ -86,7 +89,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-nextcloud/status.php",
       {
         schema: {
@@ -109,7 +112,7 @@ export default class Application extends YourDashApplication {
         res.header("Access-Control-Allow-Origin", "*");
 
         const query = (
-          await instance.database.query(
+          await this.instance.database.query(
             "SELECT display_name FROM public.configuration ORDER BY config_version DESC LIMIT 1",
           )
         ).rows[0];
@@ -119,7 +122,8 @@ export default class Application extends YourDashApplication {
           default:
             return {
               installed: true,
-              maintenance: instance.getStatus() === InstanceStatus.MAINTENANCE,
+              maintenance:
+                this.instance.getStatus() === InstanceStatus.MAINTENANCE,
               needsDbUpgrade: false,
               version: "28.0.0.11",
               versionstring: MIMICKED_NEXTCLOUD_VERSION.string,
@@ -131,7 +135,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-nextcloud/ocs/v2.php/cloud/capabilities",
       {
         schema: {
@@ -183,7 +187,7 @@ export default class Application extends YourDashApplication {
       },
       async (req, res) => {
         const query = (
-          await instance.database.query(
+          await this.instance.database.query(
             "SELECT display_name, external_url, description FROM public.configuration ORDER BY config_version DESC LIMIT 1",
           )
         ).rows[0];
@@ -240,7 +244,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-nextcloud/ocs/v1.php/cloud/capabilities",
       {
         schema: {
@@ -292,7 +296,7 @@ export default class Application extends YourDashApplication {
       },
       async (req, res) => {
         const query = (
-          await instance.database.query(
+          await this.instance.database.query(
             "SELECT display_name, external_url, description FROM configuration ORDER BY config_version DESC LIMIT 1",
           )
         ).rows[0];
@@ -363,7 +367,7 @@ export default class Application extends YourDashApplication {
       };
     } = {};
 
-    instance.request.post(
+    this.instance.request.post(
       "/uk-ewsgit-nextcloud/index.php/login/v2",
       {
         schema: {
@@ -402,7 +406,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    instance.request.post(
+    this.instance.request.post(
       "/uk-ewsgit-nextcloud/index.php/login/v2/poll",
       {
         schema: {
@@ -450,7 +454,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    instance.request.post(
+    this.instance.request.post(
       "/uk-ewsgit-nextcloud/login/nextcloud/flow/v2/authenticate",
       {
         schema: {
@@ -499,7 +503,7 @@ export default class Application extends YourDashApplication {
         }
 
         let postgresPasswordHash = (
-          await instance.database.query(
+          await this.instance.database.query(
             "SELECT password_hash FROM users WHERE username = $1;",
             [username],
           )
@@ -512,14 +516,14 @@ export default class Application extends YourDashApplication {
         authSession.username = username;
         authSession.sessionToken = randomUUID();
 
-        await instance.database.query(
+        await this.instance.database.query(
           `INSERT INTO public.uk_ewsgit_nextcloud_sessions (username)
                VALUES ($1)
                ON CONFLICT (username) DO NOTHING;`,
           [authSession.username],
         );
 
-        await instance.database.query(
+        await this.instance.database.query(
           `UPDATE public.uk_ewsgit_nextcloud_sessions
                SET session_tokens = array_append(session_tokens, $1)
                WHERE username = $2;`,
@@ -529,6 +533,8 @@ export default class Application extends YourDashApplication {
         return { success: true };
       },
     );
+
+    const self = this;
 
     async function getUserForRequest(
       req: FastifyRequest,
@@ -560,7 +566,7 @@ export default class Application extends YourDashApplication {
 
       const reqAuth = parseAuthorization(req.headers.authorization);
 
-      const dbQuery = await instance.database.query(
+      const dbQuery = await self.instance.database.query(
         "SELECT session_tokens FROM public.uk_ewsgit_nextcloud_sessions WHERE username = $1",
         [reqAuth.username],
       );
@@ -585,7 +591,7 @@ export default class Application extends YourDashApplication {
       return await getUser(dbQuery.rows[0].username);
     }
 
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-nextcloud/ocs/v1.php/cloud/user",
       {
         schema: {
@@ -679,7 +685,9 @@ export default class Application extends YourDashApplication {
             data: {
               enabled: true,
               storageLocation: path.join(
-                instance.filesystem.commonPaths.HomeDirectory(user.username),
+                this.instance.filesystem.commonPaths.HomeDirectory(
+                  user.username,
+                ),
               ),
               id: user.username,
               lastLogin: Date.now(),
@@ -735,7 +743,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-nextcloud/remote.php/dav/avatars/:username/*",
       {
         schema: { response: { 200: z.unknown() } },
@@ -747,10 +755,10 @@ export default class Application extends YourDashApplication {
         );
         if (await user.doesExist()) {
           res.status(200);
-          return instance.requestManager.sendFile(
+          return this.instance.requestManager.sendFile(
             res,
             path.join(
-              instance.filesystem.commonPaths.UserSystemDirectory(
+              this.instance.filesystem.commonPaths.UserSystemDirectory(
                 user.username,
               ),
               "avatar128.webp",
@@ -780,7 +788,7 @@ export default class Application extends YourDashApplication {
      }); */
 
     // https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/basic.html
-    instance.request.propfind(
+    this.instance.request.propfind(
       "/uk-ewsgit-nextcloud/remote.php/dav/files/:username/*",
       {
         schema: {
@@ -882,7 +890,7 @@ ${response.map((res) => {
       },
     );
 
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-nextcloud/remote.php/dav/avatars/:username/:size.png",
       {
         schema: { response: { 200: z.unknown() } },
@@ -894,10 +902,10 @@ ${response.map((res) => {
         );
         if (await user.doesExist()) {
           res.status(200);
-          return instance.requestManager.sendFile(
+          return this.instance.requestManager.sendFile(
             res,
             path.join(
-              instance.filesystem.commonPaths.UserSystemDirectory(
+              this.instance.filesystem.commonPaths.UserSystemDirectory(
                 user.username,
               ),
               "avatar64.webp",

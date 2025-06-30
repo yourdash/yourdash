@@ -1,4 +1,11 @@
+@use "@yourdash/uikit/themeValues.scss" as *;
+
 .card {
   display: flex;
   flex-direction: row;
+}
+
+.settingId {
+  margin-top: calc($UKPadding * -1);
+  opacity: 0.75;
 }

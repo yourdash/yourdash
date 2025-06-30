@@ -4,7 +4,7 @@
  */
 
 import sharp, { type FormatEnum } from "sharp";
-import instance from "./main.js";
+import { instance } from "./main";
 
 // NOTE: imagePath and outputPath provided must be absolute!
 async function resizeImage(

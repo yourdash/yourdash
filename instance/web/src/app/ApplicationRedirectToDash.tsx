@@ -3,11 +3,10 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import tun from "@yourdash/tunnel-embedded/src/index.js";
-import UKFlex from "@yourdash/uikit-embedded/src/components/flex/UKFlex.js";
+import { tun } from "@yourdash/tunnel";
+import { UKFlex, UKHeading } from "@yourdash/uikit";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
 import { z } from "zod";
 
 const ApplicationRedirectToDash: React.FC = () => {

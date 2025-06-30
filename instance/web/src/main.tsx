@@ -6,8 +6,6 @@
 import "animate.css";
 import "./tailwindcss.css";
 import "./main.css";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
-import UIKitRoot from "@yourdash/uikit-embedded/src/core/root.js";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
@@ -25,6 +23,7 @@ import LoginIndexPage from "@yourdash/web/src/root/login";
 import AppRouter from "virtual:application-router/file"
 import { tun } from "@yourdash/tunnel";
 import { INSTANCE_BACKEND_URL } from "./lib/backendUrl.ts";
+import { UIKitRoot, UKHeading } from "@yourdash/uikit";
 
 tun.__internal_connectTo(INSTANCE_BACKEND_URL)
 

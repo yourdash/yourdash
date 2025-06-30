@@ -3,13 +3,11 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import UKIcon from "@yourdash/uikit-embedded/src/components/icon/UKIcon.js";
-import DecrementLevel from "@yourdash/uikit-embedded/src/core/decrementLevel.js";
-import { UKIcons } from "@yourdash/uikit-embedded/src/core/iconDictionary.js";
 import React, { useEffect } from "react";
 import styles from "./Widget.module.scss";
 import ApplicationLauncher from "./launcher/Launcher.tsx";
 import { useLocation } from "react-router";
+import { UKDecrementLevel, UKIcon, UKIcons } from "@yourdash/uikit";
 
 const ApplicationLauncherWidget: React.FC<{ side: "top" | "right" | "bottom" | "left" }> = ({ side }) => {
   const [launcherVisible, setLauncherVisible] = React.useState<boolean>(false);
@@ -20,7 +18,7 @@ const ApplicationLauncherWidget: React.FC<{ side: "top" | "right" | "bottom" | "
   }, [location]);
 
   return (
-    <DecrementLevel>
+    <UKDecrementLevel>
       <div className={styles.widgetContainer}>
         <button
           aria-label={"Application Launcher"}
@@ -37,7 +35,7 @@ const ApplicationLauncherWidget: React.FC<{ side: "top" | "right" | "bottom" | "
           visible={launcherVisible}
         />
       </div>
-    </DecrementLevel>
+    </UKDecrementLevel>
   );
 };
 

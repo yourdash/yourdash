@@ -3,16 +3,12 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import UKFlex from "@yourdash/uikit-embedded/src/components/flex/UKFlex.js";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
-import UKSpinner from "@yourdash/uikit-embedded/src/components/spinner/UKSpinner.js";
 import { z } from "zod";
 import IndexCardsPage from "./index.cards.tsx";
 import styles from "./index.module.scss";
-import { FC, Suspense, useEffect } from "react";
-import useResource from "@yourdash/tunnel-embedded/src/useResource.ts";
-import tun from "@yourdash/tunnel-embedded/src/index.ts";
-import { INSTANCE_BACKEND_URL } from "../../lib/backendUrl.ts";
+import { FC, Suspense } from "react";
+import { tun, useResource } from "@yourdash/tunnel";
+import { UKFlex, UKHeading, UKSpinner } from "@yourdash/uikit";
 
 enum LoginLayout {
   SIDEBAR,
@@ -26,7 +22,11 @@ const LoginIndexPage: FC = () => {
       tun.get(
         "/login/instance/metadata",
         "json",
-        z.object({ title: z.string(), message: z.string(), loginLayout: z.nativeEnum(LoginLayout) }),
+        z.object({
+          title: z.string(),
+          message: z.string(),
+          loginLayout: z.nativeEnum(LoginLayout),
+        }),
       ),
     { return: "data", transform: (v) => v },
   );

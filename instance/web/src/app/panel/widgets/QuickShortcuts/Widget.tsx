@@ -3,15 +3,12 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import useResource from "@yourdash/tunnel-embedded/src/useResource.ts";
-import tun from "@yourdash/tunnel-embedded/src/index.js";
-import IncrementLevel from "@yourdash/uikit-embedded/src/core/incrementLevel.js";
-import { useLevelClass } from "@yourdash/uikit-embedded/src/core/level.js";
 import { To, useNavigate } from "react-router-dom";
 import styles from "./Widget.module.scss";
 import React from "react";
 import z from "zod";
-import { clippy, UKImage } from "@yourdash/uikit";
+import { clippy, UKImage, UKIncrementLevel, utils } from "@yourdash/uikit";
+import { useResource, tun } from "@yourdash/tunnel";
 
 const QuickShortcuts: React.FC<{
   side: "top" | "right" | "bottom" | "left";
@@ -54,7 +51,7 @@ const QuickShortcuts: React.FC<{
           if (!application) return <>Invalid Module</>;
 
           return (
-            <IncrementLevel key={application.id}>
+            <UKIncrementLevel key={application.id}>
               <div
                 key={application.id}
                 onClick={() => {
@@ -70,7 +67,7 @@ const QuickShortcuts: React.FC<{
                   side === "right" && styles.right,
                   side === "bottom" && styles.bottom,
                   side === "left" && styles.left,
-                  useLevelClass(1),
+                  utils.useLevelClass(1),
                 )}
               >
                 <UKImage
@@ -86,7 +83,7 @@ const QuickShortcuts: React.FC<{
                   {application.displayName}
                 </span>
               </div>
-            </IncrementLevel>
+            </UKIncrementLevel>
           );
         },
       )}

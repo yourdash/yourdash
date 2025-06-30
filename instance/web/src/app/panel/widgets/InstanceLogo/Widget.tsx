@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 import styles from "./Widget.module.scss";
 import React, { memo } from "react";
 import { UKImage } from "@yourdash/uikit";
-import toAuthImgUrl from "@yourdash/tunnel-embedded/src/getAuthImage.ts";
+import { toAuthImgUrl } from "@yourdash/tunnel";
 
 const InstanceLogoWidget: React.FC<{ panelSize: "small" | "medium" | "large" }> = ({ panelSize }) => {
   const navigate = useNavigate();

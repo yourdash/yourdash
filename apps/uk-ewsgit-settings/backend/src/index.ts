@@ -3,8 +3,8 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import instance from "@yourdash/backend";
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
+import { Instance } from "@yourdash/backend/src/instance.js";
 import { z } from "zod";
 
 export default class Application extends YourDashApplication {
@@ -14,7 +14,7 @@ export default class Application extends YourDashApplication {
     key: string;
   }[] = [];
 
-  constructor() {
+  constructor(instance: Instance) {
     super({
       version: {
         major: 1,
@@ -28,7 +28,7 @@ export default class Application extends YourDashApplication {
       displayName: "Settings",
       description: "The YourDash settings application.",
       id: "uk-ewsgit-settings",
-    });
+    }, instance);
 
     instance.database.query(`CREATE TABLE IF NOT EXISTS uk_ewsgit_settings_user
                              (
@@ -41,7 +41,7 @@ export default class Application extends YourDashApplication {
   }
 
   public onLoad(): this {
-    instance.request.get(
+    this.instance.request.get(
       "/uk-ewsgit-settings/settings/overview/page/:pageId",
       {
         schema: {

@@ -3,28 +3,16 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import UKButton from "@yourdash/uikit-embedded/src/components/button/UKButton.js";
-import UKFlex from "@yourdash/uikit-embedded/src/components/flex/UKFlex.js";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
-import UKSeparator from "@yourdash/uikit-embedded/src/components/separator/UKSeparator.js";
+import { UKButton, UKFlex, UKHeading, UKSeparator } from "@yourdash/uikit";
 
 const SignupPage = () => {
   return (
     <>
-      <UKHeading
-        level={1}
-        text={"Signup with a YourDash Instance"}
-      />
+      <UKHeading level={1} text={"Signup with a YourDash Instance"} />
       <UKSeparator direction={"column"} />
-      <UKFlex
-        direction={"row"}
-        centerHorizontally={true}
-      >
+      <UKFlex direction={"row"} centerHorizontally={true}>
         <UKFlex direction={"column"}>
-          <UKHeading
-            level={2}
-            text={"Signup with a public instance"}
-          />
+          <UKHeading level={2} text={"Signup with a public instance"} />
           <UKButton
             text={"Signup"}
             onClick={() => {
@@ -32,15 +20,9 @@ const SignupPage = () => {
             }}
           />
         </UKFlex>
-        <UKSeparator
-          direction={"row"}
-          disableMargin={true}
-        />
+        <UKSeparator direction={"row"} disableMargin={true} />
         <UKFlex direction={"column"}>
-          <UKHeading
-            level={2}
-            text={"Signup with a private instance"}
-          />
+          <UKHeading level={2} text={"Signup with a private instance"} />
           <UKButton
             text={"Signup"}
             onClick={() => {

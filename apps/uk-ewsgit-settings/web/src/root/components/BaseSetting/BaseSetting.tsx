@@ -49,6 +49,7 @@ const BaseSetting: React.FC<
       <UKSeparator direction={"row"} />
       <UKFlex direction={"column"}>
         <UKHeading text={title} level={3} />
+        <UKSubText className={styles.settingId} text={`(${settingId})`} />
         <UKSubText text={description} />
         {children}
       </UKFlex>

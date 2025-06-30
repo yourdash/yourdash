@@ -4,7 +4,7 @@
  */
 
 import chalk from "chalk";
-import { type Instance } from "./main.js";
+import { type Instance } from "./instance.js";
 
 export enum LogType {
   INFO,
@@ -146,7 +146,7 @@ export default class Log {
   }
 
   debug(level: string, ...message: (string | Uint8Array)[]) {
-    if (!this.instance.flags.isDevMode) {
+    if (!this.instance.configurationManager.config.isDevMode) {
       return this;
     }
 

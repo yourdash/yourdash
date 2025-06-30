@@ -6,7 +6,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { resizeImage } from "./image.js";
-import instance from "./main.js";
+import {instance} from "./main";
 
 class User {
   readonly username: string;

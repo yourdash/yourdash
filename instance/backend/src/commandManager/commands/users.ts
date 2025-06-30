@@ -22,7 +22,5 @@ export default class UsersCommand extends Command {
         );
         return this;
     }
-
-    return this;
   }
 }

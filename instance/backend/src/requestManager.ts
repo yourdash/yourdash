@@ -34,7 +34,7 @@ import { z } from "zod";
 import { YourDashApplication } from "./applications.js";
 import { YourDashSessionType } from "./authorization.js";
 import { resizeImage } from "./image.js";
-import { type Instance } from "./main.js";
+import { type Instance } from "./instance.js";
 import { InstanceStatus } from "./types/instanceStatus.js";
 import User from "./user.js";
 
@@ -116,14 +116,7 @@ class RequestManager {
             httpPart: error.httpPart!,
             issues: cause.issues,
           });
-        }
-
-        reply.send(error);
-      },
-    );
-
-    this.app.setErrorHandler((error, request, reply) => {
-      if (error instanceof Fastify.errorCodes.FST_ERR_BAD_STATUS_CODE) {
+        } else if (error instanceof Fastify.errorCodes.FST_ERR_BAD_STATUS_CODE) {
         // Log error
         this.instance.log.error("request_manager", error);
         // Send error response
@@ -142,7 +135,7 @@ class RequestManager {
     });
 
     await this.app.register(fastifyCookie, {
-      secret: this.instance.flags.cookieSecret,
+      secret: this.instance.configurationManager.config.cookieSecret,
       hook: "onRequest",
       parseOptions: {}, // options for parsing cookies
     });
@@ -173,7 +166,7 @@ class RequestManager {
       logo: {
         type: "image/png",
         content: (await Bun.file(
-          path.join(process.cwd(), "./defaults/yourdash.png"),
+          path.join(process.cwd(), "./src/assets/yourdash.png"),
         ).bytes()) as unknown as string,
         href: "/swagger",
         target: "_blank",
@@ -187,7 +180,7 @@ class RequestManager {
             sizes: "1024x1024",
             type: "image/png",
             content: (await Bun.file(
-              path.join(process.cwd(), "./defaults/yourdash.png"),
+              path.join(process.cwd(), "./src/assets/yourdash.png"),
             ).bytes()) as unknown as string,
           },
         ],
@@ -217,39 +210,39 @@ class RequestManager {
 
             this.instance.log.info(
               "response",
-              `${chalk.bgBlack(chalk.green(" GET "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.green(" GET "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           case "POST":
             this.instance.log.info(
               "response",
-              `${chalk.bgBlack(chalk.blue(" POS "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.blue(" POS "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           case "DELETE":
             this.instance.log.info(
               "response",
-              `${chalk.bgBlack(chalk.red(" DEL "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.red(" DEL "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           case "OPTIONS":
-            if (this.instance.flags.logOptionsRequests) {
+            if (this.instance.configurationManager.config.logOptionsRequests) {
               this.instance.log.info(
                 "response",
-                `${chalk.bgBlack(chalk.cyan(" OPT "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+                `${chalk.bgBlack(chalk.cyan(" OPT "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
               );
             }
             break;
           case "PROPFIND":
             this.instance.log.info(
               "response",
-              `${chalk.bgBlack(chalk.cyan(" PFI "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.cyan(" PFI "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           case "PROPPATCH":
             this.instance.log.info(
               "response",
-              `${chalk.bgCyan(chalk.cyan(" PPA "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgCyan(chalk.cyan(" PPA "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           default:
@@ -267,39 +260,39 @@ class RequestManager {
 
             this.instance.log.info(
               "response",
-              `${chalk.bgBlack(chalk.green(" GET "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.green(" GET "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           case "POST":
             this.instance.log.info(
               "response",
-              `${chalk.bgBlack(chalk.blue(" POS "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.blue(" POS "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           case "DELETE":
             this.instance.log.info(
               "response",
-              `${chalk.bgBlack(chalk.red(" DEL "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.red(" DEL "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           case "OPTIONS":
-            if (this.instance.flags.logOptionsRequests) {
+            if (this.instance.configurationManager.config.logOptionsRequests) {
               this.instance.log.info(
                 "response",
-                `${chalk.bgBlack(chalk.cyan(" OPT "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+                `${chalk.bgBlack(chalk.cyan(" OPT "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
               );
             }
             break;
           case "PROPFIND":
             this.instance.log.info(
               "response",
-              `${chalk.bgBlack(chalk.cyan(" PFI "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.cyan(" PFI "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           case "PROPPATCH":
             this.instance.log.info(
               "response",
-              `${chalk.bgCyan(chalk.cyan(" PPA "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgCyan(chalk.cyan(" PPA "))} ${chalk.bgBlack(chalk.red(` ${res.statusCode} `))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
             break;
           default:
@@ -326,45 +319,45 @@ class RequestManager {
 
           this.instance.log.info(
             "request",
-            `${chalk.bgBlack(chalk.green(" GET "))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+            `${chalk.bgBlack(chalk.green(" GET "))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
           );
           break;
         case "POST":
           this.instance.log.info(
             "request",
-            `${chalk.bgBlack(chalk.blue(" POS "))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+            `${chalk.bgBlack(chalk.blue(" POS "))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
           );
           break;
         case "DELETE":
           this.instance.log.info(
             "request",
-            `${chalk.bgBlack(chalk.red(" DEL "))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+            `${chalk.bgBlack(chalk.red(" DEL "))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
           );
           break;
         case "OPTIONS":
-          if (this.instance.flags.logOptionsRequests) {
+          if (this.instance.configurationManager.config.logOptionsRequests) {
             this.instance.log.info(
               "request",
-              `${chalk.bgBlack(chalk.cyan(" OPT "))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+              `${chalk.bgBlack(chalk.cyan(" OPT "))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
             );
           }
           break;
         case "PROPFIND":
           this.instance.log.info(
             "request",
-            `${chalk.bgBlack(chalk.cyan(" PFI "))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+            `${chalk.bgBlack(chalk.cyan(" PFI "))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
           );
           break;
         case "PROPPATCH":
           this.instance.log.info(
             "request",
-            `${chalk.bgCyan(chalk.cyan(" PPA "))} ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+            `${chalk.bgCyan(chalk.cyan(" PPA "))} ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
           );
           break;
         default:
           this.instance.log.error(
             "core_requests",
-            `ERROR IN REQUEST LOGGER, UNKNOWN REQUEST TYPE: ${req.method}, ${chalk.bold(req.url)} ${this.instance.flags.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
+            `ERROR IN REQUEST LOGGER, UNKNOWN REQUEST TYPE: ${req.method}, ${chalk.bold(req.url)} ${this.instance.configurationManager.config.logQueryParameters ? JSON.stringify(req.query) !== "{}" && JSON.stringify(req.query) : ""}`,
           );
       }
 
@@ -379,7 +372,7 @@ class RequestManager {
         "/",
         { config: { isPublic: true } },
         async function handler(req, res) {
-          if (self.instance.flags.isDevMode) {
+          if (self.instance.configurationManager.config.isDevMode) {
             return res.redirect(
               `http://localhost:5173/login/http://localhost:3563`,
             );
@@ -1264,16 +1257,18 @@ class RequestManager {
     try {
       await this.app.ready();
       await this.app.listen({
-        port: this.instance.flags.port,
+        port: this.instance.configurationManager.config.port,
         host: "0.0.0.0",
       });
       this.instance.log.info(
         "request_manager",
-        `YourDash Instance Backend Online & listening at ${this.instance.log.addEmphasisToString(`port "${this.instance.flags.port}"`)}`,
+        `YourDash Instance Backend Online & listening at ${this.instance.log.addEmphasisToString(`port "${this.instance.configurationManager.config.port}"`)}`,
       );
 
       this.instance.log.info("request_manager", `Attempting to ping self`);
-      fetch(`http://localhost:${this.instance.flags.port}/core/test/self-ping`)
+      fetch(
+        `http://localhost:${this.instance.configurationManager.config.port}/core/test/self-ping`,
+      )
         .then((res) => res.json())
         // @ts-ignore
         .then((data: { success?: boolean }) => {

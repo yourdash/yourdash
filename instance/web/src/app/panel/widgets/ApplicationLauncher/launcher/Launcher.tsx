@@ -3,17 +3,14 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import tun from "@yourdash/tunnel-embedded/src/index.js";
-import UKIconButton from "@yourdash/uikit-embedded/src/components/iconButton/UKIconButton.js";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import clippy from "../../../../../lib/clippy.js";
 import styles from "./Launcher.module.scss";
 import React, { memo } from "react";
 import ApplicationsLauncherApplications from "./Applications/Applications.tsx";
-import UKBox from "@yourdash/uikit-embedded/src/components/box/UKBox.js";
-import { UKIcons } from "@yourdash/uikit-embedded/src/core/iconDictionary.js";
-import useResource from "@yourdash/tunnel-embedded/src/useResource.ts";
+import { useResource, tun } from "@yourdash/tunnel";
+import { UKBox, UKIconButton, UKIcons } from "@yourdash/uikit";
 
 const ApplicationLauncher: React.FC<{
   side: "top" | "right" | "bottom" | "left";

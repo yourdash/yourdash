@@ -3,18 +3,11 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import UKFlex from "@yourdash/uikit-embedded/src/components/flex/UKFlex.js";
-import UKLink from "@yourdash/uikit-embedded/src/components/link/UKLink.js";
-import UKSeparator from "@yourdash/uikit-embedded/src/components/separator/UKSeparator.js";
-import UKText from "@yourdash/uikit-embedded/src/components/text/UKText.js";
-import UKTextButton from "@yourdash/uikit-embedded/src/components/textButton/UKTextButton.js";
+import { UKBox, UKHeading, UKImage, UKLink, UKSeparator, UKText, UKTextButton } from "@yourdash/uikit";
 import clippy from "../../../lib/clippy.js";
 import styles from "./navigation.module.scss";
 import React, { FC } from "react";
 import { Outlet, useNavigate } from "react-router";
-import UKImage from "@yourdash/uikit-embedded/src/components/image/UKImage.js";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
-import UKBox from "@yourdash/uikit-embedded/src/components/box/UKBox.js";
 
 const Navigation: FC<{ subtitle?: string }> = ({ subtitle }) => {
   const navigate = useNavigate();

@@ -3,7 +3,7 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import tun from "@yourdash/tunnel-embedded/src";
+import { tun } from "@yourdash/tunnel";
 import { z } from "zod";
 
 export default function loginUser(username: string, password: string) {

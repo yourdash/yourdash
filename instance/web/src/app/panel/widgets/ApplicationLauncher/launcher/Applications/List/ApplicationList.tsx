@@ -3,14 +3,12 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import toAuthImgUrl from "@yourdash/tunnel-embedded/src/getAuthImage.js";
-import UKContextMenu from "@yourdash/uikit-embedded/src/components/contextMenu/UKContextMenu.js";
 import React from "react";
 import styles from "./ApplicationList.module.scss";
 import { useNavigate } from "react-router";
-import UKCard from "@yourdash/uikit-embedded/src/components/card/UKCard.js";
-import tun from "@yourdash/tunnel-embedded/src";
 import { z } from "zod";
+import { tun, toAuthImgUrl } from "@yourdash/tunnel";
+import { UKContextMenu, UKCard } from "@yourdash/uikit";
 
 interface IPanelApplicationsLauncherFrontendModule {
   id: string;

@@ -9,8 +9,6 @@
     "website",
     "uikit",
     "tunnel",
-    "uikit-embedded",
-    "tunnel-embedded",
     "apps/*",
     "instanceManager"
   ],

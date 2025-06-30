@@ -5,7 +5,7 @@
 
 import { promises as fs, constants } from "fs";
 import path from "path";
-import instance, { type Instance } from "./main.js";
+import { type Instance } from "./instance.js";
 
 class Filesystem {
   instance: Instance;
@@ -42,6 +42,7 @@ class Filesystem {
         this.instance.flags.isDocker ? "../fs" : "../../fs",
       ),
     );
+    
     this.instance.log.info(
       "filesystem",
       `filesystem root is set to ${instance.log.addEmphasisToString(this.FS_ROOT)}`,
@@ -201,7 +202,7 @@ class Filesystem {
     } else {
       this.instance.log.info(
         "filesystem",
-        `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.DefaultsDirectory(), "userAvatar.png"))} exists.`,
+        `Verified ${this.instance.log.addEmphasisToString(path.join(this.commonPaths.DefaultsDirectory(), "userAvatar.png"))} exists.`,
       );
     }
 
@@ -229,7 +230,7 @@ class Filesystem {
     } else {
       this.instance.log.info(
         "filesystem",
-        `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.SystemDirectory(), "loginBackground.avif"))} exists.`,
+        `Verified ${this.instance.log.addEmphasisToString(path.join(this.commonPaths.SystemDirectory(), "loginBackground.avif"))} exists.`,
       );
     }
 
@@ -257,7 +258,7 @@ class Filesystem {
     } else {
       this.instance.log.info(
         "filesystem",
-        `Verified ${instance.log.addEmphasisToString(path.join(this.commonPaths.SystemDirectory(), "instanceLogo.png"))} exists.`,
+        `Verified ${this.instance.log.addEmphasisToString(path.join(this.commonPaths.SystemDirectory(), "instanceLogo.png"))} exists.`,
       );
     }
 
@@ -327,7 +328,7 @@ class Filesystem {
     } else {
       this.instance.log.info(
         "filesystem",
-        `Verified ${instance.log.addEmphasisToString(path.join(this.instance.filesystem.commonPaths.GlobalCacheDirectory(), "panel", "invalidIcon.webp"))} exists.`,
+        `Verified ${this.instance.log.addEmphasisToString(path.join(this.instance.filesystem.commonPaths.GlobalCacheDirectory(), "panel", "invalidIcon.webp"))} exists.`,
       );
     }
 

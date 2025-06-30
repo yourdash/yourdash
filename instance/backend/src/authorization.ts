@@ -4,7 +4,7 @@
  */
 
 import type { FastifyInstance } from "fastify";
-import { type Instance } from "./main.js";
+import { type Instance } from "./instance.js";
 
 export enum YourDashSessionType {
   WEB,

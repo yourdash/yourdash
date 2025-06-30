@@ -1,8 +1,9 @@
 import path from "path";
-import type { Instance } from "../main";
+import type { Instance } from "../instance.ts";
 import type { ICommandParameters, ICommandRuntimeParameters } from "./command";
 import type Command from "./command";
 import { promises as fs } from "fs";
+import { YourDashFeatureFlags } from "../types/configuration.ts";
 
 class CommandManager {
   private instance: Instance;
@@ -11,6 +12,13 @@ class CommandManager {
   constructor(instance: Instance) {
     this.instance = instance;
     this.commands = [];
+
+    if (
+      !instance.configurationManager.hasFeature(
+        YourDashFeatureFlags.SlashCommands,
+      )
+    )
+      return this;
 
     fs.readdir(path.join(process.cwd(), "src/commandManager/commands/")).then(
       (commands) => {
