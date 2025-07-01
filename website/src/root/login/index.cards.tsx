@@ -3,22 +3,13 @@
  * YourDash is licensed under the MIT License. (https://ewsgit.mit-license.org)
  */
 
-import toAuthImgUrl from "@yourdash/tunnel-embedded/src/getAuthImage.js";
-import UKButton from "@yourdash/uikit-embedded/src/components/button/UKButton.js";
-import UKCard from "@yourdash/uikit-embedded/src/components/card/UKCard.js";
-import UKFlex from "@yourdash/uikit-embedded/src/components/flex/UKFlex.js";
-import UKHeading from "@yourdash/uikit-embedded/src/components/heading/UKHeading.js";
-import UKImage from "@yourdash/uikit-embedded/src/components/image/UKImage.js";
-import UKSubtext from "@yourdash/uikit-embedded/src/components/subtext/UKSubtext.js";
-import UKTextInput from "@yourdash/uikit-embedded/src/components/textInput/UKTextInput.js";
-import UKSeparator from "@yourdash/uikit-embedded/src/components/separator/UKSeparator.js";
-import useToast from "@yourdash/uikit-embedded/src/core/toasts/useToast.js";
+import {UKCard, useToasts, UKImage, UKHeading, UKSeparator, UKTextInput, UKButton, UKFlex, UKSubText} from "@yourdash/uikit";
 import clippy from "../../lib/clippy.js";
 import styles from "./index.cards.module.scss";
 import loginUser from "./lib/loginUser.ts";
 import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import tun from "@yourdash/tunnel-embedded/src/index.ts";
+import {useNavigate} from "react-router";
+import {toAuthImgUrl, tun} from "@yourdash/tunnel"
 
 enum LoginLayout {
   SIDEBAR,
@@ -34,7 +25,7 @@ interface EndpointResponseLoginInstanceMetadata {
 
 const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | null }> = (props) => {
   const navigate = useNavigate();
-  const toast = useToast();
+  const toast = useToasts();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState<{ avatar: string; fullName: { first: string; last: string }; isValid: boolean }>({
@@ -160,7 +151,7 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
               });
           }}
         />
-        <UKSubtext
+        <UKSubText
           className={styles.instanceUrl}
           text={tun.baseUrl}
         />
@@ -185,7 +176,7 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
             className={styles.title}
           />
           {props.metadata?.message && (
-            <UKSubtext
+            <UKSubText
               className={styles.message}
               text={props.metadata.message}
             />

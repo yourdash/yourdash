@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router";
 import SETTINGS_ICON from "../../assets/icon.png";
 import ApplicationPanelContext from "@yourdash/web/src/lib/panelContext.ts";
 import IndexPage from "./root/index/Index.tsx";
+import HomePage from "./root/home/Home.tsx";
 
 const DashRouter: React.FC = () => {
   const applicationPanelContext = React.useContext(ApplicationPanelContext);
@@ -22,6 +23,7 @@ const DashRouter: React.FC = () => {
   return (
     <Routes>
       <Route index element={<IndexPage />} />
+      <Route path={"home"} element={<HomePage />} />
     </Routes>
   );
 };

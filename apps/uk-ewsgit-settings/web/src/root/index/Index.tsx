@@ -15,31 +15,13 @@ import QuickActions from "./components/QuickActions/QuickActions.tsx";
 import BooleanSetting from "../components/BooleanSetting/BooleanSetting.tsx";
 import BaseSetting from "../components/BaseSetting/BaseSetting.tsx";
 import {tun} from "@yourdash/tunnel";
+import Sidebar from "../components/Sidebar/Sidebar.tsx";
 
 const IndexPage: React.FC = () => {
   const val = tun.get("/uk-ewsgit-settings/settings/overview/page/1");
 
   return (
-    <UKLayout
-      primarySidebar={
-        <UKBox
-          style={{
-            borderLeft: "none",
-            borderTop: "none",
-            borderBottom: "none",
-            height: "100%",
-          }}
-        >
-          <UKHeading level={2} text={"Categories"} />
-          <UKSeparator direction={"column"} />
-          <UKButton onClick={() => {}} text={"Hello world!"} />
-          <UKButton onClick={() => {}} text={"Hello world!"} />
-          <UKButton onClick={() => {}} text={"Hello world!"} />
-          <UKButton onClick={() => {}} text={"Hello world!"} />
-          <UKSubText text={"YourDash Pre-Alpha"} />
-        </UKBox>
-      }
-    >
+    <UKLayout primarySidebar={<Sidebar />}>
       <UserHeader />
       <QuickActions />
       <UKSeparator direction={"column"} />

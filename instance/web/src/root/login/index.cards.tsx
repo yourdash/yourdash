@@ -18,6 +18,7 @@ import {
   UKSeparator,
   UKSubText,
   UKTextInput,
+  useToasts,
 } from "@yourdash/uikit";
 
 enum LoginLayout {
@@ -36,7 +37,7 @@ const IndexCardsPage: FC<{
   metadata: EndpointResponseLoginInstanceMetadata | null;
 }> = (props) => {
   const navigate = useNavigate();
-  const toast = useToast();
+  const toast = useToasts();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState<{

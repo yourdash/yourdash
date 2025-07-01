@@ -1,0 +1,13 @@
+@use "@yourdash/uikit/themeValues.scss" as *;
+
+.items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $UKGap;
+
+  > * {
+    width: 100%;
+    text-align: start;
+  }
+}
