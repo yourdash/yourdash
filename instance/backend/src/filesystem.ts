@@ -10,6 +10,7 @@ import { type Instance } from "./instance.js";
 class Filesystem {
   instance: Instance;
   FS_ROOT: string;
+  SRC_ROOT: string;
   commonPaths = {
     RootDirectory: () => `${this.FS_ROOT}/`,
     DefaultsDirectory: () => `${this.FS_ROOT}/Defaults/`,
@@ -39,10 +40,15 @@ class Filesystem {
     this.FS_ROOT = path.resolve(
       path.join(
         process.cwd(),
-        this.instance.flags.isDocker ? "../fs" : "../../fs",
+        // FIXME: add logic for Docker's different FS layout
+        "./fs",
       ),
     );
-    
+
+    this.SRC_ROOT = path.resolve(
+      path.join(process.cwd(), "instance/backend/src"),
+    );
+
     this.instance.log.info(
       "filesystem",
       `filesystem root is set to ${instance.log.addEmphasisToString(this.FS_ROOT)}`,
@@ -185,7 +191,7 @@ class Filesystem {
     ) {
       try {
         await fs.cp(
-          path.join(process.cwd(), "src/assets/userAvatar.png"),
+          path.join(this.SRC_ROOT, "assets/userAvatar.png"),
           path.join(this.commonPaths.DefaultsDirectory(), "userAvatar.png"),
         );
         this.instance.log.info(
@@ -213,7 +219,7 @@ class Filesystem {
     ) {
       try {
         await fs.cp(
-          path.join(process.cwd(), "src/assets/default_login_background.avif"),
+          path.join(this.SRC_ROOT, "assets/default_login_background.avif"),
           path.join(this.commonPaths.SystemDirectory(), "loginBackground.avif"),
         );
         this.instance.log.info(
@@ -241,7 +247,7 @@ class Filesystem {
     ) {
       try {
         await fs.cp(
-          path.join(process.cwd(), "src/assets/yourdash.png"),
+          path.join(this.SRC_ROOT, "assets/yourdash.png"),
           path.join(this.commonPaths.SystemDirectory(), "instanceLogo.png"),
         );
         this.instance.log.info(
@@ -307,7 +313,7 @@ class Filesystem {
     ) {
       try {
         await fs.cp(
-          path.join(process.cwd(), "src/assets/yourdash.png"),
+          path.join(this.SRC_ROOT, "assets/yourdash.png"),
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel",

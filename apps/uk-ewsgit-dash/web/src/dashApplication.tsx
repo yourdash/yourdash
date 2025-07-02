@@ -5,7 +5,6 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./dashApplication.module.scss";
-import { z } from "zod";
 import ApplicationPanelContext from "@yourdash/web/src/lib/panelContext.ts";
 import { tun, useResource } from "@yourdash/tunnel";
 import {
@@ -20,77 +19,12 @@ import {
   UKSeparator,
   UKTextInput,
 } from "@yourdash/uikit";
+import { endpointSchema } from "../../backend/src/endpoints/get/dashboard";
 
 const DashApplication: React.FC = () => {
   const applicationPanelContext = React.useContext(ApplicationPanelContext);
   const dashboard = useResource(
-    () =>
-      tun.get(
-        `/uk-ewsgit-dash/dashboard`,
-        "json",
-        z.object({
-          header: z.object({
-            welcomeMessage: z.string(),
-            size: z.union([
-              z.literal("small"),
-              z.literal("medium"),
-              z.literal("large"),
-            ]),
-            style: z.union([z.literal("floating"), z.literal("docked")]),
-            background: z.object({
-              blur: z.number(),
-              opacity: z.number(),
-            }),
-            font: z.object({
-              family: z.string().optional(),
-              weight: z.number(),
-              size: z.number(),
-            }),
-          }),
-          background: z.union([
-            z.object({
-              type: z.literal("image"),
-            }),
-            z.object({
-              type: z.literal("color"),
-              value: z.string(),
-            }),
-            z.object({
-              type: z.literal("linearGradient"),
-              value: z.string(),
-            }),
-            z.object({
-              type: z.literal("radialGradient"),
-              value: z.string(),
-            }),
-          ]),
-          content: z.object({
-            background: z.object({
-              blur: z.number(),
-              opacity: z.number(),
-            }),
-            pages: z
-              .object({
-                id: z.string(),
-                data: z.any(),
-                dimensions: z.object({
-                  width: z.number(),
-                  height: z.number(),
-                }),
-                position: z.object({
-                  x: z.number(),
-                  y: z.number(),
-                }),
-              })
-              .array(),
-          }),
-          user: z.object({
-            username: z.string(),
-            forename: z.string(),
-            surname: z.string(),
-          }),
-        }),
-      ),
+    () => tun.get(`/uk-ewsgit-dash/dashboard`, "json", endpointSchema),
     {
       return: "data",
     },
@@ -294,44 +228,6 @@ const DashApplication: React.FC = () => {
                   </div>
                 ),
                 id: "page1",
-              },
-              {
-                element: (
-                  <div className={styles.widgetGrid}>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                  </div>
-                ),
-                id: "page2",
-              },
-              {
-                element: (
-                  <div className={styles.widgetGrid}>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                  </div>
-                ),
-                id: "page3",
               },
             ]}
           />

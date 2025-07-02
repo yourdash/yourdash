@@ -70,8 +70,8 @@ class Applications {
   async getInstalledApplications(): Promise<string[]> {
     let installedApplications = await fs.readdir(
       path.join(
-        process.cwd(),
-        this.instance.flags.isDocker ? "src/apps" : "../../apps",
+        this.instance.filesystem.SRC_ROOT,
+        this.instance.flags.isDocker ? "src/apps" : "../../../apps",
       ),
     );
 
@@ -88,8 +88,8 @@ class Applications {
   getApplicationAbsolutePath(applicationPath: string) {
     return path.resolve(
       path.join(
-        process.cwd(),
-        this.instance.flags.isDocker ? "src/apps" : "../../apps",
+        this.instance.filesystem.SRC_ROOT,
+        this.instance.flags.isDocker ? "src/apps" : "../../../apps",
         applicationPath,
       ),
     );

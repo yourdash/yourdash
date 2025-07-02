@@ -348,7 +348,7 @@ class Instance {
     if (applications.length !== 0) {
       this.log.info(
         "application_manager",
-        `loading applications: '${applications.join("', '")}'`,
+        `loading applications: '${applications.map((a) => this.log.addEmphasisToString(a)).join("', '")}'`,
       );
 
       let loadedApplications = [];

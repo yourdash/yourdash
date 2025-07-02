@@ -166,7 +166,7 @@ class RequestManager {
       logo: {
         type: "image/png",
         content: (await Bun.file(
-          path.join(process.cwd(), "./src/assets/yourdash.png"),
+          path.join(this.instance.filesystem.SRC_ROOT, "./assets/yourdash.png"),
         ).bytes()) as unknown as string,
         href: "/swagger",
         target: "_blank",
@@ -180,7 +180,10 @@ class RequestManager {
             sizes: "1024x1024",
             type: "image/png",
             content: (await Bun.file(
-              path.join(process.cwd(), "./src/assets/yourdash.png"),
+              path.join(
+                this.instance.filesystem.SRC_ROOT,
+                "./assets/yourdash.png",
+              ),
             ).bytes()) as unknown as string,
           },
         ],
@@ -188,7 +191,10 @@ class RequestManager {
           {
             filename: "theme.css",
             content: await Bun.file(
-              path.join(process.cwd(), "./src/assets/swagger.css"),
+              path.join(
+                this.instance.filesystem.SRC_ROOT,
+                "assets/swagger.css",
+              ),
             ).text(),
           },
         ],

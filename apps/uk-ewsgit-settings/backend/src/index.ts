@@ -41,6 +41,11 @@ export default class Application extends YourDashApplication {
   }
 
   public onLoad(): this {
+    // get all files in the endpoints directory
+    // import all ts files
+    // execute the default exports
+    // migrate all endpoints to their own files
+
     this.instance.request.get(
       "/uk-ewsgit-settings/settings/overview/page/:pageId",
       {
