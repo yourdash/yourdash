@@ -59,6 +59,11 @@ export default class Application extends YourDashApplication {
   }
 
   public onLoad(): this {
+    // get all files in the endpoints directory
+    // import all ts files
+    // execute the default exports
+    // migrate all endpoints to their own files
+
     this.instance.request.post(
       "/uk-ewsgit-dash/dashboard",
       {

@@ -15,20 +15,23 @@ export default class Application extends YourDashApplication {
   }[] = [];
 
   constructor(instance: Instance) {
-    super({
-      version: {
-        major: 1,
-        minor: 0,
+    super(
+      {
+        version: {
+          major: 1,
+          minor: 0,
+        },
+        configVersion: 1,
+        credits: {
+          authors: [{ name: "Ewsgit", site: "https://ewsgit.uk" }],
+        },
+        frontend: true,
+        displayName: "Settings",
+        description: "The YourDash settings application.",
+        id: "uk-ewsgit-settings",
       },
-      configVersion: 1,
-      credits: {
-        authors: [{ name: "Ewsgit", site: "https://ewsgit.uk" }],
-      },
-      frontend: true,
-      displayName: "Settings",
-      description: "The YourDash settings application.",
-      id: "uk-ewsgit-settings",
-    }, instance);
+      instance,
+    );
 
     instance.database.query(`CREATE TABLE IF NOT EXISTS uk_ewsgit_settings_user
                              (
@@ -41,11 +44,6 @@ export default class Application extends YourDashApplication {
   }
 
   public onLoad(): this {
-    // get all files in the endpoints directory
-    // import all ts files
-    // execute the default exports
-    // migrate all endpoints to their own files
-
     this.instance.request.get(
       "/uk-ewsgit-settings/settings/overview/page/:pageId",
       {
