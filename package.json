@@ -13,7 +13,8 @@
     "instanceManager"
   ],
   "dependencies": {
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "yarn": "^1.22.22"
   },
   "scripts": {
     "backend": "yarn --cwd ./instance/backend dev",
@@ -26,5 +27,9 @@
     "build-backend": "echo \"build-backend does nothing currently\"",
     "build-all": "yarn build-deps && yarn build-web && yarn build-backend"
   },
-  "packageManager": "yarn@4.9.1"
+  "packageManager": "yarn@4.9.1",
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "@swc/core"
+  ]
 }

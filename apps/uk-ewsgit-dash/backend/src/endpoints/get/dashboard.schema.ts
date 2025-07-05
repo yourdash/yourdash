@@ -2,6 +2,8 @@ import z from "zod";
 import type {YourDashEndpoint} from "@yourdash/tunnel"
 
 export const endpointSchema: YourDashEndpoint = {
+  path: "/uk-ewsgit-dash/dashboard",
+  method: "GET",
   response: {
     200: z.object({
       header: z.object({

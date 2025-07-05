@@ -13,29 +13,34 @@ export default defineConfig({
   plugins: [
     // @ts-ignore
     dynamicImport(),
-    dtsPlugin({ rollupTypes: true }),
+    dtsPlugin({rollupTypes: false}),
   ],
-                              build: {
-                                lib: {
-                                  entry: resolve(__dirname, "src/index.ts"),
-                                  formats: ["es"],
-                                  fileName: (format, fileName) => {
-                                    const extension = format === 'cjs' ? 'js' : 'mjs';
-                                    return `${fileName}.${extension}`;
-                                  },
-                                },
-                                copyPublicDir: true,
-                                sourcemap: true,
-                                minify: true,
-                                rollupOptions: {
-                                  external: ["react", "react/jsx-runtime", "react-router", "react-router-dom"],
-                                  jsx: "react-jsx",
-                                  treeshake: false,
-                                  output: {
-                                    preserveModules: true,
-                                  },
-                                },
-                              },
+  build: {
+    lib: {
+      entry: resolve(__dirname, "src/index.ts"),
+      formats: [ "es" ],
+      fileName: (format, fileName) => {
+        const extension = format === "cjs" ? "js" : "mjs";
+        return `${fileName}.${extension}`;
+      },
+    },
+    copyPublicDir: true,
+    sourcemap: true,
+    minify: true,
+    rollupOptions: {
+      external: [
+        "react",
+        "react/jsx-runtime",
+        "react-router",
+        "react-router-dom",
+      ],
+      jsx: "react-jsx",
+      treeshake: false,
+      output: {
+        preserveModules: true,
+      },
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {
