@@ -2484,6 +2484,7 @@ __metadata:
   resolution: "@yourdash/application-uk-ewsgit-dash-backend@workspace:apps/uk-ewsgit-dash/backend"
   dependencies:
     "@yourdash/backend": "workspace:instance/backend"
+    "@yourdash/tunnel": "workspace:tunnel"
     zod: "npm:^3.24.2"
   languageName: unknown
   linkType: soft
@@ -2529,7 +2530,6 @@ __metadata:
     vite-plugin-dynamic-import: "npm:^1.6.0"
     vite-plugin-lib-inject-css: "npm:^2.2.1"
     zod: "npm:^3.24.2"
-    ~backend: ../backend/
   peerDependencies:
     react: ^19.0.0
     react-dom: ^19.0.0
@@ -9139,15 +9139,5 @@ __metadata:
   version: 3.25.67
   resolution: "zod@npm:3.25.67"
   checksum: 10c0/80a0cab3033272c4ab9312198081f0c4ea88e9673c059aa36dc32024906363729db54bdb78f3dc9d5529bd1601f74974d5a56c0a23e40c6f04a9270c9ff22336
-  languageName: node
-  linkType: hard
-
-"~backend@file:../backend/::locator=%40yourdash%2Fapplication-uk-ewsgit-dash-web%40workspace%3Aapps%2Fuk-ewsgit-dash%2Fweb":
-  version: 0.0.1
-  resolution: "~backend@file:../backend/#../backend/::hash=7b8cb7&locator=%40yourdash%2Fapplication-uk-ewsgit-dash-web%40workspace%3Aapps%2Fuk-ewsgit-dash%2Fweb"
-  dependencies:
-    "@yourdash/backend": "workspace:instance/backend"
-    zod: "npm:^3.24.2"
-  checksum: 10c0/7b7603732994cacd18adcaf2e53e30230807d0e44eb156860ce6b9db782ade40c3233b64d6b0a4b16685d5ef2cf29b9b151af9ca894d10820a553d4395d054bf
   languageName: node
   linkType: hard

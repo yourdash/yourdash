@@ -1,11 +1,14 @@
-import type { ZodNumber, ZodObject, ZodString } from "zod/v4";
+import type {FastifySchema} from "fastify";
 
-export type YourDashBackendEndpoint = {
+export type YourDashEndpointMethods = "GET" | YourDashEndpointMethodsWithBody
+export type YourDashEndpointMethodsWithBody = "POST" | "PUT" | "DELETE"
+
+export type YourDashEndpoint<Method extends YourDashEndpointMethods> = {
   path: string;
-  method: "GET" | "POST" | "PUT" | "DELETE";
-  request: ZodObject;
-  response: ZodObject | ZodString | ZodNumber;
-  run: (
-    req: YourDashBackendEndpoint["request"],
-  ) => YourDashBackendEndpoint["response"];
+  method: Method;
+  requestBody: Method extends YourDashEndpointMethodsWithBody ? FastifySchema[ "body" ] : unknown;
+  requestQueryString: FastifySchema[ "querystring" ];
+  requestParameters: FastifySchema[ "params" ];
+  requestHeaders: FastifySchema[ "headers" ];
+  response: FastifySchema[ "response" ];
 };

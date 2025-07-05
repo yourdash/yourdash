@@ -19,7 +19,12 @@
     "backend": "yarn --cwd ./instance/backend dev",
     "web": "yarn --cwd ./instance/web dev",
     "website": "yarn --cwd ./website dev",
-    "build-deps": "yarn --cwd ./tunnel build && yarn --cwd ./uikit build"
+    "build-deps": "yarn build-tunnel && yarn build-uikit",
+    "build-tunnel": "yarn --cwd ./tunnel build",
+    "build-uikit": "yarn --cwd ./uikit build",
+    "build-web": "\"build-web does nothing currently\"",
+    "build-backend": "echo \"build-backend does nothing currently\"",
+    "build-all": "yarn build-deps && yarn build-web && yarn build-backend"
   },
   "packageManager": "yarn@4.9.1"
 }

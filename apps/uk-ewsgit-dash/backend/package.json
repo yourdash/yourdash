@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@yourdash/backend": "workspace:instance/backend",
+    "@yourdash/tunnel": "workspace:tunnel",
     "zod": "^3.24.2"
   }
 }
