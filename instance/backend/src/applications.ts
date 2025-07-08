@@ -46,7 +46,47 @@ class YourDashApplication {
     return this;
   }
 
+  async loadEndpoints() {
+    const ENDPOINTS_DIRECTORY = path.join(
+      this.__internal_initializedPath,
+      "backend/src/endpoints",
+    );
+
+    let endpoints: string[] = [];
+
+    async function scanDirectory(dir: string) {
+      for (const item of await fs.readdir(dir)) {
+        if ((await fs.stat(path.join(dir, item))).isDirectory()) {
+          return await scanDirectory(path.join(dir, item));
+        }
+
+        if (item.endsWith(".ts")) {
+          if (item.endsWith(".schema.ts")) {
+            continue;
+          }
+
+          endpoints.push(path.join(dir, item));
+        }
+      }
+    }
+
+    if (await fs.exists(ENDPOINTS_DIRECTORY))
+      await scanDirectory(ENDPOINTS_DIRECTORY);
+
+    for (const endpointPath of endpoints) {
+      this.instance.log.info(this.id, "loading endpoint", endpointPath);
+
+      let endpoint = (await import(endpointPath)).default;
+
+      endpoint(this);
+    }
+
+    return this;
+  }
+
   async onLoad() {
+    await this.loadEndpoints();
+
     return this;
   }
 

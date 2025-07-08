@@ -60,43 +60,7 @@ export default class Application extends YourDashApplication {
   }
 
   public async onLoad(): Promise<this> {
-    // get all files in the endpoints directory
-    // import all ts files
-    // execute the default exports
-    // migrate all endpoints to their own files
-
-    const ENDPOINTS_DIRECTORY = path.join(
-      this.__internal_initializedPath,
-      "backend/src/endpoints",
-    );
-
-    let endpoints: string[] = [];
-
-    async function scanDirectory(dir: string) {
-      for (const item of await fs.readdir(dir)) {
-        if ((await fs.stat(path.join(dir, item))).isDirectory()) {
-          return await scanDirectory(path.join(dir, item));
-        }
-
-        if (item.endsWith(".ts")) {
-          if (item.endsWith(".schema.ts")) {
-            continue;
-          }
-
-          endpoints.push(path.join(dir, item));
-        }
-      }
-    }
-
-    await scanDirectory(ENDPOINTS_DIRECTORY);
-
-    for (const endpointPath of endpoints) {
-      console.log("loading endpoint", endpointPath);
-
-      let endpoint = (await import(endpointPath)).default;
-
-      endpoint(this);
-    }
+    await super.onLoad();
 
     this.instance.request.post(
       "/uk-ewsgit-dash/dashboard",
@@ -263,6 +227,6 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    return super.onLoad();
+    return this;
   }
 }

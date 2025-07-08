@@ -3,8 +3,6 @@ import endpointSchema from "./dashboard.schema.js";
 
 
 export default function main(app: Application) {
-  console.log("Was called!");
-
   app.instance.requestManager.createEndpoint(
     endpointSchema,
     async (req, res) => {

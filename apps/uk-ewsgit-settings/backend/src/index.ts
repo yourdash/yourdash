@@ -43,7 +43,9 @@ export default class Application extends YourDashApplication {
     return this;
   }
 
-  public onLoad(): this {
+  public async onLoad(): Promise<this> {
+    await super.onLoad();
+
     this.instance.request.get(
       "/uk-ewsgit-settings/settings/overview/page/:pageId",
       {
@@ -105,6 +107,6 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    return super.onLoad();
+    return this;
   }
 }
