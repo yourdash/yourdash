@@ -9,26 +9,24 @@ import ApplicationPanelContext from "@yourdash/web/src/lib/panelContext.ts";
 import { tun, useResource } from "@yourdash/tunnel";
 import {
   UKButton,
-  UKCard,
+  UKSeparator,
   UKCarousel,
+  UKCard,
   UKContainer,
   UKFlex,
   UKHeading,
   UKIconButton,
   UKIcons,
-  UKSeparator,
   UKTextInput,
 } from "@yourdash/uikit";
-import { endpointSchema } from "../../backend/src/endpoints/get/dashboard";
+import { endpointSchema as dashboardEndpointSchema } from "../../backend/src/endpoints/get/dashboard.schema";
 
 const DashApplication: React.FC = () => {
   const applicationPanelContext = React.useContext(ApplicationPanelContext);
-  const dashboard = useResource(
-    () => tun.get(`/uk-ewsgit-dash/dashboard`, "json", endpointSchema),
-    {
-      return: "data",
-    },
-  );
+  const dashboard = useResource(() => tun.send(dashboardEndpointSchema), {
+    return: "data",
+  });
+
   const [isWidgetEditMode, setIsWidgetEditMode] = useState(false);
 
   useEffect(() => {
@@ -74,7 +72,7 @@ const DashApplication: React.FC = () => {
                 backgroundImage: `linear-gradient(${dashboard.background.value})`,
               }
             : {
-                backgroundImage: `url(${tun.baseUrl + "/uk-ewsgit-dash/backgroundImage"})`,
+                backgroundImage: `url(${tun.baseURL + "/uk-ewsgit-dash/backgroundImage"})`,
               }
       }
     >

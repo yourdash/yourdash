@@ -1,12 +1,12 @@
 import type Application from "../../index.js";
+import endpointSchema from "./dashboard.schema.js";
 
 
 export default function main(app: Application) {
-  app.instance.request.get(
-    "/uk-ewsgit-dash/dashboard",
-    {
-      schema: endpointSchema
-    },
+  console.log("Was called!");
+
+  app.instance.requestManager.createEndpoint(
+    endpointSchema,
     async (req, res) => {
       const username = app.instance.requestManager.getRequestUsername();
       const userData = await app.instance.database.query(

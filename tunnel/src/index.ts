@@ -9,3 +9,4 @@ export { default as toResourceUrl } from "../lib/toResourceUrl.js";
 export { default as useResource } from "../lib/useResource.js";
 export { default as browserPath } from "../lib/browserPath.js";
 export type {YourDashEndpoint, YourDashEndpointMethods, YourDashEndpointMethodsWithBody} from "../lib/endpoint.js"
+export { createEndpoint } from "../lib/endpoint.js";

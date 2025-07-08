@@ -54,7 +54,7 @@ const IndexCardsPage: FC<{
     if (localStorage.getItem("current_user_username") || "" !== "") {
       setUsername(localStorage.getItem("current_user_username") || "");
       fetch(
-        `${tun.baseUrl}/login/user/${localStorage.getItem("current_user_username") || ""}`,
+        `${tun.baseURL}/login/user/${localStorage.getItem("current_user_username") || ""}`,
         {
           mode: "cors",
           headers: {
@@ -89,7 +89,7 @@ const IndexCardsPage: FC<{
   }, []);
 
   useEffect(() => {
-    fetch(`${tun.baseUrl}/login/user/${username}`, {
+    fetch(`${tun.baseURL}/login/user/${username}`, {
       mode: "cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -138,21 +138,21 @@ const IndexCardsPage: FC<{
         ) : (
           <UKHeading level={3} text={"Login"} />
         )}
-        <UKSeparator direction={"column"} />
+        <UKSeparator className={styles.separator} direction={"column"} />
         <UKTextInput
           accessibleName={"Username"}
           placeholder={"Username"}
           type={"username"}
           defaultValue={localStorage.getItem("current_user_username") || ""}
           getValue={setUsername}
-          autoComplete={`yourdash-instance-login username instance-${tun.baseUrl}`}
+          autoComplete={`yourdash-instance-login username instance-${tun.baseURL}`}
         />
         <UKTextInput
           accessibleName={"Password"}
           placeholder={"Password"}
           type={"password"}
           getValue={setPassword}
-          autoComplete={`yourdash-instance-login password instance-${tun.baseUrl}`}
+          autoComplete={`yourdash-instance-login password instance-${tun.baseURL}`}
           onSubmit={() => {
             if (!(username === "" || password === "" || !user.isValid)) {
               loginUser(username, password)
@@ -167,7 +167,7 @@ const IndexCardsPage: FC<{
             }
           }}
         />
-        <UKSeparator direction={"column"} />
+        <UKSeparator className={styles.separator} direction={"column"} />
         <UKButton
           className={styles.button}
           text={"Login"}
@@ -188,7 +188,7 @@ const IndexCardsPage: FC<{
               });
           }}
         />
-        <UKSubText className={styles.instanceUrl} text={tun.baseUrl} />
+        <UKSubText className={styles.instanceUrl} text={tun.baseURL} />
       </UKCard>
       <UKCard
         className={styles.metadataCard}

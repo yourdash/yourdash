@@ -74,7 +74,7 @@ const QuickShortcuts: React.FC<{
                   noRounding={true}
                   className={styles.applicationIcon}
                   src={
-                    tun.baseUrl +
+                    tun.baseURL +
                     `/core/panel/quick-shortcut/icon/${application.id}`
                   }
                   accessibleLabel={application.displayName}

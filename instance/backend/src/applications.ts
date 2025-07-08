@@ -34,7 +34,10 @@ class YourDashApplication {
   __internal_initializedPath!: string;
   instance: Instance;
 
-  constructor(applicationParams: IYourDashApplicationConfigV1, instance: Instance) {
+  constructor(
+    applicationParams: IYourDashApplicationConfigV1,
+    instance: Instance,
+  ) {
     this.__internal_params = applicationParams;
     this.id = this.__internal_params.id;
     this.__internal_initializedPath = "NOT YET LOADED!!!!";
@@ -43,7 +46,7 @@ class YourDashApplication {
     return this;
   }
 
-  onLoad() {
+  async onLoad() {
     return this;
   }
 
@@ -114,7 +117,9 @@ class Applications {
           "/backend/src/index.ts",
         )
       );
-      let application: YourDashApplication = new applicationImport.default(this.instance);
+      let application: YourDashApplication = new applicationImport.default(
+        this.instance,
+      );
       application.__internal_initializedPath = path.resolve(
         this.getApplicationAbsolutePath(applicationPath),
       );

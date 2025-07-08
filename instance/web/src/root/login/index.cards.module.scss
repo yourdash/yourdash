@@ -30,6 +30,10 @@
   padding-bottom: 2.5rem;
   padding-top: 1rem;
 
+  .separator {
+    width: calc(100% - 2rem);
+  }
+
   .button {
     width: 100%;
   }

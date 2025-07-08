@@ -19,6 +19,7 @@ import type {
   FastifyInstance,
   FastifyReply,
   FastifyRequest,
+  RouteHandlerMethod,
 } from "fastify";
 import {
   jsonSchemaTransform,
@@ -30,13 +31,17 @@ import { createReadStream } from "fs";
 import { mkdir } from "fs/promises";
 import path from "path";
 import { fetch } from "undici";
-import { z } from "zod";
+import { z, type ZodType } from "zod";
 import { YourDashApplication } from "./applications.js";
 import { YourDashSessionType } from "./authorization.js";
 import { resizeImage } from "./image.js";
 import { type Instance } from "./instance.js";
 import { InstanceStatus } from "./types/instanceStatus.js";
 import User from "./user.js";
+import type {
+  YourDashEndpoint,
+  YourDashEndpointMethods,
+} from "@yourdash/tunnel";
 
 enum LoginLayout {
   SIDEBAR,
@@ -74,6 +79,73 @@ class RequestManager {
     const stream = createReadStream(path.resolve(filePath));
 
     return res.type(mimeType).send(stream);
+  }
+
+  createEndpoint(
+    endpoint: YourDashEndpoint<YourDashEndpointMethods, ZodType, ZodType>,
+    handler: RouteHandlerMethod,
+  ) {
+    switch (endpoint.method) {
+      case "GET":
+        this.app.get(
+          endpoint.path,
+          {
+            schema: {
+              response: { 200: endpoint.response },
+              ...(!!endpoint.requestQueryString
+                ? { querystring: endpoint.requestQueryString }
+                : {}),
+            },
+          },
+          handler,
+        );
+        return this;
+      case "POST":
+        this.app.post(
+          endpoint.path,
+          {
+            schema: {
+              response: { 200: endpoint.response },
+              body: endpoint.requestBody,
+              ...(!!endpoint.requestQueryString
+                ? { querystring: endpoint.requestQueryString }
+                : {}),
+            },
+          },
+          handler,
+        );
+        return this;
+      case "PUT":
+        this.app.put(
+          endpoint.path,
+          {
+            schema: {
+              response: { 200: endpoint.response },
+              body: endpoint.requestBody,
+              ...(!!endpoint.requestQueryString
+                ? { querystring: endpoint.requestQueryString }
+                : {}),
+            },
+          },
+          handler,
+        );
+        return this;
+      case "DELETE":
+        this.app.delete(
+          endpoint.path,
+          {
+            schema: {
+              response: { 200: endpoint.response },
+              body: endpoint.requestBody,
+              ...(!!endpoint.requestQueryString
+                ? { querystring: endpoint.requestQueryString }
+                : {}),
+            },
+          },
+          handler,
+        );
+        return this;
+    }
   }
 
   async __internal_startup() {
@@ -116,17 +188,20 @@ class RequestManager {
             httpPart: error.httpPart!,
             issues: cause.issues,
           });
-        } else if (error instanceof Fastify.errorCodes.FST_ERR_BAD_STATUS_CODE) {
-        // Log error
-        this.instance.log.error("request_manager", error);
-        // Send error response
-        reply.status(500).send({ ok: false });
-      } else {
-        this.instance.log.error("request_manager", error);
-        // fastify will use parent error handler to handle this
-        reply.send(error);
-      }
-    });
+        } else if (
+          error instanceof Fastify.errorCodes.FST_ERR_BAD_STATUS_CODE
+        ) {
+          // Log error
+          this.instance.log.error("request_manager", error);
+          // Send error response
+          reply.status(500).send({ ok: false });
+        } else {
+          this.instance.log.error("request_manager", error);
+          // fastify will use parent error handler to handle this
+          reply.send(error);
+        }
+      },
+    );
 
     await this.app.register(cors, {
       methods: "*",

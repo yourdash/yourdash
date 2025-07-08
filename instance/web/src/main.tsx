@@ -25,7 +25,7 @@ import { tun } from "@yourdash/tunnel";
 import { INSTANCE_BACKEND_URL } from "./lib/backendUrl.ts";
 import { UIKitRoot, UKHeading } from "@yourdash/uikit";
 
-tun.__internal_connectTo(INSTANCE_BACKEND_URL)
+tun.setBaseURL(INSTANCE_BACKEND_URL);
 
 const element = document.getElementById("root") as HTMLElement;
 const loadingElement = document.createElement("h1");

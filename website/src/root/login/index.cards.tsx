@@ -37,16 +37,23 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
   useEffect(() => {
     if (localStorage.getItem("current_user_username") || "" !== "") {
       setUsername(localStorage.getItem("current_user_username") || "");
-      fetch(`${tun.baseUrl}/login/user/${localStorage.getItem("current_user_username") || ""}`, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
+      fetch(
+        `${tun.baseURL}/login/user/${localStorage.getItem("current_user_username") || ""}`,
+        {
+          mode: "cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
         },
-      })
+      )
         .then((res) => res.json())
         .then((resp) => {
           if (resp.error) {
-            setUser({ avatar: "", fullName: { first: "", last: "" }, isValid: false });
+            setUser({
+              avatar: "",
+              fullName: { first: "", last: "" },
+              isValid: false,
+            });
           } else {
             setUser({
               avatar: `/login/user/${localStorage.getItem("current_user_username") || ""}/avatar`,
@@ -56,13 +63,17 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
           }
         })
         .catch(() => {
-          setUser({ avatar: "", fullName: { first: "", last: "" }, isValid: false });
+          setUser({
+            avatar: "",
+            fullName: { first: "", last: "" },
+            isValid: false,
+          });
         });
     }
   }, []);
 
   useEffect(() => {
-    fetch(`${tun.baseUrl}/login/user/${username}`, {
+    fetch(`${tun.baseURL}/login/user/${username}`, {
       mode: "cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -71,7 +82,11 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
       .then((res) => res.json())
       .then((resp) => {
         if (resp.error) {
-          setUser({ avatar: "", fullName: { first: "", last: "" }, isValid: false });
+          setUser({
+            avatar: "",
+            fullName: { first: "", last: "" },
+            isValid: false,
+          });
         } else {
           setUser({
             avatar: `/login/user/${username}/avatar`,
@@ -81,7 +96,11 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
         }
       })
       .catch(() => {
-        setUser({ avatar: "", fullName: { first: "", last: "" }, isValid: false });
+        setUser({
+          avatar: "",
+          fullName: { first: "", last: "" },
+          isValid: false,
+        });
       });
   }, [username]);
 
@@ -101,10 +120,7 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
             />
           </>
         ) : (
-          <UKHeading
-            level={3}
-            text={"Login"}
-          />
+          <UKHeading level={3} text={"Login"} />
         )}
         <UKSeparator direction={"column"} />
         <UKTextInput
@@ -113,14 +129,14 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
           type={"username"}
           defaultValue={localStorage.getItem("current_user_username") || ""}
           getValue={setUsername}
-          autoComplete={`yourdash-instance-login username instance-${tun.baseUrl}`}
+          autoComplete={`yourdash-instance-login username instance-${tun.baseURL}`}
         />
         <UKTextInput
           accessibleName={"Password"}
           placeholder={"Password"}
           type={"password"}
           getValue={setPassword}
-          autoComplete={`yourdash-instance-login password instance-${tun.baseUrl}`}
+          autoComplete={`yourdash-instance-login password instance-${tun.baseURL}`}
           onSubmit={() => {
             if (!(username === "" || password === "" || !user.isValid)) {
               loginUser(username, password)
@@ -128,7 +144,9 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
                   navigate("/login/success");
                 })
                 .catch(() => {
-                  console.log("TODO: implement a toasts notification here for a failed login!");
+                  console.log(
+                    "TODO: implement a toasts notification here for a failed login!",
+                  );
                 });
             }
           }}
@@ -146,15 +164,15 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
               .catch(() => {
                 toast.create({
                   type: "error",
-                  content: { title: "Login Failure", body: "You login attempt failed, please try again. The password may be incorrect!" },
+                  content: {
+                    title: "Login Failure",
+                    body: "You login attempt failed, please try again. The password may be incorrect!",
+                  },
                 });
               });
           }}
         />
-        <UKSubText
-          className={styles.instanceUrl}
-          text={tun.baseUrl}
-        />
+        <UKSubText className={styles.instanceUrl} text={tun.baseURL} />
       </UKCard>
       <UKCard
         className={styles.metadataCard}
@@ -166,10 +184,7 @@ const IndexCardsPage: FC<{ metadata: EndpointResponseLoginInstanceMetadata | nul
           src={toAuthImgUrl("/login/instance/background")}
           accessibleLabel={""}
         />
-        <UKFlex
-          direction={"column"}
-          className={styles.metadata}
-        >
+        <UKFlex direction={"column"} className={styles.metadata}>
           <UKHeading
             level={1}
             text={props.metadata?.title || "Unknown instance title"}

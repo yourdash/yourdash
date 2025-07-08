@@ -13,19 +13,19 @@ export default defineConfig({
   plugins: [
     // @ts-ignore
     dynamicImport(),
-    dtsPlugin({rollupTypes: false}),
+    dtsPlugin({ rollupTypes: false }),
   ],
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      formats: [ "es" ],
+      formats: ["es"],
       fileName: (format, fileName) => {
         const extension = format === "cjs" ? "js" : "mjs";
         return `${fileName}.${extension}`;
       },
     },
     copyPublicDir: true,
-    sourcemap: true,
+    sourcemap: false,
     minify: true,
     rollupOptions: {
       external: [

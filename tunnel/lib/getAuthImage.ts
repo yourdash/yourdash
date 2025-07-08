@@ -6,5 +6,5 @@
 import tun from "./index.js";
 
 export default function toAuthImgUrl(authenticatedImageSrc: string) {
-  return tun.baseUrl + authenticatedImageSrc;
+  return tun.baseURL + authenticatedImageSrc;
 }

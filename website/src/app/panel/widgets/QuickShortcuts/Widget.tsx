@@ -62,10 +62,15 @@ const QuickShortcuts: React.FC<{ side: "top" | "right" | "bottom" | "left" }> = 
               >
                 <UKImage
                   className={styles.applicationIcon}
-                  src={tun.baseUrl + `/core/panel/quick-shortcut/icon/${application.id}`}
+                  src={
+                    tun.baseURL +
+                    `/core/panel/quick-shortcut/icon/${application.id}`
+                  }
                   accessibleLabel={application.displayName}
                 />
-                <span className={styles.applicationLabel}>{application.displayName}</span>
+                <span className={styles.applicationLabel}>
+                  {application.displayName}
+                </span>
               </div>
             </IncrementLevel>
           );
