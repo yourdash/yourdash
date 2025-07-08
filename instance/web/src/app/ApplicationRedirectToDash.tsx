@@ -20,7 +20,7 @@ const ApplicationRedirectToDash: React.FC = () => {
         .get("/login/is-authenticated", "text", z.string())
         .then(() => {
           console.log("Should navigate");
-          navigate("/app/a/uk-ewsgit-dash");
+          navigate("/app/a/uk.ewsgit.dash");
         })
         .catch(() => {
           console.warn("User was not authenticated!");

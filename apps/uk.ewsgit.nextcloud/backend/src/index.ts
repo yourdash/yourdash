@@ -37,7 +37,7 @@ export default class Application extends YourDashApplication {
         frontend: true,
         displayName: "Nextcloud",
         description: "The YourDash Nextcloud integration.",
-        id: "uk-ewsgit-nextcloud",
+        id: "uk.ewsgit.nextcloud",
       },
       instance,
     );

@@ -1,4 +1,4 @@
-# YourDash Dash (uk-ewsgit-dash)
+# YourDash Dash (uk.ewsgit.settings)
 
 This is the template application for YourDash
 

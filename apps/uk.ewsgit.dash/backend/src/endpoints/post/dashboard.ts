@@ -55,20 +55,20 @@ export default function main(app: Application) {
 
       app.instance.database.query(
         `UPDATE public.uk_ewsgit_dash_dashboard
-                             SET header_welcome_message     = $1,
-                                 header_size                = $2,
-                                 header_font_size           = $3,
-                                 header_font_weight         = $4,
-                                 header_font_family         = $5,
-                                 header_style               = $6,
-                                 header_background_blur     = $7,
-                                 header_background_opacity  = $8,
-                                 background_type            = $9,
-                                 background_value           = $10,
-                                 content_background_blur    = $11,
-                                 content_background_opacity = $12,
-                                 content_pages              = $13
-                             WHERE username = $14`,
+                     SET header_welcome_message     = $1,
+                         header_size                = $2,
+                         header_font_size           = $3,
+                         header_font_weight         = $4,
+                         header_font_family         = $5,
+                         header_style               = $6,
+                         header_background_blur     = $7,
+                         header_background_opacity  = $8,
+                         background_type            = $9,
+                         background_value           = $10,
+                         content_background_blur    = $11,
+                         content_background_opacity = $12,
+                         content_pages              = $13
+                     WHERE username = $14`,
         [
           body.header.welcomeMessage,
           body.header.size,

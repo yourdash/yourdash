@@ -26,7 +26,7 @@ const InstanceLogoWidget: React.FC<{
       accessibleLabel={"Instance logo"}
       className={styles.icon}
       onClick={() => {
-        navigate("/app/a/uk-ewsgit-dash");
+        navigate("/app/a/uk.ewsgit.dash");
       }}
     />
   );

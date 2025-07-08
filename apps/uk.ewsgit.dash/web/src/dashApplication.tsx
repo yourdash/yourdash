@@ -72,7 +72,7 @@ const DashApplication: React.FC = () => {
                 backgroundImage: `linear-gradient(${dashboard.background.value})`,
               }
             : {
-                backgroundImage: `url(${tun.baseURL + "/uk-ewsgit-dash/backgroundImage"})`,
+                backgroundImage: `url(${tun.baseURL + "/uk.ewsgit.dash/backgroundImage"})`,
               }
       }
     >

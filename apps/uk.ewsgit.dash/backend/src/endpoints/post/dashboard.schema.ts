@@ -2,7 +2,7 @@ import { createEndpoint } from "@yourdash/tunnel";
 import z from "zod";
 
 export const endpointSchema = createEndpoint(
-  "/uk-ewsgit-dash/dashboard",
+  "/uk.ewsgit.dash/dashboard",
   "POST",
   z.object({ success: z.boolean() }),
   {

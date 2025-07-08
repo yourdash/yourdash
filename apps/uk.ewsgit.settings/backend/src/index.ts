@@ -28,7 +28,7 @@ export default class Application extends YourDashApplication {
         frontend: true,
         displayName: "Settings",
         description: "The YourDash settings application.",
-        id: "uk-ewsgit-settings",
+        id: "uk.ewsgit.settings",
       },
       instance,
     );

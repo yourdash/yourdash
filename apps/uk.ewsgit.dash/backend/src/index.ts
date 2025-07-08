@@ -5,9 +5,6 @@
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import { type Instance } from "@yourdash/backend/src/instance.js";
-import path from "path";
-import { z } from "zod";
-import { promises as fs } from "fs";
 
 export default class Application extends YourDashApplication {
   constructor(instance: Instance) {
@@ -24,7 +21,7 @@ export default class Application extends YourDashApplication {
         frontend: true,
         displayName: "Dash",
         description: "The YourDash dashboard application.",
-        id: "uk-ewsgit-dash",
+        id: "uk.ewsgit.dash",
       },
       instance,
     );

@@ -25,7 +25,7 @@ const InstanceLogoWidget: React.FC<{ panelSize: "small" | "medium" | "large" }> 
       containerClassName={styles.icon}
       noRounding={true}
       onClick={() => {
-        navigate("/app/a/uk-ewsgit-dash");
+        navigate("/app/a/uk.ewsgit.dash");
       }}
     />
   );

@@ -321,7 +321,7 @@ class Instance {
                                  (
                                      config_version      serial primary key,
                                      username            text NOT NULL,
-                                     pinned_applications text[] DEFAULT '{ "uk-ewsgit-dash", "uk-ewsgit-files", "uk-ewsgit-store", "uk-ewsgit-weather" }',
+                                     pinned_applications text[] DEFAULT '{ "uk.ewsgit.dash", "uk.ewsgit.files", "uk.ewsgit.store", "uk.ewsgit.weather" }',
                                      widgets             text[] DEFAULT '{ "InstanceLogo", "ApplicationLauncher", "Separator", "QuickShortcuts", "LocalhostIndicator", "UserProfile" }',
                                      side                text   DEFAULT 'left',
                                      size                text   DEFAULT 'medium'

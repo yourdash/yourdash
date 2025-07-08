@@ -10,4 +10,4 @@
 7. The user enters a password
 8. The user can then press the Login button
 9. If the password is correct, redirect to /login/success
-10. /app will then redirect to the user's home application (uk-ewsgit-dash by default)
+10. /app will then redirect to the user's home application (uk.ewsgit.dash by default)
