@@ -57,7 +57,8 @@ class YourDashApplication {
     async function scanDirectory(dir: string) {
       for (const item of await fs.readdir(dir)) {
         if ((await fs.stat(path.join(dir, item))).isDirectory()) {
-          return await scanDirectory(path.join(dir, item));
+          await scanDirectory(path.join(dir, item));
+          continue;
         }
 
         if (item.endsWith(".ts")) {
