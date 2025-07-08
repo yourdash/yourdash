@@ -26,7 +26,7 @@ export function createEndpoint<
   path: string,
   method: Method,
   response: ResponseType,
-  extra: {
+  extra?: {
     requestBody?: RequestBodyType;
     requestQueryString?: string[];
   },
@@ -34,8 +34,8 @@ export function createEndpoint<
   return {
     path: path,
     method: method,
-    requestBody: extra.requestBody,
-    requestQueryString: extra.requestQueryString,
+    requestBody: extra?.requestBody,
+    requestQueryString: extra?.requestQueryString,
     response: response,
   };
 }
