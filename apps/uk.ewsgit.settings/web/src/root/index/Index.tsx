@@ -1,20 +1,11 @@
 import React from "react";
-import {
-  UKBox,
-  UKButton,
-  UKCard,
-  UKContainer,
-  UKHeading,
-  UKLayout,
-  UKSeparator,
-  UKSubText,
-} from "@yourdash/uikit";
-import UserHeader from "./components/UserHeader/UserHeader";
+import { UKContainer, UKHeading, UKLayout, UKSeparator } from "@yourdash/uikit";
+import UserHeader from "./components/UserHeader/UserHeader.tsx";
 import styles from "./Index.module.scss";
 import QuickActions from "./components/QuickActions/QuickActions.tsx";
 import BooleanSetting from "../components/BooleanSetting/BooleanSetting.tsx";
 import BaseSetting from "../components/BaseSetting/BaseSetting.tsx";
-import {tun} from "@yourdash/tunnel";
+import { tun } from "@yourdash/tunnel";
 import Sidebar from "../components/Sidebar/Sidebar.tsx";
 
 const IndexPage: React.FC = () => {
