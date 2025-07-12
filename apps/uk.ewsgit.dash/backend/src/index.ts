@@ -5,7 +5,7 @@
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import { type Instance } from "@yourdash/backend/src/instance.js";
-import "./commands/widgets.js";
+import WidgetsCommand from "./commands/widgets.js";
 
 export default class Application extends YourDashApplication {
   constructor(instance: Instance) {
@@ -59,6 +59,10 @@ export default class Application extends YourDashApplication {
 
   public async onLoad(): Promise<this> {
     await super.onLoad();
+
+    this.instance.commandManager.commands.push(
+      new WidgetsCommand(this.instance),
+    );
 
     return this;
   }

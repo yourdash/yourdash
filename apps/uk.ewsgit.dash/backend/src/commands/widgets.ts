@@ -4,13 +4,20 @@ import Command, {
   ICommandRuntimeParameters,
 } from "@yourdash/backend/src/commandManager/command.js";
 
-class WidgetsCommand extends Command {
+export default class WidgetsCommand extends Command {
   commandId = "dash.widgets";
   flags: CommandFlags = {};
   arguments: CommandArguments = [];
-  shortDescription = "Manage uk.ewsgit.dash's widgets for a user";
+  shortDescription =
+    "Manage uk.ewsgit.dash's widgets for the admin user (development command)";
 
   async run(parameters: ICommandRuntimeParameters) {
+    let data = "";
+
+    await this.instance.database.query(
+      `UPDATE public.uk_ewsgit_dash_dashboard SET content_pages = ${data}::json WHERE username = 'admin'`,
+    );
+
     return this.finishRun();
   }
 }

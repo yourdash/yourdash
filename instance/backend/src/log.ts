@@ -102,7 +102,9 @@ export default class Log {
                               )
                             ) {
                               // write the prompt indicator to the stdout
-                              process.stdout.write("> ");
+                              process.stdout.write(
+                                `> ${this.instance.commandManager?.rlInterface?.line}`,
+                              );
                             } else {
                               process.stdout.write("  ");
                             }
