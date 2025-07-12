@@ -39,30 +39,44 @@ class ResourceManager {
   }
 
   async __internal_startup() {
-    this.instance.request.get("/resource/:resourceId", async (req, res) => {
-      const resourceId = (req.params as { resourceId: string }).resourceId;
+    this.instance.requestManager.app.get(
+      "/resource/:resourceId",
+      async (req, res) => {
+        const resourceId = (req.params as { resourceId: string }).resourceId;
 
-      const resource = this.resources.get(resourceId);
+        const resource = this.resources.get(resourceId);
 
-      if (!resource) {
-        res.status(404);
-        return { error: "Resource not found" };
-      }
+        if (!resource) {
+          res.status(404);
+          return { error: "Resource not found" };
+        }
 
-      if (resource.expires < Date.now()) {
-        res.status(410);
-        return { error: "Resource expired" };
-      }
+        if (resource.expires < Date.now()) {
+          res.status(410);
+          return { error: "Resource expired" };
+        }
 
-      if (resource.type === "image") {
-        return this.instance.requestManager.sendFile(res, resource.path, `image`);
-      }
-    });
+        if (resource.type === "image") {
+          return this.instance.requestManager.sendFile(
+            res,
+            resource.path,
+            `image`,
+          );
+        }
+      },
+    );
   }
 
   // expiry date is in unix epoch
   // returns the resourceId
-  addImage(path: string, options?: { allowedUsers?: string[]; allowedGroups?: string[]; expires?: number }): string {
+  addImage(
+    path: string,
+    options?: {
+      allowedUsers?: string[];
+      allowedGroups?: string[];
+      expires?: number;
+    },
+  ): string {
     const resourceId = this.generateResourceId();
     const resource: IResource = {
       path: path,

@@ -54,7 +54,7 @@ export default class Application extends YourDashApplication {
           ADD CONSTRAINT username UNIQUE (username)
       ;`);
       } catch (e) {
-        instance.log.info("uk-ewsgit-nextcloud", "database already exists");
+        instance.log.info(this.id, "database already exists");
       }
     })();
 

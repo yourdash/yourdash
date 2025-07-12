@@ -4,12 +4,13 @@
  */
 
 import React from "react";
-import styles from "./widget.module.scss";
+import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
-import { toAuthImgUrl } from "@yourdash/tunnel";
 import { UKCard, UKImage, UKText } from "@yourdash/uikit";
 
-const Widget: React.FC<{ data: { url: string, icon: string, name: string} }> = ({ data }) => {
+const Widget: React.FC<{
+  data: { url: string; icon: string; name: string };
+}> = ({ data }) => {
   const navigate = useNavigate();
 
   return (
@@ -22,7 +23,7 @@ const Widget: React.FC<{ data: { url: string, icon: string, name: string} }> = (
       <UKImage
         noRounding={true}
         className={styles.img}
-        src={toAuthImgUrl(data.icon)}
+        src={data.icon}
         accessibleLabel={""}
       />
       <UKText text={data.name} />

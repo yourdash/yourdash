@@ -31,8 +31,10 @@
 
 .page {
   display: flex;
+  max-width: 100%;
   width: max-content;
   height: 100%;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;

@@ -14,10 +14,12 @@ import Log from "./log.js";
 import RequestManager from "./requestManager.js";
 import ResourceManager from "./resourceManager.js";
 import { InstanceStatus } from "./types/instanceStatus.js";
-import User, { createUser, repairUser } from "./user.js";
+import User from "./userManager/user.js";
 import path from "path";
 import minimist from "minimist";
 import ConfigurationManager from "./configurationManager.ts";
+import CommandManager from "./commandManager/commandManager.ts";
+import UserManager from "./userManager/userManager.ts";
 
 dotenv.config();
 
@@ -25,17 +27,18 @@ class Instance {
   flags!: {
     isDocker: boolean;
   };
+  commandManager!: CommandManager;
   configurationManager!: ConfigurationManager;
   arguments: minimist.ParsedArgs;
   log!: Log;
   resourceManager!: ResourceManager;
   requestManager!: RequestManager;
-  request!: RequestManager["app"];
   authorization!: Authorization;
   database!: pg.Client;
   filesystem!: Filesystem;
   events!: Events;
   applications!: Applications;
+  userManager!: UserManager;
   private status: InstanceStatus = InstanceStatus.UNKNOWN;
 
   constructor() {
@@ -70,6 +73,7 @@ class Instance {
     this.configurationManager = new ConfigurationManager(this);
     await this.configurationManager.readFromDisk();
     this.configurationManager._internal_announceFeatures();
+    this.commandManager = new CommandManager(this);
 
     if (this.configurationManager.config.isDevMode) {
       this.log.info(
@@ -197,7 +201,7 @@ class Instance {
     this.log.info("startup", "Connecting to PostgreSQL Database");
     try {
       await this.database.connect();
-      this.log.info(
+      this.log.success(
         "startup",
         `Connected to PostgreSQL Database "${this.configurationManager.config.postgresDatabase}"`,
       );
@@ -282,7 +286,7 @@ class Instance {
                                        external_url                text   DEFAULT 'http://localhost:3563',
                                        description                 text   DEFAULT 'This is the default instance description. Hey Admin, this can be changed in the system settings!.',
                                        administrator_contact_email text,
-                                       default_pinned_applications text[] DEFAULT '{ "uk-ewsgit-dash", "uk-ewsgit-files", "uk-ewsgit-store", "uk-ewsgit-weather" }'
+                                       default_pinned_applications text[] DEFAULT '{ "uk.ewsgit.dash", "uk.ewsgit.files", "uk.ewsgit.store", "uk.ewsgit.weather" }'
                                    )`);
         this.log.info(
           "database",
@@ -306,10 +310,10 @@ class Instance {
 
     this.events = new Events(this);
     this.events.createEvent("yourdash_user_repair");
+    this.userManager = new UserManager(this);
     this.authorization = new Authorization(this);
     this.resourceManager = new ResourceManager(this);
     this.requestManager = new RequestManager(this);
-    this.request = this.requestManager.app;
     this.applications = new Applications(this);
 
     await this.requestManager.__internal_startup();
@@ -355,14 +359,17 @@ class Instance {
 
       for (const app of applications) {
         loadedApplications.push(await this.applications.loadApplication(app));
-        this.log.info(
+        this.log.success(
           "application_manager",
           `Application ${this.log.addEmphasisToString(app)} loaded successfully!`,
         );
       }
 
       if (!loadedApplications.find((a) => a === null)) {
-        this.log.info("application_manager", `All applications have loaded!`);
+        this.log.success(
+          "application_manager",
+          `All applications have loaded!`,
+        );
       } else {
         this.log.error(
           "application_manager",
@@ -380,7 +387,7 @@ class Instance {
     const adminUser = new User("admin");
 
     if (!(await adminUser.doesExist())) {
-      const adminUser = await createUser("admin");
+      const adminUser = await this.userManager.createUser("admin");
       await adminUser.setForename("Admin");
       await adminUser.setSurname("Istrator");
       await this.authorization.setUserPassword("admin", "password");
@@ -391,7 +398,7 @@ class Instance {
     );
 
     for (const user of users.rows) {
-      await repairUser(user.username);
+      await this.userManager.repairUser(user.username);
     }
 
     await this.requestManager.__internal_beginListening();

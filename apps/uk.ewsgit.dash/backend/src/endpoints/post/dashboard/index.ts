@@ -1,5 +1,5 @@
-import type Application from "../../index.js";
-import { endpointSchema } from "./dashboard.schema.js";
+import type Application from "../../../index.js";
+import { endpointSchema } from "./index.schema.js";
 
 export default function main(app: Application) {
   app.instance.requestManager.createEndpoint(

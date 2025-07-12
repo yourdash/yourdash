@@ -1,6 +1,6 @@
 import path from "path";
 import type Application from "../../index.js";
-import { endpointSchema } from "./backgroundImage.schema.js";
+import { endpointSchema } from "./index.schema.js";
 
 export default function main(app: Application) {
   app.instance.requestManager.createEndpoint(

@@ -11,13 +11,13 @@ import * as fs from "node:fs";
 // enable for https testing. import mkcert from "vite-plugin-mkcert"
 
 function applicationRouter() {
-  const virtualModuleId = 'virtual:application-router/file';
-  // do not follow convention as it makes the virtual file invisible to the ReactJS plugin, leading to .tsx not being recognised as legitimate
-  const resolvedVirtualModuleId = /*'\0' + */virtualModuleId;
-  const resolvedVirtualModuleIdWithExtension = resolvedVirtualModuleId + '.tsx';
+  const virtualModuleId = "virtual:application-router/file";
+  // do not follow convention as it makes the virtual file invisible to the ReactJS plugin, leading to .tsx not being recognized as legitimate
+  const resolvedVirtualModuleId = /*'\0' + */ virtualModuleId;
+  const resolvedVirtualModuleIdWithExtension = resolvedVirtualModuleId + ".tsx";
 
   return {
-    name: 'yourdash-application-router-generator', // required, will show up in warnings and errors
+    name: "yourdash-application-router-generator", // required, will show up in warnings and errors
     resolveId(id) {
       if (id === virtualModuleId) {
         return resolvedVirtualModuleIdWithExtension;
@@ -46,66 +46,80 @@ export default AppRouter;
         let loadableRegionReplacement = "";
         let routeRegionReplacement = "";
         // Determine apps directory path based on environment variable
-        const appsDirectoryPath = process.env.VITE_IS_DOCKER === "true" ? "/web/src/app/apps/" : path.resolve(__dirname, '../../apps/'); // Use path.resolve for relative paths
+        const appsDirectoryPath =
+          process.env.VITE_IS_DOCKER === "true"
+            ? "/web/src/app/apps/"
+            : path.resolve(__dirname, "../../apps/"); // Use path.resolve for relative paths
 
         let allApps: string[] = [];
         try {
           // Synchronously read the directory content
-          allApps = fs.readdirSync(appsDirectoryPath).filter(entry => {
+          allApps = fs.readdirSync(appsDirectoryPath).filter((entry) => {
             // Optional: Add filtering to ensure it's a directory or meets criteria
             const entryPath = path.join(appsDirectoryPath, entry);
             try {
               // Check if it's a directory and potentially if the web/src/index.tsx exists
               return fs.statSync(entryPath).isDirectory();
             } catch (statError) {
-              console.warn(`[applicationRouter] Could not stat entry: ${entryPath}`, statError);
+              console.warn(
+                `[applicationRouter] Could not stat entry: ${entryPath}`,
+                statError,
+              );
               return false;
             }
           });
         } catch (err) {
-          console.error(`[applicationRouter] Error reading apps directory: ${appsDirectoryPath}`, err);
+          console.error(
+            `[applicationRouter] Error reading apps directory: ${appsDirectoryPath}`,
+            err,
+          );
           // Return an empty router template or throw error depending on desired behavior
           return {
             code: fileTemplate
-            .replace("/* loadable_components_placeholder */", "// Error reading apps directory")
-             .replace("{/* route_elements_placeholder */}", "{/* Error reading apps directory */}"),
+              .replace(
+                "/* loadable_components_placeholder */",
+                "// Error reading apps directory",
+              )
+              .replace(
+                "{/* route_elements_placeholder */}",
+                "{/* Error reading apps directory */}",
+              ),
             map: null,
           };
         }
 
-
-        // Corrected Loop: Iterate through ALL detected apps
         for (let i = 0; i < allApps.length; i++) {
           const appName = allApps[i];
-          // Construct the import path reliably
-          const appImportPath = path.join(
-            path.resolve(appsDirectoryPath, appName), // Get absolute path to app dir
-            "./web/src/index.tsx" // Append relative path to component
-          ).replaceAll(path.sep, path.posix.sep); // Ensure POSIX separators for import()
 
-          // Generate loadable component definition
-          // Added fallback and newline
+          const appImportPath = path
+            .join(
+              path.resolve(appsDirectoryPath, appName),
+              "./web/src/index.tsx",
+            )
+            .replaceAll(path.sep, path.posix.sep);
+
           loadableRegionReplacement += `const Application${i} = loadable(() => import(/* webpackChunkName: "${appName}" */ "${appImportPath}"), {
   fallback: <div>Loading ${appName}...</div>
 });`;
 
-          // Generate JSX Route element
-          // Added key prop and newline for readability
           routeRegionReplacement += `<Route key="${appName}" path="${appName}/*" element={<Application${i} />} />,`;
         }
 
-        // Replace placeholders in the template
-        fileTemplate = fileTemplate.replace("/* loadable_components_placeholder */", loadableRegionReplacement);
-        // Ensure proper indentation for the routes within the JSX
-        fileTemplate = fileTemplate.replace("{/* route_elements_placeholder */}", routeRegionReplacement.trimEnd()); // trimEnd to remove trailing newline
+        fileTemplate = fileTemplate.replace(
+          "/* loadable_components_placeholder */",
+          loadableRegionReplacement,
+        );
+        fileTemplate = fileTemplate.replace(
+          "{/* route_elements_placeholder */}",
+          routeRegionReplacement.trimEnd(),
+        );
 
-        return { code: fileTemplate, map: null, moduleType: 'tsx' };
+        return { code: fileTemplate, map: null, moduleType: "tsx" };
       }
-      return null; // Add return null for non-matching IDs
-    }
+      return null;
+    },
   };
 }
-
 
 // ViteJS docs: https://vitejs.dev/config/
 export default defineConfig({
@@ -119,7 +133,7 @@ export default defineConfig({
     // @ts-ignore
     dynamicImport(),
     // enable for https tests. mkcert()
-    applicationRouter()
+    applicationRouter(),
   ],
   appType: "spa",
   root: "./",

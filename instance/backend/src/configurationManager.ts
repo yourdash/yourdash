@@ -65,14 +65,70 @@ export default class ConfigurationManager {
     return this;
   }
 
-  setValue(propertyId: keyof YourDashInstanceConfiguration, value: any) {
+  async writeToDisk() {
+    const configurationFilePath = path.join(
+      this.instance.filesystem.commonPaths.SystemDirectory(),
+      "config.json",
+    );
+
+    // the configuration file does not exist, generate one
+    await fs.writeFile(configurationFilePath, JSON.stringify(this.config));
+    return this;
+  }
+
+  async setValue(propertyId: keyof YourDashInstanceConfiguration, value: any) {
     // @ts-ignore
     this.config[propertyId] = value;
+
+    await this.writeToDisk();
+
     return this;
   }
 
   hasFeature(featureFlag: YourDashFeatureFlags) {
     return this.config.featureFlags.includes(featureFlag);
+  }
+
+  getAllEnabledFeatures() {
+    return this.config.featureFlags;
+  }
+
+  getAllFeatures() {
+    return YourDashFeatureFlags;
+  }
+
+  async enableFeature(feature: YourDashFeatureFlags) {
+    if (!this.config.featureFlags.includes(feature)) {
+      this.config.featureFlags.push(feature);
+      this.instance.log.info("feature_flags", `Enabled feature '${feature}'`);
+    } else {
+      this.instance.log.info(
+        "feature_flags",
+        `Cannot enable feature '${feature}' as it was already enabled`,
+      );
+    }
+
+    await this.writeToDisk();
+
+    return this;
+  }
+
+  async disableFeature(feature: YourDashFeatureFlags) {
+    if (this.config.featureFlags.includes(feature)) {
+      this.config.featureFlags = this.config.featureFlags.filter(
+        (flag) => flag !== feature,
+      );
+      this.instance.log.info("feature_flags", `Disabled feature '${feature}'`);
+    } else {
+      this.instance.log.info(
+        "feature_flags",
+        `Cannot disable feature '${feature}' as it was not already enabled`,
+      );
+    }
+
+    await this.writeToDisk();
+
+    return this;
   }
 
   _internal_announceFeatures() {
@@ -85,7 +141,7 @@ export default class ConfigurationManager {
     } else {
       this.instance.log.info(
         "configuration_manager",
-        "The following feature flags are enabled: ",
+        "The following feature flags are enabled:",
         this.config.featureFlags
           .map((flag) => this.instance.log.addEmphasisToString(flag))
           .join(", "),

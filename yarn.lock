@@ -2479,9 +2479,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yourdash/application-uk-ewsgit-dash-backend@workspace:apps/uk-ewsgit-dash/backend":
+"@yourdash/application-uk-ewsgit-dash-backend@workspace:apps/uk.ewsgit.dash/backend":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-dash-backend@workspace:apps/uk-ewsgit-dash/backend"
+  resolution: "@yourdash/application-uk-ewsgit-dash-backend@workspace:apps/uk.ewsgit.dash/backend"
   dependencies:
     "@yourdash/backend": "workspace:instance/backend"
     "@yourdash/tunnel": "workspace:tunnel"
@@ -2489,9 +2489,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/application-uk-ewsgit-dash-standalone@workspace:apps/uk-ewsgit-dash/standalone":
+"@yourdash/application-uk-ewsgit-dash-standalone@workspace:apps/uk.ewsgit.dash/standalone":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-dash-standalone@workspace:apps/uk-ewsgit-dash/standalone"
+  resolution: "@yourdash/application-uk-ewsgit-dash-standalone@workspace:apps/uk.ewsgit.dash/standalone"
   dependencies:
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
@@ -2506,10 +2506,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/application-uk-ewsgit-dash-web@workspace:*, @yourdash/application-uk-ewsgit-dash-web@workspace:apps/uk-ewsgit-dash/web":
+"@yourdash/application-uk-ewsgit-dash-web@workspace:*, @yourdash/application-uk-ewsgit-dash-web@workspace:apps/uk.ewsgit.dash/web":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-dash-web@workspace:apps/uk-ewsgit-dash/web"
+  resolution: "@yourdash/application-uk-ewsgit-dash-web@workspace:apps/uk.ewsgit.dash/web"
   dependencies:
+    "@loadable/component": "npm:^5.16.4"
     "@types/node": "npm:^22.13.8"
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
@@ -2538,9 +2539,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/application-uk-ewsgit-nextcloud-backend@workspace:apps/uk-ewsgit-nextcloud/backend":
+"@yourdash/application-uk-ewsgit-nextcloud-backend@workspace:apps/uk.ewsgit.nextcloud/backend":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-nextcloud-backend@workspace:apps/uk-ewsgit-nextcloud/backend"
+  resolution: "@yourdash/application-uk-ewsgit-nextcloud-backend@workspace:apps/uk.ewsgit.nextcloud/backend"
   dependencies:
     "@types/bun": "npm:^1.1.6"
     "@types/node": "npm:^22.13.9"
@@ -2550,9 +2551,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/application-uk-ewsgit-nextcloud-standalone@workspace:apps/uk-ewsgit-nextcloud/standalone":
+"@yourdash/application-uk-ewsgit-nextcloud-standalone@workspace:apps/uk.ewsgit.nextcloud/standalone":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-nextcloud-standalone@workspace:apps/uk-ewsgit-nextcloud/standalone"
+  resolution: "@yourdash/application-uk-ewsgit-nextcloud-standalone@workspace:apps/uk.ewsgit.nextcloud/standalone"
   dependencies:
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
@@ -2567,9 +2568,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/application-uk-ewsgit-nextcloud-web@workspace:*, @yourdash/application-uk-ewsgit-nextcloud-web@workspace:apps/uk-ewsgit-nextcloud/web":
+"@yourdash/application-uk-ewsgit-nextcloud-web@workspace:*, @yourdash/application-uk-ewsgit-nextcloud-web@workspace:apps/uk.ewsgit.nextcloud/web":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-nextcloud-web@workspace:apps/uk-ewsgit-nextcloud/web"
+  resolution: "@yourdash/application-uk-ewsgit-nextcloud-web@workspace:apps/uk.ewsgit.nextcloud/web"
   dependencies:
     "@types/node": "npm:^22.13.8"
     "@types/react": "npm:^19.0.10"
@@ -2598,18 +2599,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/application-uk-ewsgit-settings-backend@workspace:apps/uk-ewsgit-settings/backend":
+"@yourdash/application-uk-ewsgit-settings-backend@workspace:apps/uk.ewsgit.settings/backend":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-settings-backend@workspace:apps/uk-ewsgit-settings/backend"
+  resolution: "@yourdash/application-uk-ewsgit-settings-backend@workspace:apps/uk.ewsgit.settings/backend"
   dependencies:
     "@yourdash/backend": "workspace:instance/backend"
     zod: "npm:^3.24.2"
   languageName: unknown
   linkType: soft
 
-"@yourdash/application-uk-ewsgit-settings-standalone@workspace:apps/uk-ewsgit-settings/standalone":
+"@yourdash/application-uk-ewsgit-settings-standalone@workspace:apps/uk.ewsgit.settings/standalone":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-settings-standalone@workspace:apps/uk-ewsgit-settings/standalone"
+  resolution: "@yourdash/application-uk-ewsgit-settings-standalone@workspace:apps/uk.ewsgit.settings/standalone"
   dependencies:
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
@@ -2624,9 +2625,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/application-uk-ewsgit-settings-web@workspace:*, @yourdash/application-uk-ewsgit-settings-web@workspace:apps/uk-ewsgit-settings/web":
+"@yourdash/application-uk-ewsgit-settings-web@workspace:*, @yourdash/application-uk-ewsgit-settings-web@workspace:apps/uk.ewsgit.settings/web":
   version: 0.0.0-use.local
-  resolution: "@yourdash/application-uk-ewsgit-settings-web@workspace:apps/uk-ewsgit-settings/web"
+  resolution: "@yourdash/application-uk-ewsgit-settings-web@workspace:apps/uk.ewsgit.settings/web"
   dependencies:
     "@types/node": "npm:^22.13.8"
     "@types/react": "npm:^19.0.10"
@@ -2780,25 +2781,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yourdash/uk-ewsgit-dash@workspace:apps/uk-ewsgit-dash":
+"@yourdash/uk-ewsgit-dash@workspace:apps/uk.ewsgit.dash":
   version: 0.0.0-use.local
-  resolution: "@yourdash/uk-ewsgit-dash@workspace:apps/uk-ewsgit-dash"
+  resolution: "@yourdash/uk-ewsgit-dash@workspace:apps/uk.ewsgit.dash"
   dependencies:
     prettier: "npm:^3.5.3"
   languageName: unknown
   linkType: soft
 
-"@yourdash/uk-ewsgit-nextcloud@workspace:apps/uk-ewsgit-nextcloud":
+"@yourdash/uk-ewsgit-nextcloud@workspace:apps/uk.ewsgit.nextcloud":
   version: 0.0.0-use.local
-  resolution: "@yourdash/uk-ewsgit-nextcloud@workspace:apps/uk-ewsgit-nextcloud"
+  resolution: "@yourdash/uk-ewsgit-nextcloud@workspace:apps/uk.ewsgit.nextcloud"
   dependencies:
     prettier: "npm:^3.5.3"
   languageName: unknown
   linkType: soft
 
-"@yourdash/uk-ewsgit-settings@workspace:apps/uk-ewsgit-settings":
+"@yourdash/uk-ewsgit-settings@workspace:apps/uk.ewsgit.settings":
   version: 0.0.0-use.local
-  resolution: "@yourdash/uk-ewsgit-settings@workspace:apps/uk-ewsgit-settings"
+  resolution: "@yourdash/uk-ewsgit-settings@workspace:apps/uk.ewsgit.settings"
   dependencies:
     prettier: "npm:^3.5.3"
   languageName: unknown

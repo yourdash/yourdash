@@ -10,7 +10,6 @@
   max-height: 100%;
   transition: var(--transition);
   aspect-ratio: 1 / 1;
-  background: rgb(var(#{$theme+$background}));
 }
 
 .applicationLabel {

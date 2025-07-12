@@ -18,6 +18,7 @@ const DashRouter: React.FC = () => {
     applicationPanelContext.setApplicationIcon(SETTINGS_ICON);
     applicationPanelContext.setOnBackButton(() => {});
     applicationPanelContext.setShowBackButton(false);
+    applicationPanelContext.setControls(<></>);
   }, []);
 
   return (

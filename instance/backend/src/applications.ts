@@ -75,7 +75,11 @@ class YourDashApplication {
       await scanDirectory(ENDPOINTS_DIRECTORY);
 
     for (const endpointPath of endpoints) {
-      this.instance.log.info(this.id, "loading endpoint", endpointPath);
+      this.instance.log.info(
+        this.id,
+        "loading endpoint",
+        path.relative(this.instance.filesystem.SRC_ROOT, endpointPath),
+      );
 
       let endpoint = (await import(endpointPath)).default;
 

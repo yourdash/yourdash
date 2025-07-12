@@ -37,7 +37,7 @@ import { YourDashSessionType } from "./authorization.js";
 import { resizeImage } from "./image.js";
 import { type Instance } from "./instance.js";
 import { InstanceStatus } from "./types/instanceStatus.js";
-import User from "./user.js";
+import User from "./userManager/user.js";
 import type {
   YourDashEndpoint,
   YourDashEndpointMethods,
@@ -1343,7 +1343,7 @@ class RequestManager {
       });
       this.instance.log.info(
         "request_manager",
-        `YourDash Instance Backend Online & listening at ${this.instance.log.addEmphasisToString(`port "${this.instance.configurationManager.config.port}"`)}`,
+        `YourDash Instance Backend Online & listening at ${this.instance.log.addEmphasisToString(`port ${this.instance.configurationManager.config.port}`)}`,
       );
 
       this.instance.log.info("request_manager", `Attempting to ping self`);

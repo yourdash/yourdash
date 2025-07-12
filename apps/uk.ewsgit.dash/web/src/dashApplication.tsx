@@ -8,26 +8,26 @@ import styles from "./dashApplication.module.scss";
 import ApplicationPanelContext from "@yourdash/web/src/lib/panelContext.ts";
 import { tun, useResource } from "@yourdash/tunnel";
 import {
-  UKButton,
-  UKSeparator,
   UKCarousel,
   UKCard,
-  UKContainer,
   UKFlex,
   UKHeading,
   UKIconButton,
   UKIcons,
-  UKTextInput,
+  UKSpinner,
 } from "@yourdash/uikit";
-import { endpointSchema as dashboardEndpointSchema } from "../../backend/src/endpoints/get/dashboard.schema";
+import { endpointSchema as dashboardEndpointSchema } from "../../backend/src/endpoints/get/dashboard/index.schema";
+import Widget from "./widgets/applicationShortcut";
+import { useNavigate } from "react-router";
+import loadable from "@loadable/component";
+import WIDGETS from "./widgets/widgets";
 
 const DashApplication: React.FC = () => {
   const applicationPanelContext = React.useContext(ApplicationPanelContext);
   const dashboard = useResource(() => tun.send(dashboardEndpointSchema), {
     return: "data",
   });
-
-  const [isWidgetEditMode, setIsWidgetEditMode] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     applicationPanelContext.setControls(
@@ -36,7 +36,8 @@ const DashApplication: React.FC = () => {
           icon={UKIcons.Pencil}
           key={"dash-icon-button"}
           onClick={() => {
-            setIsWidgetEditMode((wem) => !wem);
+            // Navigate to the dashboard layout settings
+            navigate("/app/a/uk.ewsgit.settings");
           }}
           accessibleLabel={"Edit"}
         />
@@ -59,7 +60,17 @@ const DashApplication: React.FC = () => {
     }
   }
 
-  if (!dashboard) return <>LOADING...</>;
+  if (!dashboard)
+    return (
+      <UKFlex
+        centerHorizontally
+        centerVertically
+        direction="row"
+        style={{ height: "100%" }}
+      >
+        <UKSpinner></UKSpinner>
+      </UKFlex>
+    );
 
   return (
     <div
@@ -102,135 +113,50 @@ const DashApplication: React.FC = () => {
           )}
         />
       </UKFlex>
-      {isWidgetEditMode ? (
-        <>
-          <UKCard
-            containerClassName={styles.editModeCardContainer}
-            className={styles.editModeCard}
-            actions={
-              <>
-                <UKSeparator direction={"column"} />
-                <UKFlex direction={"row"}>
-                  <UKButton
-                    text={"Cancel"}
-                    onClick={() => {
-                      setIsWidgetEditMode(false);
-                    }}
-                  />
-                  <UKButton
-                    text={"Submit"}
-                    onClick={() => {
-                      return 0;
-                    }}
-                  />
-                </UKFlex>
-              </>
-            }
-          >
-            <UKHeading text={"Content"} style={{ textAlign: "start" }} />
-            <UKSeparator direction={"column"} />
-            <UKFlex direction={"column"} className={styles.parameterContainer}>
-              <UKContainer>
-                <UKHeading
-                  className={styles.heading}
-                  style={{ textAlign: "start" }}
-                  text={"Header font size"}
-                  level={4}
-                />
-                <UKTextInput
-                  className={styles.input}
-                  getValue={() => {}}
-                  placeholder={"4rem"}
-                  accessibleName={"Header font size"}
-                />
-              </UKContainer>
-              <UKContainer>
-                <UKHeading
-                  className={styles.heading}
-                  style={{ textAlign: "start" }}
-                  text={"Header font family"}
-                  level={4}
-                />
-                <UKTextInput
-                  className={styles.input}
-                  getValue={() => {}}
-                  placeholder={"Inter"}
-                  accessibleName={"Header font family"}
-                />
-              </UKContainer>
-              <UKContainer>
-                <UKHeading
-                  className={styles.heading}
-                  style={{ textAlign: "start" }}
-                  text={"Header font weight"}
-                  level={4}
-                />
-                <UKTextInput
-                  className={styles.input}
-                  getValue={() => {}}
-                  placeholder={"900"}
-                  accessibleName={"Header font weight"}
-                />
-              </UKContainer>
-              <UKContainer>
-                <UKHeading
-                  className={styles.heading}
-                  style={{ textAlign: "start" }}
-                  text={"Header background opacity (%)"}
-                  level={4}
-                />
-                <UKTextInput
-                  className={styles.input}
-                  getValue={() => {}}
-                  placeholder={"0.75 (75%)"}
-                  accessibleName={"Header background opacity"}
-                />
-              </UKContainer>
-              <UKContainer>
-                <UKHeading
-                  className={styles.heading}
-                  style={{ textAlign: "start" }}
-                  text={"Header background blur (%)"}
-                  level={4}
-                />
-                <UKTextInput
-                  className={styles.input}
-                  getValue={() => {}}
-                  placeholder={"0.75 (75%)"}
-                  accessibleName={"Header background blur"}
-                />
-              </UKContainer>
-            </UKFlex>
-          </UKCard>
-        </>
-      ) : (
-        <UKFlex direction={"row"} className={styles.widgetsCarouselContainer}>
-          <UKCarousel
-            className={styles.carousel}
-            items={[
-              {
+      <UKFlex direction={"row"} className={styles.widgetsCarouselContainer}>
+        <UKCarousel
+          className={styles.carousel}
+          items={[
+            ...dashboard.content.pages.map((page) => {
+              return {
                 element: (
                   <div className={styles.widgetGrid}>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
-                    <UKCard>Item</UKCard>
+                    {page.items.map((item) => {
+                      if (!Object.keys(WIDGETS).includes(item.id))
+                        return <div>Couldn't find widget {item.id}</div>;
+
+                      // @ts-expect-error typescript doesn't understand that this must exist
+                      let Wid = WIDGETS[item.id];
+
+                      return (
+                        <div>
+                          <Wid data={item.data} />
+                        </div>
+                      );
+                    })}
+                    <Widget
+                      data={{
+                        icon: "/assets/productLogos/yourdash.svg",
+                        name: "Settings",
+                        url: "/app/a/uk.ewsgit.settings",
+                      }}
+                    />
+                    <Widget
+                      data={{
+                        icon: "/assets/productLogos/yourdash.svg",
+                        name: "Settings",
+                        url: "/app/a/uk.ewsgit.settings",
+                      }}
+                    />
                     <UKCard>Item</UKCard>
                   </div>
                 ),
-                id: "page1",
-              },
-            ]}
-          />
-        </UKFlex>
-      )}
+                id: page.id,
+              };
+            }),
+          ]}
+        />
+      </UKFlex>
     </div>
   );
 };

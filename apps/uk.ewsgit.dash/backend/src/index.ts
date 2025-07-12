@@ -5,6 +5,7 @@
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import { type Instance } from "@yourdash/backend/src/instance.js";
+import "./commands/widgets.js";
 
 export default class Application extends YourDashApplication {
   constructor(instance: Instance) {

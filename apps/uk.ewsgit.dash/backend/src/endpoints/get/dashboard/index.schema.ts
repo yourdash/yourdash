@@ -48,15 +48,21 @@ export const endpointSchema = createEndpoint(
       pages: z
         .object({
           id: z.string(),
-          data: z.any(),
-          dimensions: z.object({
-            width: z.number(),
-            height: z.number(),
-          }),
-          position: z.object({
-            x: z.number(),
-            y: z.number(),
-          }),
+          items: z
+            .object({
+              uuid: z.string(),
+              id: z.string(),
+              data: z.any(),
+              dimensions: z.object({
+                width: z.number(),
+                height: z.number(),
+              }),
+              position: z.object({
+                x: z.number(),
+                y: z.number(),
+              }),
+            })
+            .array(),
         })
         .array(),
     }),

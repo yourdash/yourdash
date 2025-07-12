@@ -338,7 +338,7 @@ class Filesystem {
       );
     }
 
-    this.instance.log.info("filesystem", "Verified filesystem structure!");
+    this.instance.log.success("filesystem", "Verified filesystem structure!");
 
     return;
   }
