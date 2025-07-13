@@ -6,17 +6,18 @@ export default class UsersCommand extends Command {
   flags = {};
   arguments = [
     { argumentId: "subcommand", allowedValues: ["list", "remove", "create"] },
+    { argumentId: "userIdOrUsername" },
   ];
   shortDescription = "Manage YourDash users";
 
   async run(parameters: ICommandRuntimeParameters) {
-    if (!parameters.arguments["subcommand"]) {
+    if (!parameters.arguments[0]) {
       this.instance.log.error("command_user", "Please provide a subcommand");
 
       return this.finishRun();
     }
 
-    switch (parameters.arguments["subcommand"]) {
+    switch (parameters.arguments[0]) {
       case "list":
         let query = await this.instance.database.query(
           "SELECT user_id, username, forename, surname FROM public.users ORDER BY user_id;",
@@ -100,10 +101,29 @@ export default class UsersCommand extends Command {
         };
 
         return this.continueRun();
+      case "remove":
+        if (isNaN(parseInt(parameters.arguments[1]))) {
+          let username = parameters.arguments[1];
+
+          await this.instance.userManager.removeUser(username);
+        } else {
+          let userId = Number(parameters.arguments[1]);
+
+          let username = (
+            await this.instance.database.query(
+              "SELECT username FROM public.users WHERE user_id = $1",
+              [userId],
+            )
+          ).rows[0].username as string;
+
+          await this.instance.userManager.removeUser(username);
+        }
+
+        return this.finishRun();
       default:
         this.instance.log.error(
           "command_users",
-          `Invalid subcommand '${parameters.arguments["subcommand"]}'. Allowed values: '${this.arguments.find((arg) => arg.argumentId === "subcommand")?.allowedValues.join("', '")}'`,
+          `Invalid subcommand '${parameters.arguments[0]}'. Allowed values: 'list', 'create', 'remove'`,
         );
         return this.finishRun();
     }

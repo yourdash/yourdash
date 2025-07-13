@@ -134,21 +134,6 @@ const DashApplication: React.FC = () => {
                         </div>
                       );
                     })}
-                    <Widget
-                      data={{
-                        icon: "/assets/productLogos/yourdash.svg",
-                        name: "Settings",
-                        url: "/app/a/uk.ewsgit.settings",
-                      }}
-                    />
-                    <Widget
-                      data={{
-                        icon: "/assets/productLogos/yourdash.svg",
-                        name: "Settings",
-                        url: "/app/a/uk.ewsgit.settings",
-                      }}
-                    />
-                    <UKCard>Item</UKCard>
                   </div>
                 ),
                 id: page.id,

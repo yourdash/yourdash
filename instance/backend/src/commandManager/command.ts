@@ -1,26 +1,20 @@
 import type { Instance } from "../instance";
 
 export type CommandFlags = { [key: string]: "string" | "boolean" };
-export type CommandArguments = {
-  argumentId: string;
-  allowedValues?: string[];
-}[];
 
 export interface ICommandParameters {
   flags: Command["flags"];
-  arguments: Command["arguments"];
 }
 
 export interface ICommandRuntimeParameters {
   flags: { [key: string]: string | boolean };
-  arguments: { [key: string]: string };
+  arguments: string[];
   rawArgv: string;
 }
 
 export default abstract class Command {
   instance: Instance;
   abstract flags: CommandFlags;
-  abstract arguments: CommandArguments;
   abstract commandId: string;
   shortDescription: string = "short description was undefined";
   makeDevModeOnly: boolean = false;

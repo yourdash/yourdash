@@ -6,13 +6,14 @@
 import { Instance } from "./instance.js";
 import { instance } from "./main.js";
 
-export enum EventTypes {
-  YourdashCreateUser = "yourdash:user_create",
-  YourdashDeleteUser = "yourdash:user_delete",
-  YourdashRenameUser = "yourdash:user_rename",
+export enum YourDashInstanceEvents {
+  CreateUser = "yourdash:user_create",
+  RemoveUser = "yourdash:user_remove",
+  RenameUser = "yourdash:user_rename",
+  VerifyUser = "yourdash:verify_user",
 }
 
-export type EventType = EventTypes & string;
+export type EventType = YourDashInstanceEvents & string;
 
 class EventHook {
   eventId: string;
@@ -50,6 +51,11 @@ class Events {
   constructor(instance: Instance) {
     this.instance = instance;
     this.__internal_events = {};
+
+    this.createEvent(YourDashInstanceEvents.CreateUser);
+    this.createEvent(YourDashInstanceEvents.RemoveUser);
+    this.createEvent(YourDashInstanceEvents.RenameUser);
+    this.createEvent(YourDashInstanceEvents.VerifyUser);
 
     return this;
   }

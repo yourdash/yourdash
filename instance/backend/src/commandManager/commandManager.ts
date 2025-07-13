@@ -69,8 +69,6 @@ export default class CommandManager {
           continue;
         }
 
-        let args: Record<string, string> = {};
-
         let command = self.commands.find((cmd) => cmd.commandId === cmdId);
 
         if (!command) {
@@ -92,16 +90,9 @@ export default class CommandManager {
           continue;
         }
 
-        for (const arg in Object.keys(command?.arguments || {})) {
-          if (!arg) continue;
-
-          // @ts-expect-error
-          args[command.arguments[arg].argumentId] = segments.shift();
-        }
-
         self.currentCommandInterface.active = true;
         await self.executeCommand(cmdId, {
-          arguments: args,
+          arguments: segments,
           flags: {},
           rawArgv: line.slice(cmdId.length + 1),
         });

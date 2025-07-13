@@ -1,8 +1,8 @@
 import type { Instance } from "../instance.ts";
 import User from "./user.ts";
-import { instance } from "@yourdash/backend";
 import { promises as fs } from "fs";
 import path from "path";
+import { YourDashInstanceEvents } from "../event.ts";
 
 export default class UserManager {
   instance: Instance;
@@ -24,26 +24,27 @@ export default class UserManager {
   }
 
   async createUser(username: string) {
-    instance.log.info("user", `Creating user ${username}`);
+    this.instance.log.info("user", `Creating user ${username}`);
     const user = new User(username);
 
-    const userPath = instance.filesystem.commonPaths.HomeDirectory(username);
+    const userPath =
+      this.instance.filesystem.commonPaths.HomeDirectory(username);
 
     try {
       await fs.mkdir(userPath, { recursive: true });
     } catch (e) {
-      instance.log.error(
+      this.instance.log.error(
         "user",
         `Unable to create user directory for ${username}!`,
       );
     }
 
-    await instance.database.query(
+    await this.instance.database.query(
       "INSERT INTO users (username, forename, surname, bio) VALUES ($1, $2, $3, $4)",
       [username, "New", "User", "Hello, I am using YourDash! 👋"],
     );
 
-    await instance.database.query(
+    await this.instance.database.query(
       "INSERT INTO panel_configuration (username) VALUES ($1)",
       [username],
     );
@@ -51,108 +52,109 @@ export default class UserManager {
     try {
       await this.repairUser(username);
     } catch (e) {
-      instance.log.error("user", `Failed to repair user ${username}!`);
+      this.instance.log.error("user", `Failed to repair user ${username}!`);
     }
 
     return user;
   }
 
   async repairUser(username: string) {
-    instance.log.info(
+    this.instance.log.info(
       "user",
-      `Repairing user ${instance.log.addEmphasisToString(username)}`,
+      `Repairing user ${this.instance.log.addEmphasisToString(username)}`,
     );
 
-    const userPath = instance.filesystem.commonPaths.HomeDirectory(username);
+    const userPath =
+      this.instance.filesystem.commonPaths.HomeDirectory(username);
 
-    if (!(await instance.filesystem.doesPathExist(userPath))) {
+    if (!(await this.instance.filesystem.doesPathExist(userPath))) {
       try {
         await fs.mkdir(userPath, { recursive: true });
       } catch (e) {
-        instance.log.error(
+        this.instance.log.error(
           `user`,
-          `Unable to create directory ${instance.log.addEmphasisToString(userPath)}`,
+          `Unable to create directory ${this.instance.log.addEmphasisToString(userPath)}`,
         );
       }
     }
 
     const userDocumentsPath =
-      instance.filesystem.commonPaths.UserDocumentsDirectory(username);
+      this.instance.filesystem.commonPaths.UserDocumentsDirectory(username);
 
-    if (!(await instance.filesystem.doesPathExist(userDocumentsPath))) {
+    if (!(await this.instance.filesystem.doesPathExist(userDocumentsPath))) {
       try {
         await fs.mkdir(userDocumentsPath, { recursive: true });
       } catch (e) {
-        instance.log.error(
+        this.instance.log.error(
           `user`,
-          `Unable to create directory ${instance.log.addEmphasisToString(userDocumentsPath)}`,
+          `Unable to create directory ${this.instance.log.addEmphasisToString(userDocumentsPath)}`,
         );
       }
     }
 
     const userDownloadsPath =
-      instance.filesystem.commonPaths.UserDownloadsDirectory(username);
+      this.instance.filesystem.commonPaths.UserDownloadsDirectory(username);
 
-    if (!(await instance.filesystem.doesPathExist(userDownloadsPath))) {
+    if (!(await this.instance.filesystem.doesPathExist(userDownloadsPath))) {
       try {
         await fs.mkdir(userDownloadsPath, { recursive: true });
       } catch (e) {
-        instance.log.error(
+        this.instance.log.error(
           `user`,
-          `Unable to create directory ${instance.log.addEmphasisToString(userDownloadsPath)}`,
+          `Unable to create directory ${this.instance.log.addEmphasisToString(userDownloadsPath)}`,
         );
       }
     }
 
     const userPicturesPath =
-      instance.filesystem.commonPaths.UserPicturesDirectory(username);
+      this.instance.filesystem.commonPaths.UserPicturesDirectory(username);
 
-    if (!(await instance.filesystem.doesPathExist(userPicturesPath))) {
+    if (!(await this.instance.filesystem.doesPathExist(userPicturesPath))) {
       try {
         await fs.mkdir(userPicturesPath, { recursive: true });
       } catch (e) {
-        instance.log.error(
+        this.instance.log.error(
           `user`,
-          `Unable to create directory ${instance.log.addEmphasisToString(userPicturesPath)}`,
+          `Unable to create directory ${this.instance.log.addEmphasisToString(userPicturesPath)}`,
         );
       }
     }
 
     const userVideosPath =
-      instance.filesystem.commonPaths.UserVideosDirectory(username);
+      this.instance.filesystem.commonPaths.UserVideosDirectory(username);
 
-    if (!(await instance.filesystem.doesPathExist(userVideosPath))) {
+    if (!(await this.instance.filesystem.doesPathExist(userVideosPath))) {
       try {
         await fs.mkdir(userVideosPath, { recursive: true });
       } catch (e) {
-        instance.log.error(
+        this.instance.log.error(
           `user`,
-          `Unable to create directory ${instance.log.addEmphasisToString(userVideosPath)}`,
+          `Unable to create directory ${this.instance.log.addEmphasisToString(userVideosPath)}`,
         );
       }
     }
 
     const userSystemPath =
-      instance.filesystem.commonPaths.UserSystemDirectory(username);
+      this.instance.filesystem.commonPaths.UserSystemDirectory(username);
 
-    if (!(await instance.filesystem.doesPathExist(userSystemPath))) {
+    if (!(await this.instance.filesystem.doesPathExist(userSystemPath))) {
       try {
         await fs.mkdir(userSystemPath, { recursive: true });
       } catch (e) {
-        instance.log.error(
+        this.instance.log.error(
           `user`,
-          `Unable to create directory ${instance.log.addEmphasisToString(userSystemPath)}`,
+          `Unable to create directory ${this.instance.log.addEmphasisToString(userSystemPath)}`,
         );
       }
     }
 
     const userAvatarPath = path.join(userSystemPath, `avatar.png`);
 
-    if (!(await instance.filesystem.doesPathExist(userAvatarPath))) {
+    if (!(await this.instance.filesystem.doesPathExist(userAvatarPath))) {
       try {
         await fs.cp(
           path.join(
-            instance.filesystem.commonPaths.DefaultsDirectory(),
+            this.instance.filesystem.commonPaths.DefaultsDirectory(),
             "userAvatar.png",
           ),
           userAvatarPath,
@@ -161,19 +163,42 @@ export default class UserManager {
         try {
           await user.__internal_generateAvatars();
         } catch (e) {
-          instance.log.error(
+          this.instance.log.error(
             `user`,
-            `Failed to generate user avatars for ${instance.log.addEmphasisToString(username)}`,
+            `Failed to generate user avatars for ${this.instance.log.addEmphasisToString(username)}`,
           );
         }
       } catch (e) {
-        instance.log.error(
+        this.instance.log.error(
           `user`,
-          `Unable to copy default user avatar ${path.join(instance.filesystem.commonPaths.DefaultsDirectory(), "userAvatar.png")} to ${userAvatarPath}`,
+          `Unable to copy default user avatar ${path.join(this.instance.filesystem.commonPaths.DefaultsDirectory(), "userAvatar.png")} to ${userAvatarPath}`,
         );
       }
     }
 
-    instance.events.triggerEvent("yourdash_user_repair", username);
+    this.instance.events.triggerEvent(
+      YourDashInstanceEvents.VerifyUser,
+      username,
+    );
+  }
+
+  async removeUser(username: string) {
+    let userHomeDirectory =
+      this.instance.filesystem.commonPaths.HomeDirectory(username);
+
+    await fs.rm(userHomeDirectory, { recursive: true, force: true });
+
+    await this.instance.database.query(
+      "DELETE FROM public.users WHERE username = $1",
+      [username],
+    );
+
+    await this.instance.database.query(
+      "DELETE FROM public.panel_configuration WHERE username = $1",
+      [username],
+    );
+
+    this.instance.events.triggerEvent("yourdash_user_remove", username);
+    return this;
   }
 }

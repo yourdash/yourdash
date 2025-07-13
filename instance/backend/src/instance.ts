@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 import pg from "pg";
 import Applications from "./applications.js";
 import Authorization from "./authorization.js";
-import Events from "./event.js";
+import Events, { YourDashInstanceEvents } from "./event.js";
 import Filesystem from "./filesystem.js";
 import { resizeImage } from "./image.js";
 import Log from "./log.js";
@@ -309,7 +309,6 @@ class Instance {
     }
 
     this.events = new Events(this);
-    this.events.createEvent("yourdash_user_repair");
     this.userManager = new UserManager(this);
     this.authorization = new Authorization(this);
     this.resourceManager = new ResourceManager(this);

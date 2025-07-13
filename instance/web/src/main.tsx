@@ -18,12 +18,12 @@ import SignupPage from "./root/login/signup/index.tsx";
 import LoginSuccessPage from "./root/login/success/index.tsx";
 import NotFoundPage from "./root/notFound/notFound.tsx";
 import LoginIndexPage from "@yourdash/web/src/root/login";
-
-// @ts-ignore
-import AppRouter from "virtual:application-router/file"
 import { tun } from "@yourdash/tunnel";
 import { INSTANCE_BACKEND_URL } from "./lib/backendUrl.ts";
 import { UIKitRoot, UKHeading } from "@yourdash/uikit";
+
+// @ts-ignore
+import AppRouter from "virtual:application-router/file";
 
 tun.setBaseURL(INSTANCE_BACKEND_URL);
 
@@ -41,48 +41,32 @@ element.appendChild(loadingElement);
 
 const root = ReactDOM.createRoot(element);
 
-
 root.render(
   <UIKitRoot>
     <BrowserRouter>
       <Routes>
         <Route errorElement={<ErrorElement />}>
-          <Route index element={<LoginIndexPagePreload/>}/>
+          <Route index element={<LoginIndexPagePreload />} />
           <Route path={"login"}>
-            <Route index element={<LoginIndexPage/>}/>
-          <Route
-              path={"success"}
-              element={<LoginSuccessPage />}
-            />
+            <Route index element={<LoginIndexPage />} />
+            <Route path={"success"} element={<LoginSuccessPage />} />
           </Route>
-            <Route element={<Navigation subtitle={"Instance"} />}>
-              <Route
-                path={"signup"}
-                element={<SignupPage />}
-              />
-            </Route>
-            <Route
-              path={"signup"}
-              element={<UKHeading text={"TODO: implement me"}></UKHeading>}
-            />
+          <Route element={<Navigation subtitle={"Instance"} />}>
+            <Route path={"signup"} element={<SignupPage />} />
+          </Route>
+          <Route
+            path={"signup"}
+            element={<UKHeading text={"TODO: implement me"}></UKHeading>}
+          />
           <Route path={"app"}>
-            <Route
-              index
-              element={<ApplicationRedirectToDash />}
-            />
-            <Route
-              element={<AppLayout />}
-              path={"a"}
-            >
-              <Route
-                index
-                element={<ApplicationRedirectToDash />}
-              />
+            <Route index element={<ApplicationRedirectToDash />} />
+            <Route element={<AppLayout />} path={"a"}>
+              <Route index element={<ApplicationRedirectToDash />} />
               {/* @ts-ignore */}
               {...AppRouter}
             </Route>
           </Route>
-          <Route path={"*"} element={<NotFoundPage/>}/>
+          <Route path={"*"} element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

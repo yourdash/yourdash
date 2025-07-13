@@ -10,7 +10,10 @@ import ApplicationPanelContext from "@yourdash/web/src/lib/panelContext.ts";
 import IndexPage from "./root/index/Index.tsx";
 import HomePage from "./root/home/Home.tsx";
 
-const DashRouter: React.FC = () => {
+// @ts-ignore
+import ApplicationsRouter from "virtual:uk.ewsgit.settings/external-applications/file";
+
+const SettingsRouter: React.FC = () => {
   const applicationPanelContext = React.useContext(ApplicationPanelContext);
 
   useEffect(() => {
@@ -25,8 +28,12 @@ const DashRouter: React.FC = () => {
     <Routes>
       <Route index element={<IndexPage />} />
       <Route path={"home"} element={<HomePage />} />
+      <Route path={"apps"}>
+        {/*@ts-ignore*/}
+        {...ApplicationsRouter}
+      </Route>
     </Routes>
   );
 };
 
-export default DashRouter;
+export default SettingsRouter;

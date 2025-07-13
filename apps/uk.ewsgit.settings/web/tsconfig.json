@@ -19,7 +19,9 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "../backend/src",
+    "../hooks/**/web"
   ],
   "references": [
     {
