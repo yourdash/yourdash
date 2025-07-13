@@ -125,7 +125,11 @@ for (const app of fs.readdirSync(appsDirectoryPath)) {
 
   if (!fs.existsSync(pluginPath)) continue;
 
-  plugins.push(...(await import(pluginPath)).default);
+  let hooks = (await import(pluginPath)).default;
+
+  console.log(`Loading ${hooks.length} hooks from '${app}'`);
+
+  plugins.push(...hooks);
 }
 
 // ViteJS docs: https://vitejs.dev/config/

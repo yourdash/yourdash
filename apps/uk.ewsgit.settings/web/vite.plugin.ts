@@ -49,12 +49,10 @@ export default ApplicationsRouter;
               );
               try {
                 // Check if it's a directory and potentially if the web/src/index.tsx exists
-                return fs.statSync(entryPath).isDirectory();
+                return fs
+                  .statSync(entryPath, { throwIfNoEntry: false })
+                  .isDirectory();
               } catch (statError) {
-                console.warn(
-                  `[applicationRouter] Could not stat entry: ${entryPath}`,
-                  statError,
-                );
                 return false;
               }
             });
