@@ -3,16 +3,14 @@ import { UKContainer, UKHeading, UKLayout, UKSeparator } from "@yourdash/uikit";
 import UserHeader from "./components/UserHeader/UserHeader.tsx";
 import styles from "./Index.module.scss";
 import QuickActions from "./components/QuickActions/QuickActions.tsx";
-import BooleanSetting from "../components/BooleanSetting/BooleanSetting.tsx";
-import BaseSetting from "../components/BaseSetting/BaseSetting.tsx";
 import { tun } from "@yourdash/tunnel";
-import Sidebar from "../components/Sidebar/Sidebar.tsx";
+import { endpointSchema as SettingsOverviewSchema } from "../../../../backend/src/endpoints/get/settings/overview/page/:pageId/index.schema.ts";
 
 const IndexPage: React.FC = () => {
-  const val = tun.get("/uk-ewsgit-settings/settings/overview/page/1");
+  const val = tun.send(SettingsOverviewSchema);
 
   return (
-    <UKLayout primarySidebar={<Sidebar />}>
+    <>
       <UserHeader />
       <QuickActions />
       <UKSeparator direction={"column"} />
@@ -21,7 +19,7 @@ const IndexPage: React.FC = () => {
           <UKHeading text={"Overview"} />
           <UKSeparator direction={"column"} />
         </div>
-        <BooleanSetting
+        {/*        <BooleanSetting
           title={"Boolean Setting"}
           settingId={"boolean.setting.id"}
           description={"Boolean Setting Description"}
@@ -37,9 +35,9 @@ const IndexPage: React.FC = () => {
           isDefaultValue={true}
         >
           Base Setting Children
-        </BaseSetting>
+        </BaseSetting>*/}
       </UKContainer>
-    </UKLayout>
+    </>
   );
 };
 

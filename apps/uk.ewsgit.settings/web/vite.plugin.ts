@@ -30,7 +30,9 @@ import loadable from "@loadable/component";
 
 /* loadable_components_placeholder */
 const ApplicationsRouter = [/* route_elements_placeholder */]
+const applicationIds = [/* application_ids_placeholder */]
 
+export { applicationIds };
 export default ApplicationsRouter;
 `;
           let loadableRegionReplacement = "";
@@ -66,11 +68,15 @@ export default ApplicationsRouter;
               code: fileTemplate
                 .replace(
                   "/* loadable_components_placeholder */",
-                  "// Error reading apps directory",
+                  "/* Error reading apps directory */",
                 )
                 .replace(
                   "/* route_elements_placeholder */",
                   "/* Error reading apps directory */",
+                )
+                .replace(
+                  "/* application_ids_placeholder */",
+                  `/* Error reading apps directory */`,
                 ),
               map: null,
             };
@@ -87,7 +93,7 @@ export default ApplicationsRouter;
               .replaceAll(path.sep, path.posix.sep);
 
             loadableRegionReplacement += `const Application${i} = loadable(() => import(/* webpackChunkName: "${appName}" */ "${appImportPath}"), {
-            fallback: <div>Loading ${appName}...</div>
+            fallback: <div>Loading settings for ${appName}...</div>
           });`;
 
             routeRegionReplacement += `<Route key="${appName}" path="${appName}/*" element={<Application${i} />} />,`;
@@ -95,11 +101,15 @@ export default ApplicationsRouter;
 
           fileTemplate = fileTemplate.replace(
             "/* loadable_components_placeholder */",
-            loadableRegionReplacement,
+            loadableRegionReplacement.trim(),
           );
           fileTemplate = fileTemplate.replace(
             "/* route_elements_placeholder */",
-            routeRegionReplacement.trimEnd(),
+            routeRegionReplacement.trim(),
+          );
+          fileTemplate = fileTemplate.replace(
+            "/* application_ids_placeholder */",
+            `"${allApps.join('",')}"`,
           );
 
           return { code: fileTemplate, map: null, moduleType: "tsx" };

@@ -5,13 +5,13 @@
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import { InstanceStatus } from "@yourdash/backend/src/types/instanceStatus.js";
-import User, { getUser } from "@yourdash/backend/src/user.js";
 import * as Bun from "bun";
 import path from "path";
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
 import { FastifyRequest } from "fastify";
 import { Instance } from "@yourdash/backend/src/instance.js";
+import User from "@yourdash/backend/src/userManager/user.js";
 
 export const MIMICKED_NEXTCLOUD_VERSION = {
   major: 28,
@@ -64,7 +64,7 @@ export default class Application extends YourDashApplication {
   public async onLoad(): Promise<this> {
     await super.onLoad();
 
-    this.instance.request.get(
+    this.instance.requestManager.app.get(
       "/uk-ewsgit-nextcloud/hello-world",
       {
         schema: {
@@ -80,7 +80,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    this.instance.request.get(
+    this.instance.requestManager.app.get(
       "/uk-ewsgit-nextcloud/",
       { schema: { response: { 200: z.undefined() } } },
       async (req, res) => {
@@ -91,7 +91,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    this.instance.request.get(
+    this.instance.requestManager.app.get(
       "/uk-ewsgit-nextcloud/status.php",
       {
         schema: {
@@ -137,7 +137,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    this.instance.request.get(
+    this.instance.requestManager.app.get(
       "/uk-ewsgit-nextcloud/ocs/v2.php/cloud/capabilities",
       {
         schema: {
@@ -246,7 +246,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    this.instance.request.get(
+    this.instance.requestManager.app.get(
       "/uk-ewsgit-nextcloud/ocs/v1.php/cloud/capabilities",
       {
         schema: {
@@ -369,7 +369,7 @@ export default class Application extends YourDashApplication {
       };
     } = {};
 
-    this.instance.request.post(
+    this.instance.requestManager.app.post(
       "/uk-ewsgit-nextcloud/index.php/login/v2",
       {
         schema: {
@@ -408,7 +408,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    this.instance.request.post(
+    this.instance.requestManager.app.post(
       "/uk-ewsgit-nextcloud/index.php/login/v2/poll",
       {
         schema: {
@@ -456,7 +456,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    this.instance.request.post(
+    this.instance.requestManager.app.post(
       "/uk-ewsgit-nextcloud/login/nextcloud/flow/v2/authenticate",
       {
         schema: {
@@ -590,10 +590,10 @@ export default class Application extends YourDashApplication {
         return;
       }
 
-      return await getUser(dbQuery.rows[0].username);
+      return await self.instance.userManager.getUser(dbQuery.rows[0].username);
     }
 
-    this.instance.request.get(
+    this.instance.requestManager.app.get(
       "/uk-ewsgit-nextcloud/ocs/v1.php/cloud/user",
       {
         schema: {
@@ -745,7 +745,7 @@ export default class Application extends YourDashApplication {
       },
     );
 
-    this.instance.request.get(
+    this.instance.requestManager.app.get(
       "/uk-ewsgit-nextcloud/remote.php/dav/avatars/:username/*",
       {
         schema: { response: { 200: z.unknown() } },
@@ -790,7 +790,7 @@ export default class Application extends YourDashApplication {
      }); */
 
     // https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/basic.html
-    this.instance.request.propfind(
+    this.instance.requestManager.app.propfind(
       "/uk-ewsgit-nextcloud/remote.php/dav/files/:username/*",
       {
         schema: {
@@ -892,7 +892,7 @@ ${response.map((res) => {
       },
     );
 
-    this.instance.request.get(
+    this.instance.requestManager.app.get(
       "/uk-ewsgit-nextcloud/remote.php/dav/avatars/:username/:size.png",
       {
         schema: { response: { 200: z.unknown() } },

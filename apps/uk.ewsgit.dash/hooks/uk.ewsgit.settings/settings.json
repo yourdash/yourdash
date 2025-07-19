@@ -1,3 +1,51 @@
-{
-  "move this to a ts file": true
-}
+[
+  {
+    "id": "uk.ewsgit.dash.header.title",
+    "title": "Header title",
+    "description": "The welcome message used in the dashboard's header, the values {forename}, {surname} & {username} will be replaced with their respective values.",
+    "type": "string",
+    "defaultValue": "Hiya, {forename}"
+  },
+  {
+    "id": "uk.ewsgit.dash.header.background.blur",
+    "title": "Header background blur",
+    "description": "The welcome message used in the dashboard's header, the values {forename}, {surname} & {username} will be replaced with their respective values.",
+    "type": "number",
+    "defaultValue": 1,
+    "metadata": {
+      "min": 0,
+      "max": 4
+    }
+  },
+  {
+    "id": "uk.ewsgit.dash.header.background.color",
+    "title": "Header background color",
+    "description": "The welcome message used in the dashboard's header, the values {forename}, {surname} & {username} will be replaced with their respective values.",
+    "type": "color",
+    "defaultValue": "#ff0000",
+    "metadata": {
+      "outputFormat": "rgb"
+    }
+  },
+  {
+    "id": "uk.ewsgit.dash.header.background.opacity",
+    "title": "Header background opacity",
+    "description": "The welcome message used in the dashboard's header, the values {forename}, {surname} & {username} will be replaced with their respective values.",
+    "type": "number",
+    "defaultValue": 80,
+    "metadata": {
+      "min": 0,
+      "max": 100
+    }
+  },
+  {
+    "id": "uk.ewsgit.dash.header.position",
+    "title": "Header position",
+    "description": "The welcome message used in the dashboard's header, the values {forename}, {surname} & {username} will be replaced with their respective values.",
+    "type": "multipleChoice",
+    "defaultValue": "floating",
+    "metadata": {
+      "choices": ["floating", "attached"]
+    }
+  }
+]
