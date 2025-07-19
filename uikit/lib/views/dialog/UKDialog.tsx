@@ -14,9 +14,23 @@ const UKDialog: React.FC<{
   headerClassName?: string;
   actions?: React.ReactNode | React.ReactNode[];
   header?: React.ReactNode | React.ReactNode[];
-}> = ({ children, className, actionsClassName, headerClassName, actions, header }) => {
+  onClose: () => void;
+}> = ({
+  children,
+  className,
+  actionsClassName,
+  headerClassName,
+  actions,
+  header,
+  onClose,
+}) => {
   return (
-    <div className={styles.background}>
+    <div
+      className={styles.background}
+      onClick={() => {
+        onClose();
+      }}
+    >
       <UKCard
         containerClassName={styles.view}
         actionsClassName={actionsClassName}

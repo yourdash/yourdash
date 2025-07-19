@@ -31,12 +31,31 @@ const UKCard: FC<{
         <IncrementLevel>
           <button
             style={props.style}
-            className={clippy(styles.component, useLevelClass(level), props.containerClassName, styles.clickable)}
-            onClick={props.onClick}
+            className={clippy(
+              styles.component,
+              useLevelClass(level),
+              props.containerClassName,
+              styles.clickable,
+            )}
+            onClick={(e) => {
+              e.stopPropagation();
+
+              props.onClick?.();
+            }}
           >
-            {props.header && <UKBox className={clippy(styles.header, props.headerClassName)}>{props.header}</UKBox>}
-            <div className={clippy(styles.content, props.className)}>{props.children}</div>
-            {props.actions && <UKBox className={clippy(styles.actions, props.actionsClassName)}>{props.actions}</UKBox>}
+            {props.header && (
+              <UKBox className={clippy(styles.header, props.headerClassName)}>
+                {props.header}
+              </UKBox>
+            )}
+            <div className={clippy(styles.content, props.className)}>
+              {props.children}
+            </div>
+            {props.actions && (
+              <UKBox className={clippy(styles.actions, props.actionsClassName)}>
+                {props.actions}
+              </UKBox>
+            )}
           </button>
         </IncrementLevel>
       </>
@@ -48,12 +67,31 @@ const UKCard: FC<{
       <IncrementLevel>
         <div
           style={props.style}
-          className={clippy(styles.component, useLevelClass(level), props.containerClassName)}
+          className={clippy(
+            styles.component,
+            useLevelClass(level),
+            props.containerClassName,
+          )}
+          onClick={(e) => {
+            e.stopPropagation();
+
+            props.onClick?.();
+          }}
         >
-          {props.header && <UKBox className={clippy(styles.header, props.headerClassName)}>{props.header}</UKBox>}
-          <div className={clippy(styles.content, props.className)}>{props.children}</div>
+          {props.header && (
+            <UKBox className={clippy(styles.header, props.headerClassName)}>
+              {props.header}
+            </UKBox>
+          )}
+          <div className={clippy(styles.content, props.className)}>
+            {props.children}
+          </div>
           <DecrementLevel>
-            {props.actions && <UKBox className={clippy(styles.actions, props.actionsClassName)}>{props.actions}</UKBox>}
+            {props.actions && (
+              <UKBox className={clippy(styles.actions, props.actionsClassName)}>
+                {props.actions}
+              </UKBox>
+            )}
           </DecrementLevel>
         </div>
       </IncrementLevel>
