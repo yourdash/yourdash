@@ -9,7 +9,7 @@
     "node": ">=21.0.0"
   },
   "scripts": {
-    "dev": "vite --host",
+    "dev": "bun run --bun vite --host",
     "build": "yarn exec vite build",
     "preview": "bun run --bun vite preview",
     "visualize-bundle": "bun run --bun vite-bundle-visualizer"
