@@ -3,9 +3,8 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
-import z, { ZodObject, ZodString } from "zod";
 import type { YourDashEndpoint, YourDashEndpointMethods } from "./endpoint";
-import { ZodType } from "zod";
+import { z, ZodType, ZodTypeDef, ZodUndefined } from "zod";
 
 export type TunnelResponseType = "text" | "json" | "uint8" | "bytes";
 
@@ -66,16 +65,23 @@ async function performLegacyFetch<ResponseDataType>(
   }
 }
 async function performFetch<
-  Endpoint extends YourDashEndpoint<YourDashEndpointMethods, ZodType, ZodType>,
+  Endpoint extends YourDashEndpoint<
+    YourDashEndpointMethods,
+    ZodType,
+    ZodType,
+    string[]
+  >,
 >(
   basePath: string,
   endpoint: Endpoint,
   extras: {
-    body?: Endpoint["requestBody"];
+    // @ts-ignore
+    body?: z.infer<Endpoint["requestBody"]>;
     queryParameters?: Endpoint["requestQueryString"] extends undefined
       ? undefined
       : Record<keyof Endpoint["requestQueryString"], string>;
     noCache?: boolean;
+    params?: { [param in keyof Endpoint["requestParams"]]: string };
   },
 ): Promise<{
   data: Endpoint["response"]["_output"];
@@ -100,7 +106,15 @@ async function performFetch<
 
   if (queryParameters === "?") queryParameters = "";
 
-  let fet = await fetch(basePath + endpoint.path + queryParameters, {
+  let endpointPath = endpoint.path;
+
+  if (extras.params)
+    for (const param of Object.keys(extras.params)) {
+      // @ts-ignore
+      endpointPath.replace(`{${param}}`, extras.params[param]);
+    }
+
+  let fet = await fetch(basePath + endpointPath + queryParameters, {
     method: endpoint.method,
     body: body !== "" ? JSON.stringify(body) : undefined,
     credentials: "include",
@@ -139,6 +153,10 @@ async function performFetch<
   } as const;
 }
 
+type ArrayElement<T extends readonly any[]> = T extends readonly (infer U)[]
+  ? U
+  : never;
+
 class Tunnel {
   baseURL: string;
 
@@ -155,30 +173,25 @@ class Tunnel {
   }
 
   async send<
-    Endpoint extends YourDashEndpoint<
-      YourDashEndpointMethods,
-      ZodType,
-      ZodType
+    EP extends YourDashEndpoint<
+      any,
+      ZodType<any, ZodTypeDef, any>,
+      ZodType<any, ZodTypeDef, any> | undefined,
+      string[]
     >,
   >(
-    endpoint: Endpoint,
+    endpoint: EP,
     extras?: {
-      body?: Endpoint["requestBody"] extends undefined
-        ? undefined
-        : Endpoint["requestBody"];
-      queryParameters?: Endpoint["requestQueryString"] extends undefined
-        ? undefined
-        : Record<keyof Endpoint["requestQueryString"], string>;
+      body?: z.infer<EP["requestBody"] | ZodUndefined> | undefined;
+      queryParameters?: EP["requestQueryString"] extends readonly any[]
+        ? Record<ArrayElement<EP["requestQueryString"]>, string>
+        : undefined;
       noCache?: boolean;
     },
   ) {
-    let fet = await performFetch<Endpoint>(
-      this.baseURL,
-      endpoint,
-      extras || {},
-    );
-
-    return fet;
+    // @ts-ignore
+    const result = await performFetch<EP>(this.baseURL, endpoint, extras || {});
+    return result;
   }
 
   async get<S extends ZodType>(

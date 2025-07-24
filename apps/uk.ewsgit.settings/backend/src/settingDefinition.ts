@@ -1,27 +1,11 @@
+import * as JSON from "ts-typed-json";
+
 export default interface SettingDefinition {
   id: string;
   title: string;
   description: string;
   type: string;
-  defaultValue:
-    | string
-    | number
-    | string[]
-    | number[]
-    | object
-    | object[]
-    | boolean
-    | boolean[];
+  defaultValue: JSON.Value;
   disabled?: boolean;
-  metadata: {
-    [key: string]:
-      | string
-      | number
-      | string[]
-      | number[]
-      | object
-      | object[]
-      | boolean
-      | boolean[];
-  };
+  metadata?: JSON.Object;
 }

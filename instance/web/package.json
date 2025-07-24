@@ -45,6 +45,7 @@
     "react-router-dom": "^7.5.0",
     "sass": "^1.85.1",
     "tailwindcss": "^3.3.3",
+    "ts-typed-json": "^0.3.2",
     "typescript": "^5.7.3",
     "vite": "^6.2.0",
     "vite-plugin-dynamic-import": "^1.5.0",

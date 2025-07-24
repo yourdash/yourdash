@@ -1,15 +1,13 @@
 import React from "react";
 import BaseSetting from "../BaseSetting/BaseSetting";
-import { UKButton, UKHeading, UKText } from "@yourdash/uikit";
-import { tun, useResource } from "@yourdash/tunnel";
+import { UKButton, UKHeading, UKText, UKTextInput } from "@yourdash/uikit";
+import { tun } from "@yourdash/tunnel";
 import { endpointSchema as SetSettingEndpointSchema } from "../../../../../backend/src/endpoints/post/setting/index.schema.ts";
 import SettingComponent from "../../../SettingComponent.ts";
-import { endpointSchema as getSettingEndpointSchema } from "../../../../../backend/src/endpoints/get/setting/index.schema.ts";
 
-const BooleanSetting: SettingComponent = ({ definition }) => {
-  const data = useResource(() => tun.send(getSettingEndpointSchema));
-  const [val, setVal] = React.useState<boolean>(
-    definition.defaultValue as boolean,
+const StringSetting: SettingComponent = ({ definition }) => {
+  const [val, setVal] = React.useState<string>(
+    definition.defaultValue as string,
   );
 
   return (
@@ -18,7 +16,7 @@ const BooleanSetting: SettingComponent = ({ definition }) => {
       description={definition.description}
       settingId={definition.id}
       isDefaultValue={val === definition.defaultValue}
-      setDefaultValue={() => setVal(definition.defaultValue as boolean)}
+      setDefaultValue={() => setVal(definition.defaultValue as string)}
       about={
         <>
           <UKHeading level={4} text={"Default value"} />
@@ -28,11 +26,11 @@ const BooleanSetting: SettingComponent = ({ definition }) => {
         </>
       }
     >
-      <UKButton
-        disabled={definition.disabled || false}
-        text={`${val}`}
-        onClick={async () => {
-          let newVal = !val;
+      <UKTextInput
+        value={`${val}`}
+        accessibleName={definition.title}
+        placeholder={definition.defaultValue as string}
+        onSubmit={async (newVal) => {
           setVal(newVal);
 
           await tun.send(SetSettingEndpointSchema, {
@@ -44,4 +42,4 @@ const BooleanSetting: SettingComponent = ({ definition }) => {
   );
 };
 
-export default BooleanSetting;
+export default StringSetting;

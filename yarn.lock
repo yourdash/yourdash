@@ -2641,10 +2641,12 @@ __metadata:
     glob: "npm:^11.0.1"
     npm-run-all: "npm:^4.1.5"
     react: "npm:^19.0.0"
+    react-colorful: "npm:^5.6.1"
     react-dom: "npm:^19.0.0"
     react-router: "npm:^7.5.0"
     react-router-dom: "npm:^7.5.0"
     sass-embedded: "npm:^1.86.0"
+    ts-typed-json: "npm:^0.3.2"
     vite: "npm:^6.2.0"
     vite-plugin-dynamic-import: "npm:^1.6.0"
     vite-plugin-lib-inject-css: "npm:^2.2.1"
@@ -2837,6 +2839,7 @@ __metadata:
     react-router-dom: "npm:^7.5.0"
     sass: "npm:^1.85.1"
     tailwindcss: "npm:^3.3.3"
+    ts-typed-json: "npm:^0.3.2"
     typescript: "npm:^5.7.3"
     vite: "npm:^6.2.0"
     vite-plugin-dynamic-import: "npm:^1.5.0"
@@ -7066,6 +7069,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-colorful@npm:^5.6.1":
+  version: 5.6.1
+  resolution: "react-colorful@npm:5.6.1"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 10c0/48eb73cf71e10841c2a61b6b06ab81da9fffa9876134c239bfdebcf348ce2a47e56b146338e35dfb03512c85966bfc9a53844fc56bc50154e71f8daee59ff6f0
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^19.0.0":
   version: 19.1.0
   resolution: "react-dom@npm:19.1.0"
@@ -8487,6 +8500,13 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 10c0/5f29938489f96982a25ba650b64218e83a3357d76f7bede80195c65ab44ad279c8357264639b7abdd5d7e75fc269a83daa0e9c62fd8637a3def67254ecc9ddc2
+  languageName: node
+  linkType: hard
+
+"ts-typed-json@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "ts-typed-json@npm:0.3.2"
+  checksum: 10c0/6c47e9f45b0a9e20fced5e4c8ad1548b9727b8114f5dfbaadc25822a1f96dd219a4e58ca8270a6f20abb519d9b1b9ea344601a4c5fe9459650b96d0201ddabe7
   languageName: node
   linkType: hard
 

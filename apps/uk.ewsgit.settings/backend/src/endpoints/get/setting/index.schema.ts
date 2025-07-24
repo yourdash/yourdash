@@ -2,7 +2,7 @@ import { createEndpoint } from "@yourdash/tunnel";
 import z from "zod";
 
 export const endpointSchema = createEndpoint(
-  "/uk.ewsgit.settings/setting/:id",
+  "/uk.ewsgit.settings/setting/{id}",
   "GET",
   z
     .object({
@@ -13,4 +13,7 @@ export const endpointSchema = createEndpoint(
       settingType: z.string(),
     })
     .array(),
+  {
+    requestParams: ["id"],
+  },
 );

@@ -15,8 +15,7 @@
     "resolveJsonModule": true,
     "experimentalDecorators": true,
     "rootDir": "../../../../..",
-    "strict": true,
-
+    "strict": true
   },
   "include": [
     "src"

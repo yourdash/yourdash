@@ -9,19 +9,22 @@ export type YourDashEndpointMethodsWithBody = "POST" | "PUT" | "DELETE";
 export type YourDashEndpoint<
   Method extends YourDashEndpointMethods,
   ResponseType extends ZodType,
-  RequestBodyType extends ZodType,
+  RequestBodyType extends ZodType | undefined,
+  RequestParams extends string[],
 > = {
   path: string;
   method: Method;
   requestBody?: RequestBodyType;
   requestQueryString?: string[];
+  requestParams?: RequestParams;
   response: ResponseType;
 };
 
 export function createEndpoint<
   Method extends YourDashEndpointMethods,
   ResponseType extends ZodType,
-  RequestBodyType extends ZodType,
+  RequestBodyType extends ZodType | undefined = undefined,
+  RequestParams extends string[] = [],
 >(
   path: string,
   method: Method,
@@ -29,8 +32,9 @@ export function createEndpoint<
   extra?: {
     requestBody?: RequestBodyType;
     requestQueryString?: string[];
+    requestParams?: RequestParams;
   },
-): YourDashEndpoint<Method, ResponseType, RequestBodyType> {
+): YourDashEndpoint<Method, ResponseType, RequestBodyType, RequestParams> {
   return {
     path: path,
     method: method,
