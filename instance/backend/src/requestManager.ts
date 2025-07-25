@@ -82,9 +82,18 @@ class RequestManager {
   }
 
   createEndpoint(
-    endpoint: YourDashEndpoint<YourDashEndpointMethods, ZodType, ZodType>,
+    endpoint: YourDashEndpoint<
+      YourDashEndpointMethods,
+      ZodType,
+      ZodType,
+      string[]
+    >,
     handler: RouteHandlerMethod,
   ) {
+    let path = "";
+
+    path = endpoint.path;
+
     switch (endpoint.method) {
       case "GET":
         this.app.get(
