@@ -14,6 +14,6 @@ export const endpointSchema = createEndpoint(
     })
     .array(),
   {
-    requestParams: ["id"],
+    requestParams: ["id"] as const,
   },
 );

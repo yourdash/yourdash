@@ -1,4 +1,4 @@
-import { ZodType } from "zod";
+import { ZodType, ZodUndefined } from "zod";
 
 export type YourDashEndpointMethods =
   | YourDashEndpointMethodsWithoutBody
@@ -14,7 +14,7 @@ export type YourDashEndpoint<
 > = {
   path: string;
   method: Method;
-  requestBody?: RequestBodyType;
+  requestBody: RequestBodyType;
   requestQueryString?: string[];
   requestParams?: RequestParams;
   response: ResponseType;
@@ -23,23 +23,24 @@ export type YourDashEndpoint<
 export function createEndpoint<
   Method extends YourDashEndpointMethods,
   ResponseType extends ZodType,
-  RequestBodyType extends ZodType | undefined = undefined,
+  RequestBodyType extends ZodType = ZodUndefined,
   RequestParams extends string[] = [],
 >(
   path: string,
   method: Method,
   response: ResponseType,
-  extra?: {
+  extra: {
     requestBody?: RequestBodyType;
     requestQueryString?: string[];
     requestParams?: RequestParams;
-  },
+  } = {},
 ): YourDashEndpoint<Method, ResponseType, RequestBodyType, RequestParams> {
   return {
     path: path,
     method: method,
-    requestBody: extra?.requestBody,
-    requestQueryString: extra?.requestQueryString,
+    requestBody: extra.requestBody as RequestBodyType,
+    requestQueryString: extra.requestQueryString,
     response: response,
+    requestParams: extra.requestParams,
   };
 }

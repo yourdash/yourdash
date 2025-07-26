@@ -81,7 +81,7 @@ async function performFetch<
       ? undefined
       : Record<keyof Endpoint["requestQueryString"], string>;
     noCache?: boolean;
-    params?: { [param in keyof Endpoint["requestParams"]]: string };
+    requestParameters?: { [param in keyof Endpoint["requestParams"]]: string };
   },
 ): Promise<{
   data: Endpoint["response"]["_output"];
@@ -108,10 +108,13 @@ async function performFetch<
 
   let endpointPath = endpoint.path;
 
-  if (extras.params)
-    for (const param of Object.keys(extras.params)) {
-      // @ts-ignore
-      endpointPath.replace(`{${param}}`, extras.params[param]);
+  if (extras.requestParameters)
+    for (const param of Object.keys(extras.requestParameters)) {
+      endpointPath = endpointPath.replace(
+        `{${param}}`,
+        // @ts-ignore
+        extras.requestParameters[param],
+      );
     }
 
   let fet = await fetch(basePath + endpointPath + queryParameters, {
@@ -157,6 +160,11 @@ type ArrayElement<T extends readonly any[]> = T extends readonly (infer U)[]
   ? U
   : never;
 
+type EndpointRequestParameterDefinitionConversion<T extends readonly string[]> =
+  {
+    [Key in T[number]]: string;
+  };
+
 class Tunnel {
   baseURL: string;
 
@@ -182,16 +190,20 @@ class Tunnel {
   >(
     endpoint: EP,
     extras?: {
-      body?: z.infer<EP["requestBody"] | ZodUndefined> | undefined;
+      body?: EP["requestBody"] extends undefined
+        ? undefined
+        : z.infer<NonNullable<EP["requestBody"]>>;
       queryParameters?: EP["requestQueryString"] extends readonly any[]
         ? Record<ArrayElement<EP["requestQueryString"]>, string>
         : undefined;
       noCache?: boolean;
+      requestParameters?: EndpointRequestParameterDefinitionConversion<
+        NonNullable<EP["requestParams"]>
+      >;
     },
   ) {
     // @ts-ignore
-    const result = await performFetch<EP>(this.baseURL, endpoint, extras || {});
-    return result;
+    return await performFetch<EP>(this.baseURL, endpoint, extras || {});
   }
 
   async get<S extends ZodType>(

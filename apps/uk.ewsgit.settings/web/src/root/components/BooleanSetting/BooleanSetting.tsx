@@ -2,12 +2,13 @@ import React from "react";
 import BaseSetting from "../BaseSetting/BaseSetting";
 import { UKButton, UKHeading, UKText } from "@yourdash/uikit";
 import { tun, useResource } from "@yourdash/tunnel";
-import { endpointSchema as SetSettingEndpointSchema } from "../../../../../backend/src/endpoints/post/setting/index.schema.ts";
 import SettingComponent from "../../../SettingComponent.ts";
-import { endpointSchema as getSettingEndpointSchema } from "../../../../../backend/src/endpoints/get/setting/index.schema.ts";
+import { endpointSchema as getSettingEndpointSchema } from "../../../../../backend/src/endpoints/get/setting/[id]/index.schema.ts";
 
 const BooleanSetting: SettingComponent = ({ definition }) => {
-  const data = useResource(() => tun.send(getSettingEndpointSchema));
+  const data = useResource(() =>
+    tun.send(getSettingEndpointSchema, { requestParameters: { id: "test" } }),
+  );
   const [val, setVal] = React.useState<boolean>(
     definition.defaultValue as boolean,
   );

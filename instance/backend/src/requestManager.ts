@@ -90,9 +90,13 @@ class RequestManager {
     >,
     handler: RouteHandlerMethod,
   ) {
-    let path = "";
+    let path = endpoint.path;
 
-    path = endpoint.path;
+    for (const rqp of endpoint.requestParams || []) {
+      path = path.replace(`{${rqp}}`, `:${rqp}`);
+    }
+
+    console.log(path);
 
     switch (endpoint.method) {
       case "GET":

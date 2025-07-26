@@ -4,7 +4,7 @@ import UserHeader from "./components/UserHeader/UserHeader.tsx";
 import styles from "./Index.module.scss";
 import QuickActions from "./components/QuickActions/QuickActions.tsx";
 import { tun } from "@yourdash/tunnel";
-import { endpointSchema as SettingsOverviewSchema } from "../../../../backend/src/endpoints/get/settings/overview/page/:pageId/index.schema.ts";
+import { endpointSchema as SettingsOverviewSchema } from "../../../../backend/src/endpoints/get/settings/overview/page/[pageId]/index.schema.ts";
 
 const IndexPage: React.FC = () => {
   const val = tun.send(SettingsOverviewSchema);

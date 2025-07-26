@@ -1,5 +1,8 @@
 import React from "react";
 import {
+  UKBox,
+  UKContainer,
+  UKDecrementLevel,
   UKFlex,
   UKHeading,
   UKIconButton,
@@ -11,14 +14,22 @@ import SettingDefinition from "../../../../../backend/src/settingDefinition.ts";
 import SettingComponent, {
   defaultRegisteredSettingComponents,
 } from "../../../SettingComponent.ts";
+import styles from "./SettingsPage.module.scss";
 
 const SettingsPage: React.FC<
   React.PropsWithChildren<{
     displayName: string;
     settings: SettingDefinition[];
     registeredSettingComponents?: { [key: string]: SettingComponent };
+    hideBackButton?: boolean;
   }>
-> = ({ displayName, children, settings, registeredSettingComponents }) => {
+> = ({
+  displayName,
+  children,
+  settings,
+  registeredSettingComponents,
+  hideBackButton,
+}) => {
   const navigate = useNavigate();
   let combinedRegisteredSettingComponents: { [key: string]: SettingComponent } =
     {
@@ -27,41 +38,44 @@ const SettingsPage: React.FC<
     };
 
   return (
-    <UKFlex
-      direction={"column"}
-      padding={true}
-      style={{
-        width: "100%",
-      }}
-    >
-      <UKFlex direction={"row"} centerHorizontally={true}>
-        <UKIconButton
-          icon={UKIcons.ChevronLeft}
-          accessibleLabel={"Go back"}
-          onClick={() => {
-            navigate("..");
-          }}
-        />
-        <UKHeading text={displayName} />
-      </UKFlex>
-      <UKSeparator direction={"column"} />
-      <>{children}</>
-      <>
-        {settings.map((setting) => {
-          if (combinedRegisteredSettingComponents?.[setting.type]) {
-            let Comp = combinedRegisteredSettingComponents[setting.type];
+    <UKDecrementLevel>
+      <div className={styles.pageContainer}>
+        <UKContainer className={styles.page}>
+          <UKBox className={styles.header}>
+            <UKFlex direction={"row"} centerHorizontally={true}>
+              {!hideBackButton && (
+                <UKIconButton
+                  icon={UKIcons.ChevronLeft}
+                  accessibleLabel={"Go back"}
+                  onClick={() => {
+                    navigate("..");
+                  }}
+                />
+              )}
+              <UKHeading text={displayName} />
+            </UKFlex>
+            <UKSeparator className={styles.separator} direction={"column"} />
+          </UKBox>
+          <>{children}</>
+          <>
+            {settings.map((setting) => {
+              if (combinedRegisteredSettingComponents?.[setting.type]) {
+                let Comp = combinedRegisteredSettingComponents[setting.type];
 
-            return <Comp key={setting.id} definition={setting} />;
-          }
+                return <Comp key={setting.id} definition={setting} />;
+              }
 
-          return (
-            <div>
-              Unregistered setting type "{setting.type}" {"->"} "{setting.id}"
-            </div>
-          );
-        })}
-      </>
-    </UKFlex>
+              return (
+                <div>
+                  Unregistered setting type "{setting.type}" {"->"} "
+                  {setting.id}"
+                </div>
+              );
+            })}
+          </>
+        </UKContainer>
+      </div>
+    </UKDecrementLevel>
   );
 };
 

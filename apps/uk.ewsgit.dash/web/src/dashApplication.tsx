@@ -72,6 +72,8 @@ const DashApplication: React.FC = () => {
       </UKFlex>
     );
 
+  console.log(dashboard);
+
   return (
     <div
       className={styles.page}

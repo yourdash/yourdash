@@ -1,0 +1,33 @@
+@use "@yourdash/uikit/themeValues.scss" as *;
+
+.pageContainer {
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  max-width: $sizeLargeTablet;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page {
+  position: relative;
+  min-height: 100%;
+  height: max-content;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-left: calc($UKPadding *-1);
+  margin-top: calc($UKPadding *-1);
+  margin-right: calc($UKPadding *-1);
+  padding-bottom: 0;
+  border: none;
+
+  .separator {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
