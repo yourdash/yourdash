@@ -3,16 +3,6 @@ import Command, { type ICommandRuntimeParameters } from "../command";
 export default class EvalCommand extends Command {
   commandId = "eval";
   flags = {};
-  arguments: [
-    {
-      argumentId: string;
-      allowedValues?: string[] | undefined;
-    },
-  ] = [
-    {
-      argumentId: "eval string",
-    },
-  ];
   shortDescription = "Execute arbitrary code (for debugging purposes)";
 
   async run(parameters: ICommandRuntimeParameters) {

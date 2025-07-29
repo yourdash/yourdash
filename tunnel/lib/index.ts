@@ -122,6 +122,9 @@ async function performFetch<
     body: body !== "" ? JSON.stringify(body) : undefined,
     credentials: "include",
     cache: extras.noCache ? "no-cache" : "default",
+    headers: {
+      "Content-Type": body !== "" ? "application/json" : "text/plain",
+    },
   });
 
   let response: {

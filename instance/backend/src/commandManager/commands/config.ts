@@ -4,22 +4,18 @@ import User from "../../userManager/user.ts";
 export default class ConfigCommand extends Command {
   commandId = "config";
   flags = {};
-  arguments = [
-    { argumentId: "action", allowedValues: ["set", "delete", "echo"] },
-    { argumentId: "configKey" },
-  ];
   shortDescription = "Manage the YourDash instance's configuration";
 
   async run(parameters: ICommandRuntimeParameters) {
-    if (!parameters.arguments["action"]) {
+    if (!parameters.arguments[0]) {
       this.instance.log.error("command_config", "Please provide a subcommand");
 
       return this.finishRun();
     }
 
-    switch (parameters.arguments["action"]) {
+    switch (parameters.arguments[0]) {
       case "echo":
-        if (!parameters.arguments["configKey"]) {
+        if (!parameters.arguments[0]) {
           this.instance.log.info(
             "command_config",
             JSON.stringify(this.instance.configurationManager.config, null, 2),
@@ -34,11 +30,13 @@ export default class ConfigCommand extends Command {
           "Please provide a subcommand",
         );
 
+        console.log("work in progress");
+
         return this.finishRun();
       default:
         this.instance.log.error(
           "command_config",
-          `Invalid subcommand '${parameters.arguments["action"]}'. Allowed values: '${this.arguments.find((arg) => arg.argumentId === "action")?.allowedValues?.join("', '")}'`,
+          `Invalid subcommand '${parameters.arguments[0]}'. Allowed values: 'set', 'delete', 'echo'`,
         );
         return this.finishRun();
     }

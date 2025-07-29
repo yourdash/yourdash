@@ -96,12 +96,10 @@ class RequestManager {
       path = path.replace(`{${rqp}}`, `:${rqp}`);
     }
 
-    console.log(path);
-
     switch (endpoint.method) {
       case "GET":
         this.app.get(
-          endpoint.path,
+          path,
           {
             schema: {
               response: { 200: endpoint.response },
@@ -115,7 +113,7 @@ class RequestManager {
         return this;
       case "POST":
         this.app.post(
-          endpoint.path,
+          path,
           {
             schema: {
               response: { 200: endpoint.response },
@@ -130,7 +128,7 @@ class RequestManager {
         return this;
       case "PUT":
         this.app.put(
-          endpoint.path,
+          path,
           {
             schema: {
               response: { 200: endpoint.response },
@@ -145,7 +143,7 @@ class RequestManager {
         return this;
       case "DELETE":
         this.app.delete(
-          endpoint.path,
+          path,
           {
             schema: {
               response: { 200: endpoint.response },
@@ -182,6 +180,15 @@ class RequestManager {
 
     this.app.setErrorHandler(
       (error: FastifyError, _: FastifyRequest, reply: FastifyReply) => {
+        if (!error.cause) {
+          console.error(error);
+          return reply.send({
+            status: 500,
+            message:
+              "Internal server error, if you are a developer or administrator, please check the console.",
+          });
+        }
+
         const cause: {
           name: string;
           issues: {
@@ -229,6 +236,22 @@ class RequestManager {
     });
 
     await this.app.register(fastifyFormBody);
+
+    this.app.addContentTypeParser(
+      "application/json",
+      { parseAs: "string" },
+      function (req, body, done) {
+        try {
+          const json = JSON.parse(body.toString());
+          done(null, json);
+          // @ts-ignore
+        } catch (err: Error) {
+          err.statusCode = 400;
+          console.error(err);
+          done(err, {});
+        }
+      },
+    );
 
     await this.app.register(fastifySwagger, {
       openapi: {
@@ -791,11 +814,11 @@ class RequestManager {
 
         return applications.map((app) => {
           return {
-            id: app.__internal_params.id,
-            displayName: app.__internal_params.displayName,
-            description: app.__internal_params.description,
+            id: app._applicationParameters.id,
+            displayName: app._applicationParameters.displayName,
+            description: app._applicationParameters.description,
             type: "frontend",
-            endpoint: `/app/a/${app.__internal_params.id}/`,
+            endpoint: `/app/a/${app._applicationParameters.id}/`,
           };
         });
       },
@@ -808,7 +831,7 @@ class RequestManager {
           .applicationId;
 
         const app = this.instance.applications.loadedApplications.find(
-          (a) => a.__internal_params.id === applicationId,
+          (a) => a._applicationParameters.id === applicationId,
         );
 
         if (!app) {
@@ -820,18 +843,18 @@ class RequestManager {
             path.join(
               this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
               "panel/applications",
-              app.__internal_params.id,
+              app._applicationParameters.id,
               "largeGridIcon.webp",
             ),
           )
         ) {
-          // return this.sendFile(res, path.join(app?.__internal_initializedPath, "./icon.avif"), "image/avif");
+          // return this.sendFile(res, path.join(app?._applicationSourcePath, "./icon.avif"), "image/avif");
           return this.sendFile(
             res,
             path.join(
               this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
               "panel/applications",
-              app.__internal_params.id,
+              app._applicationParameters.id,
               "largeGridIcon.webp",
             ),
             "image/webp",
@@ -842,7 +865,7 @@ class RequestManager {
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
           ),
           {
             recursive: true,
@@ -851,7 +874,7 @@ class RequestManager {
 
         if (
           !(await this.instance.filesystem.doesPathExist(
-            path.join(app?.__internal_initializedPath, "./assets/icon.png"),
+            path.join(app?._applicationSourcePath, "./assets/icon.png"),
           ))
         ) {
           return this.sendFile(
@@ -866,13 +889,13 @@ class RequestManager {
         }
 
         await resizeImage(
-          path.join(app?.__internal_initializedPath, "./assets/icon.png"),
+          path.join(app?._applicationSourcePath, "./assets/icon.png"),
           88,
           88,
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
             "largeGridIcon.webp",
           ),
           "webp",
@@ -883,7 +906,7 @@ class RequestManager {
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
             "largeGridIcon.webp",
           ),
           "image/webp",
@@ -898,7 +921,7 @@ class RequestManager {
           .applicationId;
 
         const app = this.instance.applications.loadedApplications.find(
-          (a) => a.__internal_params.id === applicationId,
+          (a) => a._applicationParameters.id === applicationId,
         );
 
         if (!app) {
@@ -910,18 +933,18 @@ class RequestManager {
             path.join(
               this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
               "panel/applications",
-              app.__internal_params.id,
+              app._applicationParameters.id,
               "smallGridIcon.webp",
             ),
           )
         ) {
-          // return this.sendFile(res, path.join(app?.__internal_initializedPath, "./icon.avif"), "image/avif");
+          // return this.sendFile(res, path.join(app?._applicationSourcePath, "./icon.avif"), "image/avif");
           return this.sendFile(
             res,
             path.join(
               this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
               "panel/applications",
-              app.__internal_params.id,
+              app._applicationParameters.id,
               "smallGridIcon.webp",
             ),
             "image/webp",
@@ -932,7 +955,7 @@ class RequestManager {
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
           ),
           {
             recursive: true,
@@ -941,7 +964,7 @@ class RequestManager {
 
         if (
           !(await this.instance.filesystem.doesPathExist(
-            path.join(app?.__internal_initializedPath, "./assets/icon.png"),
+            path.join(app?._applicationSourcePath, "./assets/icon.png"),
           ))
         ) {
           return this.sendFile(
@@ -956,13 +979,13 @@ class RequestManager {
         }
 
         await resizeImage(
-          path.join(app?.__internal_initializedPath, "./assets/icon.png"),
+          path.join(app?._applicationSourcePath, "./assets/icon.png"),
           88,
           88,
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
             "smallGridIcon.webp",
           ),
           "webp",
@@ -973,7 +996,7 @@ class RequestManager {
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
             "smallGridIcon.webp",
           ),
           "image/webp",
@@ -988,7 +1011,7 @@ class RequestManager {
           .applicationId;
 
         const app = this.instance.applications.loadedApplications.find(
-          (a) => a.__internal_params.id === applicationId,
+          (a) => a._applicationParameters.id === applicationId,
         );
 
         if (!app) {
@@ -1000,18 +1023,18 @@ class RequestManager {
             path.join(
               this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
               "panel/applications",
-              app.__internal_params.id,
+              app._applicationParameters.id,
               "listIcon.webp",
             ),
           )
         ) {
-          // return this.sendFile(res, path.join(app?.__internal_initializedPath, "./icon.avif"), "image/avif");
+          // return this.sendFile(res, path.join(app?._applicationSourcePath, "./icon.avif"), "image/avif");
           return this.sendFile(
             res,
             path.join(
               this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
               "panel/applications",
-              app.__internal_params.id,
+              app._applicationParameters.id,
               "listIcon.webp",
             ),
             "image/webp",
@@ -1022,7 +1045,7 @@ class RequestManager {
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
           ),
           {
             recursive: true,
@@ -1031,7 +1054,7 @@ class RequestManager {
 
         if (
           !(await this.instance.filesystem.doesPathExist(
-            path.join(app?.__internal_initializedPath, "./assets/icon.png"),
+            path.join(app?._applicationSourcePath, "./assets/icon.png"),
           ))
         ) {
           return this.sendFile(
@@ -1046,13 +1069,13 @@ class RequestManager {
         }
 
         await resizeImage(
-          path.join(app?.__internal_initializedPath, "./assets/icon.png"),
+          path.join(app?._applicationSourcePath, "./assets/icon.png"),
           88,
           88,
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
             "listIcon.webp",
           ),
           "webp",
@@ -1063,7 +1086,7 @@ class RequestManager {
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
             "listIcon.webp",
           ),
           "image/webp",
@@ -1164,24 +1187,25 @@ class RequestManager {
           query.rows[0].pinned_applications
             .map((a: string) =>
               this.instance.applications.loadedApplications.find(
-                (i) => i.__internal_params.id === a,
+                (i) => i._applicationParameters.id === a,
               ),
             )
             .filter((a: YourDashApplication | undefined) => a !== undefined);
 
         return pinnedApplications.map((app) => {
-          if (app.__internal_params.frontend) {
+          if (app._applicationParameters.frontend) {
             return {
-              displayName: app.__internal_params.displayName,
-              id: app.__internal_params.id,
-              endpoint: `/app/a/${app.__internal_params.id}`,
+              displayName: app._applicationParameters.displayName,
+              id: app._applicationParameters.id,
+              endpoint: `/app/a/${app._applicationParameters.id}`,
             };
           }
 
           return {
-            displayName: app.__internal_params.displayName,
-            id: app.__internal_params.id,
-            url: app.__internal_params.externalFrontend?.url || "example.com",
+            displayName: app._applicationParameters.displayName,
+            id: app._applicationParameters.id,
+            url:
+              app._applicationParameters.externalFrontend?.url || "example.com",
           };
         });
       },
@@ -1194,7 +1218,7 @@ class RequestManager {
           .applicationId;
 
         const app = this.instance.applications.loadedApplications.find(
-          (a) => a.__internal_params.id === applicationId,
+          (a) => a._applicationParameters.id === applicationId,
         );
 
         if (!app) {
@@ -1206,18 +1230,18 @@ class RequestManager {
             path.join(
               this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
               "panel/applications",
-              app.__internal_params.id,
+              app._applicationParameters.id,
               "quickShortcut.webp",
             ),
           )
         ) {
-          // return this.sendFile(res, path.join(app?.__internal_initializedPath, "./icon.avif"), "image/avif");
+          // return this.sendFile(res, path.join(app?._applicationSourcePath, "./icon.avif"), "image/avif");
           return this.sendFile(
             res,
             path.join(
               this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
               "panel/applications",
-              app.__internal_params.id,
+              app._applicationParameters.id,
               "quickShortcut.webp",
             ),
             "image/webp",
@@ -1228,7 +1252,7 @@ class RequestManager {
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
           ),
           {
             recursive: true,
@@ -1236,13 +1260,13 @@ class RequestManager {
         );
 
         await resizeImage(
-          path.join(app?.__internal_initializedPath, "./assets/icon.png"),
+          path.join(app?._applicationSourcePath, "./assets/icon.png"),
           88,
           88,
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
             "quickShortcut.webp",
           ),
           "webp",
@@ -1253,7 +1277,7 @@ class RequestManager {
           path.join(
             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
             "panel/applications",
-            app.__internal_params.id,
+            app._applicationParameters.id,
             "quickShortcut.webp",
           ),
           "image/webp",
@@ -1281,7 +1305,7 @@ class RequestManager {
 
         if (
           this.instance.applications.loadedApplications.find(
-            (i) => i.__internal_params.id === applicationId,
+            (i) => i._applicationParameters.id === applicationId,
           )
         ) {
           try {
@@ -1374,7 +1398,6 @@ class RequestManager {
             );
           }
 
-          console.log(data);
           this.instance.log.error(
             "request_manager",
             "CRITICAL ERROR!, unable to ping self",

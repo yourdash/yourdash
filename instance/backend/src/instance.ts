@@ -20,6 +20,7 @@ import minimist from "minimist";
 import ConfigurationManager from "./configurationManager.ts";
 import CommandManager from "./commandManager/commandManager.ts";
 import UserManager from "./userManager/userManager.ts";
+import { YourDashFeatureFlags } from "./types/configuration.ts";
 
 dotenv.config();
 
@@ -85,32 +86,36 @@ class Instance {
          */,
       );
     } else {
-      this.log.info("startup", "Checking for updates...");
-      let proc = Bun.spawnSync(["git", "pull"], {
-        cwd: process.cwd(),
-        stdout: "pipe",
-        stderr: "pipe",
-      });
+      if (
+        this.configurationManager.hasFeature(YourDashFeatureFlags.AutoUpdate)
+      ) {
+        this.log.info("startup", "Checking for updates...");
+        let proc = Bun.spawnSync(["git", "pull"], {
+          cwd: process.cwd(),
+          stdout: "pipe",
+          stderr: "pipe",
+        });
 
-      // Note: here we have to remove the last two characters from the strings as they are newlines and break formatting
+        // Note: here we have to remove the last two characters from the strings as they are newlines and break formatting
 
-      this.log.info(
-        "startup_automatic_updater",
-        proc.stdout.toString().slice(0, -2),
-      );
-
-      if (proc.stdout.toString().slice(0, -2) !== "Already up to date") {
-        // The YourDash instance process should be automatically restarted by systemd or another service manager.
-        // This will only occur if the instance is set up correctly, in case of an issue with this intended behaviour not
-        // occurring please assume that the user has not followed the setup instructions
-        process.exit(0);
-      }
-
-      if (proc.stderr.toString())
-        this.log.error(
+        this.log.info(
           "startup_automatic_updater",
-          proc.stderr.toString().slice(0, -2),
+          proc.stdout.toString().slice(0, -2),
         );
+
+        if (proc.stdout.toString().slice(0, -2) !== "Already up to date") {
+          // The YourDash instance process should be automatically restarted by systemd or another service manager.
+          // This will only occur if the instance is set up correctly, in case of an issue with this intended behaviour not
+          // occurring please assume that the user has not followed the setup instructions
+          process.exit(0);
+        }
+
+        if (proc.stderr.toString())
+          this.log.error(
+            "startup_automatic_updater",
+            proc.stderr.toString().slice(0, -2),
+          );
+      }
     }
 
     // if (this.arguments["load-app"]) {

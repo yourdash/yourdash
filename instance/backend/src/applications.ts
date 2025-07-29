@@ -30,17 +30,17 @@ interface IYourDashApplicationConfigV1 {
 
 class YourDashApplication {
   id: string;
-  __internal_params: IYourDashApplicationConfigV1;
-  __internal_initializedPath!: string;
+  _applicationParameters: IYourDashApplicationConfigV1;
+  _applicationSourcePath!: string;
   instance: Instance;
 
   constructor(
     applicationParams: IYourDashApplicationConfigV1,
     instance: Instance,
   ) {
-    this.__internal_params = applicationParams;
-    this.id = this.__internal_params.id;
-    this.__internal_initializedPath = "NOT YET LOADED!!!!";
+    this._applicationParameters = applicationParams;
+    this.id = this._applicationParameters.id;
+    this._applicationSourcePath = "NOT YET LOADED!!!!";
     this.instance = instance;
 
     return this;
@@ -48,7 +48,7 @@ class YourDashApplication {
 
   async loadEndpoints() {
     const ENDPOINTS_DIRECTORY = path.join(
-      this.__internal_initializedPath,
+      this._applicationSourcePath,
       "backend/src/endpoints",
     );
 
@@ -165,7 +165,7 @@ class Applications {
       let application: YourDashApplication = new applicationImport.default(
         this.instance,
       );
-      application.__internal_initializedPath = path.resolve(
+      application._applicationSourcePath = path.resolve(
         this.getApplicationAbsolutePath(applicationPath),
       );
       this.loadedApplications.push(application);

@@ -3,7 +3,6 @@ import Command, { type ICommandRuntimeParameters } from "../command";
 export default class ExitCommand extends Command {
   commandId = "exit";
   flags = {};
-  arguments = [];
   shortDescription = "Terminate the YourDash instance";
 
   async run(parameters: ICommandRuntimeParameters) {

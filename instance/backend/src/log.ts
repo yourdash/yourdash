@@ -54,9 +54,38 @@ export default class Log {
     // @ts-ignore
     globalThis._internal_console = {
       log: console.log,
+      debug: console.debug,
+      error: console.error,
+      info: console.info,
+      table: console.table,
     };
 
-    console.log = (...data: any[]) => this.info("unknown", ...data);
+    console.log = (...data: (string | Uint8Array)[]) =>
+      this.info("unknown", ...data, "\n\n");
+    console.debug = (...data: (string | Uint8Array)[]) => {
+      process.stdout.cursorTo(0);
+      process.stdout.clearLine(1);
+      // @ts-ignore
+      globalThis._internal_console.debug(...data, "\n\n");
+    };
+    console.error = (...data: (string | Uint8Array)[]) => {
+      process.stdout.cursorTo(0);
+      process.stdout.clearLine(1);
+      // @ts-ignore
+      globalThis._internal_console.error(...data, "\n\n");
+    };
+    console.info = (...data: (string | Uint8Array)[]) => {
+      process.stdout.cursorTo(0);
+      process.stdout.clearLine(1);
+      // @ts-ignore
+      globalThis._internal_console.info(...data, "\n\n");
+    };
+    console.table = (...data: (string | Uint8Array)[]) => {
+      process.stdout.cursorTo(0);
+      process.stdout.clearLine(1);
+      // @ts-ignore
+      globalThis._internal_console.table(...data, "\n\n");
+    };
 
     let stdoutWidth = process.stdout.getWindowSize?.()[0] || 80;
     let titleString = " YourDash Instance Pre-Alpha ";
@@ -69,6 +98,13 @@ export default class Log {
   }
 
   _internal_writePrompt() {
+    if (
+      !this.instance?.configurationManager?.hasFeature(
+        YourDashFeatureFlags.SlashCommands,
+      )
+    )
+      return this;
+
     // move cursor to the last row, 1st column
     process.stdout.cursorTo(0, process.stdout.getWindowSize()[1], () => {
       // scroll view down 1 row
@@ -201,6 +237,23 @@ export default class Log {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private writeMessage(typeString: string, level: string, ...message: any[]) {
+    if (
+      !this.instance.configurationManager?.hasFeature(
+        YourDashFeatureFlags.SlashCommands,
+      )
+    ) {
+      // @ts-ignore
+      globalThis._internal_console.log(
+        typeString,
+        chalk.bold(
+          `${chalk.yellow(level.toUpperCase().slice(0, this.metaLength).padEnd(this.metaLength))} `,
+        ),
+        ...message,
+      );
+
+      return this;
+    }
+
     process.stdout.cursorTo(0, process.stdout.getWindowSize()[1] - 3, () => {
       process.stdout.clearLine(1, () => {
         // @ts-ignore

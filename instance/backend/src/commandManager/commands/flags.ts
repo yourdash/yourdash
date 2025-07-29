@@ -1,26 +1,14 @@
-import Command, {
-  type CommandArguments,
-  type ICommandRuntimeParameters,
-} from "../command";
+import Command, { type ICommandRuntimeParameters } from "../command";
 import { YourDashFeatureFlags } from "../../types/configuration.ts";
 
 export default class FlagsCommand extends Command {
   commandId = "flags";
   flags = {};
-  arguments: CommandArguments = [
-    {
-      argumentId: "action",
-      allowedValues: ["list", "enable", "disable"],
-    },
-    {
-      argumentId: "flag",
-    },
-  ];
   shortDescription = "Terminate the YourDash instance";
 
   async run(parameters: ICommandRuntimeParameters) {
-    switch (parameters.arguments["action"]) {
-      case "list":
+    switch (parameters.arguments[0]) {
+      case "list": {
         const features = this.instance.configurationManager.getAllFeatures();
 
         for (const feat of Object.keys(features)) {
@@ -32,10 +20,9 @@ export default class FlagsCommand extends Command {
         }
 
         break;
-      case "disable":
-        let flag = parameters.arguments[
-          "flag"
-        ] as keyof typeof YourDashFeatureFlags;
+      }
+      case "disable": {
+        let flag = parameters.arguments[1] as keyof typeof YourDashFeatureFlags;
 
         if (YourDashFeatureFlags[flag]) {
           await this.instance.configurationManager.disableFeature(
@@ -49,10 +36,27 @@ export default class FlagsCommand extends Command {
         }
 
         break;
+      }
+      case "enable": {
+        let flag = parameters.arguments[1] as keyof typeof YourDashFeatureFlags;
+
+        if (YourDashFeatureFlags[flag]) {
+          await this.instance.configurationManager.enableFeature(
+            YourDashFeatureFlags[flag],
+          );
+        } else {
+          this.instance.log.error(
+            "command_flags",
+            `Unable to find the feature ${flag}`,
+          );
+        }
+
+        break;
+      }
       default:
         this.instance.log.error(
           "command_flags",
-          `Invalid subcommand '${parameters.arguments["subcommand"]}'. Allowed values: '${this.arguments.find((arg) => arg.argumentId === "action")?.allowedValues?.join("', '")}'`,
+          `Invalid subcommand '${parameters.arguments[0]}'. Allowed values: 'list', 'enable', 'disable'`,
         );
     }
 

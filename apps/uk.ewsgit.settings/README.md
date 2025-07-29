@@ -32,5 +32,10 @@ This is the template application for YourDash
     - package.json
     - Readme.md
 
+## Hooks
+This application offers the following hook functionality
+- Custom Application's settings pages through react components
+- Integrating settings into the settings database and allow for configuration via the uk.ewsgit.settings application
+
 ## Authors
 - Ewsgit

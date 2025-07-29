@@ -26,11 +26,10 @@ export default class ConfigurationManager {
       postgresPort: 5432,
       postgresUser: "postgres",
       postgresDatabase: "yourdash",
-      // FIXME: actually use a secure string
-      cookieSecret:
-        "this should be a random and unknown string to ensure security",
+      // FIXME: actually use a secure string not an amalgamation of a number
+      cookieSecret: crypto.getRandomValues(new Uint32Array(128)).join(""),
       loadDevelopmentApplications: [],
-      featureFlags: [],
+      featureFlags: [YourDashFeatureFlags.SlashCommands],
     };
 
     return this;

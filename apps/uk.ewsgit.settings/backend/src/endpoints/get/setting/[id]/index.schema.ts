@@ -4,15 +4,9 @@ import z from "zod";
 export const endpointSchema = createEndpoint(
   "/uk.ewsgit.settings/setting/{id}",
   "GET",
-  z
-    .object({
-      settingId: z.string(),
-      description: z.string(),
-      value: z.any(),
-      defaultValue: z.any(),
-      settingType: z.string(),
-    })
-    .array(),
+  z.object({
+    value: z.any().describe("The setting's current value"),
+  }),
   {
     requestParams: ["id"] as const,
   },

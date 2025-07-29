@@ -15,4 +15,5 @@ export interface YourDashInstanceConfiguration {
 
 export enum YourDashFeatureFlags {
   SlashCommands = "slash_commands",
+  AutoUpdate = "automatic_updates",
 }

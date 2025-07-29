@@ -5,13 +5,14 @@
 
 import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import { Instance } from "@yourdash/backend/src/instance.js";
-import { z } from "zod";
+import * as path from "node:path";
+import { promises as fs } from "node:fs";
 
 export default class Application extends YourDashApplication {
   settings: {
     category: string;
     defaultValue: string | number | boolean | string[];
-    key: string;
+    id: string;
   }[] = [];
 
   constructor(instance: Instance) {
@@ -33,18 +34,33 @@ export default class Application extends YourDashApplication {
       instance,
     );
 
-    instance.database
+    return this;
+  }
+
+  public async onLoad(): Promise<this> {
+    await super.onLoad();
+
+    await this.instance.database
       .query(`CREATE TABLE IF NOT EXISTS uk_ewsgit_settings_user (
         setting_key text,
         username    text default '',
         value       text default ''
       );`);
 
-    return this;
-  }
+    for (const app of this.instance.applications.loadedApplications) {
+      const settingsHookFilePath = path.join(
+        app._applicationSourcePath,
+        `hooks/${this._applicationParameters.id}/settings.json`,
+      );
 
-  public async onLoad(): Promise<this> {
-    await super.onLoad();
+      if (!(await fs.exists(settingsHookFilePath))) continue;
+
+      let settingsHookFileContents = await fs.readFile(settingsHookFilePath);
+      this.settings = [
+        ...this.settings,
+        ...JSON.parse(settingsHookFileContents.toString()),
+      ];
+    }
 
     return this;
   }
