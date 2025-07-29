@@ -3,6 +3,11 @@
  * YourDash is licensed under the MIT License. (https://mit.ewsgit.uk)
  */
 
+import {
+  fastifyTRPCPlugin,
+  type FastifyTRPCPluginOptions,
+} from "@trpc/server/adapters/fastify";
+import ws from "@fastify/websocket";
 import fastifyCookie from "@fastify/cookie";
 import cors from "@fastify/cors";
 import fastifyFormBody from "@fastify/formbody";
@@ -42,6 +47,8 @@ import type {
   YourDashEndpoint,
   YourDashEndpointMethods,
 } from "@yourdash/tunnel";
+import { createContext } from "./trpcContext.js";
+import { appRouter, type AppRouter } from "./trpcRouter.js";
 
 enum LoginLayout {
   SIDEBAR,
@@ -235,23 +242,26 @@ class RequestManager {
       parseOptions: {}, // options for parsing cookies
     });
 
-    await this.app.register(fastifyFormBody);
-
-    this.app.addContentTypeParser(
-      "application/json",
-      { parseAs: "string" },
-      function (req, body, done) {
-        try {
-          const json = JSON.parse(body.toString());
-          done(null, json);
-          // @ts-ignore
-        } catch (err: Error) {
-          err.statusCode = 400;
-          console.error(err);
-          done(err, {});
-        }
+    await this.app.register(fastifyTRPCPlugin, {
+      prefix: "/trpc",
+      useWSS: true,
+      keepAlive: {
+        enabled: true,
+        pingMs: 30000,
+        pongWaitMs: 5000,
       },
-    );
+      trpcOptions: {
+        router: appRouter,
+        createContext,
+        onError({ path, error }) {
+          console.error(`Error in tRPC handler on path '${path}':`, error);
+        },
+      } satisfies FastifyTRPCPluginOptions<AppRouter>["trpcOptions"],
+    });
+
+    await this.app.register(ws);
+
+    await this.app.register(fastifyFormBody);
 
     await this.app.register(fastifySwagger, {
       openapi: {

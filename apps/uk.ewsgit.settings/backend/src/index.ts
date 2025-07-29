@@ -7,6 +7,7 @@ import { YourDashApplication } from "@yourdash/backend/src/applications.js";
 import { Instance } from "@yourdash/backend/src/instance.js";
 import * as path from "node:path";
 import { promises as fs } from "node:fs";
+import { t } from "@yourdash/backend/src/trpcRouter.js";
 
 export default class Application extends YourDashApplication {
   settings: {
@@ -61,6 +62,8 @@ export default class Application extends YourDashApplication {
         ...JSON.parse(settingsHookFileContents.toString()),
       ];
     }
+
+
 
     return this;
   }

@@ -4,10 +4,6 @@ import User from "../../userManager/user.ts";
 export default class UsersCommand extends Command {
   commandId = "users";
   flags = {};
-  arguments = [
-    { argumentId: "subcommand", allowedValues: ["list", "remove", "create"] },
-    { argumentId: "userIdOrUsername" },
-  ];
   shortDescription = "Manage YourDash users";
 
   async run(parameters: ICommandRuntimeParameters) {

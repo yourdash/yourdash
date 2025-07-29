@@ -3,7 +3,6 @@ import Command, { type ICommandRuntimeParameters } from "../command";
 export default class RestartCommand extends Command {
   commandId = "rs";
   flags = {};
-  arguments = [];
   shortDescription = "Restart the YourDash instance";
 
   async run(parameters: ICommandRuntimeParameters) {
