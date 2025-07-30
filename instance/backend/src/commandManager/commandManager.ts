@@ -11,10 +11,12 @@ export default class CommandManager {
   rlInterface!: readline.Interface;
   commands: Command[];
   currentCommandInterface!: { active: boolean; cb: (data: string) => void };
+  commandHistory: string[][];
 
   constructor(instance: Instance) {
     this.instance = instance;
     this.commands = [];
+    this.commandHistory = [];
 
     if (
       !instance.configurationManager.hasFeature(
@@ -91,6 +93,7 @@ export default class CommandManager {
         }
 
         self.currentCommandInterface.active = true;
+        self.commandHistory.push(line.split(" "));
         await self.executeCommand(cmdId, {
           arguments: segments,
           flags: {},
