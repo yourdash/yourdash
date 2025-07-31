@@ -28,23 +28,22 @@ export default class Application extends YourDashApplication {
       instance,
     );
 
-    instance.database.query(`CREATE TABLE IF NOT EXISTS uk_ewsgit_dash_dashboard
-                             (
-                                 username                   text,
-                                 header_welcome_message     text   default 'Hiya, %username%',
-                                 header_size                text   default 'medium',
-                                 header_font_size           float  default 4.0,
-                                 header_font_weight         int    default 900,
-                                 header_font_family         text,
-                                 header_style               text   default 'floating',
-                                 header_background_blur     float  default 0.25,
-                                 header_background_opacity  float  default 0.75,
-                                 background_type            text   default 'image',
-                                 background_value           text,
-                                 content_background_blur    float  default 0.25,
-                                 content_background_opacity float  default 0.75,
-                                 content_pages              jsonb[] default array []::jsonb[]
-                             );`);
+    instance.database.query(`CREATE TABLE IF NOT EXISTS uk_ewsgit_dash_dashboard(
+      username                   text,
+      header_welcome_message     text   default 'Hiya, %username%',
+      header_size                text   default 'medium',
+      header_font_size           float  default 4.0,
+      header_font_weight         int    default 900,
+      header_font_family         text,
+      header_style               text   default 'floating',
+      header_background_blur     float  default 0.25,
+      header_background_opacity  float  default 0.75,
+      background_type            text   default 'image',
+      background_value           text,
+      content_background_blur    float  default 0.25,
+      content_background_opacity float  default 0.75,
+      content_pages              jsonb[] default array []::jsonb[]
+    );`);
 
     instance.events.on(YourDashInstanceEvents.VerifyUser, (username: string) => {
       instance.database.query(

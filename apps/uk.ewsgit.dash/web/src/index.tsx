@@ -8,6 +8,25 @@ import { Routes, Route } from "react-router";
 import DashApplication from "./dashApplication";
 import DASH_ICON from "../../assets/icon.png";
 import ApplicationPanelContext from "@yourdash/web/src/lib/panelContext.ts";
+import { AppRouter } from "@yourdash/backend/src/trpcRouter";
+import { createTRPCClient, httpBatchLink } from '@trpc/client';
+
+const client = createTRPCClient<AppRouter>({
+  links: [
+    httpBatchLink({
+      url: 'http://localhost:3563/trpc',
+      async fetch(url, options) {
+        let req = await fetch(url, {
+          ...options,
+          credentials: "include",
+        });
+        return req
+      }
+    }),
+  ],
+});
+
+export {client}
 
 const DashRouter: React.FC = () => {
   const applicationPanelContext = React.useContext(ApplicationPanelContext);

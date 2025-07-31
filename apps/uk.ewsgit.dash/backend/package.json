@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
+    "@trpc/server": "^11.4.3",
     "@yourdash/backend": "workspace:instance/backend",
     "@yourdash/tunnel": "workspace:tunnel",
     "zod": "^3.24.2"

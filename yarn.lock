@@ -1815,6 +1815,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@trpc/client@npm:^11.4.3":
+  version: 11.4.3
+  resolution: "@trpc/client@npm:11.4.3"
+  peerDependencies:
+    "@trpc/server": 11.4.3
+    typescript: ">=5.7.2"
+  checksum: 10c0/7ce11fc99f9238a2dad4755f320516f9afb4bce3f1b38508b076a88dfa2d8f340f2576b8b8a9a3fc06bb7073638d8cc29154bcc061a208c2a3a6b17b718cefd2
+  languageName: node
+  linkType: hard
+
 "@trpc/server@npm:^11.4.3":
   version: 11.4.3
   resolution: "@trpc/server@npm:11.4.3"
@@ -2492,6 +2502,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@yourdash/application-uk-ewsgit-dash-backend@workspace:apps/uk.ewsgit.dash/backend"
   dependencies:
+    "@trpc/server": "npm:^11.4.3"
     "@yourdash/backend": "workspace:instance/backend"
     "@yourdash/tunnel": "workspace:tunnel"
     zod: "npm:^3.24.2"
@@ -2520,6 +2531,8 @@ __metadata:
   resolution: "@yourdash/application-uk-ewsgit-dash-web@workspace:apps/uk.ewsgit.dash/web"
   dependencies:
     "@loadable/component": "npm:^5.16.4"
+    "@trpc/client": "npm:^11.4.3"
+    "@trpc/server": "npm:^11.4.3"
     "@types/node": "npm:^22.13.8"
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"

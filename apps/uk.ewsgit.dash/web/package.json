@@ -17,6 +17,8 @@
     "**/*.css"
   ],
   "dependencies": {
+    "@trpc/client": "^11.4.3",
+    "@trpc/server": "^11.4.3",
     "@vitejs/plugin-react": "^4.3.4",
     "@yourdash/tunnel": "workspace:tunnel",
     "@yourdash/uikit": "workspace:uikit",

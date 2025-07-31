@@ -1,5 +1,4 @@
 import Command, {
-  CommandArguments,
   CommandFlags,
   ICommandRuntimeParameters,
 } from "@yourdash/backend/src/commandManager/command.js";
@@ -7,7 +6,6 @@ import Command, {
 export default class WidgetsCommand extends Command {
   commandId = "dash.widgets";
   flags: CommandFlags = {};
-  arguments: CommandArguments = [];
   shortDescription =
     "Manage uk.ewsgit.dash's widgets for the admin user (development command)";
 

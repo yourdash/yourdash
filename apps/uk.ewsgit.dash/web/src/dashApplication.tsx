@@ -21,6 +21,7 @@ import Widget from "./widgets/applicationShortcut";
 import { useNavigate } from "react-router";
 import loadable from "@loadable/component";
 import WIDGETS from "./widgets/widgets";
+import { client } from ".";
 
 const DashApplication: React.FC = () => {
   const applicationPanelContext = React.useContext(ApplicationPanelContext);
@@ -28,6 +29,7 @@ const DashApplication: React.FC = () => {
     return: "data",
   });
   const navigate = useNavigate();
+  const test = useResource(() => client.sample.query())
 
   useEffect(() => {
     applicationPanelContext.setControls(
