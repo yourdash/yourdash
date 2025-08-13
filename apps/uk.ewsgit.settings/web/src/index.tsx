@@ -55,6 +55,13 @@ const SettingsRouter: React.FC = () => {
           {/*@ts-ignore*/}
           {...ApplicationsRouter}
         </Route>
+        <Route path={"storage"}>
+          <Route path={"personal"} element={"Unimplemented"}/>
+          <Route path={"team"}>
+            <Route path={":teamId"} element={"Unimplemented"}/>
+          </Route>
+          <Route path={"instance"} element={"Unimplemented (ensure this can only be accessed by a privileged user)"} />
+        </Route>
       </Route>
     </Routes>
   );

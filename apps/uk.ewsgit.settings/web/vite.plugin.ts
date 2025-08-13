@@ -5,7 +5,7 @@ import { type PluginOption } from "vite";
 const appsDirectoryPath = path.join(process.cwd(), "../../apps");
 
 export default [
-  function settingsPages(): PluginOption {
+  function applicationsSettingsPages(): PluginOption {
     const virtualModuleId =
       "virtual:uk.ewsgit.settings/external-applications/file";
     // do not follow convention as it makes the virtual file invisible to the ReactJS plugin, leading to .tsx not being recognized as legitimate

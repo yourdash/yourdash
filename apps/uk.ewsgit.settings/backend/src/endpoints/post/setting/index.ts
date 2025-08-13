@@ -5,6 +5,10 @@ export default function main(app: Application) {
   app.instance.requestManager.createEndpoint(
     endpointSchema,
     async (req, res) => {
+      // FIXME: we will never reach here as the schema expects the request's
+      //        incoming body to be parsed as json, we currently do not do this
+      //        and thus the request will error
+
       console.log("Hmm");
       console.debug(req.body);
 
