@@ -10,8 +10,8 @@
     "url": "https://github.com/yourdash/yourdash"
   },
   "scripts": {
-    "web": "bun --cwd packages/web run dev",
-    "backend": "bun --cwd packages/web run dev"
+    "web": "bun run --cwd packages/web-frontend dev",
+    "backend": "bun run --cwd packages/backend dev"
   },
   "private": true
 }
