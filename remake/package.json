@@ -1,0 +1,17 @@
+{
+  "name": "@yourdash/yourdash",
+  "type": "module",
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourdash/yourdash"
+  },
+  "scripts": {
+    "web": "bun --cwd packages/web run dev",
+    "backend": "bun --cwd packages/web run dev"
+  },
+  "private": true
+}

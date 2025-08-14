@@ -1,0 +1,21 @@
+{
+  "name": "@yourdash/backend",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "bun --hot src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourdash/yourdash"
+  },
+  "private": true,
+  "dependencies": {
+    "@trpc/server": "^11.4.4",
+    "chalk": "^5.5.0",
+    "typescript": "^5.9.2",
+    "zod": "^4.0.17"
+  }
+}
