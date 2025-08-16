@@ -40,8 +40,7 @@ class Filesystem {
         this.FS_ROOT = path.resolve(
             path.join(
                 process.cwd(),
-                // FIXME: add logic for Docker's different FS layout
-                "../../fs"
+                process.env.IS_DOCKER ? "../fs" : "../../fs"
             )
         );
 
