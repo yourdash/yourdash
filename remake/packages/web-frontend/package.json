@@ -5,11 +5,14 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "bun --hot src/index.ts"
+    "dev": "bun --bun exec vite"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/yourdash/yourdash"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "vite": "^7.1.2"
+  }
 }

@@ -29,7 +29,7 @@ export default class ConfigurationManager {
       // FIXME: actually use a secure string not an amalgamation of a number
       cookieSecret: crypto.getRandomValues(new Uint32Array(128)).join(""),
       loadDevelopmentApplications: [],
-      featureFlags: [YourDashFeatureFlags.SlashCommands],
+      featureFlags: [...process.env.IS_DOCKER !== "true" ? [YourDashFeatureFlags.SlashCommands] : []],
     };
 
     return this;

@@ -1,0 +1,14 @@
+{
+  "name": "@yourdash/uikit-mv3-solid",
+  "version": "1.0.0",
+  "description": "The YourDash UI framework (mv3 edition) for solidJs",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourdash/yourdash"
+  },
+  "private": true
+}

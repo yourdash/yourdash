@@ -37,5 +37,5 @@ const procedure = instance.requestManager.tRPC.procedure.use(async (options) => 
 
 export default procedure;
 
-// Note: this should almost never be used, be sure this functionality should be PUBLICLY AVAILABLE before using this api, perhaps refer to `procedure` instead
+// Note: this should rarely be used, be sure this functionality should be PUBLICLY AVAILABLE before using this api, perhaps refer to `procedure` instead
 export const publicProcedure = instance.requestManager.tRPC.procedure;

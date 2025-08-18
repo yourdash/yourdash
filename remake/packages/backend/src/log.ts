@@ -91,13 +91,25 @@ export default class Log {
         //   globalThis._internal_console.table(...data, "\n\n");
         // };
 
-        let stdoutWidth = process.stdout.getWindowSize?.()[0] || 80;
+        let stdoutWidth = this._internal_getWindowSize?.()[0] || 80;
         let titleString = " YourDash Instance Pre-Alpha ";
 
         process.stdout.write(
             `${"-".repeat((stdoutWidth - titleString.length) / 2)}${titleString}${"-".repeat(
                 (stdoutWidth - titleString.length) / 2)}\n`
         );
+
+        return this;
+    }
+
+    _internal_getWindowSize(): [number, number] {
+        let size = process?.stdout?.getWindowSize?.()
+
+        return [size?.[0] || 120, size?.[1] || 60]
+    }
+
+    _internal_cursorTo(x: number, y: number, cb: () => void) {
+        process?.stdout?.cursorTo?.(x, y, cb)
 
         return this;
     }
@@ -111,22 +123,22 @@ export default class Log {
             return this;
 
         // move cursor to the last row, 1st column
-        process.stdout.cursorTo(0, process.stdout.getWindowSize()[1], () => {
+        this._internal_cursorTo(0, this._internal_getWindowSize()[1], () => {
             // scroll view down 1 row
             process.stdout.write("\n", () => {
                 // move the cursor to the 3rd last row, 1st column
-                process.stdout.cursorTo(
+                this._internal_cursorTo(
                     0,
-                    process.stdout.getWindowSize()[1] - 3,
+                    this._internal_getWindowSize()[1] - 3,
                     () => {
                         // write the separator line to the stdout
                         process.stdout.write(
-                            "-".repeat(process.stdout.getWindowSize()[0]),
+                            "-".repeat(this._internal_getWindowSize()[0]),
                             () => {
                                 // move the cursor to the 2nd last row, 1st column
-                                process.stdout.cursorTo(
+                                this._internal_cursorTo(
                                     0,
-                                    process.stdout.getWindowSize()[1] - 2,
+                                    this._internal_getWindowSize()[1] - 2,
                                     () => {
                                         // write the branding to the stdout
                                         process.stdout.write(
@@ -134,9 +146,9 @@ export default class Log {
                                                 "DEV Mode")}] ` : ""}`,
                                             () => {
                                                 // move the cursor to the metaLen+6th column of the 2nd from the bottom row
-                                                process.stdout.cursorTo(
+                                                this._internal_cursorTo(
                                                     this.instance.log.metaLength + 6,
-                                                    process.stdout.getWindowSize()[1] - 2,
+                                                    this._internal_getWindowSize()[1] - 2,
                                                     () => {
                                                         if (
                                                             this.instance.configurationManager?.hasFeature(
@@ -233,7 +245,7 @@ export default class Log {
 
     createBanner(bannerText: string): string {
         const LOG_WIDTH =
-            process.stdout.getWindowSize()[0] - (this.instance.log.metaLength + 6);
+            this._internal_getWindowSize()[0] - (this.instance.log.metaLength + 6);
         return (
             "-".repeat((LOG_WIDTH - bannerText.length) / 2) +
             bannerText +
@@ -260,7 +272,7 @@ export default class Log {
             return this;
         }
 
-        process.stdout.cursorTo(0, process.stdout.getWindowSize()[1] - 3, () => {
+        this._internal_cursorTo(0, this._internal_getWindowSize()[1] - 3, () => {
             process.stdout.clearLine(1, () => {
                 // @ts-ignore
                 globalThis._internal_console.log(

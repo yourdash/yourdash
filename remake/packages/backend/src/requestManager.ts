@@ -310,7 +310,7 @@ class RequestManager {
         await this.instance.authorization.__internal_authHook(this.app);
 
         const self = this;
-        this.instance.authorization.publicPaths.push("/")
+        this.instance.authorization.publicPaths.push("/");
         this.app.get(
             "/",
             async function handler(req, res) {
@@ -326,7 +326,7 @@ class RequestManager {
             }
         );
 
-        this.instance.authorization.publicPaths.push("/test")
+        this.instance.authorization.publicPaths.push("/test");
         this.app.get(
             "/test",
             async () => {
@@ -338,7 +338,7 @@ class RequestManager {
             }
         );
 
-        this.instance.authorization.publicPaths.push("/418")
+        this.instance.authorization.publicPaths.push("/418");
         this.app.get(
             "/418",
             async () => {
@@ -346,7 +346,7 @@ class RequestManager {
             }
         );
 
-        this.instance.authorization.publicPaths.push("/ping")
+        this.instance.authorization.publicPaths.push("/ping");
         this.app.get(
             "/ping",
             async () => {
@@ -354,7 +354,7 @@ class RequestManager {
             }
         );
 
-        this.instance.authorization.publicPaths.push("/core/test/self-ping")
+        this.instance.authorization.publicPaths.push("/core/test/self-ping");
         this.app.get(
             "/core/test/self-ping",
             async (req, res) => {
@@ -362,7 +362,7 @@ class RequestManager {
             }
         );
 
-        this.instance.authorization.publicPaths.push("/login/instance/metadata")
+        this.instance.authorization.publicPaths.push("/login/instance/metadata");
         this.app.get(
             "/login/instance/metadata",
             (req, res) => {
@@ -412,7 +412,7 @@ class RequestManager {
                                 user.username
                             ),
                             "avatar128.webp"
-                        ),
+                        )
                     );
                 } else {
                     return res.status(404);
@@ -475,7 +475,7 @@ class RequestManager {
                     path.join(
                         this.instance.filesystem.commonPaths.SystemDirectory(),
                         "loginBackground.avif"
-                    ),
+                    )
                 );
             }
         );
@@ -539,7 +539,7 @@ class RequestManager {
                 path.join(
                     this.instance.filesystem.commonPaths.SystemDirectory(),
                     "instanceLogo128.webp"
-                ),
+                )
             );
         });
 
@@ -590,7 +590,7 @@ class RequestManager {
                             "panel/applications",
                             app._applicationParameters.id,
                             "largeGridIcon.webp"
-                        ),
+                        )
                     );
                 }
 
@@ -615,7 +615,7 @@ class RequestManager {
                             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
                             "panel",
                             "invalidIcon.webp"
-                        ),
+                        )
                     );
                 }
 
@@ -638,7 +638,7 @@ class RequestManager {
                         "panel/applications",
                         app._applicationParameters.id,
                         "largeGridIcon.webp"
-                    ),
+                    )
                 );
             }
         );
@@ -673,7 +673,7 @@ class RequestManager {
                             "panel/applications",
                             app._applicationParameters.id,
                             "smallGridIcon.webp"
-                        ),
+                        )
                     );
                 }
 
@@ -698,7 +698,7 @@ class RequestManager {
                             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
                             "panel",
                             "invalidIcon.webp"
-                        ),
+                        )
                     );
                 }
 
@@ -721,7 +721,7 @@ class RequestManager {
                         "panel/applications",
                         app._applicationParameters.id,
                         "smallGridIcon.webp"
-                    ),
+                    )
                 );
             }
         );
@@ -756,7 +756,7 @@ class RequestManager {
                             "panel/applications",
                             app._applicationParameters.id,
                             "listIcon.webp"
-                        ),
+                        )
                     );
                 }
 
@@ -781,7 +781,7 @@ class RequestManager {
                             this.instance.filesystem.commonPaths.GlobalCacheDirectory(),
                             "panel",
                             "invalidIcon.webp"
-                        ),
+                        )
                     );
                 }
 
@@ -804,7 +804,7 @@ class RequestManager {
                         "panel/applications",
                         app._applicationParameters.id,
                         "listIcon.webp"
-                    ),
+                    )
                 );
             }
         );
@@ -879,7 +879,9 @@ class RequestManager {
             "/core/panel/quick-shortcuts",
             async (req, res) => {
                 const username = this.getRequestUsername();
-                const query = await this.instance.database`SELECT pinned_applications FROM public.panel_configuration WHERE username = ${username}`
+                const query = await this.instance.database`SELECT pinned_applications
+                                                           FROM public.panel_configuration
+                                                           WHERE username = ${username}`;
 
                 const pinnedApplications: YourDashApplication[] =
                     query[0].pinned_applications.map((a: string) =>
@@ -891,18 +893,18 @@ class RequestManager {
                 return pinnedApplications.map((app) => {
                     if (app._applicationParameters.frontend) {
                         return res.json({
-                            displayName: app._applicationParameters.displayName,
-                            id: app._applicationParameters.id,
-                            endpoint: `/app/a/${app._applicationParameters.id}`
-                        });
+                                            displayName: app._applicationParameters.displayName,
+                                            id: app._applicationParameters.id,
+                                            endpoint: `/app/a/${app._applicationParameters.id}`
+                                        });
                     }
 
                     return res.json({
-                        displayName: app._applicationParameters.displayName,
-                        id: app._applicationParameters.id,
-                        url:
-                            app._applicationParameters.externalFrontend?.url || "example.com"
-                    });
+                                        displayName: app._applicationParameters.displayName,
+                                        id: app._applicationParameters.id,
+                                        url:
+                                            app._applicationParameters.externalFrontend?.url || "example.com"
+                                    });
                 });
             }
         );
@@ -937,7 +939,7 @@ class RequestManager {
                             "panel/applications",
                             app._applicationParameters.id,
                             "quickShortcut.webp"
-                        ),
+                        )
                     );
                 }
 
@@ -971,7 +973,7 @@ class RequestManager {
                         "panel/applications",
                         app._applicationParameters.id,
                         "quickShortcut.webp"
-                    ),
+                    )
                 );
             }
         );
@@ -1081,9 +1083,9 @@ class RequestManager {
         );
         try {
             this.app.listen({
-                                      port: this.instance.configurationManager.config.port,
-                                      host: "0.0.0.0"
-                                  });
+                                port: this.instance.configurationManager.config.port,
+                                host: "0.0.0.0"
+                            });
             this.instance.log.info(
                 "request_manager",
                 `YourDash Instance Backend Online & listening at ${this.instance.log.addEmphasisToString(
