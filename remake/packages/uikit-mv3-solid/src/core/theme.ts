@@ -921,7 +921,7 @@ let theme = {
                     "default-size": () => "0px",
                 },
 
-                full: () => "9999px",
+                full: () => "999px",
             },
         },
         motion: {
