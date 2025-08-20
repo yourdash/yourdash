@@ -10,6 +10,7 @@ export default function main(app: Application) {
         "SELECT forename, surname FROM public.users WHERE username = $1",
         [username],
       );
+
       const dashboardData = await app.instance.database.query(
         "SELECT * FROM public.uk_ewsgit_dash_dashboard WHERE username = $1",
         [username],
