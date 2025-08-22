@@ -12,6 +12,7 @@ function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
     let classNames: string[] = [];
 
     classNames.push(css`
+        position: relative;
         border: none;
     `);
 
@@ -19,9 +20,21 @@ function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
         classNames.push(css`
             background-color: ${theme.sys.color.primary()};
             color: ${theme.sys.color["on-primary"]()};
+            overflow: hidden;
 
             &:hover {
-                background-color: ${theme.sys.color["on-surface-variant"]()};
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: ${applyTransparency(
+                        theme.sys.color["on-primary"](),
+                        theme.sys.state.hover["state-layer-opacity"](),
+                    )};
+                }
             }
         `);
     } else {
@@ -130,10 +143,148 @@ function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
 
             break;
         case "m":
+            classNames.push(css`
+                height: ${dpToRem(56)};
+                border-width: ${dpToRem(1)};
+                padding-left: ${dpToRem(24)};
+                padding-right: ${dpToRem(24)};
+                gap: ${dpToRem(8)};
+            `);
+
+            switch (shape) {
+                case "round":
+                    classNames.push(css`
+                        border-radius: ${dpToRem(56)};
+                        transition: all ${theme.sys.motion["duration-200"]()}
+                            ${theme.sys.motion.easing.standard.accelerate()};
+                    `);
+
+                    if (!disabled) {
+                        classNames.push(css`
+                            &:focus-visible,
+                            &:active {
+                                border-radius: ${theme.sys.shape.corner.medium["default-size"]()};
+                                transition: border-radius ${theme.sys.motion["duration-50"]()}
+                                    ${theme.sys.motion.easing.standard.decelerate()};
+                            }
+                        `);
+                    }
+                    break;
+                case "square":
+                    classNames.push(css`
+                        border-radius: ${theme.sys.shape.corner.large["default-size"]()};
+                        transition: all ${theme.sys.motion["duration-200"]()}
+                            ${theme.sys.motion.easing.standard.decelerate()};
+                    `);
+
+                    if (!disabled) {
+                        classNames.push(css`
+                            &:focus-visible,
+                            &:active {
+                                border-radius: ${dpToRem(40)};
+                                transition: border-radius ${theme.sys.motion["duration-50"]()}
+                                    ${theme.sys.motion.easing.standard.decelerate()};
+                            }
+                        `);
+                    }
+            }
+
             break;
         case "l":
+            classNames.push(css`
+                height: ${dpToRem(96)};
+                border-width: ${dpToRem(2)};
+                padding-left: ${dpToRem(48)};
+                padding-right: ${dpToRem(48)};
+                gap: ${dpToRem(12)};
+            `);
+
+            switch (shape) {
+                case "round":
+                    classNames.push(css`
+                        border-radius: ${dpToRem(96)};
+                        transition: all ${theme.sys.motion["duration-200"]()}
+                            ${theme.sys.motion.easing.standard.accelerate()};
+                    `);
+
+                    if (!disabled) {
+                        classNames.push(css`
+                            &:focus-visible,
+                            &:active {
+                                border-radius: ${theme.sys.shape.corner.large["default-size"]()};
+                                transition: border-radius ${theme.sys.motion["duration-50"]()}
+                                    ${theme.sys.motion.easing.standard.decelerate()};
+                            }
+                        `);
+                    }
+                    break;
+                case "square":
+                    classNames.push(css`
+                        border-radius: ${theme.sys.shape.corner.large["default-size"]()};
+                        transition: all ${theme.sys.motion["duration-200"]()}
+                            ${theme.sys.motion.easing.standard.decelerate()};
+                    `);
+
+                    if (!disabled) {
+                        classNames.push(css`
+                            &:focus-visible,
+                            &:active {
+                                border-radius: ${dpToRem(40)};
+                                transition: border-radius ${theme.sys.motion["duration-50"]()}
+                                    ${theme.sys.motion.easing.standard.decelerate()};
+                            }
+                        `);
+                    }
+            }
+
             break;
         case "xl":
+            classNames.push(css`
+                height: ${dpToRem(132)};
+                border-width: ${dpToRem(3)};
+                padding-left: ${dpToRem(64)};
+                padding-right: ${dpToRem(64)};
+                gap: ${dpToRem(16)};
+            `);
+
+            switch (shape) {
+                case "round":
+                    classNames.push(css`
+                        border-radius: ${dpToRem(132)};
+                        transition: all ${theme.sys.motion["duration-200"]()}
+                            ${theme.sys.motion.easing.standard.accelerate()};
+                    `);
+
+                    if (!disabled) {
+                        classNames.push(css`
+                            &:focus-visible,
+                            &:active {
+                                border-radius: ${theme.sys.shape.corner.large["default-size"]()};
+                                transition: border-radius ${theme.sys.motion["duration-50"]()}
+                                    ${theme.sys.motion.easing.standard.decelerate()};
+                            }
+                        `);
+                    }
+                    break;
+                case "square":
+                    classNames.push(css`
+                        border-radius: ${theme.sys.shape.corner["extra-large"]["default-size"]()};
+                        transition: all ${theme.sys.motion["duration-200"]()}
+                            ${theme.sys.motion.easing.standard.decelerate()};
+                    `);
+
+                    if (!disabled) {
+                        classNames.push(css`
+                            &:focus-visible,
+                            &:active {
+                                border-radius: ${dpToRem(40)};
+                                transition: border-radius ${theme.sys.motion["duration-50"]()}
+                                    ${theme.sys.motion.easing.standard.decelerate()};
+                            }
+                        `);
+                    }
+            }
+
             break;
     }
 

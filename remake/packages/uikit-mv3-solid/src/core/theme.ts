@@ -271,6 +271,8 @@
 
 */
 
+import dpToRem from "./dp.ts";
+
 let theme = {
     ref: {
         palette: {
@@ -457,17 +459,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Label Small line height */
-                "line-height-value": () => "16px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "16px",
+                "line-height-value": () => dpToRem(16),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(16),
                 /* Label Small font tracking */
-                "tracking-value": () => "0.5px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0.5px",
+                "tracking-value": () => dpToRem(0.5),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0.5),
                 /* Label Small font size */
-                "size-value": () => "11px",
-                "size-unit": () => "2px",
-                size: () => "11px",
+                "size-value": () => dpToRem(11),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(11),
                 /* Label Small font weight */
                 weight: () => theme.ref.typeface["weight-medium"](),
                 /* Label Small font name */
@@ -481,17 +483,17 @@ let theme = {
                 /* Label Medium text transform */
                 "text-transform": () => "1",
                 /* Label Medium line height */
-                "line-height-value": () => "16px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "16px",
+                "line-height-value": () => dpToRem(16),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(16),
                 /* Label Medium font tracking */
-                "tracking-value": () => "0.5px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0.5px",
+                "tracking-value": () => dpToRem(0.5),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0.5),
                 /* Label Medium font size */
-                "size-value": () => "12px",
-                "size-unit": () => "2px",
-                size: () => "12px",
+                "size-value": () => dpToRem(12),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(12),
                 /* Label Medium font weight */
                 weight: () => theme.ref.typeface["weight-medium"](),
                 /* Label Medium font name */
@@ -504,17 +506,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Label Large line height */
-                "line-height-value": () => "20px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "20px",
+                "line-height-value": () => dpToRem(20),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(20),
                 /* Label Large font tracking */
-                "tracking-value": () => "0.10000000149011612px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0.10000000149011612px",
+                "tracking-value": () => dpToRem(0.10000000149011612),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0.10000000149011612),
                 /* Label Large font size */
-                "size-value": () => "14px",
-                "size-unit": () => "2px",
-                size: () => "14px",
+                "size-value": () => dpToRem(14),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(14),
                 /* Label Large font weight */
                 weight: () => theme.ref.typeface["weight-medium"](),
                 /* Label Large font name */
@@ -527,17 +529,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Body Small line height */
-                "line-height-value": () => "16px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "16px",
+                "line-height-value": () => dpToRem(16),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(16),
                 /* Body Small font tracking */
-                "tracking-value": () => "0.4000000059604645px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0.4000000059604645px",
+                "tracking-value": () => dpToRem(0.4000000059604645),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0.4000000059604645),
                 /* Body Small font size */
-                "size-value": () => "12px",
-                "size-unit": () => "2px",
-                size: () => "12px",
+                "size-value": () => dpToRem(12),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(12),
                 /* Body Small font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Body Small font name */
@@ -550,17 +552,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Body Medium line height */
-                "line-height-value": () => "20px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "20px",
+                "line-height-value": () => dpToRem(20),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(20),
                 /* Body Medium font tracking */
-                "tracking-value": () => "0.25px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0.25px",
+                "tracking-value": () => dpToRem(0.25),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0.25),
                 /* Body Medium font size */
-                "size-value": () => "14px",
-                "size-unit": () => "2px",
-                size: () => "14px",
+                "size-value": () => dpToRem(14),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(14),
                 /* Body Medium font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Body Medium font name */
@@ -573,17 +575,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Body Large line height */
-                "line-height-value": () => "24px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "24px",
+                "line-height-value": () => dpToRem(24),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(24),
                 /* Body Large font tracking */
-                "tracking-value": () => "0.5px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0.5px",
+                "tracking-value": () => dpToRem(0.5),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0.5),
                 /* Body Large font size */
-                "size-value": () => "16px",
-                "size-unit": () => "2px",
-                size: () => "16px",
+                "size-value": () => dpToRem(16),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(16),
                 /* Body Large font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Body Large font name */
@@ -596,17 +598,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Title Small line height */
-                "line-height-value": () => "20px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "20px",
+                "line-height-value": () => dpToRem(20),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(20),
                 /* Title Small font tracking */
-                "tracking-value": () => "0.10000000149011612px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0.10000000149011612px",
+                "tracking-value": () => dpToRem(0.10000000149011612),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0.10000000149011612),
                 /* Title Small font size */
-                "size-value": () => "14px",
-                "size-unit": () => "2px",
-                size: () => "14px",
+                "size-value": () => dpToRem(14),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(14),
                 /* Title Small font weight */
                 weight: () => theme.ref.typeface["weight-medium"](),
                 /* Title Small font name */
@@ -619,17 +621,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Title Medium line height */
-                "line-height-value": () => "24px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "24px",
+                "line-height-value": () => dpToRem(24),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(24),
                 /* Title Medium font tracking */
-                "tracking-value": () => "0.15000000596046448px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0.15000000596046448px",
+                "tracking-value": () => dpToRem(0.15000000596046448),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0.15000000596046448),
                 /* Title Medium font size */
-                "size-value": () => "16px",
-                "size-unit": () => "2px",
-                size: () => "16px",
+                "size-value": () => dpToRem(16),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(16),
                 /* Title Medium font weight */
                 weight: () => theme.ref.typeface["weight-medium"](),
                 /* Title Medium font name */
@@ -642,17 +644,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Title Large line height */
-                "line-height-value": () => "28px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "28px",
+                "line-height-value": () => dpToRem(28),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(28),
                 /* Title Large font tracking */
-                "tracking-value": () => "0px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0px",
+                "tracking-value": () => dpToRem(0),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0),
                 /* Title Large font size */
-                "size-value": () => "22px",
-                "size-unit": () => "2px",
-                size: () => "22px",
+                "size-value": () => dpToRem(22),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(22),
                 /* Title Large font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Title Large font name */
@@ -665,17 +667,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Headline Small line height */
-                "line-height-value": () => "32px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "32px",
+                "line-height-value": () => dpToRem(32),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(32),
                 /* Headline Small font tracking */
-                "tracking-value": () => "0px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0px",
+                "tracking-value": () => dpToRem(0),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0),
                 /* Headline Small font size */
-                "size-value": () => "24px",
-                "size-unit": () => "2px",
-                size: () => "24px",
+                "size-value": () => dpToRem(24),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(24),
                 /* Headline Small font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Headline Small font name */
@@ -688,17 +690,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Headline Medium line height */
-                "line-height-value": () => "36px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "36px",
+                "line-height-value": () => dpToRem(36),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(36),
                 /* Headline Medium font tracking */
-                "tracking-value": () => "0px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0px",
+                "tracking-value": () => dpToRem(0),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0),
                 /* Headline Medium font size */
-                "size-value": () => "28px",
-                "size-unit": () => "2px",
-                size: () => "28px",
+                "size-value": () => dpToRem(28),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(28),
                 /* Headline Medium font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Headline Medium font name */
@@ -711,17 +713,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Headline Large line height */
-                "line-height-value": () => "40px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "40px",
+                "line-height-value": () => dpToRem(40),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(40),
                 /* Headline Large font tracking */
-                "tracking-value": () => "0px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0px",
+                "tracking-value": () => dpToRem(0),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0),
                 /* Headline Large font size */
-                "size-value": () => "32px",
-                "size-unit": () => "2px",
-                size: () => "32px",
+                "size-value": () => dpToRem(32),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(32),
                 /* Headline Large font name */
                 font: () => theme.ref.typeface.brand(),
                 /* Headline Large font weight */
@@ -734,17 +736,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Display Small line height */
-                "line-height-value": () => "44px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "44px",
+                "line-height-value": () => dpToRem(44),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(44),
                 /* Display Small font tracking */
-                "tracking-value": () => "0px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0px",
+                "tracking-value": () => dpToRem(0),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0),
                 /* Display Small font size */
-                "size-value": () => "36px",
-                "size-unit": () => "2px",
-                size: () => "36px",
+                "size-value": () => dpToRem(36),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(36),
                 /* Display Small font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Display Small font name */
@@ -757,17 +759,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Display Medium line height */
-                "line-height-value": () => "52px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "52px",
+                "line-height-value": () => dpToRem(52),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(52),
                 /* Display Medium font tracking */
-                "tracking-value": () => "0px",
-                "tracking-unit": () => "2px",
-                tracking: () => "0px",
+                "tracking-value": () => dpToRem(0),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(0),
                 /* Display Medium font size */
-                "size-value": () => "45px",
-                "size-unit": () => "2px",
-                size: () => "45px",
+                "size-value": () => dpToRem(45),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(45),
                 /* Display Medium font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Display Medium font name */
@@ -780,17 +782,17 @@ let theme = {
                 "font-style": () => "unset",
                 "text-decoration": () => "unset",
                 /* Display Large line height */
-                "line-height-value": () => "64px",
-                "line-height-unit": () => "2px",
-                "line-height": () => "64px",
+                "line-height-value": () => dpToRem(64),
+                "line-height-unit": () => dpToRem(2),
+                "line-height": () => dpToRem(64),
                 /* Display Large font tracking */
-                "tracking-value": () => "-0.25px",
-                "tracking-unit": () => "2px",
-                tracking: () => "-0.25px",
+                "tracking-value": () => dpToRem(-0.25),
+                "tracking-unit": () => dpToRem(2),
+                tracking: () => dpToRem(-0.25),
                 /* Display Large font size */
-                "size-value": () => "57px",
-                "size-unit": () => "2px",
-                size: () => "57px",
+                "size-value": () => dpToRem(57),
+                "size-unit": () => dpToRem(2),
+                size: () => dpToRem(57),
                 /* Display Large font weight */
                 weight: () => theme.ref.typeface["weight-regular"](),
                 /* Display Large font name */
@@ -803,125 +805,125 @@ let theme = {
                 "tint-color": () => theme.sys.color.primary(),
             },
             /* +5 */
-            "level5-value": () => "12px",
-            "level5-unit": () => "1px",
-            level5: () => "12px",
+            "level5-value": () => 1,
+            "level5-unit": () => 1,
+            level5: () => 1,
             /* +4 */
-            "level4-value": () => "8px",
-            "level4-unit": () => "1px",
-            level4: () => "8px",
+            "level4-value": () => 8,
+            "level4-unit": () => 1,
+            level4: () => 8,
             /* +3 */
-            "level3-value": () => "6px",
-            "level3-unit": () => "1px",
-            level3: () => "6px",
+            "level3-value": () => 6,
+            "level3-unit": () => 1,
+            level3: () => 6,
             /* +2 */
-            "level2-value": () => "3px",
-            "level2-unit": () => "1px",
-            level2: () => "3px",
+            "level2-value": () => 3,
+            "level2-unit": () => 1,
+            level2: () => 3,
             /* +1 */
-            "level1-value": () => "1px",
-            "level1-unit": () => "1px",
-            level1: () => "1px",
+            "level1-value": () => 1,
+            "level1-unit": () => 1,
+            level1: () => 1,
             /* 0 */
-            "level0-value": () => "0px",
-            "level0-unit": () => "1px",
-            level0: () => "0px",
+            "level0-value": () => 0,
+            "level0-unit": () => 1,
+            level0: () => 0,
         },
         state: {
             /* Dragged state layer opacity */
-            dragged: { "state-layer-opacity": () => "0.1599999964237213" },
+            dragged: { "state-layer-opacity": () => 0.1599999964237213 },
             /* Pressed state layer opacity */
-            pressed: { "state-layer-opacity": () => "0.11999999731779099" },
+            pressed: { "state-layer-opacity": () => 0.11999999731779099 },
             /* Focus state layer opacity */
-            focus: { "state-layer-opacity": () => "0.11999999731779099" },
+            focus: { "state-layer-opacity": () => 0.11999999731779099 },
             /* Hover state layer opacity */
-            hover: { "state-layer-opacity": () => "0.07999999821186066" },
+            hover: { "state-layer-opacity": () => 0.07999999821186066 },
         },
         shape: {
             corner: {
                 /* Fully rounded */
-                "full-family": () => "3px",
+                "full-family": () => dpToRem(3),
                 "extra-large": {
                     /* Extra large top rounding */
                     top: {
-                        family: () => "1px",
-                        "default-size": () => "0px",
-                        "top-left": () => "28px",
-                        "top-right-unit": () => "1px",
-                        "top-right": () => "28px",
+                        family: () => dpToRem(1),
+                        "default-size": () => dpToRem(0),
+                        "top-left": () => dpToRem(28),
+                        "top-right-unit": () => dpToRem(1),
+                        "top-right": () => dpToRem(28),
                     },
                     /* Extra large rounding */
-                    family: () => "1px",
-                    "default-size-unit": () => "1px",
-                    "default-size": () => "28px",
+                    family: () => dpToRem(1),
+                    "default-size-unit": () => dpToRem(1),
+                    "default-size": () => dpToRem(28),
                 },
 
                 large: {
                     /* Large top rounding */
                     top: {
-                        family: () => "1px",
-                        "default-size-unit": () => "1px",
-                        "default-size": () => "0px",
-                        "top-left-unit": () => "1px",
-                        "top-left": () => "16px",
-                        "top-right-unit": () => "1px",
-                        "top-right": () => "16px",
+                        family: () => dpToRem(1),
+                        "default-size-unit": () => dpToRem(1),
+                        "default-size": () => dpToRem(0),
+                        "top-left-unit": () => dpToRem(1),
+                        "top-left": () => dpToRem(16),
+                        "top-right-unit": () => dpToRem(1),
+                        "top-right": () => dpToRem(16),
                     },
                     /* Large end rounding */
                     end: {
-                        family: () => "1px",
-                        "default-size-unit": () => "1px",
-                        "default-size": () => "0px",
-                        "top-right-unit": () => "1px",
-                        "top-right": () => "16px",
-                        "bottom-right-unit": () => "1px",
-                        "bottom-right": () => "16px",
+                        family: () => dpToRem(1),
+                        "default-size-unit": () => dpToRem(1),
+                        "default-size": () => dpToRem(0),
+                        "top-right-unit": () => dpToRem(1),
+                        "top-right": () => dpToRem(16),
+                        "bottom-right-unit": () => dpToRem(1),
+                        "bottom-right": () => dpToRem(16),
                     },
                     /* Large rounding */
-                    family: () => "1px",
-                    "default-size-unit": () => "1px",
-                    "default-size": () => "16px",
+                    family: () => dpToRem(1),
+                    "default-size-unit": () => dpToRem(1),
+                    "default-size": () => dpToRem(16),
                 },
 
                 /* Medium rounding */
                 medium: {
-                    family: () => "1px",
-                    "default-size-unit": () => "1px",
-                    "default-size": () => "12px",
+                    family: () => dpToRem(1),
+                    "default-size-unit": () => dpToRem(1),
+                    "default-size": () => dpToRem(12),
                 },
 
                 /* Small rounding */
                 small: {
-                    family: () => "1px",
-                    "default-size-unit": () => "1px",
-                    "default-size": () => "8px",
+                    family: () => dpToRem(1),
+                    "default-size-unit": () => dpToRem(1),
+                    "default-size": () => dpToRem(8),
                 },
 
                 "extra-small": {
                     /* Extra small top rounding */
                     top: {
-                        family: () => "1px",
-                        "default-size-unit": () => "1px",
-                        "default-size": () => "0px",
-                        "top-left-unit": () => "1px",
-                        "top-left": () => "4px",
-                        "top-right-unit": () => "1px",
-                        "top-right": () => "4px",
+                        family: () => dpToRem(1),
+                        "default-size-unit": () => dpToRem(1),
+                        "default-size": () => dpToRem(0),
+                        "top-left-unit": () => dpToRem(1),
+                        "top-left": () => dpToRem(4),
+                        "top-right-unit": () => dpToRem(1),
+                        "top-right": () => dpToRem(4),
                     },
                     /* Extra small rounding */
-                    family: () => "1px",
-                    "default-size-unit": () => "1px",
-                    "default-size": () => "4px",
+                    family: () => dpToRem(1),
+                    "default-size-unit": () => dpToRem(1),
+                    "default-size": () => dpToRem(4),
                 },
 
                 /* No rounding */
                 none: {
-                    family: () => "1px",
-                    "default-size-unit": () => "1px",
-                    "default-size": () => "0px",
+                    family: () => dpToRem(1),
+                    "default-size-unit": () => dpToRem(1),
+                    "default-size": () => dpToRem(0),
                 },
 
-                full: () => "999px",
+                full: () => dpToRem(999),
             },
         },
         motion: {

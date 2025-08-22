@@ -9,6 +9,12 @@ const Root: Component<{ children: JSX.Element }> = ({ children }) => {
                 background-color: ${theme.sys.color.background()};
                 min-height: 100vh;
                 width: 100vw;
+
+                /* debug purposes */
+                display: flex;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
             `}
         >
             {children}
