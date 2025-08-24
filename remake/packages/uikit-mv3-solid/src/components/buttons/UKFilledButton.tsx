@@ -8,42 +8,38 @@ import dpToRem from "../../core/dp.ts";
 import theme from "../../core/theme.ts";
 import applyTransparency from "../../core/transparency.ts";
 
-function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
+function getClasses(size: ButtonSize, shape: ButtonShape) {
     let classNames: string[] = [];
 
     classNames.push(css`
         position: relative;
         border: none;
-    `);
 
-    if (!disabled) {
-        classNames.push(css`
-            background-color: ${theme.sys.color.primary()};
-            color: ${theme.sys.color["on-primary"]()};
-            overflow: hidden;
+        background-color: ${theme.sys.color.primary()};
+        color: ${theme.sys.color["on-primary"]()};
+        overflow: hidden;
 
-            &:hover {
-                &::after {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: ${applyTransparency(
-                        theme.sys.color["on-primary"](),
-                        theme.sys.state.hover["state-layer-opacity"](),
-                    )};
-                }
+        &:hover {
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: ${applyTransparency(
+                    theme.sys.color["on-primary"](),
+                    theme.sys.state.hover["state-layer-opacity"](),
+                )};
             }
-        `);
-    } else {
-        classNames.push(css`
+        }
+
+        &[disabled] {
             background-color: ${applyTransparency(theme.sys.color["on-surface"](), 0.1)};
             color: ${applyTransparency(theme.sys.color["on-surface"](), 0.38)};
             cursor: not-allowed;
-        `);
-    }
+        }
+    `);
 
     switch (size) {
         case "xs":
@@ -61,36 +57,32 @@ function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
                         border-radius: ${dpToRem(32)};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.accelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${theme.sys.shape.corner.small["default-size"]()};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
                     break;
                 case "square":
                     classNames.push(css`
                         border-radius: ${theme.sys.shape.corner.medium["default-size"]()};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.decelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${theme.sys.shape.corner.full()};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
             }
 
             break;
@@ -109,36 +101,33 @@ function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
                         border-radius: ${dpToRem(40)};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.accelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${theme.sys.shape.corner.medium["default-size"]()};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
+
                     break;
                 case "square":
                     classNames.push(css`
                         border-radius: ${theme.sys.shape.corner.medium["default-size"]()};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.decelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${dpToRem(40)};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
             }
 
             break;
@@ -157,36 +146,33 @@ function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
                         border-radius: ${dpToRem(56)};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.accelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${theme.sys.shape.corner.medium["default-size"]()};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
+
                     break;
                 case "square":
                     classNames.push(css`
                         border-radius: ${theme.sys.shape.corner.large["default-size"]()};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.decelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${dpToRem(40)};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
             }
 
             break;
@@ -205,36 +191,33 @@ function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
                         border-radius: ${dpToRem(96)};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.accelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${theme.sys.shape.corner.large["default-size"]()};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
+
                     break;
                 case "square":
                     classNames.push(css`
                         border-radius: ${theme.sys.shape.corner.large["default-size"]()};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.decelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${dpToRem(40)};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
             }
 
             break;
@@ -253,36 +236,33 @@ function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
                         border-radius: ${dpToRem(132)};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.accelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${theme.sys.shape.corner.large["default-size"]()};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
+
                     break;
                 case "square":
                     classNames.push(css`
                         border-radius: ${theme.sys.shape.corner["extra-large"]["default-size"]()};
                         transition: all ${theme.sys.motion["duration-200"]()}
                             ${theme.sys.motion.easing.standard.decelerate()};
-                    `);
 
-                    if (!disabled) {
-                        classNames.push(css`
+                        &:not(&[disabled]) {
                             &:focus-visible,
                             &:active {
                                 border-radius: ${dpToRem(40)};
                                 transition: border-radius ${theme.sys.motion["duration-50"]()}
                                     ${theme.sys.motion.easing.standard.decelerate()};
                             }
-                        `);
-                    }
+                        }
+                    `);
             }
 
             break;

@@ -7,6 +7,7 @@
     "url": "https://github.com/yourdash/yourdash"
   },
   "dependencies": {
+    "@yourdash/uikit-mv3-solid": "workspace:*",
     "clsx": "^2.1.1",
     "esbuild-plugin-solid": "^0.6.0",
     "sass-embedded": "^1.90.0",

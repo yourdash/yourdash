@@ -5,6 +5,7 @@
       "name": "@yourdash/yourdash",
       "dependencies": {
         "@typescript/native-preview": "^7.0.0-dev.20250814.1",
+        "@yourdash/yourdash": ".",
         "prettier": "^3.6.2",
       },
     },
@@ -36,6 +37,7 @@
       "name": "@yourdash/uikit-mv3-solid",
       "version": "1.0.0",
       "dependencies": {
+        "@yourdash/uikit-mv3-solid": ".",
         "clsx": "^2.1.1",
         "esbuild-plugin-solid": "^0.6.0",
         "sass-embedded": "^1.90.0",
@@ -394,6 +396,8 @@
     "@yourdash/uikit-mv3-solid": ["@yourdash/uikit-mv3-solid@workspace:packages/uikit-mv3-solid"],
 
     "@yourdash/web-frontend": ["@yourdash/web-frontend@workspace:packages/web-frontend"],
+
+    "@yourdash/yourdash": ["@yourdash/yourdash@file:", { "dependencies": { "@typescript/native-preview": "^7.0.0-dev.20250814.1", "prettier": "^3.6.2" } }],
 
     "accepts": ["accepts@2.0.0", "", { "dependencies": { "mime-types": "^3.0.0", "negotiator": "^1.0.0" } }, "sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng=="],
 
