@@ -443,11 +443,11 @@ let theme = {
             /* Brand typeface */
             brand: () => "Roboto",
             /* Bold weight */
-            "weight-bold": () => 700,
+            "weight-bold": () => "700",
             /* Medium weight */
-            "weight-medium": () => 500,
+            "weight-medium": () => "500",
             /* Regular weight */
-            "weight-regular": () => 400,
+            "weight-regular": () => "400",
         },
     },
     sys: {
