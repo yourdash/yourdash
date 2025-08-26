@@ -2,6 +2,8 @@ import Root from "../src/components/Root.tsx";
 import UKFilledButton from "../src/components/buttons/UKFilledButton.tsx";
 import type { ButtonSize } from "../src/components/buttons/lib/size.ts";
 import type { Component } from "solid-js";
+import UKDivider from "../src/components/divider/UKDivider.tsx";
+import { DividerDirection } from "../src/components/divider/lib/direction.ts";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
@@ -28,15 +30,19 @@ export default function App() {
             <div>
                 <ButtonVariantsForSize size={"xs"} />
             </div>
+            <UKDivider direction={DividerDirection.horizontal} />
             <div>
                 <ButtonVariantsForSize size={"s"} />
             </div>
+            <UKDivider direction={DividerDirection.horizontal} />
             <div>
                 <ButtonVariantsForSize size={"m"} />
             </div>
+            <UKDivider direction={DividerDirection.horizontal} />
             <div>
                 <ButtonVariantsForSize size={"l"} />
             </div>
+            <UKDivider direction={DividerDirection.horizontal} />
             <div>
                 <ButtonVariantsForSize size={"xl"} />
             </div>

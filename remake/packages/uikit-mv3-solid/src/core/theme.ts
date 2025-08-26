@@ -1001,6 +1001,8 @@ let theme = {
             error: () => theme.ref.palette.error80(),
             /* Outline */
             outline: () => theme.ref.palette["neutral-variant60"](),
+            /* Outline Variant */
+            "outline-variant": () => theme.ref.palette["neutral-variant30"](),
             /* On background */
             "on-background": () => theme.ref.palette.neutral90(),
             /* Background */
@@ -1074,6 +1076,8 @@ if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matc
                 error: () => theme.ref.palette.error40(),
                 /* Outline */
                 outline: () => theme.ref.palette["neutral-variant50"](),
+                /* Outline Variant */
+                "outline-variant": () => theme.ref.palette["neutral-variant80"](),
                 /* On background */
                 "on-background": () => theme.ref.palette.neutral10(),
                 /* Background */
