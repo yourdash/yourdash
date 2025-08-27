@@ -8,13 +8,15 @@ const Root: Component<{ children: JSX.Element }> = ({ children }) => {
             class={css`
                 background-color: ${theme.sys.color.background()};
                 min-height: 100vh;
-                width: 100vw;
+                width: 100%;
 
                 /* debug purposes */
                 display: flex;
                 padding: 1rem;
                 flex-direction: column;
                 gap: 1rem;
+                font-family: Roboto;
+                color: white;
             `}
         >
             {children}
