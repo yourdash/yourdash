@@ -1,0 +1,35 @@
+name: Build and Publish to Preview Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Install Dependencies
+        run: yarn install
+        working-directory: packages/uikit-mv3-solid
+
+      - name: Build Project
+        run: yarn build
+        working-directory: packages/uikit-mv3-solid
+
+      - name: Publish to Preview Branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: packages/uikit-mv3-solid/dev/dist
+          publish_branch: uikit-mv3-solid-preview
+          commit_message: "Automated build and deploy to preview branch"
