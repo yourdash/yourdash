@@ -1,0 +1,23 @@
+services:
+  yourdash-postgres:
+    container_name: yourdash-postgres
+    hostname: yourdash-postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+  yourdash-backend:
+    container_name: yourdash-backend
+    hostname: yourdash-backend
+    build:
+      context: remake
+      target: yourdash-backend
+    environment:
+      IS_DOCKER: true
+  yourdash-web-frontend:
+    container_name: yourdash-web-frontend
+    hostname: yourdash-web-frontend
+    build:
+      context: remake
+      target: yourdash-web-frontend
