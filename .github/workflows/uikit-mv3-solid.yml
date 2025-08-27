@@ -23,7 +23,7 @@ jobs:
         working-directory: packages/uikit-mv3-solid
 
       - name: Build Project
-        run: yarn build
+        run: yarn build-dev
         working-directory: packages/uikit-mv3-solid
 
       - name: Publish to Preview Branch
