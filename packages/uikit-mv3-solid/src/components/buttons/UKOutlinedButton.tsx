@@ -68,6 +68,8 @@ const UKOutlinedButton: Component<{
     onClick: (value?: boolean) => void;
     size?: ButtonSize;
     togglable?: boolean;
+    leadingIcon?: string;
+    trailingIcon?: string;
 }> = (props) => {
     const [toggled, setToggled] = createSignal(false);
 
@@ -85,6 +87,8 @@ const UKOutlinedButton: Component<{
             }}
             class={clsx(getClasses(props.togglable), props.class)}
             disabled={props.disabled || false}
+            leadingIcon={props.leadingIcon}
+            trailingIcon={props.trailingIcon}
         >
             {props.children}
         </BaseButton>

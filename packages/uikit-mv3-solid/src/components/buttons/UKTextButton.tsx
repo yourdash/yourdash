@@ -50,6 +50,8 @@ const UKTextButton: Component<{
     disabled?: boolean;
     onClick: () => void;
     size?: ButtonSize;
+    leadingIcon?: string;
+    trailingIcon?: string;
 }> = (props) => {
     return (
         <BaseButton
@@ -60,6 +62,8 @@ const UKTextButton: Component<{
             }}
             class={clsx(getClasses(), props.class)}
             disabled={props.disabled || false}
+            leadingIcon={props.leadingIcon}
+            trailingIcon={props.trailingIcon}
         >
             {props.children}
         </BaseButton>

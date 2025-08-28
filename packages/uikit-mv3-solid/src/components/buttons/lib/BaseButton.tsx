@@ -4,6 +4,11 @@ import clsx from "clsx";
 import { css } from "solid-styled-components";
 import theme from "../../../core/theme.ts";
 import dpToRem from "../../../core/dp.ts";
+import UKIcon from "../../icon/UKIcon.tsx";
+
+const iconClass = css`
+    font-size: var(--icon-size);
+`;
 
 function getClasses(size: ButtonSize, toggled?: boolean) {
     let classNames: string[] = [];
@@ -14,6 +19,8 @@ function getClasses(size: ButtonSize, toggled?: boolean) {
         overflow: hidden;
         font-family: ${theme.ref.typeface.plain()};
         user-select: none;
+        display: flex;
+        align-items: center;
 
         outline-style: solid;
         outline-offset: ${dpToRem(2)};
@@ -56,6 +63,8 @@ function getClasses(size: ButtonSize, toggled?: boolean) {
                 font-size: ${dpToRem(14)};
                 line-height: ${dpToRem(20)};
                 letter-spacing: ${dpToRem(0.1)};
+
+                --icon-size: ${dpToRem(20)};
             `);
 
             if (!toggled) {
@@ -110,6 +119,8 @@ function getClasses(size: ButtonSize, toggled?: boolean) {
                 font-size: ${dpToRem(14)};
                 line-height: ${dpToRem(20)};
                 letter-spacing: ${dpToRem(0.1)};
+
+                --icon-size: ${dpToRem(20)};
             `);
 
             if (!toggled) {
@@ -164,6 +175,8 @@ function getClasses(size: ButtonSize, toggled?: boolean) {
                 font-size: ${dpToRem(16)};
                 line-height: ${dpToRem(24)};
                 letter-spacing: ${dpToRem(0.15)};
+
+                --icon-size: ${dpToRem(24)};
             `);
 
             if (!toggled) {
@@ -220,6 +233,8 @@ function getClasses(size: ButtonSize, toggled?: boolean) {
                 font-size: ${dpToRem(24)};
                 line-height: ${dpToRem(32)};
                 letter-spacing: 0;
+
+                --icon-size: ${dpToRem(32)};
             `);
 
             if (!toggled) {
@@ -276,6 +291,8 @@ function getClasses(size: ButtonSize, toggled?: boolean) {
                 font-size: ${dpToRem(32)};
                 line-height: ${dpToRem(40)};
                 letter-spacing: 0;
+
+                --icon-size: ${dpToRem(40)};
             `);
 
             if (!toggled) {
@@ -331,6 +348,8 @@ const BaseButton: Component<{
     size: ButtonSize;
     toggled?: boolean;
     onClick: (event: MouseEvent & { currentTarget: HTMLButtonElement; target: Element }) => void;
+    leadingIcon?: string;
+    trailingIcon?: string;
 }> = (props) => {
     return (
         <button
@@ -341,7 +360,9 @@ const BaseButton: Component<{
             }}
             data-toggled={props.toggled}
         >
+            {props.leadingIcon && <UKIcon class={iconClass}>{props.leadingIcon}</UKIcon>}
             {props.children}
+            {props.trailingIcon && <UKIcon class={iconClass}>{props.trailingIcon}</UKIcon>}
         </button>
     );
 };

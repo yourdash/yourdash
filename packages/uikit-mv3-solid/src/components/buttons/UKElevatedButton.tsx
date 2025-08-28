@@ -1,5 +1,4 @@
 import type { ButtonSize } from "./lib/size.ts";
-import type { ButtonShape } from "./lib/shape.ts";
 import { css } from "solid-styled-components";
 import type { Component, JSX } from "solid-js";
 import BaseButton from "./lib/BaseButton.tsx";
@@ -7,7 +6,7 @@ import clsx from "clsx";
 import theme from "../../core/theme.ts";
 import dpToRem from "../../core/dp.ts";
 
-function getClasses(size: ButtonSize, shape: ButtonShape, disabled: boolean) {
+function getClasses(disabled: boolean) {
     let classNames: string[] = [];
 
     classNames.push(css`
@@ -34,12 +33,17 @@ const UKElevatedButton: Component<{
     onClick: () => void;
     size: ButtonSize;
     toggled?: boolean;
+    leadingIcon?: string;
+    trailingIcon?: string;
 }> = (props) => {
     return (
         <BaseButton
             onClick={props.onClick}
-            class={clsx(getClasses(props.size, props.shape, props.disabled || false), props.class)}
+            size={props.size}
+            class={clsx(getClasses(props.disabled || false), props.class)}
             disabled={props.disabled || false}
+            leadingIcon={props.leadingIcon}
+            trailingIcon={props.trailingIcon}
         >
             {props.children}
         </BaseButton>
