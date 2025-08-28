@@ -348,7 +348,8 @@
                         width: var(--thickness);
                         height: 100%;
                     `);break}break}return n}const j=e=>(e.width==="inset"&&e.direction===A.vertical&&console.warn("A divider cannot be both vertical and inset"),(()=>{var t=Ve();return w(()=>z(t,I(De(e.direction,e.width||"full")))),t})());var Ge=k("<div>");function He(){let e=[];return e.push(d`
-        padding: 1rem;
+        padding-left: ${r(16)};
+        padding-right: ${r(16)};
     `),e}const Qe=e=>(()=>{var t=Ge();return g(t,()=>e.children),w(()=>z(t,I(e.class,He()))),t})();function We(){let e=[];return e.push(d`
         background: ${i.sys.color["surface-container-highest"]()};
         box-shadow: 0 0 ${r(1)} ${i.sys.color.shadow()};
