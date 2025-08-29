@@ -9,6 +9,7 @@ import UKTonalButton from "../src/components/buttons/UKTonalButton.tsx";
 import UKOutlinedButton from "../src/components/buttons/UKOutlinedButton.tsx";
 import UKTextButton from "../src/components/buttons/UKTextButton.tsx";
 import { css } from "solid-styled-components";
+import UKBadge from "../src/components/badge/UKBadge.tsx";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
@@ -167,6 +168,41 @@ export default function App() {
             <ButtonVariantsForSize size={"l"} />
             <UKDivider direction={DividerDirection.horizontal} />
             <ButtonVariantsForSize size={"xl"} />
+
+            <UKBadge count={12}>
+                <h3
+                    class={css`
+                        width: 16rem;
+                    `}
+                >
+                    Random Placeholder
+                </h3>
+            </UKBadge>
+
+            <UKBadge count={1000}>
+                <h3
+                    class={css`
+                        width: 16rem;
+                    `}
+                >
+                    Random Placeholder
+                </h3>
+            </UKBadge>
+
+            <UKBadge count={1}>
+                <h3
+                    class={css`
+                        width: 16rem;
+                    `}
+                >
+                    Random Placeholder
+                </h3>
+            </UKBadge>
+
+            <span>
+                UIKit Material Expressive for SolidJS | "@yourdash/uikit-mv3-solid" | Created by{" "}
+                <a href={"https://github.com/ewsgit"}>Ewsgit</a>
+            </span>
         </Root>
     );
 }
