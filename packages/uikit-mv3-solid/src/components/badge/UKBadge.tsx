@@ -17,8 +17,8 @@ const UKBadge: Component<{ children: JSX.Element; count: number }> = ({ children
                 <div
                     class={css`
                         position: absolute;
-                        left: calc(100% - ${dpToRem(12)});
-                        top: 0;
+                        left: calc(100% - ${dpToRem(3)});
+                        top: -${dpToRem(3)};
                         background-color: ${theme.sys.color.error()};
                         height: ${dpToRem(6)};
                         width: ${dpToRem(6)};
@@ -30,7 +30,7 @@ const UKBadge: Component<{ children: JSX.Element; count: number }> = ({ children
                     class={css`
                         position: absolute;
                         left: calc(100% - ${dpToRem(12)});
-                        top: 0;
+                        top: -${dpToRem(8)};
                         background-color: ${theme.sys.color.error()};
                         height: ${dpToRem(16)};
                         border-radius: ${theme.sys.shape.corner.full()};

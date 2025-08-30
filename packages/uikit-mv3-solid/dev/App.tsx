@@ -10,6 +10,9 @@ import UKOutlinedButton from "../src/components/buttons/UKOutlinedButton.tsx";
 import UKTextButton from "../src/components/buttons/UKTextButton.tsx";
 import { css } from "solid-styled-components";
 import UKBadge from "../src/components/badge/UKBadge.tsx";
+import theme from "../src/core/theme.ts";
+import UKList from "../src/components/list/UKList.tsx";
+import UKListItem from "../src/components/list/UKListItem.tsx";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
@@ -169,35 +172,129 @@ export default function App() {
             <UKDivider direction={DividerDirection.horizontal} />
             <ButtonVariantsForSize size={"xl"} />
 
-            <UKBadge count={12}>
-                <h3
-                    class={css`
-                        width: 16rem;
-                    `}
-                >
-                    Random Placeholder
-                </h3>
-            </UKBadge>
+            <UKFilledCard>
+                <UKBadge count={12}>
+                    <h3
+                        class={css`
+                            background: ${theme.sys.color["secondary-container"]()};
+                            width: 16rem;
+                            margin: 0;
+                            padding: 0.25rem;
+                        `}
+                    >
+                        Random Placeholder
+                    </h3>
+                </UKBadge>
 
-            <UKBadge count={1000}>
-                <h3
-                    class={css`
-                        width: 16rem;
-                    `}
-                >
-                    Random Placeholder
-                </h3>
-            </UKBadge>
+                <UKBadge count={1000}>
+                    <h3
+                        class={css`
+                            background: ${theme.sys.color["secondary-container"]()};
+                            width: 16rem;
+                            margin: 0;
+                            padding: 0.25rem;
+                        `}
+                    >
+                        Random Placeholder
+                    </h3>
+                </UKBadge>
 
-            <UKBadge count={1}>
-                <h3
-                    class={css`
-                        width: 16rem;
-                    `}
-                >
-                    Random Placeholder
-                </h3>
-            </UKBadge>
+                <UKBadge count={1}>
+                    <h3
+                        class={css`
+                            background: ${theme.sys.color["secondary-container"]()};
+                            width: 16rem;
+                            margin: 0;
+                            padding: 0.25rem;
+                        `}
+                    >
+                        Random Placeholder
+                    </h3>
+                </UKBadge>
+            </UKFilledCard>
+
+            <UKFilledCard>
+                <UKList>
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        onClick={() => {}}
+                    />
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        leading={{
+                            type: "icon",
+                            value: "arrow_right",
+                        }}
+                        onClick={() => {}}
+                    />
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        followingIcon={"arrow_left"}
+                        onClick={() => {}}
+                    />
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        leading={{
+                            type: "icon",
+                            value: "arrow_right",
+                        }}
+                        onClick={() => {}}
+                        followingIcon={"arrow_left"}
+                    />
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        leading={{
+                            type: "avatar",
+                            value: "https://google.com/favicon.ico",
+                        }}
+                        onClick={() => {}}
+                        followingIcon={"arrow_left"}
+                    />
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        leading={{
+                            type: "avatar",
+                            value: "https://google.com/favicon.ico",
+                        }}
+                        onClick={() => {}}
+                    />
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        leading={{
+                            type: "image",
+                            value: "https://google.com/favicon.ico",
+                        }}
+                        onClick={() => {}}
+                        selected={true}
+                    />
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        leading={{
+                            type: "large-image",
+                            value: "https://google.com/favicon.ico",
+                        }}
+                        onClick={() => {}}
+                        selected={true}
+                    />
+                    <UKListItem
+                        headline={"Heading"}
+                        supportingText={"Supporting text"}
+                        leading={{
+                            type: "video",
+                            value: "https://google.com/favicon.ico",
+                        }}
+                        onClick={() => {}}
+                    />
+                </UKList>
+            </UKFilledCard>
 
             <span>
                 UIKit Material Expressive for SolidJS | "@yourdash/uikit-mv3-solid" | Created by{" "}

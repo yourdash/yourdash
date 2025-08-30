@@ -16,6 +16,8 @@ function getClasses() {
         white-space: nowrap;
         word-wrap: normal;
         direction: ltr;
+        user-select: none;
+        pointer-events: none;
         -webkit-font-feature-settings: "liga";
         -webkit-font-smoothing: antialiased;
     `;
