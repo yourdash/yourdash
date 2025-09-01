@@ -10,9 +10,9 @@ import UKOutlinedButton from "../src/components/buttons/UKOutlinedButton.tsx";
 import UKTextButton from "../src/components/buttons/UKTextButton.tsx";
 import { css } from "solid-styled-components";
 import UKBadge from "../src/components/badge/UKBadge.tsx";
-import theme from "../src/core/theme.ts";
 import UKList from "../src/components/list/UKList.tsx";
 import UKListItem from "../src/components/list/UKListItem.tsx";
+import { uk } from "../src/core/design/tokens.ts";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
@@ -27,6 +27,7 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                 class={css`
                     display: flex;
                     gap: 0.5rem;
+                    flex-wrap: wrap;
                 `}
             >
                 <UKFilledButton size={size} togglable={true} onClick={() => {}}>
@@ -62,6 +63,7 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                 class={css`
                     display: flex;
                     gap: 0.5rem;
+                    flex-wrap: wrap;
                 `}
             >
                 <UKTonalButton size={size} togglable={true} onClick={() => {}}>
@@ -97,6 +99,7 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                 class={css`
                     display: flex;
                     gap: 0.5rem;
+                    flex-wrap: wrap;
                 `}
             >
                 <UKOutlinedButton size={size} togglable={true} onClick={() => {}}>
@@ -132,6 +135,7 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                 class={css`
                     display: flex;
                     gap: 0.5rem;
+                    flex-wrap: wrap;
                 `}
             >
                 <UKTextButton size={size} onClick={() => {}}>
@@ -176,7 +180,7 @@ export default function App() {
                 <UKBadge count={12}>
                     <h3
                         class={css`
-                            background: ${theme.sys.color["secondary-container"]()};
+                            background: rgb(${uk.sys.color["secondary-container"]});
                             width: 16rem;
                             margin: 0;
                             padding: 0.25rem;
@@ -189,7 +193,7 @@ export default function App() {
                 <UKBadge count={1000}>
                     <h3
                         class={css`
-                            background: ${theme.sys.color["secondary-container"]()};
+                            background: rgb(${uk.sys.color["secondary-container"]});
                             width: 16rem;
                             margin: 0;
                             padding: 0.25rem;
@@ -202,7 +206,7 @@ export default function App() {
                 <UKBadge count={1}>
                     <h3
                         class={css`
-                            background: ${theme.sys.color["secondary-container"]()};
+                            background: rgb(${uk.sys.color["secondary-container"]});
                             width: 16rem;
                             margin: 0;
                             padding: 0.25rem;

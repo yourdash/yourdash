@@ -1,7 +1,7 @@
 import type { Component, JSX } from "solid-js";
 import { css } from "solid-styled-components";
-import theme from "../../core/theme.ts";
 import dpToRem from "../../core/dp.ts";
+import { uk } from "../../core/design/tokens.ts";
 
 const UKBadge: Component<{ children: JSX.Element; count: number }> = ({ children, count }) => {
     return (
@@ -19,10 +19,10 @@ const UKBadge: Component<{ children: JSX.Element; count: number }> = ({ children
                         position: absolute;
                         left: calc(100% - ${dpToRem(3)});
                         top: -${dpToRem(3)};
-                        background-color: ${theme.sys.color.error()};
+                        background-color: rgb(${uk.sys.color.error});
                         height: ${dpToRem(6)};
                         width: ${dpToRem(6)};
-                        border-radius: ${theme.sys.shape.corner.full()};
+                        border-radius: ${uk.sys.shape.corner.full};
                     `}
                 />
             ) : count > 1 ? (
@@ -31,16 +31,16 @@ const UKBadge: Component<{ children: JSX.Element; count: number }> = ({ children
                         position: absolute;
                         left: calc(100% - ${dpToRem(12)});
                         top: -${dpToRem(8)};
-                        background-color: ${theme.sys.color.error()};
+                        background-color: rgb(${uk.sys.color.error});
                         height: ${dpToRem(16)};
-                        border-radius: ${theme.sys.shape.corner.full()};
+                        border-radius: ${uk.sys.shape.corner.full};
 
-                        color: ${theme.sys.color["on-error"]()};
-                        font-family: ${theme.sys.typescale["label-small"].font()};
-                        font-size: ${theme.sys.typescale["label-small"].size()};
-                        font-kerning: ${theme.sys.typescale["label-small"].tracking()};
-                        font-weight: ${theme.sys.typescale["label-small"].weight()};
-                        line-height: ${theme.sys.typescale["label-small"]["line-height"]()};
+                        color: rgb(${uk.sys.color["on-error"]});
+                        font-family: ${uk.sys.typescale["label-small"].font};
+                        font-size: ${uk.sys.typescale["label-small"].size};
+                        font-kerning: ${uk.sys.typescale["label-small"].tracking};
+                        font-weight: ${uk.sys.typescale["label-small"].weight};
+                        line-height: ${uk.sys.typescale["label-small"]["line-height"]};
                         padding-left: ${dpToRem(4)};
                         padding-right: ${dpToRem(4)};
                     `}

@@ -2,7 +2,7 @@ import { type Component } from "solid-js";
 import UKIcon from "../icon/UKIcon.tsx";
 import { css } from "solid-styled-components";
 import dpToRem from "../../core/dp.ts";
-import theme from "../../core/theme.ts";
+import { uk } from "../../core/design/tokens.ts";
 
 const containerClassName = css`
     display: flex;
@@ -11,10 +11,10 @@ const containerClassName = css`
     align-items: center;
     padding-left: ${dpToRem(16)};
     padding-right: ${dpToRem(16)};
-    background-color: ${theme.sys.color.surface()};
+    background-color: ${uk.sys.color.surface};
 
     &[data-selected="true"] {
-        background-color: ${theme.sys.color["secondary-container"]()};
+        background-color: ${uk.sys.color["secondary-container"]};
     }
 
     &[data-lines="1"] {
@@ -78,7 +78,7 @@ const UKListItem: Component<{
             >
                 <div
                     class={css`
-                        color: ${theme.sys.color["on-surface"]()};
+                        color: ${uk.sys.color["on-surface"]};
                     `}
                 >
                     {props.headline}
@@ -86,7 +86,7 @@ const UKListItem: Component<{
                 <p
                     class={css`
                         margin: 0;
-                        color: ${theme.sys.color["on-surface-variant"]()};
+                        color: ${uk.sys.color["on-surface-variant"]};
                     `}
                 >
                     {props.supportingText}

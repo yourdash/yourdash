@@ -7,6 +7,7 @@
     "url": "https://github.com/yourdash/yourdash"
   },
   "dependencies": {
+    "@solid-primitives/media": "^2.3.3",
     "@yourdash/uikit-mv3-solid": "*",
     "clsx": "^2.1.1",
     "esbuild-plugin-solid": "^0.6.0",

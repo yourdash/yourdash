@@ -3,41 +3,40 @@ import { css } from "solid-styled-components";
 import { type Component, createSignal, type JSX } from "solid-js";
 import BaseButton from "./lib/BaseButton.tsx";
 import clsx from "clsx";
-import theme from "../../core/theme.ts";
-import applyTransparency from "../../core/transparency.ts";
 import dpToRem from "../../core/dp.ts";
+import { uk } from "../../core/design/tokens.ts";
 
 function getClasses(togglable?: boolean) {
     let classNames: string[] = [];
 
     classNames.push(css`
         background-color: transparent;
-        color: ${theme.sys.color["on-surface-variant"]()};
+        color: rgb(${uk.sys.color["on-surface-variant"]});
         border-width: ${dpToRem(1)};
         border-style: solid;
-        border-color: ${theme.sys.color["outline-variant"]()};
+        border-color: rgb(${uk.sys.color["outline-variant"]});
 
         &:hover {
             &::after {
-                background-color: ${applyTransparency(
-                    theme.sys.color["on-surface-variant"](),
-                    theme.sys.state.hover["state-layer-opacity"](),
-                )};
+                background-color: rgb(
+                    ${uk.sys.color["on-surface-variant"]},
+                    ${uk.sys.state.hover["state-layer-opacity"]}
+                );
             }
         }
 
         &:active {
             &::after {
-                background-color: ${applyTransparency(
-                    theme.sys.color["on-secondary-container"](),
-                    theme.sys.state.pressed["state-layer-opacity"](),
-                )};
+                background-color: rgb(
+                    ${uk.sys.color["on-secondary-container"]},
+                    ${uk.sys.state.pressed["state-layer-opacity"]}}
+                );
             }
         }
 
         &[disabled] {
-            background-color: ${applyTransparency(theme.sys.color["on-surface"](), 0.1)};
-            color: ${applyTransparency(theme.sys.color["on-surface"](), 0.38)};
+            background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
+            color: rgb(${uk.sys.color["on-surface"]}, 0.38);
 
             &::after {
                 background-color: transparent;
@@ -48,11 +47,11 @@ function getClasses(togglable?: boolean) {
     if (togglable) {
         classNames.push(css`
             &.${classNames[0]} {
-                color: ${theme.sys.color["on-surface-variant"]()};
+                color: rgb(${uk.sys.color["on-surface-variant"]});
 
                 &[data-toggled="true"] {
-                    background: ${theme.sys.color["inverse-surface"]()};
-                    color: ${theme.sys.color["inverse-on-surface"]()};
+                    background: rgb(${uk.sys.color["inverse-surface"]});
+                    color: rgb(${uk.sys.color["inverse-on-surface"]});
                 }
             }
         `);

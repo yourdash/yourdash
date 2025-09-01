@@ -25,7 +25,8 @@
     "types": ["vite/client"]
   },
   "include": [
-    "./src", "./dev"],
+    "./src", "./dev"
+  ],
   "exclude": [
     "node_modules", "./dist"]
 }

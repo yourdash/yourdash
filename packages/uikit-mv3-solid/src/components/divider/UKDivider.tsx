@@ -2,14 +2,14 @@ import type { Component } from "solid-js";
 import { css } from "solid-styled-components";
 import { DividerDirection } from "./lib/direction.ts";
 import clsx from "clsx";
-import theme from "../../core/theme.ts";
 import dpToRem from "../../core/dp.ts";
+import { uk } from "../../core/design/tokens.ts";
 
 function getClasses(direction: DividerDirection, width: "inset" | "middle-inset" | "full") {
     let classNames: string[] = [];
 
     classNames.push(css`
-        background-color: ${theme.sys.color["outline-variant"]()};
+        background-color: rgb(${uk.sys.color["outline-variant"]});
         --thickness: ${dpToRem(1)};
     `);
 

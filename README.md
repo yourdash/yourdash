@@ -2,11 +2,13 @@
 
 ## YourDash consists of the following packages
 
-- web-interface (@yourdash/web-interface)
+- web-frontend (@yourdash/web-frontend)
+- uikit-mv3-solid (@yourdash/uikit-mv3-solid)
 - backend (@yourdash/backend)
 
 ## Requirements
 
+- Yarn
 - Bun
 - Docker
 
