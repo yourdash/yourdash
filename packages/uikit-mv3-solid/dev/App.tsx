@@ -217,93 +217,94 @@ export default function App() {
                 </UKBadge>
             </UKFilledCard>
 
-            <UKFilledCard>
-                <UKList>
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        onClick={() => {}}
-                    />
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        leading={{
-                            type: "icon",
-                            value: "arrow_right",
-                        }}
-                        onClick={() => {}}
-                    />
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        followingIcon={"arrow_left"}
-                        onClick={() => {}}
-                        canSelect={true}
-                    />
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        leading={{
-                            type: "icon",
-                            value: "arrow_right",
-                        }}
-                        onClick={() => {}}
-                        followingIcon={"arrow_left"}
-                        selected={true}
-                        canSelect={true}
-                    />
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        leading={{
-                            type: "avatar",
-                            value: "https://google.com/favicon.ico",
-                        }}
-                        onClick={() => {}}
-                        followingIcon={"arrow_left"}
-                    />
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        leading={{
-                            type: "avatar",
-                            value: "https://google.com/favicon.ico",
-                        }}
-                        onClick={() => {}}
-                    />
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        leading={{
-                            type: "image",
-                            value: "https://google.com/favicon.ico",
-                        }}
-                        onClick={() => {}}
-                        selected={true}
-                        canSelect={true}
-                    />
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        leading={{
-                            type: "large-image",
-                            value: "https://google.com/favicon.ico",
-                        }}
-                        onClick={() => {}}
-                        selected={true}
-                        canSelect={true}
-                    />
-                    <UKListItem
-                        labelText={"Heading"}
-                        supportingText={"Supporting text"}
-                        leading={{
-                            type: "video",
-                            value: "https://google.com/favicon.ico",
-                        }}
-                        onClick={() => {}}
-                    />
-                </UKList>
-            </UKFilledCard>
+            <UKList>
+                <UKListItem
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    onClick={() => {}}
+                />
+                <UKListItem
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    leading={{
+                        type: "icon",
+                        value: "arrow_right",
+                    }}
+                    onClick={() => {}}
+                />
+                <UKListItem
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    trailing={{ type: "text", value: "100+" }}
+                    onClick={() => {}}
+                    canSelect={true}
+                />
+                <UKListItem
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    leading={{
+                        type: "icon",
+                        value: "arrow_right",
+                    }}
+                    onClick={() => {}}
+                    trailing={{ type: "icon", value: "arrow_left" }}
+                    selected={true}
+                    canSelect={true}
+                />
+                <UKListItem
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    leading={{
+                        type: "avatar",
+                        value: "https://google.com/favicon.ico",
+                    }}
+                    onClick={() => {}}
+                    trailing={{ type: "icon", value: "arrow_left" }}
+                />
+                <UKListItem
+                    divider={true}
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    leading={{
+                        type: "avatar",
+                        value: "https://google.com/favicon.ico",
+                    }}
+                    onClick={() => {}}
+                />
+                <UKListItem
+                    divider={true}
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    leading={{
+                        type: "image",
+                        value: "https://google.com/favicon.ico",
+                    }}
+                    onClick={() => {}}
+                    selected={true}
+                    canSelect={true}
+                />
+                <UKListItem
+                    divider={true}
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    leading={{
+                        type: "large-image",
+                        value: "https://google.com/favicon.ico",
+                    }}
+                    onClick={() => {}}
+                    selected={true}
+                    canSelect={true}
+                />
+                <UKListItem
+                    labelText={"Heading"}
+                    supportingText={"Supporting text"}
+                    leading={{
+                        type: "video",
+                        value: "https://google.com/favicon.ico",
+                    }}
+                    onClick={() => {}}
+                />
+            </UKList>
 
             <span>
                 UIKit Material Expressive for SolidJS | "@yourdash/uikit-mv3-solid" | Created by{" "}

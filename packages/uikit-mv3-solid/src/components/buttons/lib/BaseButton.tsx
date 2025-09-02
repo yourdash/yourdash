@@ -80,8 +80,12 @@ const BaseButton: Component<{
                 if (!toggled) {
                     classNames.push(css`
                         border-radius: ${dpToRem(32)};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.accelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.accelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -99,8 +103,12 @@ const BaseButton: Component<{
                 } else {
                     classNames.push(css`
                         border-radius: ${uk.sys.shape.corner.medium["default-size"]};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.decelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -136,8 +144,12 @@ const BaseButton: Component<{
                 if (!toggled) {
                     classNames.push(css`
                         border-radius: ${dpToRem(40)};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.accelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.accelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -155,8 +167,12 @@ const BaseButton: Component<{
                 } else {
                     classNames.push(css`
                         border-radius: ${uk.sys.shape.corner.medium["default-size"]};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.decelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -192,8 +208,12 @@ const BaseButton: Component<{
                 if (!toggled) {
                     classNames.push(css`
                         border-radius: ${dpToRem(56)};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.accelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.accelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -213,8 +233,12 @@ const BaseButton: Component<{
                 } else {
                     classNames.push(css`
                         border-radius: ${uk.sys.shape.corner.large["default-size"]};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.decelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -250,8 +274,12 @@ const BaseButton: Component<{
                 if (!toggled) {
                     classNames.push(css`
                         border-radius: ${dpToRem(96)};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.accelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.accelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -271,8 +299,12 @@ const BaseButton: Component<{
                 } else {
                     classNames.push(css`
                         border-radius: ${uk.sys.shape.corner.large["default-size"]};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.decelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -308,8 +340,12 @@ const BaseButton: Component<{
                 if (!toggled) {
                     classNames.push(css`
                         border-radius: ${dpToRem(132)};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.accelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.accelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {
@@ -327,8 +363,12 @@ const BaseButton: Component<{
                 } else {
                     classNames.push(css`
                         border-radius: ${uk.sys.shape.corner["extra-large"]["default-size"]};
-                        transition: all ${uk.sys.motion["duration-200"]}
-                            ${uk.sys.motion.easing.standard.decelerate};
+                        transition:
+                            all ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-color ${uk.sys.motion["duration-200"]}
+                                ${uk.sys.motion.easing.standard.decelerate},
+                            outline-width 0ms linear;
 
                         &:not(&[disabled]) {
                             &:active {

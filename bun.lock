@@ -5,7 +5,6 @@
       "name": "@yourdash/yourdash",
       "dependencies": {
         "@typescript/native-preview": "^7.0.0-dev.20250814.1",
-        "@yourdash/yourdash": ".",
         "prettier": "^3.6.2",
       },
     },
@@ -37,7 +36,8 @@
       "name": "@yourdash/uikit-mv3-solid",
       "version": "1.0.0",
       "dependencies": {
-        "@yourdash/uikit-mv3-solid": ".",
+        "@solid-primitives/media": "^2.3.3",
+        "@yourdash/uikit-mv3-solid": "*",
         "clsx": "^2.1.1",
         "esbuild-plugin-solid": "^0.6.0",
         "sass-embedded": "^1.90.0",
@@ -323,6 +323,16 @@
 
     "@rollup/rollup-win32-x64-msvc": ["@rollup/rollup-win32-x64-msvc@4.46.2", "", { "os": "win32", "cpu": "x64" }, "sha512-CvUo2ixeIQGtF6WvuB87XWqPQkoFAFqW+HUo/WzHwuHDvIwZCtjdWXoYCcr06iKGydiqTclC4jU/TNObC/xKZg=="],
 
+    "@solid-primitives/event-listener": ["@solid-primitives/event-listener@2.4.3", "", { "dependencies": { "@solid-primitives/utils": "^6.3.2" }, "peerDependencies": { "solid-js": "^1.6.12" } }, "sha512-h4VqkYFv6Gf+L7SQj+Y6puigL/5DIi7x5q07VZET7AWcS+9/G3WfIE9WheniHWJs51OEkRB43w6lDys5YeFceg=="],
+
+    "@solid-primitives/media": ["@solid-primitives/media@2.3.3", "", { "dependencies": { "@solid-primitives/event-listener": "^2.4.3", "@solid-primitives/rootless": "^1.5.2", "@solid-primitives/static-store": "^0.1.2", "@solid-primitives/utils": "^6.3.2" }, "peerDependencies": { "solid-js": "^1.6.12" } }, "sha512-hQ4hLOGvfbugQi5Eu1BFWAIJGIAzztq9x0h02xgBGl2l0Jaa3h7tg6bz5tV1NSuNYVGio4rPoa7zVQQLkkx9dA=="],
+
+    "@solid-primitives/rootless": ["@solid-primitives/rootless@1.5.2", "", { "dependencies": { "@solid-primitives/utils": "^6.3.2" }, "peerDependencies": { "solid-js": "^1.6.12" } }, "sha512-9HULb0QAzL2r47CCad0M+NKFtQ+LrGGNHZfteX/ThdGvKIg2o2GYhBooZubTCd/RTu2l2+Nw4s+dEfiDGvdrrQ=="],
+
+    "@solid-primitives/static-store": ["@solid-primitives/static-store@0.1.2", "", { "dependencies": { "@solid-primitives/utils": "^6.3.2" }, "peerDependencies": { "solid-js": "^1.6.12" } }, "sha512-ReK+5O38lJ7fT+L6mUFvUr6igFwHBESZF+2Ug842s7fvlVeBdIVEdTCErygff6w7uR6+jrr7J8jQo+cYrEq4Iw=="],
+
+    "@solid-primitives/utils": ["@solid-primitives/utils@6.3.2", "", { "peerDependencies": { "solid-js": "^1.6.12" } }, "sha512-hZ/M/qr25QOCcwDPOHtGjxTD8w2mNyVAYvcfgwzBHq2RwNqHNdDNsMZYap20+ruRwW4A3Cdkczyoz0TSxLCAPQ=="],
+
     "@trpc/server": ["@trpc/server@11.4.4", "", { "peerDependencies": { "typescript": ">=5.7.2" } }, "sha512-VkJb2xnb4rCynuwlCvgPBh5aM+Dco6fBBIo6lWAdJJRYVwtyE5bxNZBgUvRRz/cFSEAy0vmzLxF7aABDJfK5Rg=="],
 
     "@types/babel__core": ["@types/babel__core@7.20.5", "", { "dependencies": { "@babel/parser": "^7.20.7", "@babel/types": "^7.20.7", "@types/babel__generator": "*", "@types/babel__template": "*", "@types/babel__traverse": "*" } }, "sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA=="],
@@ -396,8 +406,6 @@
     "@yourdash/uikit-mv3-solid": ["@yourdash/uikit-mv3-solid@workspace:packages/uikit-mv3-solid"],
 
     "@yourdash/web-frontend": ["@yourdash/web-frontend@workspace:packages/web-frontend"],
-
-    "@yourdash/yourdash": ["@yourdash/yourdash@file:", { "dependencies": { "@typescript/native-preview": "^7.0.0-dev.20250814.1", "prettier": "^3.6.2" } }],
 
     "accepts": ["accepts@2.0.0", "", { "dependencies": { "mime-types": "^3.0.0", "negotiator": "^1.0.0" } }, "sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng=="],
 
