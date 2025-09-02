@@ -220,37 +220,40 @@ export default function App() {
             <UKFilledCard>
                 <UKList>
                     <UKListItem
-                        headline={"Heading"}
+                        labelText={"Heading"}
                         supportingText={"Supporting text"}
                         onClick={() => {}}
                     />
                     <UKListItem
-                        headline={"Heading"}
-                        supportingText={"Supporting text"}
-                        leading={{
-                            type: "icon",
-                            value: "arrow_right",
-                        }}
-                        onClick={() => {}}
-                    />
-                    <UKListItem
-                        headline={"Heading"}
-                        supportingText={"Supporting text"}
-                        followingIcon={"arrow_left"}
-                        onClick={() => {}}
-                    />
-                    <UKListItem
-                        headline={"Heading"}
+                        labelText={"Heading"}
                         supportingText={"Supporting text"}
                         leading={{
                             type: "icon",
                             value: "arrow_right",
                         }}
                         onClick={() => {}}
-                        followingIcon={"arrow_left"}
                     />
                     <UKListItem
-                        headline={"Heading"}
+                        labelText={"Heading"}
+                        supportingText={"Supporting text"}
+                        followingIcon={"arrow_left"}
+                        onClick={() => {}}
+                        canSelect={true}
+                    />
+                    <UKListItem
+                        labelText={"Heading"}
+                        supportingText={"Supporting text"}
+                        leading={{
+                            type: "icon",
+                            value: "arrow_right",
+                        }}
+                        onClick={() => {}}
+                        followingIcon={"arrow_left"}
+                        selected={true}
+                        canSelect={true}
+                    />
+                    <UKListItem
+                        labelText={"Heading"}
                         supportingText={"Supporting text"}
                         leading={{
                             type: "avatar",
@@ -260,7 +263,7 @@ export default function App() {
                         followingIcon={"arrow_left"}
                     />
                     <UKListItem
-                        headline={"Heading"}
+                        labelText={"Heading"}
                         supportingText={"Supporting text"}
                         leading={{
                             type: "avatar",
@@ -269,7 +272,7 @@ export default function App() {
                         onClick={() => {}}
                     />
                     <UKListItem
-                        headline={"Heading"}
+                        labelText={"Heading"}
                         supportingText={"Supporting text"}
                         leading={{
                             type: "image",
@@ -277,9 +280,10 @@ export default function App() {
                         }}
                         onClick={() => {}}
                         selected={true}
+                        canSelect={true}
                     />
                     <UKListItem
-                        headline={"Heading"}
+                        labelText={"Heading"}
                         supportingText={"Supporting text"}
                         leading={{
                             type: "large-image",
@@ -287,9 +291,10 @@ export default function App() {
                         }}
                         onClick={() => {}}
                         selected={true}
+                        canSelect={true}
                     />
                     <UKListItem
-                        headline={"Heading"}
+                        labelText={"Heading"}
                         supportingText={"Supporting text"}
                         leading={{
                             type: "video",
