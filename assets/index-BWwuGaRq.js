@@ -56,7 +56,8 @@
                 height: 100%;
             }
 
-            &:hover {
+            &:hover,
+            &:active {
                 &::after {
                     transition: background-color ${e.sys.motion["duration-100"]}
                         ${e.sys.motion.easing.standard.accelerate};
