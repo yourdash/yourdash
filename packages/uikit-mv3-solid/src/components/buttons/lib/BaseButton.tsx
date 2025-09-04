@@ -49,7 +49,8 @@ const BaseButton: Component<{
                 height: 100%;
             }
 
-            &:hover {
+            &:hover,
+            &:active {
                 &::after {
                     transition: background-color ${uk.sys.motion["duration-100"]}
                         ${uk.sys.motion.easing.standard.accelerate};
