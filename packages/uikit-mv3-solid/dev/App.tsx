@@ -13,6 +13,7 @@ import UKBadge from "../src/components/badge/UKBadge.tsx";
 import UKList from "../src/components/list/UKList.tsx";
 import UKListItem from "../src/components/list/UKListItem.tsx";
 import { uk } from "../src/core/design/tokens.ts";
+import UKButtonGroup from "../src/components/buttonGroup/UKButtonGroup.tsx";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
@@ -305,6 +306,24 @@ export default function App() {
                     onClick={() => {}}
                 />
             </UKList>
+
+            <UKButtonGroup>
+                <UKFilledButton size={"l"} togglable={true} onClick={() => {}}>
+                    Confirm
+                </UKFilledButton>
+                <UKFilledButton size={"l"} onClick={() => {}}>
+                    Confirm
+                </UKFilledButton>
+                <UKFilledButton size={"l"} disabled onClick={() => {}}>
+                    Confirm
+                </UKFilledButton>
+                <UKFilledButton size={"l"} leadingIcon={"verified"} onClick={() => {}}>
+                    Confirm
+                </UKFilledButton>
+                <UKFilledButton size={"l"} trailingIcon={"face"} onClick={() => {}}>
+                    Confirm
+                </UKFilledButton>
+            </UKButtonGroup>
 
             <span>
                 UIKit Material Expressive for SolidJS | "@yourdash/uikit-mv3-solid" | Created by{" "}

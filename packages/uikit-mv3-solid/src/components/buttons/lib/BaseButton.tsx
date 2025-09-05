@@ -24,6 +24,9 @@ const BaseButton: Component<{
         let classNames: string[] = [];
 
         classNames.push(css`
+            --padding-left: 0;
+            --padding-right: 0;
+
             position: relative;
             border: none;
             overflow: hidden;
