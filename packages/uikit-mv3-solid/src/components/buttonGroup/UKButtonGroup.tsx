@@ -1,16 +1,207 @@
 import { css } from "solid-styled-components";
 import { type Component, type JSX } from "solid-js";
+import type { ButtonSize } from "../buttons/lib/size.ts";
+import dpToRem from "../../core/dp.ts";
 import { uk } from "../../core/design/tokens.ts";
 
-const UKTonalButton: Component<{
+const UKButtonGroup: Component<{
     children: JSX.Element;
+    size: ButtonSize;
+    connected?: boolean;
 }> = (props) => {
     return (
         <div
+            data-size={props.size}
+            data-connected={props.connected}
             class={css`
-                & > button + button {
-                    background: red;
-                    width: calc(100% + 1rem);
+                display: flex;
+                flex-direction: row;
+                gap: 0.5rem;
+
+                & > button:first-child:active {
+                    margin-left: calc(
+                        calc(calc(var(--padding-left) * 1.15) - calc(var(--padding-left))) * -1
+                    );
+                }
+
+                & > button:active {
+                    --padding-left-override: calc(var(--padding-left) * 1.15);
+                    --padding-right-override: calc(var(--padding-left) * 1.15);
+                }
+
+                & > button:active + button,
+                & > button:has(+ button:active) {
+                    --padding-left-override: calc(
+                        var(--padding-left) - calc(
+                                calc(var(--padding-left) * 1.075) - var(--padding-left)
+                            )
+                    );
+                    --padding-right-override: calc(
+                        var(--padding-right) - calc(
+                                calc(var(--padding-right) * 1.075) - var(--padding-right)
+                            )
+                    );
+                }
+
+                & > button:disabled:active {
+                    --padding-left-override: unset;
+                    --padding-right-override: unset;
+
+                    & + button {
+                        --padding-left-override: unset;
+                        --padding-right-override: unset;
+                    }
+                }
+
+                & > button:has(+ button:disabled:active) {
+                    --padding-left-override: unset;
+                    --padding-right-override: unset;
+                }
+
+                &[data-connected="true"] {
+                    &[data-size="xs"] {
+                        gap: ${dpToRem(2)};
+                        height: ${dpToRem(32)};
+
+                        & > button {
+                            &:not(:last-child):not(:active) {
+                                border-top-right-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                                border-bottom-right-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                            }
+
+                            &:not(:first-child):not(:active) {
+                                border-top-left-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                                border-bottom-left-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                            }
+                        }
+                    }
+
+                    &[data-size="s"] {
+                        gap: ${dpToRem(2)};
+                        height: ${dpToRem(40)};
+
+                        & > button {
+                            &:not(:last-child):not(:active) {
+                                border-top-right-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                                border-bottom-right-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                            }
+
+                            &:not(:first-child):not(:active) {
+                                border-top-left-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                                border-bottom-left-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                            }
+                        }
+                    }
+
+                    &[data-size="m"] {
+                        gap: ${dpToRem(2)};
+                        height: ${dpToRem(56)};
+
+                        & > button {
+                            &:not(:last-child):not(:active) {
+                                border-top-right-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                                border-bottom-right-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                            }
+
+                            &:not(:first-child):not(:active) {
+                                border-top-left-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                                border-bottom-left-radius: ${uk.sys.shape.corner.small[
+                                    "default-size"
+                                ]};
+                            }
+                        }
+                    }
+
+                    &[data-size="l"] {
+                        gap: ${dpToRem(2)};
+                        height: ${dpToRem(96)};
+
+                        & > button {
+                            &:not(:last-child):not(:active) {
+                                border-top-right-radius: ${uk.sys.shape.corner.large[
+                                    "default-size"
+                                ]};
+                                border-bottom-right-radius: ${uk.sys.shape.corner.large[
+                                    "default-size"
+                                ]};
+                            }
+
+                            &:not(:first-child):not(:active) {
+                                border-top-left-radius: ${uk.sys.shape.corner.large[
+                                    "default-size"
+                                ]};
+                                border-bottom-left-radius: ${uk.sys.shape.corner.large[
+                                    "default-size"
+                                ]};
+                            }
+                        }
+                    }
+
+                    &[data-size="xl"] {
+                        gap: ${dpToRem(2)};
+                        height: ${dpToRem(136)};
+
+                        & > button {
+                            &:not(:last-child):not(:active) {
+                                border-top-right-radius: ${dpToRem(20)};
+                                border-bottom-right-radius: ${dpToRem(20)};
+                            }
+
+                            &:not(:first-child):not(:active) {
+                                border-top-left-radius: ${dpToRem(20)};
+                                border-bottom-left-radius: ${dpToRem(20)};
+                            }
+                        }
+                    }
+                }
+
+                &:not([data-connected="true"]) {
+                    &[data-size="xs"] {
+                        gap: ${dpToRem(18)};
+                        height: ${dpToRem(32)};
+                    }
+
+                    &[data-size="s"] {
+                        gap: ${dpToRem(12)};
+                        height: ${dpToRem(40)};
+                    }
+
+                    &[data-size="m"] {
+                        gap: ${dpToRem(8)};
+                        height: ${dpToRem(56)};
+                    }
+
+                    &[data-size="l"] {
+                        gap: ${dpToRem(8)};
+                        height: ${dpToRem(96)};
+                    }
+
+                    &[data-size="xl"] {
+                        gap: ${dpToRem(8)};
+                        height: ${dpToRem(136)};
+                    }
                 }
             `}
         >
@@ -19,4 +210,4 @@ const UKTonalButton: Component<{
     );
 };
 
-export default UKTonalButton;
+export default UKButtonGroup;

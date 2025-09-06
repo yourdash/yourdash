@@ -1253,7 +1253,7 @@ let tokens: UKDesignTokens = {
                         "default-size": () => dpToRem(0),
                     },
 
-                    full: () => dpToRem(999),
+                    full: () => dpToRem(60),
                 },
             },
             motion: {
