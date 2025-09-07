@@ -33,6 +33,7 @@ const BaseButton: Component<{
                         outline-color ${uk.sys.motion["duration-100"]} ${uk.sys.motion.easing.standard.decelerate},
                         outline-width 0ms linear,
                         background-color ${uk.sys.motion["duration-100"]} ${uk.sys.motion.easing.standard.normal},
+                        color ${uk.sys.motion["duration-100"]} ${uk.sys.motion.easing.standard.normal},
                         padding-left ${uk.sys.motion["duration-50"]} ${uk.sys.motion.easing.linear},
                         margin-left ${uk.sys.motion["duration-50"]} ${uk.sys.motion.easing.linear},
                         padding-right ${uk.sys.motion["duration-50"]} ${uk.sys.motion.easing.linear},
