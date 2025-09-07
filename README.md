@@ -16,7 +16,3 @@
 
 - Webstorm / VSCode
 - Docker Desktop / Podman
-
-## Credits
-
-- Created by @ewsgit

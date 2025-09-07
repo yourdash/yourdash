@@ -1,27 +1,45 @@
-import { type Component, type JSX } from "solid-js";
-import type { ButtonSize } from "./size.ts";
+import { createSignal, type Component, type JSX } from "solid-js";
+import type { ButtonSize } from "./lib/size.ts";
 import clsx from "clsx";
-import dpToRem from "../../../core/dp.ts";
-import UKIcon from "../../icon/UKIcon.tsx";
+import dpToRem from "../../core/dp.ts";
+import UKIcon from "../icon/UKIcon.tsx";
 import { css } from "solid-styled-components";
-import { uk } from "../../../core/design/tokens.ts";
+import { uk } from "../../core/design/tokens.ts";
+import type { ButtonShape } from "./lib/shape.ts";
+import type { ButtonColor } from "./lib/color.ts";
 
 const iconClass = css`
     font-size: var(--icon-size);
 `;
 
-const BaseButton: Component<{
+const UKButton: Component<{
     children: JSX.Element;
-    class: string;
-    disabled: boolean;
-    size: ButtonSize;
-    toggled?: boolean;
+    class?: string;
+    disabled?: boolean;
+    size?: ButtonSize;
+    color?: ButtonColor;
+    shape?: ButtonShape;
+    togglable?: boolean;
     onClick: (event: MouseEvent & { currentTarget: HTMLButtonElement; target: Element }) => void;
     leadingIcon?: string;
     trailingIcon?: string;
 }> = (props) => {
+    const [isSelected, setIsSelected] = createSignal(false);
+
+    if (props.color === "standard" && props.togglable) {
+        alert("You cannot have a standard color button be toggleable");
+    }
+
     return (
         <button
+            onClick={(e) => {
+                if (props.togglable) {
+                    setIsSelected(!isSelected());
+                    props.onClick(e);
+                } else {
+                    props.onClick(e);
+                }
+            }}
             class={clsx(
                 props.class,
                 css`
@@ -91,7 +109,7 @@ const BaseButton: Component<{
 
                         --icon-size: ${dpToRem(20)};
 
-                        &[data-toggled="true"] {
+                        &[data-shape="square"] {
                             border-radius: ${uk.sys.shape.corner.medium["default-size"]};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
@@ -107,7 +125,7 @@ const BaseButton: Component<{
                             }
                         }
 
-                        &:not([data-toggled="true"]) {
+                        &:not([data-shape="square"]) {
                             border-radius: ${dpToRem(32)};
                             --transition-all: ${uk.sys.motion.easing.standard.decelerate};
 
@@ -138,7 +156,7 @@ const BaseButton: Component<{
 
                         --icon-size: ${dpToRem(20)};
 
-                        &[data-toggled="true"] {
+                        &[data-shape="square"] {
                             border-radius: ${uk.sys.shape.corner.medium["default-size"]};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
@@ -154,7 +172,7 @@ const BaseButton: Component<{
                             }
                         }
 
-                        &:not([data-toggled="true"]) {
+                        &:not([data-shape="square"]) {
                             border-radius: ${dpToRem(40)};
                             --transition-all: ${uk.sys.motion.easing.standard.decelerate};
 
@@ -185,7 +203,7 @@ const BaseButton: Component<{
 
                         --icon-size: ${dpToRem(24)};
 
-                        &[data-toggled="true"] {
+                        &[data-shape="square"] {
                             border-radius: ${uk.sys.shape.corner.large["default-size"]};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
@@ -201,7 +219,7 @@ const BaseButton: Component<{
                             }
                         }
 
-                        &:not([data-toggled="true"]) {
+                        &:not([data-shape="square"]) {
                             border-radius: ${dpToRem(56)};
                             --transition-all: ${uk.sys.motion.easing.standard.decelerate};
 
@@ -232,7 +250,7 @@ const BaseButton: Component<{
 
                         --icon-size: ${dpToRem(32)};
 
-                        &[data-toggled="true"] {
+                        &[data-shape="square"] {
                             border-radius: ${uk.sys.shape.corner.large["default-size"]};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
@@ -248,7 +266,7 @@ const BaseButton: Component<{
                             }
                         }
 
-                        &:not([data-toggled="true"]) {
+                        &:not([data-shape="square"]) {
                             border-radius: ${dpToRem(96)};
                             --transition-all: ${uk.sys.motion.easing.standard.decelerate};
 
@@ -279,7 +297,7 @@ const BaseButton: Component<{
 
                         --icon-size: ${dpToRem(40)};
 
-                        &[data-toggled="true"] {
+                        &[data-shape="square"] {
                             border-radius: ${uk.sys.shape.corner["extra-large"]["default-size"]};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
@@ -295,7 +313,7 @@ const BaseButton: Component<{
                             }
                         }
 
-                        &:not([data-toggled="true"]) {
+                        &:not([data-shape="square"]) {
                             border-radius: ${dpToRem(132)};
                             --transition-all: ${uk.sys.motion.easing.standard.decelerate};
 
@@ -311,20 +329,174 @@ const BaseButton: Component<{
                             }
                         }
                     }
+
+                    &[data-color="filled"] {
+                        background-color: rgb(${uk.sys.color.primary});
+                        color: rgb(${uk.sys.color["on-primary"]});
+
+                        &:hover {
+                            &::after {
+                                background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+
+                        &:active {
+                            &::after {
+                                background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
+                            }
+                        }
+
+                        &[disabled] {
+                            background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
+                            color: rgb(${uk.sys.color["on-surface"]}, 0.38);
+
+                            &::after {
+                                background-color: transparent;
+                            }
+                        }
+
+                        &[data-toggleable="true"] {
+                            background: rgb(${uk.sys.color["surface-container"]});
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &[data-selected="true"] {
+                                background: rgb(${uk.sys.color.primary});
+                                color: rgb(${uk.sys.color["on-primary"]});
+                            }
+                        }
+                    }
+
+                    &[data-color="outlined"] {
+                        background-color: transparent;
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+                        border-width: ${dpToRem(1)};
+                        border-style: solid;
+                        border-color: rgb(${uk.sys.color["outline-variant"]});
+
+                        &:hover {
+                            &::after {
+                                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+
+                        &:active {
+                            &::after {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-secondary-container"]},
+                                    ${uk.sys.state.pressed["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[disabled] {
+                            background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
+                            color: rgb(${uk.sys.color["on-surface"]}, 0.38);
+
+                            &::after {
+                                background-color: transparent;
+                            }
+                        }
+
+                        &[data-toggleable="true"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &[data-selected="true"] {
+                                background: rgb(${uk.sys.color["inverse-surface"]});
+                                color: rgb(${uk.sys.color["inverse-on-surface"]});
+                            }
+                        }
+                    }
+
+                    &[data-color="elevated"] {
+                        border: none;
+                        box-shadow: 0 ${dpToRem(1)} ${dpToRem(2)} ${uk.sys.color.shadow};
+
+                        &:not([disabled]) {
+                            &:active,
+                            &:focus-visible {
+                                box-shadow: 0 ${dpToRem(2)} ${dpToRem(6)} ${uk.sys.color.shadow};
+                            }
+                        }
+                    }
+
+                    &[data-color="standard"] {
+                        background-color: transparent;
+                        color: rgb(${uk.sys.color["primary"]});
+
+                        &:hover {
+                            &::after {
+                                background-color: rgb(${uk.sys.color["primary"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+
+                        &:active {
+                            &::after {
+                                background-color: rgb(${uk.sys.color["primary"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
+                            }
+                        }
+
+                        &[disabled] {
+                            background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
+                            color: rgb(${uk.sys.color["on-surface"]}, 0.38);
+
+                            &::after {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+
+                    &[data-color="tonal"] {
+                        background-color: rgb(${uk.sys.color["secondary-container"]});
+                        color: rgb(${uk.sys.color["on-secondary-container"]});
+
+                        &:hover {
+                            &::after {
+                                background-color: rgb(${uk.sys.color["on-secondary"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+
+                        &:active {
+                            &::after {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-secondary-container"]},
+                                    ${uk.sys.state.pressed["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[disabled] {
+                            background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
+                            color: rgb(${uk.sys.color["on-surface"]}, 0.38);
+
+                            &::after {
+                                background-color: transparent;
+                            }
+                        }
+
+                        &[data-toggleable="true"] {
+                            background: rgb(${uk.sys.color["secondary-container"]});
+                            color: rgb(${uk.sys.color["on-secondary-container"]});
+
+                            &[data-selected="true"] {
+                                background: rgb(${uk.sys.color.secondary});
+                                color: rgb(${uk.sys.color["on-secondary"]});
+                            }
+                        }
+                    }
                 `,
             )}
-            disabled={props.disabled}
-            onClick={(e) => {
-                props.onClick(e);
-            }}
-            data-size={props.size}
-            data-toggled={props.toggled}
+            disabled={props.disabled || false}
+            data-selected={isSelected()}
+            data-toggleable={props.togglable || false}
+            data-size={props.size || "s"}
+            data-shape={isSelected() ? ((props.shape || "round") === "round" ? "square" : "round") : props.shape || "round"}
+            data-color={props.color || "filled"}
         >
             {props.leadingIcon && <UKIcon class={iconClass}>{props.leadingIcon}</UKIcon>}
-            {props.children}
+            {props.children || "No Label Provided"}
             {props.trailingIcon && <UKIcon class={iconClass}>{props.trailingIcon}</UKIcon>}
         </button>
     );
 };
 
-export default BaseButton;
+export default UKButton;

@@ -1,21 +1,16 @@
 import Root from "../src/components/Root.tsx";
-import UKFilledButton from "../src/components/buttons/UKFilledButton.tsx";
 import type { ButtonSize } from "../src/components/buttons/lib/size.ts";
 import type { Component } from "solid-js";
 import UKDivider from "../src/components/divider/UKDivider.tsx";
 import { DividerDirection } from "../src/components/divider/lib/direction.ts";
 import UKFilledCard from "../src/components/cards/UKFilledCard.tsx";
-import UKTonalButton from "../src/components/buttons/UKTonalButton.tsx";
-import UKOutlinedButton from "../src/components/buttons/UKOutlinedButton.tsx";
-import UKTextButton from "../src/components/buttons/UKTextButton.tsx";
 import { css } from "solid-styled-components";
 import UKBadge from "../src/components/badge/UKBadge.tsx";
 import UKList from "../src/components/list/UKList.tsx";
 import UKListItem from "../src/components/list/UKListItem.tsx";
 import { uk } from "../src/core/design/tokens.ts";
 import UKButtonGroup from "../src/components/buttonGroup/UKButtonGroup.tsx";
-import BaseSplitButton from "../src/components/splitButtons/lib/BaseSplitButton.tsx";
-import UKSplitFilledButton from "../src/components/splitButtons/UKFilledSplitButton.tsx";
+import UKButton from "../src/components/buttons/UKButton.tsx";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
@@ -30,24 +25,24 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                     flex-wrap: wrap;
                 `}
             >
-                <UKFilledButton size={size} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={size} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={size} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={size} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={size} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={size} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={size} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={size} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={size} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={size} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </div>
 
             <h2>Tonal Button (toggle, default, disabled, icon leading, icon trailing, icon trailing & leading)</h2>
@@ -58,24 +53,24 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                     flex-wrap: wrap;
                 `}
             >
-                <UKTonalButton size={size} togglable={true} onClick={() => {}}>
+                <UKButton color="tonal" size={size} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKTonalButton>
-                <UKTonalButton size={size} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="tonal" size={size} onClick={() => {}}>
                     Confirm
-                </UKTonalButton>
-                <UKTonalButton size={size} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="tonal" size={size} disabled onClick={() => {}}>
                     Confirm
-                </UKTonalButton>
-                <UKTonalButton size={size} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="tonal" size={size} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKTonalButton>
-                <UKTonalButton size={size} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="tonal" size={size} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKTonalButton>
-                <UKTonalButton size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="tonal" size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
                     Confirm
-                </UKTonalButton>
+                </UKButton>
             </div>
 
             <h2>Outlined Button (toggle, default, disabled, icon leading, icon trailing, icon trailing & leading)</h2>
@@ -86,24 +81,24 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                     flex-wrap: wrap;
                 `}
             >
-                <UKOutlinedButton size={size} togglable={true} onClick={() => {}}>
+                <UKButton color="outlined" size={size} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKOutlinedButton>
-                <UKOutlinedButton size={size} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="outlined" size={size} onClick={() => {}}>
                     Confirm
-                </UKOutlinedButton>
-                <UKOutlinedButton size={size} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="outlined" size={size} disabled onClick={() => {}}>
                     Confirm
-                </UKOutlinedButton>
-                <UKOutlinedButton size={size} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="outlined" size={size} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKOutlinedButton>
-                <UKOutlinedButton size={size} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="outlined" size={size} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKOutlinedButton>
-                <UKOutlinedButton size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="outlined" size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
                     Confirm
-                </UKOutlinedButton>
+                </UKButton>
             </div>
 
             <h2>Text Button (default, disabled, icon leading, icon trailing, icon trailing & leading)</h2>
@@ -114,21 +109,21 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                     flex-wrap: wrap;
                 `}
             >
-                <UKTextButton size={size} onClick={() => {}}>
+                <UKButton color="standard" size={size} onClick={() => {}}>
                     Confirm
-                </UKTextButton>
-                <UKTextButton size={size} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="standard" size={size} disabled onClick={() => {}}>
                     Confirm
-                </UKTextButton>
-                <UKTextButton size={size} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="standard" size={size} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKTextButton>
-                <UKTextButton size={size} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="standard" size={size} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKTextButton>
-                <UKTextButton size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="standard" size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
                     Confirm
-                </UKTextButton>
+                </UKButton>
             </div>
         </UKFilledCard>
     );
@@ -274,188 +269,188 @@ export default function App() {
             </UKList>
 
             <UKButtonGroup size={"xs"}>
-                <UKFilledButton size={"xs"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"xs"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xs"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xs"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xs"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xs"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xs"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xs"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xs"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xs"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup size={"s"}>
-                <UKFilledButton size={"s"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"s"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"s"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"s"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"s"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"s"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"s"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"s"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"s"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"s"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup size={"m"}>
-                <UKFilledButton size={"m"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"m"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"m"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"m"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"m"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"m"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"m"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"m"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"m"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"m"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup size={"l"}>
-                <UKFilledButton size={"l"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"l"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"l"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"l"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"l"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"l"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"l"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"l"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"l"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"l"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup size={"xl"}>
-                <UKFilledButton size={"xl"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"xl"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xl"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xl"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xl"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xl"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xl"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xl"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xl"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xl"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"xs"}>
-                <UKFilledButton size={"xs"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"xs"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xs"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xs"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xs"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xs"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xs"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xs"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xs"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xs"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"s"}>
-                <UKFilledButton size={"s"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"s"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"s"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"s"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"s"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"s"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"s"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"s"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"s"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"s"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"m"}>
-                <UKFilledButton size={"m"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"m"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"m"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"m"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"m"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"m"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"m"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"m"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"m"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"m"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"l"}>
-                <UKFilledButton size={"l"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"l"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"l"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"l"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"l"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"l"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"l"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"l"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"l"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"l"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"xl"}>
-                <UKFilledButton size={"xl"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"xl"} togglable={true} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xl"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xl"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xl"} disabled onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xl"} disabled onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xl"} leadingIcon={"verified"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xl"} leadingIcon={"verified"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
-                <UKFilledButton size={"xl"} trailingIcon={"face"} onClick={() => {}}>
+                </UKButton>
+                <UKButton color="filled" size={"xl"} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
-                </UKFilledButton>
+                </UKButton>
             </UKButtonGroup>
 
-            <UKSplitFilledButton onClick={() => 0} dropDownItems={[]}>
+            {/* <UKSplitFilledButton onClick={() => 0} dropDownItems={[]}>
                 test
-            </UKSplitFilledButton>
+            </UKSplitFilledButton> */}
 
             <span>
                 UIKit Material Expressive for SolidJS | "@yourdash/uikit-mv3-solid" | Created by{" "}
