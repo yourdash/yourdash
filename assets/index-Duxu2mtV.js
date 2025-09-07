@@ -38,6 +38,7 @@
                         outline-color ${e.sys.motion["duration-100"]} ${e.sys.motion.easing.standard.decelerate},
                         outline-width 0ms linear,
                         background-color ${e.sys.motion["duration-100"]} ${e.sys.motion.easing.standard.normal},
+                        color ${e.sys.motion["duration-100"]} ${e.sys.motion.easing.standard.normal},
                         padding-left ${e.sys.motion["duration-50"]} ${e.sys.motion.easing.linear},
                         margin-left ${e.sys.motion["duration-50"]} ${e.sys.motion.easing.linear},
                         padding-right ${e.sys.motion["duration-50"]} ${e.sys.motion.easing.linear},
