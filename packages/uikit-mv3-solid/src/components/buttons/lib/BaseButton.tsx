@@ -30,17 +30,14 @@ const BaseButton: Component<{
 
                     transition:
                         all ${uk.sys.motion["duration-50"]} var(--transition-all),
-                        outline-color ${uk.sys.motion["duration-100"]}
-                            ${uk.sys.motion.easing.standard.decelerate},
+                        outline-color ${uk.sys.motion["duration-100"]} ${uk.sys.motion.easing.standard.decelerate},
                         outline-width 0ms linear,
-                        background-color ${uk.sys.motion["duration-100"]}
-                            ${uk.sys.motion.easing.standard.normal},
+                        background-color ${uk.sys.motion["duration-100"]} ${uk.sys.motion.easing.standard.normal},
                         padding-left ${uk.sys.motion["duration-50"]} ${uk.sys.motion.easing.linear},
                         margin-left ${uk.sys.motion["duration-50"]} ${uk.sys.motion.easing.linear},
                         padding-right ${uk.sys.motion["duration-50"]} ${uk.sys.motion.easing.linear},
                         margin-right ${uk.sys.motion["duration-50"]} ${uk.sys.motion.easing.linear},
-                        border-radius var(--border-radius-duration, ${uk.sys.motion["duration-50"]})
-                            ${uk.sys.motion.easing.linear};
+                        border-radius var(--border-radius-duration, ${uk.sys.motion["duration-50"]}) ${uk.sys.motion.easing.linear};
 
                     &:focus,
                     &:hover {
@@ -65,8 +62,7 @@ const BaseButton: Component<{
                     outline-color: transparent;
 
                     &::after {
-                        transition: background-color ${uk.sys.motion["duration-100"]}
-                            ${uk.sys.motion.easing.standard.normal};
+                        transition: background-color ${uk.sys.motion["duration-100"]} ${uk.sys.motion.easing.standard.normal};
                         content: "";
                         position: absolute;
                         background-color: transparent;

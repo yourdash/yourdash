@@ -18,19 +18,13 @@ function getClasses(togglable?: boolean) {
 
         &:hover {
             &::after {
-                background-color: rgb(
-                    ${uk.sys.color["on-surface-variant"]},
-                    ${uk.sys.state.hover["state-layer-opacity"]}
-                );
+                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
             }
         }
 
         &:active {
             &::after {
-                background-color: rgb(
-                    ${uk.sys.color["on-secondary-container"]},
-                    ${uk.sys.state.pressed["state-layer-opacity"]}}
-                );
+                background-color: rgb(${uk.sys.color["on-secondary-container"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
             }
         }
 

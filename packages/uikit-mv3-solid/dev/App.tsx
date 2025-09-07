@@ -14,16 +14,15 @@ import UKList from "../src/components/list/UKList.tsx";
 import UKListItem from "../src/components/list/UKListItem.tsx";
 import { uk } from "../src/core/design/tokens.ts";
 import UKButtonGroup from "../src/components/buttonGroup/UKButtonGroup.tsx";
+import BaseSplitButton from "../src/components/splitButtons/lib/BaseSplitButton.tsx";
+import UKSplitFilledButton from "../src/components/splitButtons/UKFilledSplitButton.tsx";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
         <UKFilledCard>
             <h1>Button Variant '{size}'</h1>
 
-            <h2>
-                Filled Button (toggle, default, disabled, icon leading, icon trailing, icon trailing
-                & leading)
-            </h2>
+            <h2>Filled Button (toggle, default, disabled, icon leading, icon trailing, icon trailing & leading)</h2>
             <div
                 class={css`
                     display: flex;
@@ -46,20 +45,12 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                 <UKFilledButton size={size} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
                 </UKFilledButton>
-                <UKFilledButton
-                    size={size}
-                    leadingIcon={"borg"}
-                    trailingIcon={"rotate_auto"}
-                    onClick={() => {}}
-                >
+                <UKFilledButton size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
                     Confirm
                 </UKFilledButton>
             </div>
 
-            <h2>
-                Tonal Button (toggle, default, disabled, icon leading, icon trailing, icon trailing
-                & leading)
-            </h2>
+            <h2>Tonal Button (toggle, default, disabled, icon leading, icon trailing, icon trailing & leading)</h2>
             <div
                 class={css`
                     display: flex;
@@ -82,20 +73,12 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                 <UKTonalButton size={size} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
                 </UKTonalButton>
-                <UKTonalButton
-                    size={size}
-                    leadingIcon={"borg"}
-                    trailingIcon={"rotate_auto"}
-                    onClick={() => {}}
-                >
+                <UKTonalButton size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
                     Confirm
                 </UKTonalButton>
             </div>
 
-            <h2>
-                Outlined Button (toggle, default, disabled, icon leading, icon trailing, icon
-                trailing & leading)
-            </h2>
+            <h2>Outlined Button (toggle, default, disabled, icon leading, icon trailing, icon trailing & leading)</h2>
             <div
                 class={css`
                     display: flex;
@@ -118,20 +101,12 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                 <UKOutlinedButton size={size} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
                 </UKOutlinedButton>
-                <UKOutlinedButton
-                    size={size}
-                    leadingIcon={"borg"}
-                    trailingIcon={"rotate_auto"}
-                    onClick={() => {}}
-                >
+                <UKOutlinedButton size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
                     Confirm
                 </UKOutlinedButton>
             </div>
 
-            <h2>
-                Text Button (default, disabled, icon leading, icon trailing, icon trailing &
-                leading)
-            </h2>
+            <h2>Text Button (default, disabled, icon leading, icon trailing, icon trailing & leading)</h2>
             <div
                 class={css`
                     display: flex;
@@ -151,12 +126,7 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                 <UKTextButton size={size} trailingIcon={"face"} onClick={() => {}}>
                     Confirm
                 </UKTextButton>
-                <UKTextButton
-                    size={size}
-                    leadingIcon={"borg"}
-                    trailingIcon={"rotate_auto"}
-                    onClick={() => {}}
-                >
+                <UKTextButton size={size} leadingIcon={"borg"} trailingIcon={"rotate_auto"} onClick={() => {}}>
                     Confirm
                 </UKTextButton>
             </div>
@@ -219,11 +189,7 @@ export default function App() {
             </UKFilledCard>
 
             <UKList>
-                <UKListItem
-                    labelText={"Heading"}
-                    supportingText={"Supporting text"}
-                    onClick={() => {}}
-                />
+                <UKListItem labelText={"Heading"} supportingText={"Supporting text"} onClick={() => {}} />
                 <UKListItem
                     labelText={"Heading"}
                     supportingText={"Supporting text"}
@@ -486,6 +452,10 @@ export default function App() {
                     Confirm
                 </UKFilledButton>
             </UKButtonGroup>
+
+            <UKSplitFilledButton onClick={() => 0} dropDownItems={[]}>
+                test
+            </UKSplitFilledButton>
 
             <span>
                 UIKit Material Expressive for SolidJS | "@yourdash/uikit-mv3-solid" | Created by{" "}

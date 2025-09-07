@@ -4,6 +4,8 @@ import type { ButtonSize } from "../buttons/lib/size.ts";
 import dpToRem from "../../core/dp.ts";
 import { uk } from "../../core/design/tokens.ts";
 
+// FIXME: this is not correctly implemented according to the MV3 Spec
+
 const UKButtonGroup: Component<{
     children: JSX.Element;
     size: ButtonSize;
@@ -67,19 +69,19 @@ const UKButtonGroup: Component<{
                             &:not(:last-child):not(:active) {
                                 border-top-right-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                                 border-bottom-right-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                             }
 
                             &:not(:first-child):not(:active) {
                                 border-top-left-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                                 border-bottom-left-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                             }
                         }
                     }
@@ -92,19 +94,19 @@ const UKButtonGroup: Component<{
                             &:not(:last-child):not(:active) {
                                 border-top-right-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                                 border-bottom-right-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                             }
 
                             &:not(:first-child):not(:active) {
                                 border-top-left-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                                 border-bottom-left-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                             }
                         }
                     }
@@ -117,19 +119,19 @@ const UKButtonGroup: Component<{
                             &:not(:last-child):not(:active) {
                                 border-top-right-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                                 border-bottom-right-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                             }
 
                             &:not(:first-child):not(:active) {
                                 border-top-left-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                                 border-bottom-left-radius: ${uk.sys.shape.corner.small[
                                     "default-size"
-                                ]};
+                                ]} !important;
                             }
                         }
                     }
@@ -142,19 +144,19 @@ const UKButtonGroup: Component<{
                             &:not(:last-child):not(:active) {
                                 border-top-right-radius: ${uk.sys.shape.corner.large[
                                     "default-size"
-                                ]};
+                                ]} !important;
                                 border-bottom-right-radius: ${uk.sys.shape.corner.large[
                                     "default-size"
-                                ]};
+                                ]} !important;
                             }
 
                             &:not(:first-child):not(:active) {
                                 border-top-left-radius: ${uk.sys.shape.corner.large[
                                     "default-size"
-                                ]};
+                                ]} !important;
                                 border-bottom-left-radius: ${uk.sys.shape.corner.large[
                                     "default-size"
-                                ]};
+                                ]} !important;
                             }
                         }
                     }
@@ -165,13 +167,13 @@ const UKButtonGroup: Component<{
 
                         & > button {
                             &:not(:last-child):not(:active) {
-                                border-top-right-radius: ${dpToRem(20)};
-                                border-bottom-right-radius: ${dpToRem(20)};
+                                border-top-right-radius: ${dpToRem(20)} !important;
+                                border-bottom-right-radius: ${dpToRem(20)} !important;
                             }
 
                             &:not(:first-child):not(:active) {
-                                border-top-left-radius: ${dpToRem(20)};
-                                border-bottom-left-radius: ${dpToRem(20)};
+                                border-top-left-radius: ${dpToRem(20)} !important;
+                                border-bottom-left-radius: ${dpToRem(20)} !important;
                             }
                         }
                     }

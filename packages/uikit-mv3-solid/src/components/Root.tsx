@@ -7,8 +7,7 @@ import { createMediaQuery } from "@solid-primitives/media";
 const Container = styled.div`
     background-color: rgb(${uk.sys.color.background});
     color: rgb(${uk.sys.color["on-background"]});
-    transition: background-color ${uk.sys.motion["duration-250"]}
-        ${uk.sys.motion.easing.standard.normal};
+    transition: background-color ${uk.sys.motion["duration-250"]} ${uk.sys.motion.easing.standard.normal};
     min-height: 100vh;
     width: 100%;
 
