@@ -332,64 +332,50 @@ export interface UKDesignTokens {
                 dragged: { "state-layer-opacity"(): number };
                 pressed: { "state-layer-opacity"(): number };
                 focus: { "state-layer-opacity"(): number };
-                hover: { "state-layer-opacity"(): number };
+                hover: {"state-layer-opacity"(): number};
+                "focus-indicator": {
+                    "outer-offset"(): string,
+                    "thickness"(): string
+                }
             };
             shape: {
                 corner: {
-                    "full-family"(): string;
                     "extra-large": {
                         top: {
-                            family(): string;
-                            "default-size"(): string;
+                            size(): string;
                             "top-left"(): string;
                             "top-right"(): string;
                         };
-                        family(): string;
-                        "default-size"(): string;
+                        size(): string;
                     };
 
                     large: {
                         top: {
-                            family(): string;
-                            "default-size"(): string;
+                            size(): string;
                             "top-left"(): string;
                             "top-right"(): string;
                         };
                         end: {
-                            family(): string;
-                            "default-size"(): string;
+                            size(): string;
                             "top-right"(): string;
                             "bottom-right"(): string;
                         };
-                        family(): string;
-                        "default-size"(): string;
+                        size(): string;
                     };
 
-                    medium: {
-                        family(): string;
-                        "default-size"(): string;
-                    };
-
-                    small: {
-                        family(): string;
-                        "default-size"(): string;
-                    };
+                    medium(): string;
+                    small(): string;
 
                     "extra-small": {
                         top: {
-                            family(): string;
-                            "default-size"(): string;
+                            size(): string;
                             "top-left"(): string;
                             "top-right"(): string;
                         };
-                        family(): string;
-                        "default-size"(): string;
+                        size(): string;
                     };
 
-                    none: {
-                        family(): string;
-                        "default-size"(): string;
-                    };
+                    none(): string;
 
                     full(): string;
                 };
@@ -826,64 +812,50 @@ export interface UKDesignTokens {
             dragged: { "state-layer-opacity": string };
             pressed: { "state-layer-opacity": string };
             focus: { "state-layer-opacity": string };
-            hover: { "state-layer-opacity": string };
+            hover: {"state-layer-opacity": string};
+            "focus-indicator": {
+                    "outer-offset": string,
+                    "thickness": string
+                }
         };
         shape: {
             corner: {
-                "full-family": string;
                 "extra-large": {
                     top: {
-                        family: string;
-                        "default-size": string;
+                        size: string;
                         "top-left": string;
                         "top-right": string;
                     };
-                    family: string;
-                    "default-size": string;
+                    size: string;
                 };
 
                 large: {
                     top: {
-                        family: string;
-                        "default-size": string;
+                        size: string;
                         "top-left": string;
                         "top-right": string;
                     };
                     end: {
-                        family: string;
-                        "default-size": string;
+                        size: string;
                         "top-right": string;
                         "bottom-right": string;
                     };
-                    family: string;
-                    "default-size": string;
+                    size: string;
                 };
 
-                medium: {
-                    family: string;
-                    "default-size": string;
-                };
-
-                small: {
-                    family: string;
-                    "default-size": string;
-                };
+                medium: string;
+                small: string;
 
                 "extra-small": {
                     top: {
-                        family: string;
-                        "default-size": string;
+                        size: string;
                         "top-left": string;
                         "top-right": string;
                     };
-                    family: string;
-                    "default-size": string;
+                    size: string;
                 };
 
-                none: {
-                    family: string;
-                    "default-size": string;
-                };
+                none: string;
 
                 full: string;
             };
@@ -1194,64 +1166,51 @@ let tokens: UKDesignTokens = {
                 dragged: { "state-layer-opacity": () => 0.1599999964237213 },
                 pressed: { "state-layer-opacity": () => 0.11999999731779099 },
                 focus: { "state-layer-opacity": () => 0.11999999731779099 },
-                hover: { "state-layer-opacity": () => 0.07999999821186066 },
+                hover: {"state-layer-opacity": () => 0.07999999821186066},
+                "focus-indicator": {
+                    "outer-offset": () => dpToRem(2),
+                    "thickness": () => dpToRem(3),
+                }
             },
             shape: {
                 corner: {
-                    "full-family": () => dpToRem(3),
                     "extra-large": {
                         top: {
-                            family: () => dpToRem(1),
-                            "default-size": () => dpToRem(0),
+                            "size": () => dpToRem(0),
                             "top-left": () => dpToRem(28),
                             "top-right": () => dpToRem(28),
                         },
-                        family: () => dpToRem(1),
-                        "default-size": () => dpToRem(28),
+                        "size": () => dpToRem(28),
                     },
 
                     large: {
                         top: {
-                            family: () => dpToRem(1),
-                            "default-size": () => dpToRem(0),
+                            size: () => dpToRem(0),
                             "top-left": () => dpToRem(16),
                             "top-right": () => dpToRem(16),
                         },
                         end: {
-                            family: () => dpToRem(1),
-                            "default-size": () => dpToRem(0),
+                            size: () => dpToRem(0),
                             "top-right": () => dpToRem(16),
                             "bottom-right": () => dpToRem(16),
                         },
-                        family: () => dpToRem(1),
-                        "default-size": () => dpToRem(16),
+                        size: () => dpToRem(16),
                     },
 
-                    medium: {
-                        family: () => dpToRem(1),
-                        "default-size": () => dpToRem(12),
-                    },
+                    medium: () => dpToRem(12),
 
-                    small: {
-                        family: () => dpToRem(1),
-                        "default-size": () => dpToRem(8),
-                    },
+                    small: () => dpToRem(8),
 
                     "extra-small": {
                         top: {
-                            family: () => dpToRem(1),
-                            "default-size": () => dpToRem(0),
+                            size: () => dpToRem(0),
                             "top-left": () => dpToRem(4),
                             "top-right": () => dpToRem(4),
                         },
-                        family: () => dpToRem(1),
-                        "default-size": () => dpToRem(4),
+                        size: () => dpToRem(4),
                     },
 
-                    none: {
-                        family: () => dpToRem(1),
-                        "default-size": () => dpToRem(0),
-                    },
+                    none: () => dpToRem(0),
 
                     full: () => dpToRem(60),
                 },
@@ -1689,65 +1648,51 @@ let tokens: UKDesignTokens = {
             dragged: { "state-layer-opacity": "var(--uk-sys-state-dragged-state-layer-opacity)" },
             pressed: { "state-layer-opacity": "var(--uk-sys-state-pressed-state-layer-opacity)" },
             focus: { "state-layer-opacity": "var(--uk-sys-state-focus-state-layer-opacity)" },
-            hover: { "state-layer-opacity": "var(--uk-sys-state-hover-state-layer-opacity)" },
+            hover: {"state-layer-opacity": "var(--uk-sys-state-hover-state-layer-opacity)"},
+            "focus-indicator": {
+                "outer-offset": "var(--uk-sys-state-focus-indicator-outer-offset)",
+                "thickness": "var(--uk-sys-state-focus-indicator-thickness)",
+            }
         },
         shape: {
             corner: {
-                "full-family": "var(--uk-sys-shape-corner-full-family)",
                 "extra-large": {
                     top: {
-                        family: "var(--uk-sys-shape-corner-extra-large-family)",
-                        "default-size": "var(--uk-sys-shape-corner-extra-large-default-size)",
+                        "size": "var(--uk-sys-shape-corner-extra-large-default-size)",
                         "top-left": "var(--uk-sys-shape-corner-extra-large-top-left)",
                         "top-right": "var(--uk-sys-shape-corner-extra-large-top-right)",
                     },
-                    family: "var(--uk-sys-shape-corner-extra-large-family)",
-                    "default-size": "var(--uk-sys-shape-corner-extra-large-default-size)",
+                    "size": "var(--uk-sys-shape-corner-extra-large-default-size)",
                 },
 
                 large: {
                     top: {
-                        family: "var(--uk-sys-shape-corner-large-top-family)",
-                        "default-size": "var(--uk-sys-shape-corner-large-top-default-size)",
+                        "size": "var(--uk-sys-shape-corner-large-top-default-size)",
                         "top-left": "var(--uk-sys-shape-corner-large-top-top-left)",
                         "top-right": "var(--uk-sys-shape-corner-large-top-top-right)",
                     },
                     end: {
-                        family: "var(--uk-sys-shape-corner-large-end-family)",
-                        "default-size": "var(--uk-sys-shape-corner-large-end-default-size)",
+                        "size": "var(--uk-sys-shape-corner-large-end-default-size)",
                         "top-right": "var(--uk-sys-shape-corner-large-end-top-right)",
                         "bottom-right": "var(--uk-sys-shape-corner-large-end-bottom-right)",
                     },
-                    family: "var(--uk-sys-shape-corner-large-end-family)",
-                    "default-size": "var(--uk-sys-shape-corner-large-end-default-size)",
+                    "size": "var(--uk-sys-shape-corner-large-end-default-size)",
                 },
 
-                medium: {
-                    family: "var(--uk-sys-shape-corner-medium-family)",
-                    "default-size": "var(--uk-sys-shape-corner-medium-default-size)",
-                },
+                medium: "var(--uk-sys-shape-corner-medium-default-size)",
 
-                small: {
-                    family: "var(--uk-sys-shape-corner-small-family)",
-                    "default-size": "var(--uk-sys-shape-corner-small-default-size)",
-                },
+                small: "var(--uk-sys-shape-corner-small-default-size)",
 
                 "extra-small": {
                     top: {
-                        family: "var(--uk-sys-shape-corner-extra-small-top-family)",
-                        "default-size": "var(--uk-sys-shape-corner-extra-small-top-default-size)",
+                        "size": "var(--uk-sys-shape-corner-extra-small-top-default-size)",
                         "top-left": "var(--uk-sys-shape-corner-extra-small-top-top-left)",
                         "top-right": "var(--uk-sys-shape-corner-extra-small-top-top-right)",
                     },
-                    family: "var(--uk-sys-shape-corner-extra-small-top-family)",
-                    "default-size": "var(--uk-sys-shape-corner-extra-small-top-family)",
+                    "size": "var(--uk-sys-shape-corner-extra-small-top-family)",
                 },
 
-                none: {
-                    family: "var(--uk-sys-shape-corner-none-family)",
-                    "default-size": "var(--uk-sys-shape-corner-none-default-size)",
-                },
-
+                none: "var(--uk-sys-shape-corner-none-default-size)",
                 full: "var(--uk-sys-shape-corner-full)",
             },
         },
@@ -2630,16 +2575,12 @@ function applyTheme(theme: UKDesignTheme, element: HTMLDivElement, mode: "light"
     applyProperty(uk.sys.state.hover["state-layer-opacity"], () =>
         uk.raw.sys.state.hover["state-layer-opacity"]().toString(),
     );
-
-    applyProperty(uk.sys.shape.corner["full-family"], uk.raw.sys.shape.corner["full-family"]);
+    applyProperty(uk.sys.state["focus-indicator"]["outer-offset"], uk.raw.sys.state["focus-indicator"]["outer-offset"])
+    applyProperty(uk.sys.state["focus-indicator"]["thickness"], uk.raw.sys.state["focus-indicator"]["thickness"])
 
     applyProperty(
-        uk.sys.shape.corner["extra-large"].top.family,
-        uk.raw.sys.shape.corner["extra-large"].top.family,
-    );
-    applyProperty(
-        uk.sys.shape.corner["extra-large"].top["default-size"],
-        uk.raw.sys.shape.corner["extra-large"].top["default-size"],
+        uk.sys.shape.corner["extra-large"].top.size,
+        uk.raw.sys.shape.corner["extra-large"].top.size,
     );
     applyProperty(
         uk.sys.shape.corner["extra-large"].top["top-left"],
@@ -2651,21 +2592,13 @@ function applyTheme(theme: UKDesignTheme, element: HTMLDivElement, mode: "light"
     );
 
     applyProperty(
-        uk.sys.shape.corner["extra-large"].family,
-        uk.raw.sys.shape.corner["extra-large"].family,
-    );
-    applyProperty(
-        uk.sys.shape.corner["extra-large"]["default-size"],
-        uk.raw.sys.shape.corner["extra-large"]["default-size"],
+        uk.sys.shape.corner["extra-large"].size,
+        uk.raw.sys.shape.corner["extra-large"].size,
     );
 
     applyProperty(
-        uk.sys.shape.corner["large"].top.family,
-        uk.raw.sys.shape.corner["large"].top.family,
-    );
-    applyProperty(
-        uk.sys.shape.corner["large"].top["default-size"],
-        uk.raw.sys.shape.corner["large"].top["default-size"],
+        uk.sys.shape.corner["large"].top.size,
+        uk.raw.sys.shape.corner["large"].top.size,
     );
     applyProperty(
         uk.sys.shape.corner["large"].top["top-left"],
@@ -2677,12 +2610,8 @@ function applyTheme(theme: UKDesignTheme, element: HTMLDivElement, mode: "light"
     );
 
     applyProperty(
-        uk.sys.shape.corner["large"].end.family,
-        uk.raw.sys.shape.corner["large"].end.family,
-    );
-    applyProperty(
-        uk.sys.shape.corner["large"].end["default-size"],
-        uk.raw.sys.shape.corner["large"].end["default-size"],
+        uk.sys.shape.corner["large"].end.size,
+        uk.raw.sys.shape.corner["large"].end.size,
     );
     applyProperty(
         uk.sys.shape.corner["large"].end["top-right"],
@@ -2693,31 +2622,24 @@ function applyTheme(theme: UKDesignTheme, element: HTMLDivElement, mode: "light"
         uk.raw.sys.shape.corner["large"].end["bottom-right"],
     );
 
-    applyProperty(uk.sys.shape.corner["large"].family, uk.raw.sys.shape.corner["large"].family);
     applyProperty(
-        uk.sys.shape.corner["large"]["default-size"],
-        uk.raw.sys.shape.corner["large"]["default-size"],
-    );
-
-    applyProperty(uk.sys.shape.corner["medium"].family, uk.raw.sys.shape.corner["medium"].family);
-    applyProperty(
-        uk.sys.shape.corner["medium"]["default-size"],
-        uk.raw.sys.shape.corner["medium"]["default-size"],
-    );
-
-    applyProperty(uk.sys.shape.corner["small"].family, uk.raw.sys.shape.corner["small"].family);
-    applyProperty(
-        uk.sys.shape.corner["small"]["default-size"],
-        uk.raw.sys.shape.corner["small"]["default-size"],
+        uk.sys.shape.corner["large"].size,
+        uk.raw.sys.shape.corner["large"].size,
     );
 
     applyProperty(
-        uk.sys.shape.corner["extra-small"].top.family,
-        uk.raw.sys.shape.corner["extra-small"].top.family,
+        uk.sys.shape.corner["medium"],
+        uk.raw.sys.shape.corner["medium"],
     );
+
     applyProperty(
-        uk.sys.shape.corner["extra-small"].top["default-size"],
-        uk.raw.sys.shape.corner["extra-small"].top["default-size"],
+        uk.sys.shape.corner["small"],
+        uk.raw.sys.shape.corner["small"],
+    );
+
+    applyProperty(
+        uk.sys.shape.corner["extra-small"].top.size,
+        uk.raw.sys.shape.corner["extra-small"].top.size,
     );
     applyProperty(
         uk.sys.shape.corner["extra-small"].top["top-left"],
@@ -2729,18 +2651,13 @@ function applyTheme(theme: UKDesignTheme, element: HTMLDivElement, mode: "light"
     );
 
     applyProperty(
-        uk.sys.shape.corner["extra-small"].family,
-        uk.raw.sys.shape.corner["extra-small"].family,
-    );
-    applyProperty(
-        uk.sys.shape.corner["extra-small"]["default-size"],
-        uk.raw.sys.shape.corner["extra-small"]["default-size"],
+        uk.sys.shape.corner["extra-small"].size,
+        uk.raw.sys.shape.corner["extra-small"].size,
     );
 
-    applyProperty(uk.sys.shape.corner["none"].family, uk.raw.sys.shape.corner["none"].family);
     applyProperty(
-        uk.sys.shape.corner["none"]["default-size"],
-        uk.raw.sys.shape.corner["none"]["default-size"],
+        uk.sys.shape.corner["none"],
+        uk.raw.sys.shape.corner["none"],
     );
 
     applyProperty(uk.sys.shape.corner["full"], uk.raw.sys.shape.corner["full"]);

@@ -19,21 +19,27 @@ const UKButton: Component<{
     size?: ButtonSize;
     color?: ButtonColor;
     shape?: ButtonShape;
-    togglable?: boolean;
+    type?: "normal" | "toggle";
     onClick: (event: MouseEvent & { currentTarget: HTMLButtonElement; target: Element }) => void;
     leadingIcon?: string;
     trailingIcon?: string;
 }> = (props) => {
     const [isSelected, setIsSelected] = createSignal(false);
 
-    if (props.color === "standard" && props.togglable) {
+    if (props.color === "standard" && props.type === "toggle") {
         alert("You cannot have a standard color button be toggleable");
     }
 
     return (
         <button
+            disabled={props.disabled || false}
+            data-selected={isSelected()}
+            data-toggleable={props.type === "toggle" || false}
+            data-size={props.size || "s"}
+            data-shape={isSelected() ? ((props.shape || "round") === "round" ? "square" : "round") : props.shape || "round"}
+            data-color={props.color || "filled"}
             onClick={(e) => {
-                if (props.togglable) {
+                if (props.type === "toggle") {
                     setIsSelected(!isSelected());
                     props.onClick(e);
                 } else {
@@ -47,7 +53,7 @@ const UKButton: Component<{
                     padding-right: var(--padding-right-override, var(--padding-right, 0px));
 
                     transition:
-                        all ${uk.sys.motion["duration-50"]} var(--transition-all),
+                        all ${uk.sys.motion["duration-50"]} var(--transition-all, linear),
                         outline-color ${uk.sys.motion["duration-100"]} ${uk.sys.motion.easing.standard.decelerate},
                         outline-width 0ms linear,
                         background-color ${uk.sys.motion["duration-100"]} ${uk.sys.motion.easing.standard.normal},
@@ -110,7 +116,7 @@ const UKButton: Component<{
                         --icon-size: ${dpToRem(20)};
 
                         &[data-shape="square"] {
-                            border-radius: ${uk.sys.shape.corner.medium["default-size"]};
+                            border-radius: ${uk.sys.shape.corner.medium};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
                             &:not(&[disabled]) {
@@ -131,7 +137,7 @@ const UKButton: Component<{
 
                             &:not(&[disabled]) {
                                 &:active {
-                                    border-radius: ${uk.sys.shape.corner.small["default-size"]};
+                                    border-radius: ${uk.sys.shape.corner.small};
                                 }
 
                                 &:focus-visible {
@@ -157,7 +163,7 @@ const UKButton: Component<{
                         --icon-size: ${dpToRem(20)};
 
                         &[data-shape="square"] {
-                            border-radius: ${uk.sys.shape.corner.medium["default-size"]};
+                            border-radius: ${uk.sys.shape.corner.medium};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
                             &:not(&[disabled]) {
@@ -178,7 +184,7 @@ const UKButton: Component<{
 
                             &:not(&[disabled]) {
                                 &:active {
-                                    border-radius: ${uk.sys.shape.corner.medium["default-size"]};
+                                    border-radius: ${uk.sys.shape.corner.medium};
                                 }
 
                                 &:focus-visible {
@@ -204,7 +210,7 @@ const UKButton: Component<{
                         --icon-size: ${dpToRem(24)};
 
                         &[data-shape="square"] {
-                            border-radius: ${uk.sys.shape.corner.large["default-size"]};
+                            border-radius: ${uk.sys.shape.corner.large.size};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
                             &:not(&[disabled]) {
@@ -225,7 +231,7 @@ const UKButton: Component<{
 
                             &:not(&[disabled]) {
                                 &:active {
-                                    border-radius: ${uk.sys.shape.corner.medium["default-size"]};
+                                    border-radius: ${uk.sys.shape.corner.medium};
                                 }
 
                                 &:focus-visible {
@@ -251,7 +257,7 @@ const UKButton: Component<{
                         --icon-size: ${dpToRem(32)};
 
                         &[data-shape="square"] {
-                            border-radius: ${uk.sys.shape.corner.large["default-size"]};
+                            border-radius: ${uk.sys.shape.corner.large.size};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
                             &:not(&[disabled]) {
@@ -272,7 +278,7 @@ const UKButton: Component<{
 
                             &:not(&[disabled]) {
                                 &:active {
-                                    border-radius: ${uk.sys.shape.corner.large["default-size"]};
+                                    border-radius: ${uk.sys.shape.corner.large.size};
                                 }
 
                                 &:focus-visible {
@@ -298,7 +304,7 @@ const UKButton: Component<{
                         --icon-size: ${dpToRem(40)};
 
                         &[data-shape="square"] {
-                            border-radius: ${uk.sys.shape.corner["extra-large"]["default-size"]};
+                            border-radius: ${uk.sys.shape.corner["extra-large"].size};
                             --transition-all: ${uk.sys.motion.easing.standard.accelerate};
 
                             &:not(&[disabled]) {
@@ -319,7 +325,7 @@ const UKButton: Component<{
 
                             &:not(&[disabled]) {
                                 &:active {
-                                    border-radius: ${uk.sys.shape.corner.large["default-size"]};
+                                    border-radius: ${uk.sys.shape.corner.large.size};
                                 }
 
                                 &:focus-visible {
@@ -369,7 +375,6 @@ const UKButton: Component<{
                     &[data-color="outlined"] {
                         background-color: transparent;
                         color: rgb(${uk.sys.color["on-surface-variant"]});
-                        border-width: ${dpToRem(1)};
                         border-style: solid;
                         border-color: rgb(${uk.sys.color["outline-variant"]});
 
@@ -485,12 +490,6 @@ const UKButton: Component<{
                     }
                 `,
             )}
-            disabled={props.disabled || false}
-            data-selected={isSelected()}
-            data-toggleable={props.togglable || false}
-            data-size={props.size || "s"}
-            data-shape={isSelected() ? ((props.shape || "round") === "round" ? "square" : "round") : props.shape || "round"}
-            data-color={props.color || "filled"}
         >
             {props.leadingIcon && <UKIcon class={iconClass}>{props.leadingIcon}</UKIcon>}
             {props.children || "No Label Provided"}

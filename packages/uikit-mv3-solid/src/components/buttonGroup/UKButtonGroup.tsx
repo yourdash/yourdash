@@ -1,6 +1,6 @@
 import { css } from "solid-styled-components";
 import { type Component, type JSX } from "solid-js";
-import type { ButtonSize } from "../buttons/lib/size.ts";
+import type { ButtonSize } from "../button/lib/size.ts";
 import dpToRem from "../../core/dp.ts";
 import { uk } from "../../core/design/tokens.ts";
 
@@ -21,9 +21,7 @@ const UKButtonGroup: Component<{
                 gap: 0.5rem;
 
                 & > button:first-child:active {
-                    margin-left: calc(
-                        calc(calc(var(--padding-left) * 1.15) - calc(var(--padding-left))) * -1
-                    );
+                    margin-left: calc(calc(calc(var(--padding-left) * 1.15) - calc(var(--padding-left))) * -1);
                 }
 
                 & > button:active {
@@ -33,16 +31,8 @@ const UKButtonGroup: Component<{
 
                 & > button:active + button,
                 & > button:has(+ button:active) {
-                    --padding-left-override: calc(
-                        var(--padding-left) - calc(
-                                calc(var(--padding-left) * 1.075) - var(--padding-left)
-                            )
-                    );
-                    --padding-right-override: calc(
-                        var(--padding-right) - calc(
-                                calc(var(--padding-right) * 1.075) - var(--padding-right)
-                            )
-                    );
+                    --padding-left-override: calc(var(--padding-left) - calc(calc(var(--padding-left) * 1.075) - var(--padding-left)));
+                    --padding-right-override: calc(var(--padding-right) - calc(calc(var(--padding-right) * 1.075) - var(--padding-right)));
                 }
 
                 & > button:disabled:active {
@@ -67,21 +57,13 @@ const UKButtonGroup: Component<{
 
                         & > button {
                             &:not(:last-child):not(:active) {
-                                border-top-right-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
-                                border-bottom-right-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
+                                border-top-right-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
+                                border-bottom-right-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
                             }
 
                             &:not(:first-child):not(:active) {
-                                border-top-left-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
-                                border-bottom-left-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
+                                border-top-left-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
+                                border-bottom-left-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
                             }
                         }
                     }
@@ -92,21 +74,13 @@ const UKButtonGroup: Component<{
 
                         & > button {
                             &:not(:last-child):not(:active) {
-                                border-top-right-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
-                                border-bottom-right-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
+                                border-top-right-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
+                                border-bottom-right-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
                             }
 
                             &:not(:first-child):not(:active) {
-                                border-top-left-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
-                                border-bottom-left-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
+                                border-top-left-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
+                                border-bottom-left-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
                             }
                         }
                     }
@@ -117,21 +91,13 @@ const UKButtonGroup: Component<{
 
                         & > button {
                             &:not(:last-child):not(:active) {
-                                border-top-right-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
-                                border-bottom-right-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
+                                border-top-right-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
+                                border-bottom-right-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
                             }
 
                             &:not(:first-child):not(:active) {
-                                border-top-left-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
-                                border-bottom-left-radius: ${uk.sys.shape.corner.small[
-                                    "default-size"
-                                ]} !important;
+                                border-top-left-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
+                                border-bottom-left-radius: ${uk.sys.shape.corner.small["default-size"]} !important;
                             }
                         }
                     }
@@ -142,21 +108,13 @@ const UKButtonGroup: Component<{
 
                         & > button {
                             &:not(:last-child):not(:active) {
-                                border-top-right-radius: ${uk.sys.shape.corner.large[
-                                    "default-size"
-                                ]} !important;
-                                border-bottom-right-radius: ${uk.sys.shape.corner.large[
-                                    "default-size"
-                                ]} !important;
+                                border-top-right-radius: ${uk.sys.shape.corner.large["default-size"]} !important;
+                                border-bottom-right-radius: ${uk.sys.shape.corner.large["default-size"]} !important;
                             }
 
                             &:not(:first-child):not(:active) {
-                                border-top-left-radius: ${uk.sys.shape.corner.large[
-                                    "default-size"
-                                ]} !important;
-                                border-bottom-left-radius: ${uk.sys.shape.corner.large[
-                                    "default-size"
-                                ]} !important;
+                                border-top-left-radius: ${uk.sys.shape.corner.large["default-size"]} !important;
+                                border-bottom-left-radius: ${uk.sys.shape.corner.large["default-size"]} !important;
                             }
                         }
                     }

@@ -1,0 +1,1 @@
+export type IconButtonWidth = "default" | "narrow" | "wide"

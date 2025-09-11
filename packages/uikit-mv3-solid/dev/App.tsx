@@ -1,5 +1,5 @@
 import Root from "../src/components/Root.tsx";
-import type { ButtonSize } from "../src/components/buttons/lib/size.ts";
+import type { ButtonSize } from "../src/components/button/lib/size.ts";
 import type { Component } from "solid-js";
 import UKDivider from "../src/components/divider/UKDivider.tsx";
 import { DividerDirection } from "../src/components/divider/lib/direction.ts";
@@ -10,7 +10,8 @@ import UKList from "../src/components/list/UKList.tsx";
 import UKListItem from "../src/components/list/UKListItem.tsx";
 import { uk } from "../src/core/design/tokens.ts";
 import UKButtonGroup from "../src/components/buttonGroup/UKButtonGroup.tsx";
-import UKButton from "../src/components/buttons/UKButton.tsx";
+import UKButton from "../src/components/button/UKButton.tsx";
+import UKIconButton from "../src/components/iconButton/UKIconButton.tsx";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
@@ -25,7 +26,7 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                     flex-wrap: wrap;
                 `}
             >
-                <UKButton color="filled" size={size} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={size} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={size} onClick={() => {}}>
@@ -53,7 +54,7 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                     flex-wrap: wrap;
                 `}
             >
-                <UKButton color="tonal" size={size} togglable={true} onClick={() => {}}>
+                <UKButton color="tonal" size={size} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="tonal" size={size} onClick={() => {}}>
@@ -81,7 +82,7 @@ const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
                     flex-wrap: wrap;
                 `}
             >
-                <UKButton color="outlined" size={size} togglable={true} onClick={() => {}}>
+                <UKButton color="outlined" size={size} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="outlined" size={size} onClick={() => {}}>
@@ -269,7 +270,7 @@ export default function App() {
             </UKList>
 
             <UKButtonGroup size={"xs"}>
-                <UKButton color="filled" size={"xs"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"xs"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"xs"} onClick={() => {}}>
@@ -287,7 +288,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup size={"s"}>
-                <UKButton color="filled" size={"s"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"s"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"s"} onClick={() => {}}>
@@ -305,7 +306,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup size={"m"}>
-                <UKButton color="filled" size={"m"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"m"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"m"} onClick={() => {}}>
@@ -323,7 +324,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup size={"l"}>
-                <UKButton color="filled" size={"l"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"l"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"l"} onClick={() => {}}>
@@ -341,7 +342,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup size={"xl"}>
-                <UKButton color="filled" size={"xl"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"xl"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"xl"} onClick={() => {}}>
@@ -359,7 +360,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"xs"}>
-                <UKButton color="filled" size={"xs"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"xs"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"xs"} onClick={() => {}}>
@@ -377,7 +378,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"s"}>
-                <UKButton color="filled" size={"s"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"s"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"s"} onClick={() => {}}>
@@ -395,7 +396,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"m"}>
-                <UKButton color="filled" size={"m"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"m"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"m"} onClick={() => {}}>
@@ -413,7 +414,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"l"}>
-                <UKButton color="filled" size={"l"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"l"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"l"} onClick={() => {}}>
@@ -431,7 +432,7 @@ export default function App() {
             </UKButtonGroup>
 
             <UKButtonGroup connected size={"xl"}>
-                <UKButton color="filled" size={"xl"} togglable={true} onClick={() => {}}>
+                <UKButton color="filled" size={"xl"} type={"toggle"} onClick={() => {}}>
                     Confirm
                 </UKButton>
                 <UKButton color="filled" size={"xl"} onClick={() => {}}>
@@ -451,6 +452,121 @@ export default function App() {
             {/* <UKSplitFilledButton onClick={() => 0} dropDownItems={[]}>
                 test
             </UKSplitFilledButton> */}
+
+            <div
+                class={css`
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5rem;
+                `}
+            >
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"xs"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"xs"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"xs"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"xs"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"default"} size={"xs"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"xs"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"xs"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"xs"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"xs"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"xs"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"xs"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"xs"} icon="person" disabled={true} onClick={() => 0} />
+            </div>
+
+            <div
+                class={css`
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5rem;
+                `}
+            >
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"s"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"s"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"s"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"s"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"default"} size={"s"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"s"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"s"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"s"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"s"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"s"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"s"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"s"} icon="person" disabled={true} onClick={() => 0} />
+            </div>
+
+            <div
+                class={css`
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5rem;
+                `}
+            >
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"m"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"m"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"m"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"m"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"default"} size={"m"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"m"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"m"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"m"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"m"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"m"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"m"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"m"} icon="person" disabled={true} onClick={() => 0} />
+            </div>
+
+            <div
+                class={css`
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5rem;
+                `}
+            >
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"l"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"l"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"l"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"l"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"default"} size={"l"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"l"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"l"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"l"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"l"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"l"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"l"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"l"} icon="person" disabled={true} onClick={() => 0} />
+            </div>
+
+            <div
+                class={css`
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5rem;
+                `}
+            >
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"xl"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"xl"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"xl"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"narrow"} size={"xl"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"default"} size={"xl"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"xl"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"xl"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"default"} size={"xl"} icon="person" disabled={true} onClick={() => 0} />
+
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"xl"} icon="person" type={"toggle"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"xl"} icon="person" onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"xl"} icon="person" shape={"square"} onClick={() => 0} />
+                <UKIconButton alt={"Hello world"} width={"wide"} size={"xl"} icon="person" disabled={true} onClick={() => 0} />
+            </div>
 
             <span>
                 UIKit Material Expressive for SolidJS | "@yourdash/uikit-mv3-solid" | Created by{" "}

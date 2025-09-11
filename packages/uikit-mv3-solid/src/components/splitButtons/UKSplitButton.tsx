@@ -1,5 +1,5 @@
 import type { Component, JSX } from "solid-js";
-import type { ButtonSize } from "../buttons/lib/size";
+import type { ButtonSize } from "../button/lib/size";
 
 const UKSplitButton: Component<{
     textButton: JSX.Element;
