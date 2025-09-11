@@ -29,6 +29,7 @@ const UKIconButton: Component<{
             data-shape={props.shape || "round"}
             data-size={props.size || "s"}
             data-type={props.type || "normal"}
+            data-color={props.color || "filled"}
             data-selected={isSelected()}
             disabled={props.disabled || false}
             onClick={(e) => {
@@ -78,12 +79,10 @@ const UKIconButton: Component<{
                     height: 100%;
                 }
 
-                &:hover:not(:disabled) {
-                    color: rgb(${uk.sys.color["on-primary"]});
-
-                    &::before {
-                        background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.hover["state-layer-opacity"]});
-                    }
+                &:focus-visible {
+                    outline-width: ${uk.sys.state["focus-indicator"].thickness};
+                    outline-offset: ${uk.sys.state["focus-indicator"]["outer-offset"]};
+                    outline-color: rgb(${uk.sys.color.secondary});
                 }
 
                 &:focus,
@@ -95,64 +94,6 @@ const UKIconButton: Component<{
                     --border-radius-duration: ${uk.sys.motion["duration-50"]};
                 }
 
-                &[data-type="toggle"] {
-                    background-color: rgb(${uk.sys.color["surface-container"]});
-                    color: rgb(${uk.sys.color["on-surface-variant"]});
-
-                    &:hover:not(:disabled) {
-                        color: rgb(${uk.sys.color["on-surface-variant"]});
-
-                        &::before {
-                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
-                        }
-                    }
-
-                    &:focus-visible:not(:disabled) {
-                        color: rgb(${uk.sys.color["on-surface-variant"]});
-
-                        &::before {
-                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.focus["state-layer-opacity"]});
-                        }
-                    }
-
-                    &:active:not(:disabled) {
-                        color: rgb(${uk.sys.color["on-surface-variant"]});
-
-                        &::before {
-                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
-                        }
-                    }
-                }
-
-                &[data-selected="true"] {
-                    background-color: rgb(${uk.sys.color.primary});
-                    color: rgb(${uk.sys.color["on-primary"]});
-
-                    &:hover:not(:disabled) {
-                        color: rgb(${uk.sys.color["on-primary"]});
-
-                        &::before {
-                            background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.hover["state-layer-opacity"]});
-                        }
-                    }
-
-                    &:focus-visible:not(:disabled) {
-                        color: rgb(${uk.sys.color["on-primary"]});
-
-                        &::before {
-                            background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.focus["state-layer-opacity"]});
-                        }
-                    }
-
-                    &:active:not(:disabled) {
-                        color: rgb(${uk.sys.color["on-primary"]});
-
-                        &::before {
-                            background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
-                        }
-                    }
-                }
-
                 &:disabled {
                     background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
                     color: rgb(${uk.sys.color["on-surface"]}, 0.38);
@@ -161,6 +102,7 @@ const UKIconButton: Component<{
 
                 &[data-size="xs"] {
                     height: ${dpToRem(32)};
+                    border-width: ${dpToRem(1)};
                     --icon-size: ${dpToRem(20)};
                     --outline-width: ${dpToRem(1)};
 
@@ -202,6 +144,7 @@ const UKIconButton: Component<{
 
                 &[data-size="s"] {
                     height: ${dpToRem(40)};
+                    border-width: ${dpToRem(1)};
                     --icon-size: ${dpToRem(24)};
                     --outline-width: ${dpToRem(1)};
 
@@ -243,6 +186,7 @@ const UKIconButton: Component<{
 
                 &[data-size="m"] {
                     height: ${dpToRem(56)};
+                    border-width: ${dpToRem(1)};
                     --icon-size: ${dpToRem(24)};
                     --outline-width: ${dpToRem(1)};
 
@@ -284,6 +228,7 @@ const UKIconButton: Component<{
 
                 &[data-size="l"] {
                     height: ${dpToRem(96)};
+                    border-width: ${dpToRem(2)};
                     --icon-size: ${dpToRem(32)};
                     --outline-width: ${dpToRem(2)};
 
@@ -320,6 +265,444 @@ const UKIconButton: Component<{
 
                     &:active:not(:disabled) {
                         border-radius: ${uk.sys.shape.corner.large.size};
+                    }
+                }
+
+                &[data-size="xl"] {
+                    height: ${dpToRem(136)};
+                    border-width: ${dpToRem(3)};
+                    --icon-size: ${dpToRem(40)};
+                    --outline-width: ${dpToRem(3)};
+
+                    &[data-width="narrow"] {
+                        --padding-left: ${dpToRem(32)};
+                        --padding-right: ${dpToRem(32)};
+                    }
+
+                    &[data-width="default"] {
+                        --padding-left: ${dpToRem(48)};
+                        --padding-right: ${dpToRem(48)};
+                    }
+
+                    &[data-width="wide"] {
+                        --padding-left: ${dpToRem(72)};
+                        --padding-right: ${dpToRem(72)};
+                    }
+
+                    &[data-shape="round"] {
+                        border-radius: ${dpToRem(136)};
+
+                        &[data-selected="true"] {
+                            border-radius: ${uk.sys.shape.corner["extra-large"].size};
+                        }
+                    }
+
+                    &[data-shape="square"] {
+                        border-radius: ${uk.sys.shape.corner["extra-large"].size};
+
+                        &[data-selected="true"] {
+                            border-radius: ${dpToRem(136)};
+                        }
+                    }
+
+                    &:active:not(:disabled) {
+                        border-radius: ${uk.sys.shape.corner.large.size};
+                    }
+                }
+
+                &[data-color="filled"] {
+                    background-color: rgb(${uk.sys.color.primary});
+                    color: rgb(${uk.sys.color["on-primary"]});
+
+                    &[data-type="toggle"] {
+                        background-color: rgb(${uk.sys.color["surface-container"]});
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+                    }
+
+                    &[data-selected="true"] {
+                        background-color: rgb(${uk.sys.color.primary});
+                        color: rgb(${uk.sys.color["on-primary"]});
+                    }
+
+                    &:focus-visible {
+                        color: rgb(${uk.sys.color["on-primary"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["on-primary"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        color: rgb(${uk.sys.color["on-primary"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["on-primary"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:active {
+                        color: rgb(${uk.sys.color["on-primary"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-primary"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-surface-variant"]},
+                                    ${uk.sys.state.pressed["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["on-primary"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-surface-variant"]},
+                                    ${uk.sys.state.pressed["state-layer-opacity"]}
+                                );
+                            }
+                        }
+                    }
+
+                    &:disabled {
+                        background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
+                        color: rgb(${uk.sys.color["on-surface"]}, 0.38);
+                    }
+                }
+
+                &[data-color="tonal"] {
+                    background-color: rgb(${uk.sys.color["secondary-container"]});
+                    color: rgb(${uk.sys.color["on-secondary-container"]});
+
+                    &[data-type="toggle"] {
+                        background-color: rgb(${uk.sys.color["secondary-container"]});
+                        color: rgb(${uk.sys.color["on-secondary-container"]});
+                    }
+
+                    &[data-selected="true"] {
+                        background-color: rgb(${uk.sys.color.secondary});
+                        color: rgb(${uk.sys.color["on-secondary"]});
+                    }
+
+                    &:focus-visible {
+                        color: rgb(${uk.sys.color["on-secondary-container"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-secondary-container"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-secondary-container"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-secondary-container"]},
+                                    ${uk.sys.state.focus["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["on-secondary"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-secondary"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        color: rgb(${uk.sys.color["on-secondary-container"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-secondary-container"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-secondary-container"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-secondary-container"]},
+                                    ${uk.sys.state.hover["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["on-secondary"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-secondary"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:active {
+                        color: rgb(${uk.sys.color["on-secondary-container"]});
+
+                        &::before {
+                            background-color: rgb(
+                                ${uk.sys.color["on-secondary-container"]},
+                                ${uk.sys.state.pressed["state-layer-opacity"]}
+                            );
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-secondary-container"]},
+                                    ${uk.sys.state.pressed["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["on-secondary"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-secondary"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:disabled {
+                        background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
+                        color: rgb(${uk.sys.color["on-surface"]}, 0.38);
+                    }
+                }
+
+                &[data-color="outlined"] {
+                    background-color: transparent;
+                    color: rgb(${uk.sys.color["on-surface-variant"]});
+                    border-style: solid;
+                    border-color: rgb(${uk.sys.color["outline-variant"]});
+
+                    &[data-type="toggle"] {
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+                    }
+
+                    &[data-selected="true"] {
+                        background-color: rgb(${uk.sys.color["inverse-surface"]});
+                        color: rgb(${uk.sys.color["inverse-on-surface"]});
+                    }
+
+                    &:focus-visible {
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-secondary-container"]},
+                                    ${uk.sys.state.focus["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["inverse-on-surface"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["inverse-on-surface"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["inverse-on-surface"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["inverse-on-surface"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:active {
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-surface-variant"]},
+                                    ${uk.sys.state.pressed["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["inverse-on-surface"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["inverse-on-surface"]},
+                                    ${uk.sys.state.pressed["state-layer-opacity"]}
+                                );
+                            }
+                        }
+                    }
+
+                    &:disabled {
+                        background-color: rgb(${uk.sys.color["on-surface"]}, 0.1);
+                        color: rgb(${uk.sys.color["on-surface"]}, 0.38);
+                    }
+                }
+
+                &[data-color="standard"] {
+                    background-color: transparent;
+                    color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                    &[data-type="toggle"] {
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+                    }
+
+                    &[data-selected="true"] {
+                        color: rgb(${uk.sys.color["primary"]});
+                    }
+
+                    &:focus-visible {
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["primary"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["primary"]}, ${uk.sys.state.focus["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color.primary});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color.primary}, ${uk.sys.state.hover["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:active {
+                        color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                        &::before {
+                            background-color: rgb(${uk.sys.color["on-surface-variant"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
+                        }
+
+                        &[data-type="toggle"] {
+                            color: rgb(${uk.sys.color["on-surface-variant"]});
+
+                            &::before {
+                                background-color: rgb(
+                                    ${uk.sys.color["on-surface-variant"]},
+                                    ${uk.sys.state.pressed["state-layer-opacity"]}
+                                );
+                            }
+                        }
+
+                        &[data-selected="true"] {
+                            color: rgb(${uk.sys.color["primary"]});
+
+                            &::before {
+                                background-color: rgb(${uk.sys.color["primary"]}, ${uk.sys.state.pressed["state-layer-opacity"]});
+                            }
+                        }
+                    }
+
+                    &:disabled {
+                        color: rgb(${uk.sys.color["on-surface"]}, 0.38);
                     }
                 }
             `}

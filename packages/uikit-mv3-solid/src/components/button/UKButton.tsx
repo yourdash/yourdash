@@ -97,6 +97,12 @@ const UKButton: Component<{
                         height: 100%;
                     }
 
+                    &:focus-visible {
+                        outline-width: ${uk.sys.state["focus-indicator"].thickness};
+                        outline-offset: ${uk.sys.state["focus-indicator"]["outer-offset"]};
+                        outline-color: rgb(${uk.sys.color.secondary});
+                    }
+
                     &[disabled] {
                         cursor: not-allowed;
                     }
@@ -123,11 +129,6 @@ const UKButton: Component<{
                                 &:active {
                                     border-radius: ${uk.sys.shape.corner.full};
                                 }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
-                                }
                             }
                         }
 
@@ -138,11 +139,6 @@ const UKButton: Component<{
                             &:not(&[disabled]) {
                                 &:active {
                                     border-radius: ${uk.sys.shape.corner.small};
-                                }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
                                 }
                             }
                         }
@@ -170,11 +166,6 @@ const UKButton: Component<{
                                 &:active {
                                     border-radius: ${dpToRem(40)};
                                 }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
-                                }
                             }
                         }
 
@@ -185,11 +176,6 @@ const UKButton: Component<{
                             &:not(&[disabled]) {
                                 &:active {
                                     border-radius: ${uk.sys.shape.corner.medium};
-                                }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
                                 }
                             }
                         }
@@ -217,11 +203,6 @@ const UKButton: Component<{
                                 &:active {
                                     border-radius: ${dpToRem(40)};
                                 }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
-                                }
                             }
                         }
 
@@ -232,11 +213,6 @@ const UKButton: Component<{
                             &:not(&[disabled]) {
                                 &:active {
                                     border-radius: ${uk.sys.shape.corner.medium};
-                                }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
                                 }
                             }
                         }
@@ -264,11 +240,6 @@ const UKButton: Component<{
                                 &:active {
                                     border-radius: ${dpToRem(40)};
                                 }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
-                                }
                             }
                         }
 
@@ -279,11 +250,6 @@ const UKButton: Component<{
                             &:not(&[disabled]) {
                                 &:active {
                                     border-radius: ${uk.sys.shape.corner.large.size};
-                                }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
                                 }
                             }
                         }
@@ -311,11 +277,6 @@ const UKButton: Component<{
                                 &:active {
                                     border-radius: ${dpToRem(40)};
                                 }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
-                                }
                             }
                         }
 
@@ -326,11 +287,6 @@ const UKButton: Component<{
                             &:not(&[disabled]) {
                                 &:active {
                                     border-radius: ${uk.sys.shape.corner.large.size};
-                                }
-
-                                &:focus-visible {
-                                    outline-color: rgb(${uk.sys.color.outline});
-                                    outline-width: ${dpToRem(4)};
                                 }
                             }
                         }

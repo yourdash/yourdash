@@ -1,1 +1,1 @@
-export type IconButtonColor = "elevated" | "filled" | "tonal" | "outlined" | "standard";
+export type IconButtonColor = "filled" | "tonal" | "outlined" | "standard";
