@@ -12,6 +12,7 @@ import { uk } from "../src/core/design/tokens.ts";
 import UKButtonGroup from "../src/components/buttonGroup/UKButtonGroup.tsx";
 import UKButton from "../src/components/button/UKButton.tsx";
 import UKIconButton from "../src/components/iconButton/UKIconButton.tsx";
+import UKSplitButton from "../src/components/splitButtons/UKSplitButton.tsx";
 
 const ButtonVariantsForSize: Component<{ size: ButtonSize }> = ({ size }) => {
     return (
@@ -2352,6 +2353,10 @@ export default function App() {
                     onClick={() => 0}
                 />
             </div>
+
+            <UKSplitButton icon="person" onClick={() => 0} dropDownItems={[]}>
+                Hello world
+            </UKSplitButton>
 
             <span>
                 UIKit Material Expressive for SolidJS | "@yourdash/uikit-mv3-solid" | Created by{" "}
